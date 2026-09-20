@@ -55,3 +55,50 @@
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
+/* HIEN RO ANH BANNER */
+
+.hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 14, 18, 0.78) 0%,
+            rgba(5, 14, 18, 0.50) 50%,
+            rgba(5, 14, 18, 0.12) 100%
+        ),
+        url("../images/banners/bn01-hero-home.webp") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+.fitness-hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 14, 18, 0.72) 0%,
+            rgba(5, 14, 18, 0.35) 100%
+        ),
+        url("../images/banners/bn02-fitness-check.webp") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+.promo {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 16, 21, 0.76) 0%,
+            rgba(7, 16, 21, 0.42) 52%,
+            rgba(7, 16, 21, 0.08) 100%
+        ),
+        url("../images/banners/bn03-promotion.webp") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
