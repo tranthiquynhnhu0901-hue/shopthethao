@@ -2,3 +2,56 @@
 @media(max-width:1050px){.product-grid,.blog-grid{grid-template-columns:repeat(3,1fr)}.advantage-grid{grid-template-columns:repeat(2,1fr)}.fitness-layout{grid-template-columns:1fr}.fitness-aside{position:static}.guide-grid,.result-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){nav{display:none}.product-grid,.blog-grid{grid-template-columns:repeat(2,1fr)}.toolbar,.detail-layout,.cart-layout,.checkout-layout{grid-template-columns:1fr}.detail-media img{height:450px}.footer-grid{grid-template-columns:1fr 1fr}.article-heading h1{font-size:40px}.workout-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.container{width:min(100% - 24px,1380px)}.product-grid,.blog-grid,.advantage-grid,.form-grid,.goal-grid,.equipment-grid,.result-grid,.guide-grid,.footer-grid{grid-template-columns:1fr}.hero h1{font-size:52px;letter-spacing:-3px}.hero-actions{flex-direction:column}.page-hero h1{font-size:42px}.cart-item{grid-template-columns:80px 1fr}.cart-item> :nth-child(n+3){grid-column:2}.article-heading h1{font-size:34px}.fitness-card{padding:20px}}
+/* =========================================================
+   ẢNH BANNER THẬT - SPORTHUB
+========================================================= */
+
+
+/* Banner chính trang chủ */
+.hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 14, 18, 0.97) 0%,
+            rgba(5, 14, 18, 0.85) 45%,
+            rgba(5, 14, 18, 0.25) 100%
+        ),
+        url("../images/banners/bn01-hero-home.webp") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+/* Banner Fitness Check */
+.fitness-hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 14, 18, 0.95),
+            rgba(5, 14, 18, 0.60)
+        ),
+        url("../images/banners/bn02-fitness-check.webp") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+/* Banner quảng cáo */
+.promo {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 16, 21, 0.97) 0%,
+            rgba(7, 16, 21, 0.80) 50%,
+            rgba(7, 16, 21, 0.18) 100%
+        ),
+        url("../images/banners/bn03-promotion.webp") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}

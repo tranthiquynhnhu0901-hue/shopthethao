@@ -254,3 +254,145 @@ const blogs = [
 ];
 
 blogs.forEach((b,i)=>{ b.image = makeSportImage({title:b.title,subtitle:b.excerpt,seed:900+i*13,kind:'blog',icon:b.icon}); });
+/* =========================================================
+   HỆ THỐNG ẢNH THẬT - SPORTHUB
+   Ghi đè ảnh SVG tự sinh bằng ảnh WebP thật
+========================================================= */
+
+
+/* =========================================================
+   1. ẢNH SẢN PHẨM
+========================================================= */
+
+const realProductImages = [
+
+    // P01 - Áo Gym Performance Pro
+    "images/products/p01-ao-gym-performance.webp",
+
+    // P02 - Giày chạy bộ Energy Runner X2
+    "images/products/p02-giay-energy-runner.webp",
+
+    // P03 - Găng tay Gym ProGrip
+    "images/products/p03-gang-gym-progrip.webp",
+
+    // P04 - Tạ tay Rubber Dumbbell 10KG
+    "images/products/p04-ta-dumbbell-10kg.webp",
+
+    // P05 - Dây kháng lực PowerBand Set
+    "images/products/p05-day-khang-luc.webp",
+
+    // P06 - Thảm Yoga Premium Pro
+    "images/products/p06-tham-yoga.webp",
+
+    // P07 - Quần Short FlexMove
+    "images/products/p07-quan-short-flexmove.webp",
+
+    // P08 - Áo khoác Active Wind
+    "images/products/p08-ao-khoac-active-wind.webp",
+
+    // P09 - Bình nước SportFlow 1L
+    "images/products/p09-binh-nuoc-1l.webp",
+
+    // P10 - Foam Roller Recovery X
+    "images/products/p10-foam-roller.webp",
+
+    // P11 - Túi Gym Urban 35L
+    "images/products/p11-tui-gymbag.webp",
+
+    // P12 - Dây nhảy Speed Rope RX
+    "images/products/p12-day-nhay-speed-rope.webp"
+
+];
+
+
+products.forEach((product, index) => {
+
+    if (realProductImages[index]) {
+
+        product.image =
+            realProductImages[index];
+
+    }
+
+});
+
+
+/* =========================================================
+   2. ẢNH BLOG
+========================================================= */
+
+const realBlogImages = [
+
+    // B01 - Gym cho người mới
+    "images/blog/b01-gym-nguoi-moi.webp",
+
+    // B02 - Protein
+    "images/blog/b02-protein-tang-co.webp",
+
+    // B03 - Chọn giày chạy bộ
+    "images/blog/b03-chon-giay-chay-bo.webp",
+
+    // B04 - Tập sức mạnh tại nhà
+    "images/blog/b04-tap-suc-manh-tai-nha.webp",
+
+    // B05 - Cardio
+    "images/blog/b05-cardio.webp",
+
+    // B06 - Squat đúng kỹ thuật
+    "images/blog/b06-squat-dung-ky-thuat.webp",
+
+    // B07 - Lỗi khi tập gym
+    "images/blog/b07-loi-khi-tap-gym.webp",
+
+    // B08 - Phục hồi cơ bắp
+    "images/blog/b08-phuc-hoi-co-bap.webp",
+
+    // B09 - Uống nước thể thao
+    "images/blog/b09-uong-nuoc-the-thao.webp",
+
+    // B10 - Tập sáng hay tối
+    "images/blog/b10-tap-sang-hay-toi.webp",
+
+    // B11 - Bài tập bụng
+    "images/blog/b11-bai-tap-bung.webp",
+
+    // B12 - Động lực tập luyện
+    "images/blog/b12-dong-luc-tap-luyen.webp",
+
+    // B13 - Lịch gym 5 ngày
+    "images/blog/b13-lich-gym-5-ngay.webp",
+
+    // B14 - Khởi động
+    "images/blog/b14-khoi-dong.webp",
+
+    // B15 - Tăng sức bền
+    "images/blog/b15-tang-suc-ben.webp",
+
+    // B16 - Tập gym mỗi ngày
+    "images/blog/b16-tap-gym-moi-ngay.webp",
+
+    // B17 - Chọn găng gym
+    "images/blog/b17-chon-gang-gym.webp",
+
+    // B18 - Bài tập dây kháng lực
+    "images/blog/b18-bai-tap-day-khang-luc.webp",
+
+    // B19 - Thực phẩm gym
+    "images/blog/b19-thuc-pham-gym.webp",
+
+    // B20 - Stretching
+    "images/blog/b20-stretching.webp"
+
+];
+
+
+blogs.forEach((blog, index) => {
+
+    if (realBlogImages[index]) {
+
+        blog.image =
+            realBlogImages[index];
+
+    }
+
+});
