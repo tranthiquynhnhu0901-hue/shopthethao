@@ -266,41 +266,29 @@ blogs.forEach((b,i)=>{ b.image = makeSportImage({title:b.title,subtitle:b.excerp
 
 const realProductImages = [
 
-    // P01 - Áo Gym Performance Pro
-    "images/products/p01-ao-gym-performance.webp",
+    "images/banners/products/p01-ao-gym-performance.webp.webp",
 
-    // P02 - Giày chạy bộ Energy Runner X2
-    "images/products/p02-giay-energy-runner.webp",
+    "images/banners/products/p02-giay-energy-runner.webp.webp",
 
-    // P03 - Găng tay Gym ProGrip
-    "images/products/p03-gang-gym-progrip.webp",
+    "images/banners/products/p03-gang-gym-progrip.webp.webp",
 
-    // P04 - Tạ tay Rubber Dumbbell 10KG
-    "images/products/p04-ta-dumbbell-10kg.webp",
+    "images/banners/products/p04-ta-dumbbell-10kg.webp.webp",
 
-    // P05 - Dây kháng lực PowerBand Set
-    "images/products/p05-day-khang-luc.webp",
+    "images/banners/products/p05-day-khang-luc.webp.webp",
 
-    // P06 - Thảm Yoga Premium Pro
-    "images/products/p06-tham-yoga.webp",
+    "images/banners/products/p06-tham-yoga.webp.webp",
 
-    // P07 - Quần Short FlexMove
-    "images/products/p07-quan-short-flexmove.webp",
+    "images/banners/products/p07-quan-short-flexmove.webp.webp",
 
-    // P08 - Áo khoác Active Wind
-    "images/products/p08-ao-khoac-active-wind.webp",
+    "images/banners/products/p08-ao-khoac-active-wind.webp.webp",
 
-    // P09 - Bình nước SportFlow 1L
-    "images/products/p09-binh-nuoc-1l.webp",
+    "images/banners/products/p09-binh-nuoc-1l.webp.webp",
 
-    // P10 - Foam Roller Recovery X
-    "images/products/p10-foam-roller.webp",
+    "images/banners/products/p12-foam-roller.webp.webp",
 
-    // P11 - Túi Gym Urban 35L
-    "images/products/p11-tui-gymbag.webp",
+    "images/banners/products/p11-tui-gymbag.webp.webp",
 
-    // P12 - Dây nhảy Speed Rope RX
-    "images/products/p12-day-nhay-speed-rope.webp"
+    "images/banners/products/p10-giay-training-motion.webp"
 
 ];
 
