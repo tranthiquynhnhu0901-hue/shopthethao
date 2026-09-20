@@ -396,3 +396,31 @@ blogs.forEach((blog, index) => {
     }
 
 });
+const realProductImages = [
+
+    "images/products/p01-ao-gym-performance.webp",
+    "images/products/p02-giay-energy-runner.webp",
+    "images/products/p03-gang-gym-progrip.webp",
+    "images/products/p04-ta-dumbbell-10kg.webp",
+    "images/products/p05-day-khang-luc.webp",
+    "images/products/p06-tham-yoga.webp",
+    "images/products/p07-quan-short-flexmove.webp",
+    "images/products/p08-ao-khoac-active-wind.webp",
+    "images/products/p09-binh-nuoc-1l.webp",
+    "images/products/p10-foam-roller.webp",
+    "images/products/p11-tui-gymbag.webp",
+    "images/products/p12-day-nhay-speed-rope.webp"
+
+];
+
+
+products.forEach((product, index) => {
+
+    if (realProductImages[index]) {
+
+        product.image =
+            realProductImages[index];
+
+    }
+
+});
