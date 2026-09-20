@@ -1,3082 +1,1219 @@
 /* =========================================================
-   SPORTHUB FITNESS CHECK CONTROLLER
-   Version 3.0
+   SPORTHUB HEALTH ENGINE
+   Version 1.0
+   Health & Fitness Planning System
 ========================================================= */
 
-let currentStep = 1;
-
-const totalSteps = 7;
+window.SportHubHealthEngine = (() => {
 
 
-/* =========================================================
-   1. HELPER
-========================================================= */
+    /* =====================================================
+       1. HELPER
+    ====================================================== */
 
-function el(id) {
+    function round(value, decimals = 0) {
 
-    return document.getElementById(id);
+        const factor =
+            Math.pow(10, decimals);
 
-}
+        return Math.round(
+            value * factor
+        ) / factor;
+
+    }
 
 
-function showMessage(message) {
-
-    if (
-        typeof toast === "function"
+    function clamp(
+        value,
+        min,
+        max
     ) {
 
-        toast(message);
-
-        return;
+        return Math.min(
+            Math.max(value, min),
+            max
+        );
 
     }
 
-    alert(message);
-
-}
 
 
-function getRadioValue(name) {
+    /* =====================================================
+       2. BMI
+    ====================================================== */
 
-    const checked =
-        document.querySelector(
-            `input[name="${name}"]:checked`
-        );
-
-    return checked
-        ? checked.value
-        : "";
-
-}
-
-
-function getEquipment() {
-
-    return Array.from(
-        document.querySelectorAll(
-            ".equipment-item:checked"
-        )
-    ).map(
-        item => item.value
-    );
-
-}
-
-
-function escapeHTML(value) {
-
-    if (
-        value === null ||
-        value === undefined
+    function calculateBMI(
+        weight,
+        height
     ) {
 
-        return "";
+        if (
+            !weight ||
+            !height
+        ) {
 
-    }
+            return null;
 
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
+        }
 
 
-
-/* =========================================================
-   2. HIỂN THỊ BƯỚC
-========================================================= */
-
-function showStep() {
-
-    document
-        .querySelectorAll(
-            ".fitness-step"
-        )
-        .forEach(
-            item => {
-
-                item
-                    .classList
-                    .remove(
-                        "active"
-                    );
-
-            }
-        );
+        const heightM =
+            height / 100;
 
 
-    const activeStep =
-        document.querySelector(
-            `[data-step="${currentStep}"]`
-        );
-
-
-    if (activeStep) {
-
-        activeStep
-            .classList
-            .add(
-                "active"
-            );
-
-    }
-
-
-    const progress =
-        el(
-            "progress"
-        );
-
-
-    if (progress) {
-
-        progress.style.width =
+        const value =
+            weight /
             (
-                currentStep /
-                totalSteps *
-                100
-            )
-            +
-            "%";
+                heightM *
+                heightM
+            );
+
+
+        return {
+
+            value:
+                round(
+                    value,
+                    1
+                ),
+
+            note:
+                "BMI là chỉ số sàng lọc dựa trên cân nặng và chiều cao. BMI không phải tỷ lệ mỡ cơ thể và không tự mô tả đầy đủ thành phần cơ thể, sức mạnh hay tình trạng sức khỏe."
+
+        };
 
     }
 
 
-    const progressText =
-        el(
-            "progressText"
-        );
 
+    /* =====================================================
+       3. RMR - MIFFLIN ST JEOR
+    ====================================================== */
 
-    if (progressText) {
-
-        progressText.textContent =
-            `Bước ${currentStep}/${totalSteps}`;
-
-    }
-
-
-    const backButton =
-        el(
-            "back"
-        );
-
-
-    if (backButton) {
-
-        backButton.style.visibility =
-            currentStep === 1
-                ? "hidden"
-                : "visible";
-
-    }
-
-
-    const nextButton =
-        el(
-            "next"
-        );
-
-
-    if (nextButton) {
-
-        nextButton.textContent =
-            currentStep === totalSteps
-                ? "PHÂN TÍCH & TẠO BÁO CÁO"
-                : "Tiếp tục →";
-
-    }
-
-}
-
-
-
-/* =========================================================
-   3. VALIDATION
-========================================================= */
-
-function validateCurrentStep() {
-
-
-    /* =========================
-       BƯỚC 1
-    ========================== */
-
-    if (
-        currentStep === 1
+    function calculateRMR(
+        profile
     ) {
-
-        const age =
-            Number(
-                el("age").value
-            );
-
-
-        const sex =
-            el("sex").value;
-
-
-        const height =
-            Number(
-                el("height").value
-            );
-
 
         const weight =
-            Number(
-                el("weight").value
-            );
+            profile.weight;
 
+        const height =
+            profile.height;
 
-        if (!age) {
+        const age =
+            profile.age;
 
-            showMessage(
-                "Hãy nhập tuổi."
-            );
-
-            return false;
-
-        }
-
-
-        if (
-            age < 18 ||
-            age > 64
-        ) {
-
-            showMessage(
-                "Phiên bản hiện tại áp dụng cho người từ 18 đến 64 tuổi."
-            );
-
-            return false;
-
-        }
-
-
-        if (!sex) {
-
-            showMessage(
-                "Hãy chọn giới tính sinh học."
-            );
-
-            return false;
-
-        }
-
-
-        if (
-            !height ||
-            height < 120 ||
-            height > 230
-        ) {
-
-            showMessage(
-                "Hãy nhập chiều cao hợp lệ."
-            );
-
-            return false;
-
-        }
+        const sex =
+            profile.sex;
 
 
         if (
             !weight ||
-            weight < 30 ||
-            weight > 250
+            !height ||
+            !age ||
+            !sex
         ) {
 
-            showMessage(
-                "Hãy nhập cân nặng hợp lệ."
-            );
-
-            return false;
+            return null;
 
         }
+
+
+        let value;
+
+
+        if (
+            sex === "male"
+        ) {
+
+            value =
+                (
+                    10 *
+                    weight
+                )
+                +
+                (
+                    6.25 *
+                    height
+                )
+                -
+                (
+                    5 *
+                    age
+                )
+                +
+                5;
+
+        }
+
+
+        else {
+
+            value =
+                (
+                    10 *
+                    weight
+                )
+                +
+                (
+                    6.25 *
+                    height
+                )
+                -
+                (
+                    5 *
+                    age
+                )
+                -
+                161;
+
+        }
+
+
+        return {
+
+            value:
+                round(value),
+
+            formula:
+                "Mifflin-St Jeor",
+
+            note:
+                "RMR là mức năng lượng cơ thể ước tính sử dụng trong trạng thái nghỉ. Đây là giá trị ước tính, không phải phép đo chuyển hóa trực tiếp."
+
+        };
 
     }
 
 
 
-    /* =========================
-       BƯỚC 3
-    ========================== */
+    /* =====================================================
+       4. HỆ SỐ VẬN ĐỘNG
+    ====================================================== */
 
-    if (
-        currentStep === 3
+    function estimateActivityFactor(
+        profile
     ) {
 
-        if (
-            !el(
-                "jobActivity"
-            ).value
-        ) {
+        const activity =
+            profile.activity || {};
 
-            showMessage(
-                "Hãy chọn tính chất công việc."
+
+        const jobFactors = {
+
+            sedentary:
+                1.25,
+
+            light:
+                1.35,
+
+            moderate:
+                1.50,
+
+            active:
+                1.65,
+
+            veryActive:
+                1.80
+
+        };
+
+
+        let factor =
+            jobFactors[
+                activity.jobActivity
+            ]
+            ||
+            1.30;
+
+
+        const steps =
+            Number(
+                activity.steps || 0
             );
 
-            return false;
+
+        if (
+            steps < 3000
+        ) {
+
+            factor -=
+                0.05;
 
         }
 
 
         if (
-            el(
-                "steps"
-            ).value === ""
+            steps >= 6000
         ) {
 
-            showMessage(
-                "Hãy nhập số bước trung bình mỗi ngày."
-            );
-
-            return false;
+            factor +=
+                0.05;
 
         }
 
 
         if (
-            el(
-                "sittingHours"
-            ).value === ""
+            steps >= 9000
         ) {
 
-            showMessage(
-                "Hãy nhập thời gian ngồi trung bình mỗi ngày."
-            );
-
-            return false;
+            factor +=
+                0.05;
 
         }
+
+
+        if (
+            steps >= 12000
+        ) {
+
+            factor +=
+                0.05;
+
+        }
+
+
+        const sittingHours =
+            Number(
+                activity.sittingHours || 0
+            );
+
+
+        if (
+            sittingHours >= 10
+        ) {
+
+            factor -=
+                0.05;
+
+        }
+
+
+        const trainingDays =
+            Number(
+                activity.currentTrainingDays
+                ||
+                0
+            );
+
+
+        if (
+            trainingDays >= 3
+        ) {
+
+            factor +=
+                0.05;
+
+        }
+
+
+        if (
+            trainingDays >= 5
+        ) {
+
+            factor +=
+                0.05;
+
+        }
+
+
+        if (
+            activity.dailyActivity ===
+            "medium"
+        ) {
+
+            factor +=
+                0.03;
+
+        }
+
+
+        if (
+            activity.dailyActivity ===
+            "high"
+        ) {
+
+            factor +=
+                0.07;
+
+        }
+
+
+        factor =
+            clamp(
+                factor,
+                1.20,
+                2.00
+            );
+
+
+        return {
+
+            value:
+                round(
+                    factor,
+                    2
+                ),
+
+            note:
+                "Hệ số vận động là ước tính từ tính chất công việc, số bước, thời gian ngồi, hoạt động hằng ngày và tập luyện. Giá trị thực tế nên được hiệu chỉnh bằng xu hướng cân nặng và mức hoạt động trong khoảng 2–3 tuần."
+
+        };
 
     }
 
 
 
-    /* =========================
-       BƯỚC 4
-    ========================== */
+    /* =====================================================
+       5. TDEE
+    ====================================================== */
 
-    if (
-        currentStep === 4
+    function calculateTDEE(
+        rmr,
+        activityFactor
     ) {
 
         if (
-            !getRadioValue(
-                "goal"
+            !rmr ||
+            !activityFactor
+        ) {
+
+            return null;
+
+        }
+
+
+        const center =
+            rmr.value *
+            activityFactor.value;
+
+
+        return {
+
+            min:
+                round(
+                    center *
+                    0.95
+                ),
+
+            midpoint:
+                round(
+                    center
+                ),
+
+            max:
+                round(
+                    center *
+                    1.05
+                ),
+
+            note:
+                "TDEE là nhu cầu năng lượng duy trì ước tính. Thay vì xem đây là một con số tuyệt đối, nên sử dụng một khoảng và hiệu chỉnh theo dữ liệu thực tế trong 2–3 tuần."
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       6. CALORIE TARGET
+    ====================================================== */
+
+    function calculateCalorieTarget(
+        profile,
+        tdee
+    ) {
+
+        if (!tdee) {
+
+            return null;
+
+        }
+
+
+        const goal =
+            profile.goal
+                ?.primary;
+
+
+        let minFactor =
+            0.95;
+
+        let maxFactor =
+            1.05;
+
+        let strategy =
+            "Duy trì năng lượng quanh mức TDEE ước tính.";
+
+
+        if (
+            goal ===
+            "fatloss"
+        ) {
+
+            minFactor =
+                0.85;
+
+            maxFactor =
+                0.90;
+
+            strategy =
+                "Mục tiêu giảm mỡ sử dụng mức thâm hụt khởi đầu khoảng 10–15% so với TDEE ước tính, thay vì cắt năng lượng quá sâu.";
+
+        }
+
+
+        else if (
+            goal ===
+            "muscle"
+        ) {
+
+            minFactor =
+                1.05;
+
+            maxFactor =
+                1.10;
+
+            strategy =
+                "Mục tiêu tăng cơ sử dụng mức dư năng lượng nhẹ khoảng 5–10% so với TDEE ước tính.";
+
+        }
+
+
+        else if (
+            goal ===
+            "maintenance"
+        ) {
+
+            minFactor =
+                0.95;
+
+            maxFactor =
+                1.05;
+
+            strategy =
+                "Mục tiêu duy trì sử dụng khoảng năng lượng gần mức TDEE ước tính.";
+
+        }
+
+
+        else {
+
+            minFactor =
+                0.95;
+
+            maxFactor =
+                1.05;
+
+            strategy =
+                "Với mục tiêu hiện tại, năng lượng được giữ gần mức duy trì để hỗ trợ tập luyện, phục hồi và theo dõi phản ứng thực tế.";
+
+        }
+
+
+        const min =
+            round(
+                tdee.midpoint *
+                minFactor
+            );
+
+
+        const max =
+            round(
+                tdee.midpoint *
+                maxFactor
+            );
+
+
+        return {
+
+            min:
+                min,
+
+            midpoint:
+                round(
+                    (
+                        min +
+                        max
+                    )
+                    /
+                    2
+                ),
+
+            max:
+                max,
+
+            strategy:
+                strategy,
+
+            note:
+                "Đây là mức khởi đầu. Không nên điều chỉnh calorie chỉ dựa trên vài ngày dữ liệu; ưu tiên đánh giá xu hướng trong khoảng 2–3 tuần khi mức tuân thủ tương đối ổn định."
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       7. PROTEIN
+    ====================================================== */
+
+    function calculateProtein(
+        profile
+    ) {
+
+        const weight =
+            profile.weight;
+
+        const goal =
+            profile.goal
+                ?.primary;
+
+
+        if (!weight) {
+
+            return null;
+
+        }
+
+
+        let minRate =
+            1.4;
+
+        let maxRate =
+            1.6;
+
+
+        if (
+            goal === "fatloss" ||
+            goal === "muscle" ||
+            goal === "strength"
+        ) {
+
+            minRate =
+                1.6;
+
+            maxRate =
+                2.0;
+
+        }
+
+
+        return {
+
+            min:
+                round(
+                    weight *
+                    minRate
+                ),
+
+            max:
+                round(
+                    weight *
+                    maxRate
+                ),
+
+            minRate:
+                minRate,
+
+            maxRate:
+                maxRate,
+
+            note:
+                "Protein được đặt theo cân nặng và mục tiêu tập luyện. Đây là khoảng mục tiêu thực tế thay vì một con số bắt buộc tuyệt đối."
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       8. FAT
+    ====================================================== */
+
+    function calculateFat(
+        calorieTarget
+    ) {
+
+        if (!calorieTarget) {
+
+            return null;
+
+        }
+
+
+        const calories =
+            calorieTarget.midpoint;
+
+
+        return {
+
+            min:
+                round(
+                    (
+                        calories *
+                        0.25
+                    )
+                    /
+                    9
+                ),
+
+            midpoint:
+                round(
+                    (
+                        calories *
+                        0.30
+                    )
+                    /
+                    9
+                ),
+
+            max:
+                round(
+                    (
+                        calories *
+                        0.35
+                    )
+                    /
+                    9
+                ),
+
+            note:
+                "Chất béo được bố trí trong khoảng tham khảo khoảng 25–35% tổng năng lượng của kế hoạch."
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       9. CARBOHYDRATE
+    ====================================================== */
+
+    function calculateCarbs(
+        calorieTarget,
+        protein,
+        fat
+    ) {
+
+        if (
+            !calorieTarget ||
+            !protein ||
+            !fat
+        ) {
+
+            return null;
+
+        }
+
+
+        const calorie =
+            calorieTarget.midpoint;
+
+
+        const proteinMid =
+            (
+                protein.min +
+                protein.max
             )
-        ) {
+            /
+            2;
 
-            showMessage(
-                "Hãy chọn mục tiêu chính."
+
+        const proteinCalories =
+            proteinMid *
+            4;
+
+
+        const fatCalories =
+            fat.midpoint *
+            9;
+
+
+        const carbCalories =
+            Math.max(
+                calorie
+                -
+                proteinCalories
+                -
+                fatCalories,
+                0
             );
 
-            return false;
 
-        }
+        return {
+
+            value:
+                round(
+                    carbCalories /
+                    4
+                ),
+
+            note:
+                "Carbohydrate được phân bổ từ phần năng lượng còn lại sau khi xác định protein và chất béo."
+
+        };
 
     }
 
 
 
-    /* =========================
-       BƯỚC 5
-    ========================== */
+    /* =====================================================
+       10. RECOVERY
+    ====================================================== */
 
-    if (
-        currentStep === 5
+    function analyzeRecovery(
+        profile
     ) {
 
-        if (
-            !el(
-                "experience"
-            ).value
-        ) {
+        const recovery =
+            profile.recovery || {};
 
-            showMessage(
-                "Hãy chọn kinh nghiệm tập luyện."
-            );
-
-            return false;
-
-        }
-
-
-        if (
-            getEquipment()
-                .length === 0
-        ) {
-
-            showMessage(
-                "Hãy chọn ít nhất một loại dụng cụ."
-            );
-
-            return false;
-
-        }
-
-    }
-
-
-
-    /* =========================
-       BƯỚC 7
-    ========================== */
-
-    if (
-        currentStep === 7
-    ) {
 
         const sleepHours =
             Number(
-                el(
-                    "sleepHours"
-                ).value
+                recovery.sleepHours
+                ||
+                0
             );
 
 
-        if (
-            !sleepHours ||
-            sleepHours < 3 ||
-            sleepHours > 12
-        ) {
-
-            showMessage(
-                "Hãy nhập số giờ ngủ hợp lệ."
-            );
-
-            return false;
-
-        }
-
-
-        if (
-            !el(
-                "energy"
-            ).value
-        ) {
-
-            showMessage(
-                "Hãy chọn mức năng lượng."
-            );
-
-            return false;
-
-        }
-
-
-        if (
-            !el(
-                "stress"
-            ).value
-        ) {
-
-            showMessage(
-                "Hãy chọn mức stress."
-            );
-
-            return false;
-
-        }
-
-
-        if (
-            !el(
-                "fatigue"
-            ).value
-        ) {
-
-            showMessage(
-                "Hãy chọn mức mệt hiện tại."
-            );
-
-            return false;
-
-        }
-
-    }
-
-
-    return true;
-
-}
-
-
-
-/* =========================================================
-   4. NEXT STEP
-========================================================= */
-
-function nextStep() {
-
-    if (
-        !validateCurrentStep()
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        currentStep <
-        totalSteps
-    ) {
-
-        currentStep++;
-
-
-        showStep();
-
-
-        window.scrollTo({
-
-            top:
-                150,
-
-            behavior:
-                "smooth"
-
-        });
-
-
-        return;
-
-    }
-
-
-    runFitnessAnalysis();
-
-}
-
-
-
-/* =========================================================
-   5. PREVIOUS STEP
-========================================================= */
-
-function prevStep() {
-
-    if (
-        currentStep > 1
-    ) {
-
-        currentStep--;
-
-
-        showStep();
-
-
-        window.scrollTo({
-
-            top:
-                150,
-
-            behavior:
-                "smooth"
-
-        });
-
-    }
-
-}
-
-
-
-/* =========================================================
-   6. CHẤN THƯƠNG
-========================================================= */
-
-document
-    .querySelectorAll(
-        'input[name="injury"]'
-    )
-    .forEach(
-        input => {
-
-            input
-                .addEventListener(
-                    "change",
-                    function () {
-
-                        const injury =
-                            getRadioValue(
-                                "injury"
-                            );
-
-
-                        const wrap =
-                            el(
-                                "injuryAreaWrap"
-                            );
-
-
-                        if (!wrap) {
-
-                            return;
-
-                        }
-
-
-                        wrap.style.display =
-                            injury === "yes"
-                                ? "block"
-                                : "none";
-
-                    }
-                );
-
-        }
-    );
-
-
-
-/* =========================================================
-   7. THU THẬP PROFILE
-========================================================= */
-
-function collectFitnessProfile() {
-
-    return {
-
-
-        /* =========================
-           CƠ BẢN
-        ========================== */
-
-        age:
+        const energy =
             Number(
-                el(
-                    "age"
-                ).value
-            ),
+                recovery.energy
+                ||
+                0
+            );
 
 
-        sex:
-            el(
-                "sex"
-            ).value,
-
-
-        height:
+        const stress =
             Number(
-                el(
-                    "height"
-                ).value
-            ),
+                recovery.stress
+                ||
+                0
+            );
 
 
-        weight:
+        const fatigue =
             Number(
-                el(
-                    "weight"
-                ).value
-            ),
+                recovery.fatigue
+                ||
+                0
+            );
 
 
-        waist:
-            el(
-                "waist"
-            ).value
+        let sleepAction;
 
-                ? Number(
-                    el(
-                        "waist"
-                    ).value
-                )
 
-                : null,
+        if (
+            sleepHours < 7
+        ) {
 
+            sleepAction =
+                "Giấc ngủ hiện dưới 7 giờ. Thay vì cố thay đổi quá lớn ngay lập tức, ưu tiên tăng thời gian ngủ từng bước khoảng 15–20 phút và theo dõi năng lượng, stress và mức mệt.";
 
+        }
 
-        /* =========================
-           SAFETY
-        ========================== */
 
-        safety: {
+        else {
 
-            chest:
-                getRadioValue(
-                    "chest"
-                ),
+            sleepAction =
+                "Thời lượng ngủ hiện đạt từ khoảng 7 giờ trở lên. Tiếp tục ưu tiên lịch ngủ tương đối ổn định và theo dõi chất lượng phục hồi thực tế.";
 
+        }
 
-            faint:
-                getRadioValue(
-                    "faint"
-                ),
 
-
-            breath:
-                getRadioValue(
-                    "breath"
-                ),
-
-
-            injury:
-                getRadioValue(
-                    "injury"
-                ),
-
-
-            injuryArea:
-                el(
-                    "injuryArea"
-                ).value,
-
-
-            medical:
-                getRadioValue(
-                    "medical"
-                ),
-
-
-            surgery:
-                getRadioValue(
-                    "surgery"
-                ),
-
-
-            pregnancy:
-                getRadioValue(
-                    "pregnancy"
-                ),
-
-
-            medicalNote:
-                el(
-                    "medicalNote"
-                )
-                .value
-                .trim()
-
-        },
-
-
-
-        /* =========================
-           ACTIVITY
-        ========================== */
-
-        activity: {
-
-            jobActivity:
-                el(
-                    "jobActivity"
-                ).value,
-
-
-            steps:
-                Number(
-                    el(
-                        "steps"
-                    ).value
-                ),
-
-
-            sittingHours:
-                Number(
-                    el(
-                        "sittingHours"
-                    ).value
-                ),
-
-
-            currentTrainingDays:
-                Number(
-                    el(
-                        "currentTrainingDays"
-                    ).value
-                ),
-
-
-            dailyActivity:
-                el(
-                    "dailyActivity"
-                ).value,
-
-
-            activityNote:
-                el(
-                    "activityNote"
-                )
-                .value
-                .trim()
-
-        },
-
-
-
-        /* =========================
-           GOAL
-        ========================== */
-
-        goal: {
-
-            primary:
-                getRadioValue(
-                    "goal"
-                ),
-
-
-            note:
-                el(
-                    "goalNote"
-                )
-                .value
-                .trim()
-
-        },
-
-
-
-        /* =========================
-           TRAINING
-        ========================== */
-
-        training: {
-
-            experience:
-                el(
-                    "experience"
-                ).value,
-
-
-            days:
-                Number(
-                    el(
-                        "days"
-                    ).value
-                ),
-
-
-            duration:
-                Number(
-                    el(
-                        "duration"
-                    ).value
-                ),
-
-
-            location:
-                el(
-                    "locationSel"
-                ).value,
-
-
-            trainingTime:
-                el(
-                    "trainingTime"
-                ).value,
-
-
-            equipment:
-                getEquipment(),
-
-
-            trainingLimit:
-                el(
-                    "trainingLimit"
-                )
-                .value
-                .trim()
-
-        },
-
-
-
-        /* =========================
-           NUTRITION
-        ========================== */
-
-        nutrition: {
-
-            meals:
-                Number(
-                    el(
-                        "meals"
-                    ).value
-                ),
-
-
-            dietType:
-                el(
-                    "dietType"
-                ).value,
-
-
-            allergies:
-                el(
-                    "allergies"
-                )
-                .value
-                .trim(),
-
-
-            foodLikes:
-                el(
-                    "foodLikes"
-                )
-                .value
-                .trim(),
-
-
-            foodDislikes:
-                el(
-                    "foodDislikes"
-                )
-                .value
-                .trim(),
-
-
-            foodRestriction:
-                el(
-                    "foodRestriction"
-                )
-                .value
-                .trim(),
-
-
-            budget:
-                el(
-                    "budget"
-                ).value,
-
-
-            cooking:
-                el(
-                    "cooking"
-                ).value,
-
-
-            eatingOut:
-                el(
-                    "eatingOut"
-                ).value,
-
-
-            prepTime:
-                el(
-                    "prepTime"
-                ).value
-
-        },
-
-
-
-        /* =========================
-           RECOVERY
-        ========================== */
-
-        recovery: {
+        return {
 
             sleepHours:
-                Number(
-                    el(
-                        "sleepHours"
-                    ).value
-                ),
-
+                sleepHours,
 
             energy:
-                Number(
-                    el(
-                        "energy"
-                    ).value
-                ),
-
-
-            bedTime:
-                el(
-                    "bedTime"
-                ).value,
-
-
-            wakeTime:
-                el(
-                    "wakeTime"
-                ).value,
-
+                energy,
 
             stress:
-                Number(
-                    el(
-                        "stress"
-                    ).value
-                ),
-
+                stress,
 
             fatigue:
-                Number(
-                    el(
-                        "fatigue"
-                    ).value
-                ),
+                fatigue,
 
+            sleepAction:
+                sleepAction
 
-            caffeine:
-                el(
-                    "caffeine"
-                ).value,
-
-
-            recoveryNote:
-                el(
-                    "recoveryNote"
-                )
-                .value
-                .trim()
-
-        },
-
-
-
-        createdAt:
-            new Date()
-                .toISOString(),
-
-
-        version:
-            "SportHub Fitness Engine v1.0"
-
-    };
-
-}
-
-
-
-/* =========================================================
-   8. TÊN MỤC TIÊU
-========================================================= */
-
-function getGoalName(goal) {
-
-    const names = {
-
-        fatloss:
-            "Giảm mỡ",
-
-        muscle:
-            "Tăng cơ",
-
-        strength:
-            "Tăng sức mạnh",
-
-        endurance:
-            "Tăng sức bền",
-
-        fitness:
-            "Cải thiện thể lực",
-
-        mobility:
-            "Tăng linh hoạt",
-
-        maintenance:
-            "Duy trì thể trạng"
-
-    };
-
-
-    return names[goal]
-        ||
-        "Chưa xác định";
-
-}
-
-
-
-/* =========================================================
-   9. CHẠY TOÀN BỘ ENGINE
-========================================================= */
-
-function runFitnessAnalysis() {
-
-    const profile =
-        collectFitnessProfile();
-
-
-    localStorage.setItem(
-
-        "sporthub_fitness_profile",
-
-        JSON.stringify(
-            profile
-        )
-
-    );
-
-
-    /* =========================
-       HEALTH ENGINE
-    ========================== */
-
-    if (
-        !window
-            .SportHubHealthEngine
-    ) {
-
-        showMessage(
-            "Không tìm thấy health-engine.js."
-        );
-
-        return;
+        };
 
     }
 
 
-    const healthResult =
-        window
-            .SportHubHealthEngine
-            .run(
+
+    /* =====================================================
+       11. SAFETY GATE
+    ====================================================== */
+
+    function evaluateSafety(
+        profile
+    ) {
+
+        const safety =
+            profile.safety || {};
+
+
+        const reasons =
+            [];
+
+
+        if (
+            safety.chest ===
+            "yes"
+        ) {
+
+            reasons.push(
+                "Đau hoặc tức ngực bất thường khi vận động."
+            );
+
+        }
+
+
+        if (
+            safety.faint ===
+            "yes"
+        ) {
+
+            reasons.push(
+                "Có tiền sử ngất hoặc chóng mặt nghiêm trọng khi vận động."
+            );
+
+        }
+
+
+        if (
+            safety.breath ===
+            "yes"
+        ) {
+
+            reasons.push(
+                "Khó thở bất thường khi vận động nhẹ."
+            );
+
+        }
+
+
+        if (
+            safety.medical ===
+            "yes"
+        ) {
+
+            reasons.push(
+                "Có tình trạng sức khỏe đang cần bác sĩ hoặc chuyên gia quản lý."
+            );
+
+        }
+
+
+        if (
+            safety.surgery ===
+            "yes"
+        ) {
+
+            reasons.push(
+                "Có phẫu thuật hoặc thủ thuật gần đây."
+            );
+
+        }
+
+
+        if (
+            safety.pregnancy ===
+            "yes"
+        ) {
+
+            reasons.push(
+                "Đang mang thai hoặc trong giai đoạn sau sinh."
+            );
+
+        }
+
+
+        if (
+            reasons.length >
+            0
+        ) {
+
+            return {
+
+                level:
+                    "stop",
+
+                allowFullAutomation:
+                    false,
+
+                reasons:
+                    reasons,
+
+                message:
+                    "Hệ thống không tự tạo kế hoạch chuyên sâu trong trường hợp này. Nên trao đổi với bác sĩ hoặc chuyên gia phù hợp trước khi áp dụng chương trình tập luyện hoặc dinh dưỡng cá nhân hóa."
+
+            };
+
+        }
+
+
+        if (
+            safety.injury ===
+            "yes"
+        ) {
+
+            return {
+
+                level:
+                    "caution",
+
+                allowFullAutomation:
+                    true,
+
+                reasons: [
+                    "Có chấn thương hoặc đau đang hạn chế vận động."
+                ],
+
+                message:
+                    "Hệ thống ghi nhận chấn thương hoặc đau hiện tại. Kế hoạch chỉ mang tính tham khảo và cần tránh chuyển động làm triệu chứng tăng lên."
+
+            };
+
+        }
+
+
+        return {
+
+            level:
+                "safe",
+
+            allowFullAutomation:
+                true,
+
+            reasons:
+                [],
+
+            message:
+                "Bảng hỏi hiện chưa ghi nhận dấu hiệu cảnh báo chính trong các câu hỏi đã cung cấp. Kết quả này không phải xác nhận y khoa hoặc chẩn đoán sức khỏe."
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       12. RUN ENGINE
+    ====================================================== */
+
+    function run(
+        profile
+    ) {
+
+        if (!profile) {
+
+            return {
+
+                success:
+                    false,
+
+                error:
+                    "Không có dữ liệu hồ sơ."
+
+            };
+
+        }
+
+
+        const safety =
+            evaluateSafety(
                 profile
             );
 
 
-    localStorage.setItem(
-
-        "sporthub_fitness_analysis",
-
-        JSON.stringify(
-            healthResult
-        )
-
-    );
-
-
-    /* =========================
-       WORKOUT ENGINE
-    ========================== */
-
-    let workoutResult =
-        null;
-
-
-    if (
-        window
-            .SportHubWorkoutEngine
-    ) {
-
-        workoutResult =
-            window
-                .SportHubWorkoutEngine
-                .run(
-                    profile,
-                    healthResult
-                );
-
-
-        localStorage.setItem(
-
-            "sporthub_workout_plan",
-
-            JSON.stringify(
-                workoutResult
-            )
-
-        );
-
-    }
-
-
-    renderFitnessReport(
-
-        profile,
-
-        healthResult,
-
-        workoutResult
-
-    );
-
-}
-
-
-
-/* =========================================================
-   10. SAFETY HTML
-========================================================= */
-
-function buildSafetyHTML(
-    safety
-) {
-
-    if (!safety) {
-
-        return "";
-
-    }
-
-
-    if (
-        safety.level === "stop"
-    ) {
-
-        return `
-
-            <div class="safety-box stop">
-
-                <h3>
-                    Cần đánh giá chuyên môn trước khi tiếp tục
-                </h3>
-
-                <p>
-                    Hệ thống ghi nhận một hoặc nhiều yếu tố
-                    cần thận trọng:
-                </p>
-
-
-                <ul
-                    style="
-                        margin:12px 0 0 20px;
-                    "
-                >
-
-                    ${
-                        safety
-                            .reasons
-                            .map(
-                                item => `
-
-                                    <li>
-                                        ${
-                                            escapeHTML(
-                                                item
-                                            )
-                                        }
-                                    </li>
-
-                                `
-                            )
-                            .join("")
-                    }
-
-                </ul>
-
-
-                <p
-                    style="
-                        margin-top:14px;
-                    "
-                >
-
-                    ${
-                        escapeHTML(
-                            safety.message
-                        )
-                    }
-
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    if (
-        safety.level === "caution"
-    ) {
-
-        return `
-
-            <div class="safety-box caution">
-
-                <h3>
-                    Có yếu tố cần điều chỉnh
-                </h3>
-
-                <p>
-                    ${
-                        escapeHTML(
-                            safety.message
-                        )
-                    }
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    return `
-
-        <div class="safety-box safe">
-
-            <h3>
-                Safety Check ban đầu
-            </h3>
-
-            <p>
-                ${
-                    escapeHTML(
-                        safety.message
-                    )
-                }
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-   11. LIST HTML
-========================================================= */
-
-function buildListHTML(items) {
-
-    if (
-        !Array.isArray(items) ||
-        items.length === 0
-    ) {
-
-        return "";
-
-    }
-
-
-    return `
-
-        <ul
-            style="
-                padding-left:20px;
-                margin-top:8px;
-            "
-        >
-
-            ${
-                items
-                    .map(
-                        item => `
-
-                            <li
-                                style="
-                                    margin-bottom:6px;
-                                "
-                            >
-                                ${
-                                    escapeHTML(
-                                        item
-                                    )
-                                }
-                            </li>
-
-                        `
-                    )
-                    .join("")
-            }
-
-        </ul>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-   12. CHI TIẾT BÀI TẬP
-========================================================= */
-
-function buildExerciseHTML(
-    exercise
-) {
-
-    if (!exercise) {
-
-        return "";
-
-    }
-
-
-    return `
-
-        <div
-            style="
-                background:#f7f9fa;
-                border:1px solid #dfe5e8;
-                border-radius:12px;
-                padding:18px;
-                margin-top:14px;
-            "
-        >
-
-            <span class="eyebrow">
-                ${
-                    escapeHTML(
-                        exercise.category
-                    )
-                }
-            </span>
-
-
-            <h3
-                style="
-                    margin:6px 0 12px;
-                "
-            >
-                ${
-                    escapeHTML(
-                        exercise.name
-                    )
-                }
-            </h3>
-
-
-            <p>
-                <strong>Mục tiêu:</strong>
-                ${
-                    escapeHTML(
-                        exercise.target
-                    )
-                }
-            </p>
-
-
-            <div
-                style="
-                    display:grid;
-                    grid-template-columns:
-                    repeat(auto-fit,minmax(140px,1fr));
-                    gap:10px;
-                    margin:15px 0;
-                "
-            >
-
-                <div class="policy">
-
-                    <b>
-                        Sets
-                    </b>
-
-                    <div>
-                        ${
-                            escapeHTML(
-                                exercise.sets
-                            )
-                        }
-                    </div>
-
-                </div>
-
-
-                <div class="policy">
-
-                    <b>
-                        Reps / thời gian
-                    </b>
-
-                    <div>
-                        ${
-                            escapeHTML(
-                                exercise.reps
-                            )
-                        }
-                    </div>
-
-                </div>
-
-
-                <div class="policy">
-
-                    <b>
-                        Nghỉ
-                    </b>
-
-                    <div>
-                        ${
-                            escapeHTML(
-                                exercise.rest
-                            )
-                        }
-                    </div>
-
-                </div>
-
-
-                <div class="policy">
-
-                    <b>
-                        Cường độ
-                    </b>
-
-                    <div>
-                        ${
-                            escapeHTML(
-                                exercise.rpe
-                            )
-                        }
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <p>
-                <strong>RIR / mức dự phòng:</strong>
-                ${
-                    escapeHTML(
-                        exercise.rir
-                    )
-                }
-            </p>
-
-
-            <details
-                style="
-                    margin-top:14px;
-                "
-            >
-
-                <summary
-                    style="
-                        cursor:pointer;
-                        font-weight:800;
-                    "
-                >
-                    Hướng dẫn kỹ thuật
-                </summary>
-
-                ${
-                    buildListHTML(
-                        exercise.technique
-                    )
-                }
-
-            </details>
-
-
-            <details
-                style="
-                    margin-top:12px;
-                "
-            >
-
-                <summary
-                    style="
-                        cursor:pointer;
-                        font-weight:800;
-                    "
-                >
-                    Lỗi thường gặp
-                </summary>
-
-                ${
-                    buildListHTML(
-                        exercise.mistakes
-                    )
-                }
-
-            </details>
-
-
-            <p
-                style="
-                    margin-top:14px;
-                "
-            >
-
-                <strong>
-                    Nếu quá khó:
-                </strong>
-
-                ${
-                    escapeHTML(
-                        exercise.regression
-                    )
-                }
-
-            </p>
-
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-
-                <strong>
-                    Cách tăng tiến:
-                </strong>
-
-                ${
-                    escapeHTML(
-                        exercise.progression
-                    )
-                }
-
-            </p>
-
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-
-                <strong>
-                    Điều kiện dừng:
-                </strong>
-
-                ${
-                    escapeHTML(
-                        exercise.stopCondition
-                    )
-                }
-
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-   13. RENDER TỪNG NGÀY
-========================================================= */
-
-function buildWorkoutDayHTML(
-    session,
-    index
-) {
-
-    const dayNames = [
-
-        "Thứ Hai",
-
-        "Thứ Ba",
-
-        "Thứ Tư",
-
-        "Thứ Năm",
-
-        "Thứ Sáu",
-
-        "Thứ Bảy",
-
-        "Chủ Nhật"
-
-    ];
-
-
-    if (!session) {
-
-        return "";
-
-    }
-
-
-    /* =========================
-       REST DAY
-    ========================== */
-
-    if (
-        session.type ===
-        "Recovery"
-    ) {
-
-        return `
-
-            <div class="workout-day">
-
-                <span class="eyebrow">
-                    ${
-                        dayNames[index]
-                    }
-                </span>
-
-                <h3>
-                    Phục hồi
-                </h3>
-
-                ${
-                    buildListHTML(
-                        session.recommendations
-                    )
-                }
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =========================
-       TRAINING DAY
-    ========================== */
-
-    return `
-
-        <div class="workout-day">
-
-            <span class="eyebrow">
-                ${
-                    dayNames[index]
-                }
-            </span>
-
-
-            <h3>
-                ${
-                    escapeHTML(
-                        session.name
-                    )
-                }
-            </h3>
-
-
-            <p>
-                <strong>Loại:</strong>
-                ${
-                    escapeHTML(
-                        session.type
-                    )
-                }
-            </p>
-
-
-            ${
-                session.duration
-
-                    ? `
-
-                        <p>
-                            <strong>Thời lượng:</strong>
-                            ${session.duration} phút
-                        </p>
-
-                    `
-
-                    : ""
-            }
-
-
-            ${
-                session.intensity
-
-                    ? `
-
-                        <p>
-                            <strong>Cường độ:</strong>
-                            ${
-                                escapeHTML(
-                                    session.intensity
-                                )
-                            }
-                        </p>
-
-                    `
-
-                    : ""
-            }
-
-
-            ${
-                session.talkTest
-
-                    ? `
-
-                        <p>
-                            <strong>Talk Test:</strong>
-                            ${
-                                escapeHTML(
-                                    session.talkTest
-                                )
-                            }
-                        </p>
-
-                    `
-
-                    : ""
-            }
-
-
-            ${
-                session.warmup
-
-                    ? `
-
-                        <details
-                            style="
-                                margin-top:15px;
-                            "
-                        >
-
-                            <summary
-                                style="
-                                    cursor:pointer;
-                                    font-weight:800;
-                                "
-                            >
-                                Khởi động
-                            </summary>
-
-                            ${
-                                buildListHTML(
-                                    session.warmup
-                                )
-                            }
-
-                        </details>
-
-                    `
-
-                    : ""
-            }
-
-
-            ${
-                Array.isArray(
-                    session.exercises
-                )
-
-                    ? session
-                        .exercises
-                        .map(
-                            exercise =>
-                                buildExerciseHTML(
-                                    exercise
-                                )
-                        )
-                        .join("")
-
-                    : ""
-            }
-
-
-            ${
-                session.cooldown
-
-                    ? `
-
-                        <details
-                            style="
-                                margin-top:15px;
-                            "
-                        >
-
-                            <summary
-                                style="
-                                    cursor:pointer;
-                                    font-weight:800;
-                                "
-                            >
-                                Cooldown
-                            </summary>
-
-                            ${
-                                buildListHTML(
-                                    session.cooldown
-                                )
-                            }
-
-                        </details>
-
-                    `
-
-                    : ""
-            }
-
-
-            ${
-                session.progression
-
-                    ? `
-
-                        <p
-                            style="
-                                margin-top:15px;
-                            "
-                        >
-
-                            <strong>
-                                Progression:
-                            </strong>
-
-                            ${
-                                escapeHTML(
-                                    session.progression
-                                )
-                            }
-
-                        </p>
-
-                    `
-
-                    : ""
-            }
-
-        </div>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-   14. WORKOUT REPORT
-========================================================= */
-
-function buildWorkoutReportHTML(
-    workout
-) {
-
-    if (!workout) {
-
-        return `
-
-            <div class="safety-box caution">
-
-                <h3>
-                    Workout Engine chưa được tải
-                </h3>
-
-                <p>
-                    Hãy kiểm tra file workout-engine.js.
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    if (
-        workout.blocked
-    ) {
-
-        return `
-
-            <div class="safety-box stop">
-
-                <h3>
-                    Chưa tạo lịch tập tự động
-                </h3>
-
-                <p>
-                    ${
-                        escapeHTML(
-                            workout.reason
-                        )
-                    }
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    if (
-        workout.success !== true
-    ) {
-
-        return `
-
-            <div class="safety-box caution">
-
-                <h3>
-                    Chưa thể tạo kế hoạch tập
-                </h3>
-
-                <p>
-                    ${
-                        escapeHTML(
-                            workout.error
-                            ||
-                            "Không đủ dữ liệu."
-                        )
-                    }
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    return `
-
-        <!-- =============================================
-             CHIẾN LƯỢC TẬP
-        ============================================== -->
-
-        <div
-            style="
-                margin-top:55px;
-            "
-        >
-
-            <span class="eyebrow">
-                CHIẾN LƯỢC TẬP LUYỆN
-            </span>
-
-            <h2
-                style="
-                    margin:8px 0 20px;
-                "
-            >
-                Vì sao chọn chương trình này?
-            </h2>
-
-        </div>
-
-
-        <div class="result-grid">
-
-            <div class="result-stat">
-
-                <span>
-                    Số buổi
-                </span>
-
-                <strong>
-                    ${
-                        workout
-                            .strategy
-                            .weeklySessions
-                    } buổi
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Kiểu chương trình
-                </span>
-
-                <strong>
-                    ${
-                        escapeHTML(
-                            workout
-                                .strategy
-                                .split
-                        )
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Progression
-                </span>
-
-                <strong>
-                    Double
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    RPE chính
-                </span>
-
-                <strong>
-                    6–8
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="safety-box">
-
-            <h3>
-                Logic lựa chọn
-            </h3>
-
-            <p>
-                ${
-                    escapeHTML(
-                        workout
-                            .strategy
-                            .reason
-                    )
-                }
-            </p>
-
-        </div>
-
-
-        <div class="safety-box">
-
-            <h3>
-                Cách tăng tiến
-            </h3>
-
-            <p>
-                ${
-                    escapeHTML(
-                        workout
-                            .strategy
-                            .progression
-                    )
-                }
-            </p>
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-                ${
-                    escapeHTML(
-                        workout
-                            .strategy
-                            .recoveryRule
-                    )
-                }
-            </p>
-
-        </div>
-
-
-        <div
-            class="safety-box ${
-                workout
-                    .recoveryAdjustment
-                    .level === "reduce"
-
-                    ? "caution"
-
-                    : ""
-            }"
-        >
-
-            <h3>
-                Điều chỉnh theo phục hồi
-            </h3>
-
-            <p>
-                ${
-                    escapeHTML(
-                        workout
-                            .recoveryAdjustment
-                            .message
-                    )
-                }
-            </p>
-
-        </div>
-
-
-        <!-- =============================================
-             LỊCH 7 NGÀY
-        ============================================== -->
-
-        <div
-            style="
-                margin-top:55px;
-            "
-        >
-
-            <span class="eyebrow">
-                KẾ HOẠCH TẬP
-            </span>
-
-            <h2
-                style="
-                    margin:8px 0 8px;
-                "
-            >
-                Lịch 7 ngày
-            </h2>
-
-            <p
-                style="
-                    color:#a5b1b6;
-                    margin-bottom:20px;
-                "
-            >
-                Nhấn vào từng mục kỹ thuật để xem
-                hướng dẫn chi tiết.
-            </p>
-
-        </div>
-
-
-        <div class="workout-grid">
-
-            ${
-                workout
-                    .schedule
-                    .map(
-                        (
-                            session,
-                            index
-                        ) =>
-                            buildWorkoutDayHTML(
-                                session,
-                                index
-                            )
-                    )
-                    .join("")
-            }
-
-        </div>
-
-
-        <!-- =============================================
-             RPE / RIR
-        ============================================== -->
-
-        <div
-            class="safety-box"
-            style="
-                margin-top:35px;
-            "
-        >
-
-            <h3>
-                Cách hiểu RPE / RIR
-            </h3>
-
-            <p>
-                <strong>RPE 6:</strong>
-                còn khoảng 4 lần lặp có thể thực hiện.
-            </p>
-
-            <p>
-                <strong>RPE 7:</strong>
-                còn khoảng 3 lần lặp.
-            </p>
-
-            <p>
-                <strong>RPE 8:</strong>
-                còn khoảng 2 lần lặp.
-            </p>
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-                Người mới không cần liên tục tập
-                đến thất bại. Ưu tiên kỹ thuật,
-                khả năng phục hồi và tiến bộ bền vững.
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-   15. RENDER REPORT
-========================================================= */
-
-function renderFitnessReport(
-    profile,
-    healthResult,
-    workoutResult
-) {
-
-    const resultBox =
-        el(
-            "fitnessResultContent"
-        );
-
-
-    const resultSection =
-        el(
-            "fitnessResult"
-        );
-
-
-    if (
-        !resultBox ||
-        !resultSection
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        !healthResult ||
-        healthResult.success !== true
-    ) {
-
-        resultBox.innerHTML = `
-
-            <div class="safety-box stop">
-
-                <h3>
-                    Không thể tạo báo cáo
-                </h3>
-
-                <p>
-                    ${
-                        escapeHTML(
-                            healthResult
-                            &&
-                            healthResult.error
-
-                                ? healthResult.error
-
-                                : "Không đủ dữ liệu để phân tích."
-                        )
-                    }
-                </p>
-
-            </div>
-
-        `;
-
-
-        resultSection
-            .classList
-            .add(
-                "active"
+        const bmi =
+            calculateBMI(
+                profile.weight,
+                profile.height
             );
 
 
-        return;
+        const rmr =
+            calculateRMR(
+                profile
+            );
+
+
+        const activityFactor =
+            estimateActivityFactor(
+                profile
+            );
+
+
+        const tdee =
+            calculateTDEE(
+                rmr,
+                activityFactor
+            );
+
+
+        const calorieTarget =
+            calculateCalorieTarget(
+                profile,
+                tdee
+            );
+
+
+        const protein =
+            calculateProtein(
+                profile
+            );
+
+
+        const fat =
+            calculateFat(
+                calorieTarget
+            );
+
+
+        const carbs =
+            calculateCarbs(
+                calorieTarget,
+                protein,
+                fat
+            );
+
+
+        const recovery =
+            analyzeRecovery(
+                profile
+            );
+
+
+        return {
+
+            success:
+                true,
+
+
+            engine:
+                "SportHub Health Engine v1.0",
+
+
+            safety:
+                safety,
+
+
+            body: {
+
+                bmi:
+                    bmi,
+
+                rmr:
+                    rmr
+
+            },
+
+
+            energy: {
+
+                activityFactor:
+                    activityFactor,
+
+                tdee:
+                    tdee,
+
+                calorieTarget:
+                    calorieTarget
+
+            },
+
+
+            nutrition: {
+
+                protein:
+                    protein,
+
+                fat:
+                    fat,
+
+                carbs:
+                    carbs
+
+            },
+
+
+            recovery:
+                recovery,
+
+
+            rules: {
+
+                diagnosticTool:
+                    false,
+
+                trendBasedAdjustment:
+                    true,
+
+                adjustmentWindow:
+                    "2–3 tuần",
+
+                bmiIsScreeningOnly:
+                    true
+
+            }
+
+        };
 
     }
 
 
 
-    const safety =
-        healthResult.safety;
+    /* =====================================================
+       13. PUBLIC API
+    ====================================================== */
 
+    return {
 
-    const bmi =
-        healthResult.body
-            ? healthResult.body.bmi
-            : null;
+        run:
+            run,
 
+        calculateBMI:
+            calculateBMI,
 
-    const rmr =
-        healthResult.body
-            ? healthResult.body.rmr
-            : null;
+        calculateRMR:
+            calculateRMR,
 
+        estimateActivityFactor:
+            estimateActivityFactor,
 
-    const activityFactor =
-        healthResult.energy
-            ? healthResult.energy
-                .activityFactor
-            : null;
+        calculateTDEE:
+            calculateTDEE,
 
+        calculateCalorieTarget:
+            calculateCalorieTarget,
 
-    const tdee =
-        healthResult.energy
-            ? healthResult.energy.tdee
-            : null;
+        calculateProtein:
+            calculateProtein,
 
+        calculateFat:
+            calculateFat,
 
-    const calorie =
-        healthResult.energy
-            ? healthResult.energy
-                .calorieTarget
-            : null;
+        calculateCarbs:
+            calculateCarbs,
 
+        analyzeRecovery:
+            analyzeRecovery,
 
-    const protein =
-        healthResult.nutrition
-            ? healthResult.nutrition
-                .protein
-            : null;
+        evaluateSafety:
+            evaluateSafety
 
+    };
 
-    const fat =
-        healthResult.nutrition
-            ? healthResult.nutrition
-                .fat
-            : null;
 
-
-    const carbs =
-        healthResult.nutrition
-            ? healthResult.nutrition
-                .carbs
-            : null;
-
-
-    const recovery =
-        healthResult.recovery;
-
-
-
-    resultBox.innerHTML = `
-
-
-        <!-- =============================================
-             TỔNG QUAN
-        ============================================== -->
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="eyebrow">
-                    PERSONAL HEALTH & FITNESS REPORT
-                </span>
-
-                <h2>
-                    Tổng quan cá nhân
-                </h2>
-
-                <p>
-                    Báo cáo được xây dựng từ dữ liệu
-                    bạn cung cấp trong Fitness Check.
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="result-grid">
-
-
-            <div class="result-stat">
-
-                <span>
-                    Tuổi
-                </span>
-
-                <strong>
-                    ${profile.age}
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Chiều cao
-                </span>
-
-                <strong>
-                    ${profile.height} cm
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Cân nặng
-                </span>
-
-                <strong>
-                    ${profile.weight} kg
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Mục tiêu
-                </span>
-
-                <strong>
-                    ${
-                        escapeHTML(
-                            getGoalName(
-                                profile
-                                    .goal
-                                    .primary
-                            )
-                        )
-                    }
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        ${
-            buildSafetyHTML(
-                safety
-            )
-        }
-
-
-
-        <!-- =============================================
-             PHÂN TÍCH THỂ TRẠNG
-        ============================================== -->
-
-        <div
-            style="
-                margin-top:45px;
-            "
-        >
-
-            <span class="eyebrow">
-                PHÂN TÍCH THỂ TRẠNG
-            </span>
-
-            <h2
-                style="
-                    margin:8px 0 20px;
-                "
-            >
-                Các chỉ số nền tảng
-            </h2>
-
-        </div>
-
-
-
-        <div class="result-grid">
-
-
-            <div class="result-stat">
-
-                <span>
-                    BMI
-                </span>
-
-                <strong>
-                    ${
-                        bmi
-                            ? bmi.value
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    RMR ước tính
-                </span>
-
-                <strong>
-                    ${
-                        rmr
-                            ? `${rmr.value} kcal`
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Hệ số vận động
-                </span>
-
-                <strong>
-                    ${
-                        activityFactor
-                            ? activityFactor.value
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    TDEE ước tính
-                </span>
-
-                <strong>
-                    ${
-                        tdee
-
-                            ? `${tdee.min}–${tdee.max} kcal`
-
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="safety-box">
-
-            <h3>
-                Ý nghĩa của BMI
-            </h3>
-
-            <p>
-                ${
-                    bmi
-
-                        ? escapeHTML(
-                            bmi.note
-                        )
-
-                        : "Chưa đủ dữ liệu."
-                }
-            </p>
-
-        </div>
-
-
-
-        <div class="safety-box">
-
-            <h3>
-                RMR và TDEE
-            </h3>
-
-            <p>
-                ${
-                    rmr
-
-                        ? escapeHTML(
-                            rmr.note
-                        )
-
-                        : ""
-                }
-            </p>
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-
-                ${
-                    tdee
-
-                        ? escapeHTML(
-                            tdee.note
-                        )
-
-                        : ""
-                }
-
-            </p>
-
-        </div>
-
-
-
-        <!-- =============================================
-             DINH DƯỠNG
-        ============================================== -->
-
-        <div
-            style="
-                margin-top:45px;
-            "
-        >
-
-            <span class="eyebrow">
-                CHIẾN LƯỢC DINH DƯỠNG
-            </span>
-
-            <h2
-                style="
-                    margin:8px 0 20px;
-                "
-            >
-                Năng lượng và macro khởi đầu
-            </h2>
-
-        </div>
-
-
-
-        <div class="result-grid">
-
-
-            <div class="result-stat">
-
-                <span>
-                    Calorie
-                </span>
-
-                <strong>
-                    ${
-                        calorie
-
-                            ? `${calorie.min}–${calorie.max}`
-
-                            : "—"
-                    }
-                </strong>
-
-                <span>
-                    kcal/ngày
-                </span>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Protein
-                </span>
-
-                <strong>
-                    ${
-                        protein
-
-                            ? `${protein.min}–${protein.max}`
-
-                            : "—"
-                    }
-                </strong>
-
-                <span>
-                    g/ngày
-                </span>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Chất béo
-                </span>
-
-                <strong>
-                    ${
-                        fat
-
-                            ? `${fat.min}–${fat.max}`
-
-                            : "—"
-                    }
-                </strong>
-
-                <span>
-                    g/ngày
-                </span>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Carbohydrate
-                </span>
-
-                <strong>
-                    ${
-                        carbs
-                            ? carbs.value
-                            : "—"
-                    }
-                </strong>
-
-                <span>
-                    g/ngày
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="safety-box">
-
-            <h3>
-                Vì sao chọn mức năng lượng này?
-            </h3>
-
-            <p>
-                ${
-                    calorie
-
-                        ? escapeHTML(
-                            calorie.strategy
-                        )
-
-                        : ""
-                }
-            </p>
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-
-                ${
-                    calorie
-
-                        ? escapeHTML(
-                            calorie.note
-                        )
-
-                        : ""
-                }
-
-            </p>
-
-        </div>
-
-
-
-        <!-- =============================================
-             WORKOUT
-        ============================================== -->
-
-        ${
-            buildWorkoutReportHTML(
-                workoutResult
-            )
-        }
-
-
-
-        <!-- =============================================
-             RECOVERY
-        ============================================== -->
-
-        <div
-            style="
-                margin-top:55px;
-            "
-        >
-
-            <span class="eyebrow">
-                PHỤC HỒI
-            </span>
-
-            <h2
-                style="
-                    margin:8px 0 20px;
-                "
-            >
-                Giấc ngủ và mức sẵn sàng
-            </h2>
-
-        </div>
-
-
-
-        <div class="result-grid">
-
-
-            <div class="result-stat">
-
-                <span>
-                    Giấc ngủ
-                </span>
-
-                <strong>
-                    ${
-                        recovery
-                            ? `${recovery.sleepHours} giờ`
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Năng lượng
-                </span>
-
-                <strong>
-                    ${
-                        recovery
-                            ? `${recovery.energy}/10`
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Stress
-                </span>
-
-                <strong>
-                    ${
-                        recovery
-                            ? `${recovery.stress}/10`
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="result-stat">
-
-                <span>
-                    Mức mệt
-                </span>
-
-                <strong>
-                    ${
-                        recovery
-                            ? `${recovery.fatigue}/10`
-                            : "—"
-                    }
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="safety-box">
-
-            <h3>
-                Ưu tiên phục hồi
-            </h3>
-
-            <p>
-                ${
-                    recovery
-
-                        ? escapeHTML(
-                            recovery.sleepAction
-                        )
-
-                        : ""
-                }
-            </p>
-
-        </div>
-
-
-
-        <!-- =============================================
-             TRẠNG THÁI
-        ============================================== -->
-
-        <div
-            class="safety-box"
-            style="
-                margin-top:40px;
-            "
-        >
-
-            <h3>
-                Báo cáo hiện tại đã hoàn thành
-            </h3>
-
-            <p>
-
-                SportHub đã xử lý dữ liệu thể trạng,
-                năng lượng, macro dinh dưỡng,
-                phục hồi và kế hoạch tập 7 ngày.
-
-            </p>
-
-            <p
-                style="
-                    margin-top:10px;
-                "
-            >
-
-                Giai đoạn tiếp theo sẽ bổ sung
-                thực đơn 7 ngày, macro từng bữa,
-                món thay thế, ăn ngoài và
-                hệ thống theo dõi tiến trình.
-
-            </p>
-
-        </div>
-
-    `;
-
-
-
-    resultSection
-        .classList
-        .add(
-            "active"
-        );
-
-
-    resultSection
-        .scrollIntoView({
-
-            behavior:
-                "smooth"
-
-        });
-
-}
-
-
-
-/* =========================================================
-   16. KHỞI TẠO
-========================================================= */
-
-showStep();
+})();
