@@ -1,1 +1,350 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thanh toán - SportHub</title><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><div class="container nav"><a class="logo" href="index.html">SPORT<span>HUB</span></a></div></header><section class="section"><div class="container checkout-layout"><form class="checkout-form" onsubmit="placeOrder(event)"><span class="eyebrow">CHECKOUT</span><h1 style="font-size:38px;margin:8px 0 22px">Thông tin nhận hàng</h1><div class="form-grid"><div class="field"><label>Họ tên *</label><input id="name" required></div><div class="field"><label>Số điện thoại *</label><input id="phone" required></div></div><div class="field"><label>Địa chỉ *</label><input id="address" required></div><h3 style="margin-top:20px">Thanh toán</h3><label class="payment-option"><input type="radio" name="pay" checked> COD - thanh toán khi nhận hàng</label><label class="payment-option"><input type="radio" name="pay"> Chuyển khoản ngân hàng</label><button class="btn-primary" style="width:100%;margin-top:15px">ĐẶT HÀNG</button></form><aside class="checkout-summary"><h2>Đơn hàng</h2><div id="checkoutItems"></div><div class="summary-row"><span>Tạm tính</span><b id="csub"></b></div><div class="summary-row"><span>Vận chuyển</span><b>30.000đ</b></div><div class="summary-row"><span>Giảm</span><b id="cdis"></b></div><div class="summary-total"><span>Tổng</span><b id="ctotal"></b></div></aside></div></section><div id="success" class="success-modal"><div class="success-card"><div class="success-icon">✓</div><h2>Bạn đã đặt hàng thành công!</h2><p>Mã đơn hàng: <b id="orderCode"></b></p><a class="btn-primary" href="index.html">VỀ TRANG CHỦ</a></div></div><script src="js/image-factory.js"></script><script src="js/data.js"></script><script src="js/main.js"></script><script src="js/checkout.js"></script></body></html>
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Thanh toán - SportHub</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <a
+                class="logo"
+                href="index.html"
+            >
+                SPORT<span>HUB</span>
+            </a>
+
+
+            <nav>
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <a href="shop.html">
+                    Sản phẩm
+                </a>
+
+                <a href="health-check.html">
+                    Fitness Check
+                </a>
+
+                <a href="blog.html">
+                    Blog
+                </a>
+
+                <a href="gioi-thieu/">
+                    Giới thiệu
+                </a>
+
+                <a href="lien-he/">
+                    Liên hệ
+                </a>
+
+            </nav>
+
+
+            <a
+                class="cart-link"
+                href="cart.html"
+            >
+                🛒
+                <span class="cart-count">
+                    0
+                </span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CHECKOUT
+    ========================================== -->
+
+    <section class="section">
+
+        <div class="container checkout-layout">
+
+
+            <!-- THÔNG TIN NHẬN HÀNG -->
+
+            <form
+                class="checkout-form"
+                onsubmit="placeOrder(event)"
+            >
+
+                <span class="eyebrow">
+                    CHECKOUT
+                </span>
+
+
+                <h1
+                    style="
+                        font-size:38px;
+                        margin:8px 0 22px;
+                    "
+                >
+                    Thông tin nhận hàng
+                </h1>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="name">
+                            Họ tên *
+                        </label>
+
+                        <input
+                            id="name"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="phone">
+                            Số điện thoại *
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="address">
+                        Địa chỉ *
+                    </label>
+
+                    <input
+                        id="address"
+                        type="text"
+                        required
+                    >
+
+                </div>
+
+
+
+                <h3
+                    style="
+                        margin-top:20px;
+                    "
+                >
+                    Thanh toán
+                </h3>
+
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="pay"
+                        value="cod"
+                        checked
+                    >
+
+                    COD - Thanh toán khi nhận hàng
+
+                </label>
+
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="pay"
+                        value="bank"
+                    >
+
+                    Chuyển khoản ngân hàng
+
+                </label>
+
+
+
+                <button
+                    class="btn-primary"
+                    style="
+                        width:100%;
+                        margin-top:15px;
+                    "
+                    type="submit"
+                >
+                    ĐẶT HÀNG
+                </button>
+
+            </form>
+
+
+
+            <!-- =========================================
+                 ĐƠN HÀNG
+            ========================================== -->
+
+            <aside class="checkout-summary">
+
+                <h2>
+                    Đơn hàng
+                </h2>
+
+
+                <div id="checkoutItems"></div>
+
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Tạm tính
+                    </span>
+
+                    <b id="csub"></b>
+
+                </div>
+
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Vận chuyển
+                    </span>
+
+                    <b>
+                        30.000đ
+                    </b>
+
+                </div>
+
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Giảm
+                    </span>
+
+                    <b id="cdis"></b>
+
+                </div>
+
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Tổng
+                    </span>
+
+                    <b id="ctotal"></b>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SUCCESS MODAL
+    ========================================== -->
+
+    <div
+        id="success"
+        class="success-modal"
+    >
+
+        <div class="success-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                Bạn đã đặt hàng thành công!
+            </h2>
+
+
+            <p>
+                Mã đơn hàng:
+                <b id="orderCode"></b>
+            </p>
+
+
+            <a
+                class="btn-primary"
+                href="index.html"
+            >
+                VỀ TRANG CHỦ
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/image-factory.js"></script>
+
+    <script src="js/data.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/checkout.js"></script>
+
+
+</body>
+
+</html>
