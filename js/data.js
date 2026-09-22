@@ -2157,43 +2157,42 @@ blogs.forEach((blog, index) => {
 const realProductImages = {
 
     1:
-        "images/products/p01-ao-gym-performance.webp",
+        "images/products/p01-ao-gym-performance.webp.webp",
 
     2:
-        "images/products/p02-giay-energy-runner.webp",
+        "images/products/p02-giay-energy-runner.webp.webp",
 
     3:
-        "images/products/p03-gang-gym-progrip.webp",
+        "images/products/p03-gang-gym-progrip.webp.webp",
 
     4:
-        "images/products/p04-ta-dumbbell-10kg.webp",
+        "images/products/p04-ta-dumbbell-10kg.webp.webp",
 
     5:
-        "images/products/p05-day-khang-luc.webp",
+        "images/products/p05-day-khang-luc.webp.webp",
 
     6:
-        "images/products/p06-tham-yoga.webp",
+        "images/products/p06-tham-yoga.webp.webp",
 
     7:
-        "images/products/p07-quan-short-flexmove.webp",
+        "images/products/p07-quan-short-flexmove.webp.webp",
 
     8:
-        "images/products/p08-ao-khoac-active-wind.webp",
+        "images/products/p08-ao-khoac-active-wind.webp.webp",
 
     9:
-        "images/products/p09-binh-nuoc-1l.webp",
+        "images/products/p09-binh-nuoc-1l.webp.webp",
 
     10:
-        "images/products/p10-foam-roller.webp",
+        "images/products/p12-foam-roller.webp.webp",
 
     11:
-        "images/products/p11-tui-gymbag.webp",
+        "images/products/p11-tui-gymbag.webp.webp",
 
     12:
-        "images/products/p12-day-nhay-speed-rope.webp"
+        "images/products/p50-day-nhay-speed-rope-pro.webp"
 
 };
-
 
 
 /* =========================================================
