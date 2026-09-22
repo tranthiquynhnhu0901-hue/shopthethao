@@ -1,8 +1,1135 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cửa hàng - SportHub</title><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><div class="container nav"><a class="logo" href="index.html">SPORT<span>HUB</span></a><nav>
-    <a href="index.html">Trang chủ</a>
-    <a class="active" href="shop.html">Sản phẩm</a>
-    <a href="health-check.html">Fitness Check</a>
-    <a href="blog.html">Blog</a>
-    <a href="gioi-thieu/">Giới thiệu</a>
-    <a href="lien-he/">Liên hệ</a>
-</nav><a class="cart-link" href="cart.html">🛒 <span class="cart-count">0</span></a></div></header><section class="page-hero"><div class="container"><span class="eyebrow">SPORT STORE</span><h1>CỬA HÀNG</h1><p>Tìm kiếm, lọc và mở trang chi tiết từng sản phẩm.</p></div></section><section class="section"><div class="container"><div class="toolbar"><input id="q" oninput="renderShop()" placeholder="Tìm sản phẩm..."><select id="cat" onchange="renderShop()"><option value="all">Tất cả danh mục</option><option value="clothes">Quần áo</option><option value="shoes">Giày</option><option value="gloves">Găng tập</option><option value="equipment">Dụng cụ</option><option value="accessories">Phụ kiện</option><option value="recovery">Phục hồi</option></select><select id="sort" onchange="renderShop()"><option value="default">Mặc định</option><option value="low">Giá thấp → cao</option><option value="high">Giá cao → thấp</option><option value="rating">Đánh giá cao</option></select></div><p style="margin-bottom:20px"><b id="count">0</b> sản phẩm</p><div id="shopGrid" class="product-grid"></div></div></section><script src="js/image-factory.js"></script><script src="js/data.js"></script><script src="js/main.js"></script><script src="js/home.js"></script><script src="js/shop.js"></script></body></html>
+<!doctype html>
+
+<html lang="vi">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        Sản phẩm thể thao Gym, Boxing, Running, Yoga | SPORTHUB
+    </title>
+
+    <meta
+        name="description"
+        content="Khám phá sản phẩm thể thao tại SPORTHUB dành cho Gym, Boxing, Muay Thai, MMA, chạy bộ, bơi lội, bóng đá, cầu lông, Tennis, Pickleball, Yoga và nhiều môn thể thao khác."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+
+            <!-- LOGO -->
+
+            <a
+                class="logo"
+                href="index.html"
+            >
+                SPORT<span>HUB</span>
+            </a>
+
+
+            <!-- MENU -->
+
+            <nav>
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+
+                <a
+                    class="active"
+                    href="shop.html"
+                >
+                    Sản phẩm
+                </a>
+
+
+                <a href="health-check.html">
+                    Fitness Check
+                </a>
+
+
+                <a href="blog.html">
+                    Blog
+                </a>
+
+
+                <a href="gioi-thieu/">
+                    Giới thiệu
+                </a>
+
+
+                <a href="lien-he/">
+                    Liên hệ
+                </a>
+
+            </nav>
+
+
+            <!-- GIỎ HÀNG -->
+
+            <a
+                class="cart-link"
+                href="cart.html"
+                aria-label="Mở giỏ hàng"
+            >
+
+                🛒
+
+                <span class="cart-count">
+                    0
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="page-hero">
+
+        <div class="container">
+
+
+            <span class="eyebrow">
+                SPORT STORE
+            </span>
+
+
+            <h1>
+                CỬA HÀNG THỂ THAO
+            </h1>
+
+
+            <p>
+                Khám phá sản phẩm tập luyện theo từng môn thể thao,
+                nhu cầu và mục tiêu vận động tại SPORTHUB.
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SHOP
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+
+            <!-- =================================================
+                 DANH MỤC THỂ THAO
+            ================================================== -->
+
+            <div class="shop-categories">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            KHÁM PHÁ THEO MÔN
+                        </span>
+
+
+                        <h2>
+                            DANH MỤC SẢN PHẨM
+                        </h2>
+
+
+                        <p>
+                            Chọn môn thể thao để xem nhanh các sản phẩm phù hợp.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CATEGORY GRID -->
+
+                <div class="category-grid">
+
+
+                    <!-- GYM -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="gym-fitness"
+                        onclick="document.getElementById('cat').value='gym-fitness'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-gym-fitness.webp"
+                            alt="Danh mục sản phẩm Gym và Fitness"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Gym & Fitness
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- BOXING -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="boxing"
+                        onclick="document.getElementById('cat').value='boxing'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-boxing.webp"
+                            alt="Danh mục sản phẩm Boxing"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Boxing
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- MUAY THAI -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="muay-thai"
+                        onclick="document.getElementById('cat').value='muay-thai'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-muay-thai.webp"
+                            alt="Danh mục sản phẩm Muay Thai"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Muay Thai
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- MMA -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="mma"
+                        onclick="document.getElementById('cat').value='mma'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-mma.webp"
+                            alt="Danh mục sản phẩm MMA"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            MMA
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- RUNNING -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="running"
+                        onclick="document.getElementById('cat').value='running'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-running.webp"
+                            alt="Danh mục sản phẩm chạy bộ"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Chạy bộ
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- SWIMMING -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="swimming"
+                        onclick="document.getElementById('cat').value='swimming'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-swimming.webp"
+                            alt="Danh mục sản phẩm bơi lội"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Bơi lội
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- FOOTBALL -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="football"
+                        onclick="document.getElementById('cat').value='football'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-football.webp"
+                            alt="Danh mục sản phẩm bóng đá"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Bóng đá
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- BASKETBALL -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="basketball"
+                        onclick="document.getElementById('cat').value='basketball'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-basketball.webp"
+                            alt="Danh mục sản phẩm bóng rổ"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Bóng rổ
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- BADMINTON -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="badminton"
+                        onclick="document.getElementById('cat').value='badminton'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-badminton.webp"
+                            alt="Danh mục sản phẩm cầu lông"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Cầu lông
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- TENNIS -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="tennis"
+                        onclick="document.getElementById('cat').value='tennis'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-tennis.webp"
+                            alt="Danh mục sản phẩm Tennis"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Tennis
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- PICKLEBALL -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="pickleball"
+                        onclick="document.getElementById('cat').value='pickleball'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-pickleball.webp"
+                            alt="Danh mục sản phẩm Pickleball"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Pickleball
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- YOGA -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="yoga"
+                        onclick="document.getElementById('cat').value='yoga'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-yoga.webp"
+                            alt="Danh mục sản phẩm Yoga"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Yoga
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- PILATES -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="pilates"
+                        onclick="document.getElementById('cat').value='pilates'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-pilates.webp"
+                            alt="Danh mục sản phẩm Pilates"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Pilates
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- CARDIO -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="cardio"
+                        onclick="document.getElementById('cat').value='cardio'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-cardio.webp"
+                            alt="Danh mục dụng cụ Cardio"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Cardio
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- RECOVERY -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="recovery"
+                        onclick="document.getElementById('cat').value='recovery'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-recovery.webp"
+                            alt="Danh mục dụng cụ phục hồi thể thao"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Phục hồi
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- ACCESSORIES -->
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="accessories"
+                        onclick="document.getElementById('cat').value='accessories'; renderShop();"
+                    >
+
+                        <img
+                            src="images/categories/cat-accessories.webp"
+                            alt="Danh mục phụ kiện thể thao"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            Phụ kiện
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SEARCH + ADVANCED FILTER
+            ================================================== -->
+
+            <div class="shop-filter-area">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            TÌM SẢN PHẨM
+                        </span>
+
+
+                        <h2>
+                            KHÁM PHÁ SẢN PHẨM
+                        </h2>
+
+
+                        <p>
+                            Tìm kiếm và lọc sản phẩm theo môn thể thao,
+                            loại sản phẩm, mức giá và nhu cầu tập luyện.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SEARCH
+                ================================================== -->
+
+                <div class="shop-search-box">
+
+                    <label for="q">
+                        Tìm kiếm
+                    </label>
+
+
+                    <input
+                        id="q"
+                        type="search"
+                        oninput="renderShop()"
+                        placeholder="Tên sản phẩm, mã Pxx, môn thể thao, từ khóa..."
+                        autocomplete="off"
+                        aria-label="Tìm kiếm sản phẩm"
+                    >
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FILTER GRID
+                ================================================== -->
+
+                <div class="shop-filter-grid">
+
+
+                    <!-- SPORT -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="cat">
+                            Môn thể thao
+                        </label>
+
+
+                        <select
+                            id="cat"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo môn thể thao"
+                        >
+
+                            <option value="all">
+                                Tất cả môn thể thao
+                            </option>
+
+                            <option value="gym-fitness">
+                                Gym & Fitness
+                            </option>
+
+                            <option value="boxing">
+                                Boxing
+                            </option>
+
+                            <option value="muay-thai">
+                                Muay Thai
+                            </option>
+
+                            <option value="mma">
+                                MMA
+                            </option>
+
+                            <option value="running">
+                                Chạy bộ
+                            </option>
+
+                            <option value="swimming">
+                                Bơi lội
+                            </option>
+
+                            <option value="football">
+                                Bóng đá
+                            </option>
+
+                            <option value="basketball">
+                                Bóng rổ
+                            </option>
+
+                            <option value="badminton">
+                                Cầu lông
+                            </option>
+
+                            <option value="tennis">
+                                Tennis
+                            </option>
+
+                            <option value="pickleball">
+                                Pickleball
+                            </option>
+
+                            <option value="yoga">
+                                Yoga
+                            </option>
+
+                            <option value="pilates">
+                                Pilates
+                            </option>
+
+                            <option value="cardio">
+                                Cardio
+                            </option>
+
+                            <option value="recovery">
+                                Phục hồi
+                            </option>
+
+                            <option value="accessories">
+                                Phụ kiện
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- PRODUCT TYPE -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="productType">
+                            Loại sản phẩm
+                        </label>
+
+
+                        <select
+                            id="productType"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo loại sản phẩm"
+                        >
+
+                            <option value="all">
+                                Tất cả loại
+                            </option>
+
+                            <option value="clothes">
+                                Trang phục
+                            </option>
+
+                            <option value="shoes">
+                                Giày
+                            </option>
+
+                            <option value="gloves">
+                                Găng tay
+                            </option>
+
+                            <option value="equipment">
+                                Dụng cụ
+                            </option>
+
+                            <option value="accessories">
+                                Phụ kiện
+                            </option>
+
+                            <option value="recovery">
+                                Phục hồi
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- BRAND -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="brand">
+                            Thương hiệu
+                        </label>
+
+
+                        <select
+                            id="brand"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo thương hiệu"
+                        >
+
+                            <option value="all">
+                                Tất cả thương hiệu
+                            </option>
+
+                            <option value="SPORTHUB">
+                                SPORTHUB
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- PRICE -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="priceRange">
+                            Khoảng giá
+                        </label>
+
+
+                        <select
+                            id="priceRange"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo khoảng giá"
+                        >
+
+                            <option value="all">
+                                Tất cả mức giá
+                            </option>
+
+                            <option value="under-300">
+                                Dưới 300.000đ
+                            </option>
+
+                            <option value="300-500">
+                                300.000đ - dưới 500.000đ
+                            </option>
+
+                            <option value="500-1000">
+                                500.000đ - dưới 1.000.000đ
+                            </option>
+
+                            <option value="1000-1500">
+                                1.000.000đ - 1.500.000đ
+                            </option>
+
+                            <option value="over-1500">
+                                Trên 1.500.000đ
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- AUDIENCE -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="audience">
+                            Đối tượng
+                        </label>
+
+
+                        <select
+                            id="audience"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo đối tượng"
+                        >
+
+                            <option value="all">
+                                Tất cả đối tượng
+                            </option>
+
+                            <option value="Nam">
+                                Nam
+                            </option>
+
+                            <option value="Nữ">
+                                Nữ
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- LEVEL -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="level">
+                            Trình độ
+                        </label>
+
+
+                        <select
+                            id="level"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo trình độ"
+                        >
+
+                            <option value="all">
+                                Tất cả trình độ
+                            </option>
+
+                            <option value="Beginner">
+                                Người mới
+                            </option>
+
+                            <option value="Intermediate">
+                                Trung cấp
+                            </option>
+
+                            <option value="Advanced">
+                                Nâng cao
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- RATING -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="ratingFilter">
+                            Đánh giá
+                        </label>
+
+
+                        <select
+                            id="ratingFilter"
+                            onchange="renderShop()"
+                            aria-label="Lọc theo đánh giá"
+                        >
+
+                            <option value="all">
+                                Tất cả đánh giá
+                            </option>
+
+                            <option value="4.9">
+                                Từ 4.9 ★
+                            </option>
+
+                            <option value="4.8">
+                                Từ 4.8 ★
+                            </option>
+
+                            <option value="4.7">
+                                Từ 4.7 ★
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- PROMOTION -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="promotion">
+                            Khuyến mãi
+                        </label>
+
+
+                        <select
+                            id="promotion"
+                            onchange="renderShop()"
+                            aria-label="Lọc sản phẩm khuyến mãi"
+                        >
+
+                            <option value="all">
+                                Tất cả sản phẩm
+                            </option>
+
+                            <option value="sale">
+                                Đang giảm giá
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- SORT -->
+
+                    <div class="shop-filter-field">
+
+                        <label for="sort">
+                            Sắp xếp
+                        </label>
+
+
+                        <select
+                            id="sort"
+                            onchange="renderShop()"
+                            aria-label="Sắp xếp sản phẩm"
+                        >
+
+                            <option value="default">
+                                Sắp xếp mặc định
+                            </option>
+
+                            <option value="low">
+                                Giá thấp → cao
+                            </option>
+
+                            <option value="high">
+                                Giá cao → thấp
+                            </option>
+
+                            <option value="rating">
+                                Đánh giá cao
+                            </option>
+
+                            <option value="discount">
+                                Giảm giá nhiều
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FILTER ACTION
+                ================================================== -->
+
+                <div class="shop-filter-actions">
+
+                    <button
+                        id="resetFilters"
+                        class="btn-secondary"
+                        type="button"
+                    >
+                        XÓA BỘ LỌC
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT RESULT
+            ================================================== -->
+
+            <div class="shop-result-head">
+
+                <p>
+
+                    Hiển thị
+
+                    <strong id="count">
+                        0
+                    </strong>
+
+                    sản phẩm
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT GRID
+            ================================================== -->
+
+            <div
+                id="shopGrid"
+                class="product-grid"
+            >
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+
+    <!-- IMAGE ENGINE -->
+
+    <script src="js/image-factory.js"></script>
+
+
+    <!-- DATABASE GỐC P01 - P12 -->
+
+    <script src="js/data.js"></script>
+
+
+    <!-- =====================================================
+         CATALOG DATABASE
+
+         Bao gồm:
+
+         16 Category
+         Metadata P01 - P12
+         P13 - P52
+         SEO Data
+         Search Data
+         Related Data
+
+         Sau đó ghép thành:
+         products = P01 -> P52
+    ====================================================== -->
+
+    <script src="js/catalog-data.js"></script>
+
+
+    <!-- LOGIC CHUNG -->
+
+    <script src="js/main.js"></script>
+
+
+    <!-- PRODUCT CARD -->
+
+    <script src="js/home.js"></script>
+
+
+    <!-- SHOP ENGINE -->
+
+    <script src="js/shop.js"></script>
+
+
+</body>
+
+</html>

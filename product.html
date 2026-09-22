@@ -1,8 +1,262 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chi tiết sản phẩm</title><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><div class="container nav"><a class="logo" href="index.html">SPORT<span>HUB</span></a><nav>
-    <a href="index.html">Trang chủ</a>
-    <a class="active" href="shop.html">Sản phẩm</a>
-    <a href="health-check.html">Fitness Check</a>
-    <a href="blog.html">Blog</a>
-    <a href="gioi-thieu/">Giới thiệu</a>
-    <a href="lien-he/">Liên hệ</a>
-</nav><a class="cart-link" href="cart.html">🛒 <span class="cart-count">0</span></a></div></header><main id="productDetail" class="section"></main><script src="js/image-factory.js"></script><script src="js/data.js"></script><script src="js/main.js"></script><script src="js/product.js"></script></body></html>
+<!doctype html>
+
+<html lang="vi">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+
+    <!-- =====================================================
+         SEO
+    ====================================================== -->
+
+    <title id="pageTitle">
+        Chi tiết sản phẩm | SPORTHUB
+    </title>
+
+
+    <meta
+        id="metaDescription"
+        name="description"
+        content="Thông tin chi tiết sản phẩm thể thao tại SPORTHUB."
+    >
+
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+
+    <!-- Open Graph -->
+
+    <meta
+        id="ogTitle"
+        property="og:title"
+        content="Sản phẩm SPORTHUB"
+    >
+
+    <meta
+        id="ogDescription"
+        property="og:description"
+        content="Khám phá sản phẩm thể thao tại SPORTHUB."
+    >
+
+    <meta
+        id="ogImage"
+        property="og:image"
+        content=""
+    >
+
+    <meta
+        property="og:type"
+        content="product"
+    >
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+
+            <!-- LOGO -->
+
+            <a
+                class="logo"
+                href="index.html"
+            >
+                SPORT<span>HUB</span>
+            </a>
+
+
+            <!-- MENU -->
+
+            <nav>
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+
+                <a
+                    class="active"
+                    href="shop.html"
+                >
+                    Sản phẩm
+                </a>
+
+
+                <a href="health-check.html">
+                    Fitness Check
+                </a>
+
+
+                <a href="blog.html">
+                    Blog
+                </a>
+
+
+                <a href="gioi-thieu/">
+                    Giới thiệu
+                </a>
+
+
+                <a href="lien-he/">
+                    Liên hệ
+                </a>
+
+            </nav>
+
+
+            <!-- CART -->
+
+            <a
+                class="cart-link"
+                href="cart.html"
+                aria-label="Mở giỏ hàng"
+            >
+
+                🛒
+
+                <span class="cart-count">
+                    0
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         BREADCRUMB
+    ====================================================== -->
+
+    <div class="product-breadcrumb-wrap">
+
+        <div class="container">
+
+            <nav
+                class="product-breadcrumb"
+                aria-label="Breadcrumb"
+            >
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <span>
+                    /
+                </span>
+
+                <a href="shop.html">
+                    Sản phẩm
+                </a>
+
+                <span>
+                    /
+                </span>
+
+                <span id="breadcrumbProduct">
+                    Chi tiết sản phẩm
+                </span>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PRODUCT DETAIL
+    ====================================================== -->
+
+    <main
+        id="productDetail"
+        class="product-detail-page"
+    >
+
+        <!--
+            Toàn bộ nội dung sản phẩm
+            sẽ được product.js render tại đây.
+        -->
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+
+    <!-- IMAGE ENGINE -->
+
+    <script src="js/image-factory.js"></script>
+
+
+    <!-- DATABASE GỐC P01 - P12 -->
+
+    <script src="js/data.js"></script>
+
+
+    <!--
+        DATABASE MỞ RỘNG
+
+        - Category
+        - Metadata P01 - P12
+        - P13 - P52
+        - SEO
+        - Related Data
+
+        Sau file này:
+        products = P01 -> P52
+    -->
+
+    <script src="js/catalog-data.js"></script>
+
+
+    <!-- LOGIC CHUNG WEBSITE -->
+
+    <script src="js/main.js"></script>
+
+
+    <!-- PRODUCT DETAIL ENGINE -->
+
+    <script src="js/product.js"></script>
+
+
+</body>
+
+</html>
