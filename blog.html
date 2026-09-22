@@ -1,8 +1,1149 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blog - SportHub</title><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><div class="container nav"><a class="logo" href="index.html">SPORT<span>HUB</span></a><nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="shop.html">Sản phẩm</a>
-    <a href="health-check.html">Fitness Check</a>
-    <a class="active" href="blog.html">Blog</a>
-    <a href="gioi-thieu/">Giới thiệu</a>
-    <a href="lien-he/">Liên hệ</a>
-</nav><a class="cart-link" href="cart.html">🛒 <span class="cart-count">0</span></a></div></header><section class="page-hero"><div class="container"><span class="eyebrow">20 BÀI CHUYÊN SÂU</span><h1>SPORT BLOG</h1><p>Mỗi bài có nội dung riêng, hình minh họa riêng và trang đọc chi tiết.</p></div></section><section class="section"><div class="container"><div class="toolbar"><input id="bq" oninput="renderBlogs()" placeholder="Tìm bài viết..."><select id="bcat" onchange="renderBlogs()"><option value="all">Tất cả chủ đề</option><option>TẬP LUYỆN</option><option>DINH DƯỠNG</option><option>CHẠY BỘ</option><option>PHỤC HỒI</option><option>LIFESTYLE</option><option>CORE</option><option>MOBILITY</option></select><div></div></div><div id="blogGrid" class="blog-grid"></div></div></section><script src="js/image-factory.js"></script><script src="js/data.js"></script><script src="js/main.js"></script><script src="js/home.js"></script><script src="js/blog.js"></script></body></html>
+<!doctype html>
+
+<html lang="vi">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        Blog thể thao & Fitness | SPORTHUB
+    </title>
+
+    <meta
+        name="description"
+        content="Blog SPORTHUB chia sẻ kiến thức về tập luyện, dinh dưỡng, chạy bộ, phục hồi, kỹ thuật thể thao và xây dựng lối sống vận động."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+
+    <!-- CSS NEW VERSION -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css?v=6.2"
+    >
+
+
+
+    <!-- =====================================================
+         BLOG PAGE OVERRIDE
+    ====================================================== -->
+
+    <style>
+
+
+        /* =================================================
+           BLOG HERO
+           bn05-blog-hero.webp
+        ================================================= */
+
+        .blog-hero {
+
+            min-height: 470px;
+
+            display: flex;
+            align-items: center;
+
+            color: #ffffff;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    rgba(5,5,6,.95) 0%,
+                    rgba(5,5,6,.75) 48%,
+                    rgba(5,5,6,.22) 100%
+                ),
+
+                url("images/banners/bn05-blog-hero.webp")
+                center / cover
+                no-repeat !important;
+
+        }
+
+
+        .blog-hero-content {
+
+            max-width: 760px;
+
+        }
+
+
+        .blog-hero .eyebrow {
+
+            color:
+                #e10600 !important;
+
+        }
+
+
+        .blog-hero h1 {
+
+            margin:
+                12px 0 18px;
+
+            color:
+                #ffffff;
+
+            font-family:
+                "Oswald",
+                "Be Vietnam Pro",
+                sans-serif;
+
+            font-size:
+                clamp(48px,7vw,82px);
+
+            line-height:
+                .98;
+
+            font-weight:
+                700;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .blog-hero h1 span {
+
+            color:
+                #e10600;
+
+        }
+
+
+        .blog-hero p {
+
+            max-width:
+                660px;
+
+            color:
+                #d0d0d4;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.8;
+
+        }
+
+
+
+        /* =================================================
+           BLOG SEARCH TOOLBAR
+        ================================================= */
+
+        .blog-toolbar {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,1fr)
+                240px;
+
+            gap:
+                12px;
+
+            margin-bottom:
+                30px;
+
+            padding:
+                15px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #e2e2e5;
+
+            border-radius:
+                12px;
+
+            box-shadow:
+                0 8px 24px
+                rgba(0,0,0,.04);
+
+        }
+
+
+        .blog-search {
+
+            position:
+                relative;
+
+        }
+
+
+        .blog-search-icon {
+
+            position:
+                absolute;
+
+            top:
+                50%;
+
+            left:
+                15px;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                #e10600;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .blog-toolbar input,
+        .blog-toolbar select {
+
+            width:
+                100%;
+
+            height:
+                50px;
+
+            border:
+                1px solid #dadadd;
+
+            border-radius:
+                9px;
+
+            background:
+                #ffffff;
+
+            color:
+                #19191c;
+
+            font-family:
+                "Be Vietnam Pro",
+                sans-serif;
+
+            font-size:
+                13px;
+
+            outline:
+                none;
+
+        }
+
+
+        .blog-toolbar input {
+
+            padding:
+                0 15px 0 47px;
+
+        }
+
+
+        .blog-toolbar select {
+
+            padding:
+                0 13px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .blog-toolbar input:focus,
+        .blog-toolbar select:focus {
+
+            border-color:
+                #e10600 !important;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(225,6,0,.08);
+
+        }
+
+
+
+        /* =================================================
+           BLOG HEADING
+        ================================================= */
+
+        .blog-page-heading {
+
+            margin-bottom:
+                26px;
+
+        }
+
+
+        .blog-page-heading h2 {
+
+            margin:
+                6px 0;
+
+            font-family:
+                "Oswald",
+                "Be Vietnam Pro",
+                sans-serif;
+
+            font-size:
+                clamp(30px,4vw,44px);
+
+            color:
+                #09090b;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .blog-page-heading p {
+
+            max-width:
+                620px;
+
+            color:
+                #747479;
+
+        }
+
+
+
+        /* =================================================
+           BLOG CARD DETAILS
+        ================================================= */
+
+        .blog-grid {
+
+            align-items:
+                stretch;
+
+        }
+
+
+        .blog-card {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            height:
+                100%;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #e4e4e6;
+
+            border-radius:
+                14px;
+
+            overflow:
+                hidden;
+
+            transition:
+                transform .23s ease,
+                box-shadow .23s ease,
+                border-color .23s ease;
+
+        }
+
+
+        .blog-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(225,6,0,.30);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.10);
+
+        }
+
+
+        .blog-card > a {
+
+            display:
+                block;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .blog-card img {
+
+            width:
+                100%;
+
+            height:
+                220px;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform .35s ease;
+
+        }
+
+
+        .blog-card:hover img {
+
+            transform:
+                scale(1.035);
+
+        }
+
+
+        .blog-content {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            flex:
+                1;
+
+        }
+
+
+        .blog-category {
+
+            color:
+                #e10600 !important;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .8px;
+
+        }
+
+
+        .blog-content h3 {
+
+            min-height:
+                52px;
+
+            margin:
+                9px 0;
+
+            color:
+                #141417;
+
+        }
+
+
+        .blog-content h3 a:hover {
+
+            color:
+                #e10600;
+
+        }
+
+
+        .blog-content p {
+
+            display:
+                -webkit-box;
+
+            overflow:
+                hidden;
+
+            min-height:
+                63px;
+
+            color:
+                #747479;
+
+            -webkit-line-clamp:
+                3;
+
+            -webkit-box-orient:
+                vertical;
+
+        }
+
+
+        .read-more {
+
+            margin-top:
+                auto;
+
+            align-self:
+                flex-start;
+
+            color:
+                #e10600 !important;
+
+            border:
+                1px solid #e10600 !important;
+
+            background:
+                transparent !important;
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .read-more:hover {
+
+            background:
+                #e10600 !important;
+
+            color:
+                #ffffff !important;
+
+        }
+
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width:800px) {
+
+            .blog-toolbar {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (max-width:650px) {
+
+            .blog-hero {
+
+                min-height:
+                    350px;
+
+            }
+
+
+            .blog-hero h1 {
+
+                font-size:
+                    48px;
+
+            }
+
+
+            .blog-toolbar {
+
+                padding:
+                    11px;
+
+            }
+
+
+            .blog-toolbar input,
+            .blog-toolbar select {
+
+                height:
+                    46px;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="container nav">
+
+
+        <!-- LOGO -->
+
+        <a
+            class="logo"
+            href="index.html"
+            aria-label="SPORTHUB - Trang chủ"
+        >
+
+            SPORT<span>HUB</span>
+
+        </a>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav>
+
+
+            <a href="index.html">
+                Trang chủ
+            </a>
+
+
+            <a href="gioi-thieu/">
+                Giới thiệu
+            </a>
+
+
+            <a href="shop.html">
+                Sản phẩm
+            </a>
+
+
+            <a href="health-check.html">
+                Fitness Check
+            </a>
+
+
+            <a
+                class="active"
+                href="blog.html"
+            >
+                Blog
+            </a>
+
+
+            <a href="lien-he/">
+                Liên hệ
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- CART -->
+
+        <a
+            class="cart-link"
+            href="cart.html"
+            aria-label="Mở giỏ hàng"
+        >
+
+            🛒
+
+            <span class="cart-count">
+                0
+            </span>
+
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     BLOG HERO
+     BANNER: bn05-blog-hero.webp
+===================================================== -->
+
+<section class="page-hero blog-hero">
+
+
+    <div class="container">
+
+
+        <div class="blog-hero-content">
+
+
+            <span class="eyebrow">
+
+                SPORTHUB KNOWLEDGE
+
+            </span>
+
+
+
+            <h1>
+
+                KIẾN THỨC
+
+                <span>
+                    THỂ THAO
+                </span>
+
+            </h1>
+
+
+
+            <p>
+
+                Tìm hiểu kiến thức về tập luyện,
+                dinh dưỡng, kỹ thuật, phục hồi
+                và xây dựng thói quen vận động
+                phù hợp với hành trình của bạn.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     BLOG LIST
+===================================================== -->
+
+<section class="section">
+
+
+    <div class="container">
+
+
+        <!-- =================================================
+             HEADING
+        ================================================== -->
+
+        <div class="blog-page-heading">
+
+
+            <span class="eyebrow">
+
+                SPORT KNOWLEDGE
+
+            </span>
+
+
+            <h2>
+
+                BÀI VIẾT NỔI BẬT
+
+            </h2>
+
+
+            <p>
+
+                Khám phá các nội dung về
+                tập luyện, dinh dưỡng,
+                chạy bộ, phục hồi,
+                mobility và lối sống vận động.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             SEARCH + CATEGORY FILTER
+        ================================================== -->
+
+        <div class="blog-toolbar">
+
+
+            <!-- SEARCH -->
+
+            <div class="blog-search">
+
+
+                <span
+                    class="blog-search-icon"
+                    aria-hidden="true"
+                >
+
+                    🔎
+
+                </span>
+
+
+                <input
+                    id="bq"
+                    type="search"
+                    placeholder="Tìm bài viết..."
+                    autocomplete="off"
+                    aria-label="Tìm kiếm bài viết"
+                    oninput="renderBlogs()"
+                >
+
+
+            </div>
+
+
+
+            <!-- CATEGORY -->
+
+            <select
+                id="bcat"
+                onchange="renderBlogs()"
+                aria-label="Lọc theo chủ đề"
+            >
+
+
+                <option value="all">
+
+                    Tất cả chủ đề
+
+                </option>
+
+
+                <option value="TẬP LUYỆN">
+
+                    Tập luyện
+
+                </option>
+
+
+                <option value="DINH DƯỠNG">
+
+                    Dinh dưỡng
+
+                </option>
+
+
+                <option value="CHẠY BỘ">
+
+                    Chạy bộ
+
+                </option>
+
+
+                <option value="PHỤC HỒI">
+
+                    Phục hồi
+
+                </option>
+
+
+                <option value="LIFESTYLE">
+
+                    Lifestyle
+
+                </option>
+
+
+                <option value="CORE">
+
+                    Core
+
+                </option>
+
+
+                <option value="MOBILITY">
+
+                    Mobility
+
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             BLOG GRID
+        ================================================== -->
+
+        <div
+            id="blogGrid"
+            class="blog-grid"
+        >
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section
+    style="
+        background:#0a0a0c;
+        padding:80px 0;
+        color:#ffffff;
+    "
+>
+
+
+    <div class="container">
+
+
+        <span class="eyebrow">
+
+            SPORTHUB ACTIVE LIFE
+
+        </span>
+
+
+        <h2
+            style="
+                max-width:760px;
+                margin:10px 0 16px;
+                color:#ffffff;
+                font-family:'Oswald','Be Vietnam Pro',sans-serif;
+                font-size:clamp(34px,5vw,52px);
+                line-height:1.08;
+            "
+        >
+
+            KIẾN THỨC TỐT HƠN.
+            TẬP LUYỆN HIỆU QUẢ HƠN.
+
+        </h2>
+
+
+        <p
+            style="
+                max-width:640px;
+                color:#a9a9af;
+                margin-bottom:26px;
+                line-height:1.8;
+            "
+        >
+
+            Kết hợp kiến thức thể thao
+            với sản phẩm và công cụ Fitness Check
+            để xây dựng hành trình tập luyện
+            phù hợp hơn với bạn.
+
+        </p>
+
+
+        <div
+            style="
+                display:flex;
+                gap:12px;
+                flex-wrap:wrap;
+            "
+        >
+
+
+            <a
+                class="btn-primary"
+                href="shop.html"
+            >
+
+                KHÁM PHÁ SẢN PHẨM
+
+            </a>
+
+
+            <a
+                class="btn-secondary"
+                href="health-check.html"
+            >
+
+                FITNESS CHECK
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="container footer-grid">
+
+
+        <!-- BRAND -->
+
+        <div>
+
+
+            <div class="logo">
+
+                SPORT<span>HUB</span>
+
+            </div>
+
+
+            <p>
+
+                Sản phẩm thể thao,
+                kiến thức tập luyện
+                và Fitness Check
+                trên cùng một nền tảng.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- EXPLORE -->
+
+        <div>
+
+
+            <b>
+                Khám phá
+            </b>
+
+
+            <a href="index.html">
+                Trang chủ
+            </a>
+
+
+            <a href="shop.html">
+                Sản phẩm
+            </a>
+
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+
+            <a href="gioi-thieu/">
+                Giới thiệu
+            </a>
+
+
+        </div>
+
+
+
+        <!-- SUPPORT -->
+
+        <div>
+
+
+            <b>
+                Hỗ trợ
+            </b>
+
+
+            <a href="health-check.html">
+                Fitness Check
+            </a>
+
+
+            <a href="lien-he/">
+                Liên hệ
+            </a>
+
+
+            <a href="cart.html">
+                Giỏ hàng
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<script
+    src="js/image-factory.js?v=6.2"
+></script>
+
+
+<script
+    src="js/data.js?v=6.2"
+></script>
+
+
+<script
+    src="js/main.js?v=6.2"
+></script>
+
+
+<!--
+    home.js chứa blogCard()
+    nên phải load trước blog.js
+-->
+
+<script
+    src="js/home.js?v=6.2"
+></script>
+
+
+<script
+    src="js/blog.js?v=6.2"
+></script>
+
+
+</body>
+
+</html>
