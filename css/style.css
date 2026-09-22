@@ -7585,3 +7585,384 @@ footer {
     }
 
 }
+/* =========================================================
+   SPORTHUB TYPOGRAPHY V7
+   PHÂN CẤP FONT RÕ RÀNG
+========================================================= */
+
+
+/* =========================================================
+   01. BODY / NỘI DUNG
+========================================================= */
+
+body,
+p,
+li,
+input,
+select,
+textarea {
+
+    font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif !important;
+
+}
+
+
+body {
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* Nội dung mô tả */
+
+p,
+.product-info p,
+.blog-content p,
+.step-copy,
+.about-copy p,
+.section-heading p {
+
+    font-size:
+        14px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.75;
+
+}
+
+
+/* =========================================================
+   02. DISPLAY HEADLINE
+   H1 - HERO - PAGE TITLE
+========================================================= */
+
+h1,
+.hero h1,
+.page-hero h1,
+.shop-hero h1,
+.shop-intro h1,
+.fitness-hero h1,
+.blog-hero h1,
+.info-hero h1,
+.contact-hero h1,
+.article-heading h1 {
+
+    font-family:
+        "Oswald",
+        "Arial Narrow",
+        sans-serif !important;
+
+    font-weight:
+        700 !important;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        -1.5px !important;
+
+    line-height:
+        .98 !important;
+
+}
+
+
+/* =========================================================
+   03. SECTION TITLE
+========================================================= */
+
+h2,
+.section-heading h2,
+.shop-product-heading h2,
+.blog-page-heading h2,
+.about-cta h2,
+.contact-form-intro h2 {
+
+    font-family:
+        "Oswald",
+        "Arial Narrow",
+        sans-serif !important;
+
+    font-weight:
+        600 !important;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        -.6px;
+
+    line-height:
+        1.08;
+
+}
+
+
+/* =========================================================
+   04. CARD / PRODUCT TITLE
+========================================================= */
+
+h3,
+.product-info h3,
+.blog-content h3,
+.contact-info-card h3,
+.support-card h3,
+.about-feature-card h3,
+.principle-card h3 {
+
+    font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif !important;
+
+    font-weight:
+        800 !important;
+
+    letter-spacing:
+        -.35px;
+
+    line-height:
+        1.35;
+
+    text-transform:
+        none;
+
+}
+
+
+/* Product name */
+
+.product-info h3 {
+
+    font-size:
+        17px !important;
+
+}
+
+
+/* Blog title */
+
+.blog-content h3 {
+
+    font-size:
+        18px !important;
+
+}
+
+
+/* =========================================================
+   05. NAVIGATION
+========================================================= */
+
+nav a {
+
+    font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif !important;
+
+    font-size:
+        12px !important;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        .15px;
+
+}
+
+
+/* =========================================================
+   06. LOGO
+========================================================= */
+
+.logo {
+
+    font-family:
+        "Oswald",
+        "Arial Narrow",
+        sans-serif !important;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        .5px !important;
+
+}
+
+
+/* =========================================================
+   07. EYEBROW / LABEL
+========================================================= */
+
+.eyebrow,
+.hero-label,
+.shop-intro-label,
+.shop-product-label,
+.blog-category,
+.product-category {
+
+    font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif !important;
+
+    font-weight:
+        900 !important;
+
+    font-size:
+        10px !important;
+
+    line-height:
+        1.4;
+
+    letter-spacing:
+        1.4px !important;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   08. BUTTONS
+========================================================= */
+
+button,
+.btn-primary,
+.btn-secondary,
+.btn-dark,
+.product-detail-btn,
+.product-add-btn,
+.product-btn,
+.read-more {
+
+    font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif !important;
+
+    font-weight:
+        900 !important;
+
+    letter-spacing:
+        .3px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   09. PRICE
+========================================================= */
+
+.price strong,
+.detail-price {
+
+    font-family:
+        "Oswald",
+        "Arial Narrow",
+        sans-serif !important;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        -.4px;
+
+}
+
+
+/* =========================================================
+   10. FORM LABEL
+========================================================= */
+
+.field label,
+.float-field label,
+.contact-select-field label {
+
+    font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif !important;
+
+    font-weight:
+        700 !important;
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   11. FITNESS STEP TITLE
+========================================================= */
+
+.fitness-step h2 {
+
+    font-family:
+        "Oswald",
+        "Arial Narrow",
+        sans-serif !important;
+
+    font-weight:
+        600 !important;
+
+    font-size:
+        34px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   12. MOBILE
+========================================================= */
+
+@media (max-width:650px) {
+
+    .hero h1,
+    .page-hero h1,
+    .shop-hero h1,
+    .fitness-hero h1,
+    .blog-hero h1,
+    .info-hero h1,
+    .contact-hero h1 {
+
+        letter-spacing:
+            -1px !important;
+
+    }
+
+
+    h2,
+    .section-heading h2 {
+
+        letter-spacing:
+            -.3px;
+
+    }
+
+}

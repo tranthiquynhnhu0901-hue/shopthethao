@@ -13,17 +13,27 @@
 
 
     <!-- =====================================================
+         GOOGLE SEARCH CONSOLE
+    ====================================================== -->
+
+    <meta
+        name="google-site-verification"
+        content="ejzQuNJxWpenuyamZGvbXbB_ZX-F6EZ36_ZMWkXm0cA"
+    >
+
+
+    <!-- =====================================================
          SEO
     ====================================================== -->
 
     <title>
-        Liên hệ SPORTHUB | Tư vấn sản phẩm & hỗ trợ khách hàng
+        SPORTHUB | Cửa hàng thể thao & Fitness
     </title>
 
 
     <meta
         name="description"
-        content="Liên hệ SPORTHUB để được tư vấn sản phẩm thể thao, hỗ trợ đơn hàng, yêu cầu báo giá, đặt hàng số lượng lớn hoặc hợp tác kinh doanh."
+        content="SPORTHUB cung cấp sản phẩm thể thao, dụng cụ tập luyện, kiến thức Fitness và công cụ Fitness Check dành cho nhiều môn thể thao."
     >
 
 
@@ -33,110 +43,50 @@
     >
 
 
-    <link
-        rel="canonical"
-        href="https://tranthiquynhnhu0901-hue.github.io/shopthethao/lien-he/"
-    >
-
-
     <!-- =====================================================
          CSS
     ====================================================== -->
 
     <link
         rel="stylesheet"
-        href="../css/style.css?v=6.2"
+        href="css/style.css?v=6.3"
     >
 
 
-
     <!-- =====================================================
-         CONTACT PAGE V6.2
+         HOME FIX
     ====================================================== -->
 
     <style>
 
-
         /* =================================================
-           HERO
+           HERO HOME
         ================================================= */
 
-        .contact-hero {
+        .hero {
 
-            min-height: 520px;
+            min-height: 660px;
 
             display: flex;
             align-items: center;
 
-            position: relative;
-
-            overflow: hidden;
-
-            color: #ffffff;
+            color: #fff;
 
             background:
-                radial-gradient(
-                    circle at 85% 30%,
-                    rgba(225,6,0,.18),
-                    transparent 24%
-                ),
                 linear-gradient(
-                    120deg,
-                    #060607 0%,
-                    #111113 55%,
-                    #2b0706 100%
-                ) !important;
+                    90deg,
+                    rgba(5,5,6,.95) 0%,
+                    rgba(5,5,6,.77) 45%,
+                    rgba(5,5,6,.20) 100%
+                ),
+                url("images/banners/bn01-home-hero.webp")
+                center / cover
+                no-repeat !important;
 
         }
 
 
-        .contact-hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            right: -160px;
-            top: 20px;
-
-            width: 520px;
-            height: 520px;
-
-            border:
-                45px solid
-                rgba(225,6,0,.10);
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-        }
-
-
-        .contact-hero::after {
-
-            content: "";
-
-            position: absolute;
-
-            right: 17%;
-            bottom: -110px;
-
-            width: 230px;
-            height: 230px;
-
-            border:
-                26px solid
-                rgba(255,255,255,.025);
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-        }
-
-
-        .contact-hero-content {
+        .hero-content {
 
             position: relative;
 
@@ -144,33 +94,40 @@
 
             max-width: 760px;
 
-            padding:
-                80px 0;
-
         }
 
 
-        .contact-hero .hero-label {
+        .hero-label {
 
-            color: #ffffff !important;
+            display: inline-block;
+
+            padding: 8px 12px;
+
+            color: #fff !important;
 
             background:
-                rgba(225,6,0,.13) !important;
+                rgba(225,6,0,.14) !important;
 
             border:
                 1px solid
-                rgba(225,6,0,.58) !important;
+                rgba(225,6,0,.60) !important;
+
+            border-radius: 7px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
 
         }
 
 
-        .contact-hero h1 {
+        .hero h1 {
 
-            margin:
-                18px 0;
+            margin: 18px 0;
 
-            color:
-                #ffffff;
+            color: #fff !important;
 
             font-family:
                 "Oswald",
@@ -178,771 +135,128 @@
                 sans-serif;
 
             font-size:
-                clamp(50px,7vw,86px);
+                clamp(58px,8vw,96px);
 
-            line-height:
-                .95;
+            line-height: .94;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
 
         }
 
 
-        .contact-hero h1 span {
+        .hero h1 span {
 
-            color:
-                #e10600 !important;
+            color: #e10600 !important;
 
         }
 
 
-        .contact-hero p {
+        .hero p {
 
-            max-width:
-                680px;
+            max-width: 660px;
 
-            color:
-                #d2d2d6;
+            color: #d1d1d5 !important;
+
+            font-size: 16px;
+
+            line-height: 1.85;
+
+        }
+
+
+
+        /* =================================================
+           PROMO
+        ================================================= */
+
+        .home-promo {
+
+            padding: 100px 0;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5,5,6,.95) 0%,
+                    rgba(5,5,6,.76) 50%,
+                    rgba(90,0,0,.18) 100%
+                ),
+                url("images/banners/bn07-promotion.webp")
+                center / cover
+                no-repeat !important;
+
+        }
+
+
+        .home-promo h2 {
+
+            max-width: 820px;
+
+            margin: 12px 0 18px;
+
+            color: #fff;
+
+            font-family:
+                "Oswald",
+                "Be Vietnam Pro",
+                sans-serif;
 
             font-size:
-                16px;
+                clamp(38px,5vw,58px);
 
-            line-height:
-                1.85;
+            line-height: 1.05;
+
+        }
+
+
+        .home-promo p {
+
+            max-width: 680px;
+
+            margin-bottom: 28px;
+
+            color: #d1d1d5;
+
+            font-size: 16px;
+
+            line-height: 1.85;
 
         }
 
 
 
         /* =================================================
-           CONTACT INFORMATION
+           HOME BLOG
         ================================================= */
 
-        .contact-info-grid {
-
-            gap:
-                16px;
-
-        }
-
-
-        .contact-info-card {
-
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                #ffffff !important;
-
-            border:
-                1px solid #e4e4e7 !important;
-
-            border-radius:
-                14px;
-
-            transition:
-                transform .22s ease,
-                border-color .22s ease,
-                box-shadow .22s ease;
-
-        }
-
-
-        .contact-info-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 3px;
-
-            background:
-                #e10600;
-
-            transform:
-                scaleX(0);
-
-            transform-origin:
-                left;
-
-            transition:
-                transform .24s ease;
-
-        }
-
-
-        .contact-info-card:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                rgba(225,6,0,.45) !important;
-
-            box-shadow:
-                0 16px 36px
-                rgba(0,0,0,.07);
-
-        }
-
-
-        .contact-info-card:hover::before {
-
-            transform:
-                scaleX(1);
-
-        }
-
-
-        .contact-icon {
-
-            background:
-                #fff0ef !important;
-
-            color:
-                #e10600 !important;
-
-        }
-
-
-        .contact-info-card:hover
-        .contact-icon {
-
-            background:
-                #e10600 !important;
-
-            color:
-                #ffffff !important;
-
-        }
-
-
-        .contact-info-card > span {
-
-            color:
-                #85858a;
-
-        }
-
-
-        .contact-info-card h3 {
-
-            color:
-                #161619;
-
-        }
-
-
-        .mini-action {
-
-            color:
-                #e10600 !important;
-
-            font-weight:
-                800;
-
-        }
-
-
-
-        /* =================================================
-           SUPPORT SECTION
-        ================================================= */
-
-        .contact-support-section {
+        .home-blog-section {
 
             background:
                 #09090b !important;
 
             color:
-                #ffffff;
+                #fff;
 
         }
 
 
-        .contact-support-section
+        .home-blog-section
         .section-heading h2 {
 
             color:
-                #ffffff !important;
+                #fff !important;
 
         }
 
 
-        .contact-support-section
+        .home-blog-section
         .section-heading p {
 
             color:
-                #9e9ea4 !important;
-
-        }
-
-
-        .support-card-grid {
-
-            gap:
-                16px;
-
-        }
-
-
-        .support-card {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            background:
-                #141417 !important;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08) !important;
-
-            border-radius:
-                14px;
-
-            transition:
-                transform .22s ease,
-                border-color .22s ease;
-
-        }
-
-
-        .support-card:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                rgba(225,6,0,.55) !important;
-
-        }
-
-
-        .support-number {
-
-            color:
-                #e10600 !important;
-
-            font-family:
-                "Oswald",
-                sans-serif;
-
-            font-size:
-                30px;
-
-            font-weight:
-                700;
-
-        }
-
-
-        .support-card h3 {
-
-            color:
-                #ffffff;
-
-        }
-
-
-        .support-card p {
-
-            color:
-                #a9a9af;
-
-        }
-
-
-        .support-card button {
-
-            color:
-                #ff4843 !important;
-
-            background:
-                transparent !important;
-
-            border:
-                0;
-
-            font-weight:
-                900;
-
-        }
-
-
-        .support-card button:hover {
-
-            color:
-                #ffffff !important;
-
-        }
-
-
-
-        /* =================================================
-           BULK ORDER
-        ================================================= */
-
-        .bulk-order {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            background:
-                #ffffff;
-
-            border:
-                1px solid #e2e2e5;
-
-            border-radius:
-                18px;
-
-            box-shadow:
-                0 12px 35px
-                rgba(0,0,0,.05);
-
-        }
-
-
-        .bulk-order::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 5px;
-            height: 100%;
-
-            background:
-                #e10600;
-
-        }
-
-
-        .bulk-order h2 {
-
-            font-family:
-                "Oswald",
-                "Be Vietnam Pro",
-                sans-serif;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .bulk-order p {
-
-            color:
-                #707075;
-
-        }
-
-
-        .bulk-requirements div {
-
-            border:
-                1px solid #e5e5e7 !important;
-
-            background:
-                #f7f7f8 !important;
-
-        }
-
-
-        .bulk-requirements strong {
-
-            color:
-                #e10600 !important;
-
-            font-family:
-                "Oswald",
-                sans-serif;
-
-        }
-
-
-
-        /* =================================================
-           FORM SECTION
-        ================================================= */
-
-        .contact-form-section {
-
-            background:
-                #f1f1f2 !important;
-
-        }
-
-
-        .contact-form-intro h2 {
-
-            font-family:
-                "Oswald",
-                "Be Vietnam Pro",
-                sans-serif;
-
-            font-size:
-                clamp(35px,4vw,52px);
-
-            line-height:
-                1.1;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .contact-form-intro > p {
-
-            color:
-                #707075;
-
-            line-height:
-                1.8;
-
-        }
-
-
-        .contact-side-note {
-
-            border-left:
-                4px solid #e10600 !important;
-
-            background:
-                #ffffff !important;
-
-        }
-
-
-        .contact-side-note a {
-
-            color:
-                #e10600 !important;
-
-        }
-
-
-
-        /* FORM CARD */
-
-        .contact-form-card {
-
-            background:
-                #ffffff !important;
-
-            border:
-                1px solid #dedee1 !important;
-
-            border-radius:
-                16px;
-
-            box-shadow:
-                0 15px 40px
-                rgba(0,0,0,.06);
-
-        }
-
-
-
-        /* FLOAT FIELD */
-
-        .float-field input,
-        .float-field textarea,
-        .contact-select-field select {
-
-            border:
-                1px solid #dcdcdf !important;
-
-            background:
-                #ffffff !important;
-
-            color:
-                #17171a;
-
-        }
-
-
-        .float-field input:focus,
-        .float-field textarea:focus,
-        .contact-select-field select:focus {
-
-            border-color:
-                #e10600 !important;
-
-            box-shadow:
-                0 0 0 4px
-                rgba(225,6,0,.08) !important;
-
-        }
-
-
-        .float-field input:focus + label,
-        .float-field textarea:focus + label {
-
-            color:
-                #e10600 !important;
-
-        }
-
-
-
-        /* DYNAMIC FIELDS */
-
-        .dynamic-fields {
-
-            border:
-                1px solid #e5e5e7 !important;
-
-            background:
-                #f8f8f9 !important;
-
-        }
-
-
-        .dynamic-fields h3 {
-
-            color:
-                #e10600 !important;
-
-        }
-
-
-
-        /* SUBMIT */
-
-        .contact-submit {
-
-            min-height:
-                54px;
-
-            background:
-                #e10600 !important;
-
-            color:
-                #ffffff !important;
-
-            border:
-                1px solid #e10600 !important;
-
-            box-shadow:
-                0 9px 24px
-                rgba(225,6,0,.24);
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        .contact-submit:hover {
-
-            background:
-                #09090b !important;
-
-            border-color:
-                #09090b !important;
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-
-        /* =================================================
-           MAP
-        ================================================= */
-
-        .map-card {
-
-            overflow:
-                hidden;
-
-            border:
-                1px solid #dedee1;
-
-            border-radius:
-                16px;
-
-            background:
-                #ffffff;
-
-            box-shadow:
-                0 10px 30px
-                rgba(0,0,0,.05);
-
-        }
-
-
-        .map-card iframe {
-
-            display:
-                block;
-
-        }
-
-
-        .map-action {
-
-            margin-top:
-                16px;
-
-        }
-
-
-        .map-action .btn-dark {
-
-            background:
-                #09090b !important;
-
-            color:
-                #ffffff !important;
-
-        }
-
-
-        .map-action .btn-dark:hover {
-
-            background:
-                #e10600 !important;
-
-        }
-
-
-
-        /* =================================================
-           QUICK SUPPORT
-        ================================================= */
-
-        .quick-support-section {
-
-            background:
-                #09090b !important;
-
-        }
-
-
-        .quick-support {
-
-            color:
-                #ffffff;
-
-        }
-
-
-        .quick-support h2 {
-
-            color:
-                #ffffff;
-
-            font-family:
-                "Oswald",
-                sans-serif;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .quick-support p {
-
-            color:
-                #a4a4aa;
-
-        }
-
-
-        .quick-support-actions a {
-
-            border:
-                1px solid
-                rgba(255,255,255,.12) !important;
-
-            background:
-                #151518 !important;
-
-            color:
-                #ffffff !important;
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        .quick-support-actions a:hover {
-
-            border-color:
-                #e10600 !important;
-
-            transform:
-                translateY(-3px);
-
-        }
-
-
-        .quick-support-actions span {
-
-            color:
-                #ff4843 !important;
-
-        }
-
-
-
-        /* =================================================
-           FLOATING SUPPORT
-        ================================================= */
-
-        .floating-main {
-
-            background:
-                #e10600 !important;
-
-            color:
-                #ffffff !important;
-
-            box-shadow:
-                0 10px 28px
-                rgba(225,6,0,.28);
-
-        }
-
-
-        .floating-main:hover {
-
-            background:
-                #b70702 !important;
-
-        }
-
-
-        .floating-menu a:hover {
-
-            color:
-                #e10600 !important;
+                #9f9fa5 !important;
 
         }
 
@@ -954,47 +268,27 @@
 
         @media (max-width:650px) {
 
-            .contact-hero {
+            .hero {
 
-                min-height:
-                    420px;
-
-            }
-
-
-            .contact-hero-content {
-
-                padding:
-                    55px 0;
+                min-height: 560px;
 
             }
 
 
-            .contact-hero h1 {
+            .hero h1 {
 
-                font-size:
-                    50px;
-
-            }
-
-
-            .contact-form-card {
-
-                padding:
-                    20px;
+                font-size: 52px;
 
             }
 
 
-            .bulk-order {
+            .home-promo {
 
-                padding:
-                    25px;
+                padding: 70px 0;
 
             }
 
         }
-
 
     </style>
 
@@ -1014,9 +308,11 @@
     <div class="container nav">
 
 
+        <!-- LOGO -->
+
         <a
             class="logo"
-            href="../index.html"
+            href="index.html"
             aria-label="SPORTHUB - Trang chủ"
         >
 
@@ -1025,38 +321,41 @@
         </a>
 
 
+
+        <!-- NAV -->
+
         <nav>
-
-
-            <a href="../index.html">
-                Trang chủ
-            </a>
-
-
-            <a href="../gioi-thieu/">
-                Giới thiệu
-            </a>
-
-
-            <a href="../shop.html">
-                Sản phẩm
-            </a>
-
-
-            <a href="../health-check.html">
-                Fitness Check
-            </a>
-
-
-            <a href="../blog.html">
-                Blog
-            </a>
 
 
             <a
                 class="active"
-                href="../lien-he/"
+                href="index.html"
             >
+                Trang chủ
+            </a>
+
+
+            <a href="gioi-thieu/">
+                Giới thiệu
+            </a>
+
+
+            <a href="shop.html">
+                Sản phẩm
+            </a>
+
+
+            <a href="health-check.html">
+                Fitness Check
+            </a>
+
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+
+            <a href="lien-he/">
                 Liên hệ
             </a>
 
@@ -1064,9 +363,12 @@
         </nav>
 
 
+
+        <!-- CART -->
+
         <a
             class="cart-link"
-            href="../cart.html"
+            href="cart.html"
             aria-label="Mở giỏ hàng"
         >
 
@@ -1087,1304 +389,61 @@
 
 <!-- =====================================================
      HERO
+     bn01-home-hero.webp
 ===================================================== -->
 
-<section class="contact-hero">
+<section class="hero">
 
-    <div class="container">
-
-
-        <div class="contact-hero-content">
+    <div class="container hero-content">
 
 
-            <span
-                class="hero-label contact-animate contact-delay-1"
-            >
+        <span class="hero-label">
 
-                SPORTHUB SUPPORT
+            SPORTHUB • SPORT & FITNESS
 
+        </span>
+
+
+        <h1>
+
+            VƯỢT QUA
+
+            <span>
+                GIỚI HẠN
             </span>
 
+        </h1>
 
-            <h1
-                class="contact-animate contact-delay-2"
-            >
 
-                LIÊN HỆ
+        <p>
 
-                <span>
-                    SPORTHUB
-                </span>
+            Khám phá sản phẩm thể thao,
+            dụng cụ tập luyện và kiến thức
+            giúp bạn xây dựng hành trình vận động
+            hiệu quả hơn mỗi ngày.
 
-            </h1>
+        </p>
 
 
-            <p
-                class="contact-animate contact-delay-3"
-            >
-
-                Bạn cần tư vấn sản phẩm thể thao,
-                hỗ trợ đơn hàng, yêu cầu báo giá,
-                đặt hàng số lượng lớn
-                hoặc trao đổi về hợp tác?
-                Hãy gửi thông tin để SPORTHUB
-                tiếp nhận nhu cầu của bạn.
-
-            </p>
-
-
-            <div
-                class="hero-actions contact-animate contact-delay-4"
-            >
-
-
-                <a
-                    class="btn-primary button-arrow"
-                    href="#contactFormSection"
-                >
-
-                    GỬI YÊU CẦU
-                    <span>→</span>
-
-                </a>
-
-
-                <a
-                    class="btn-secondary"
-                    href="tel:+84862609531"
-                >
-
-                    GỌI NGAY
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTACT INFORMATION
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-heading reveal">
-
-
-            <div>
-
-
-                <span class="eyebrow">
-
-                    CONTACT INFORMATION
-
-                </span>
-
-
-                <h2>
-
-                    THÔNG TIN LIÊN HỆ
-
-                </h2>
-
-
-                <p>
-
-                    Chọn kênh thuận tiện nhất
-                    để kết nối với SPORTHUB.
-
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="contact-info-grid">
-
-
-            <!-- PERSON -->
-
-            <article
-                class="contact-info-card reveal"
-            >
-
-
-                <div class="contact-icon">
-                    👤
-                </div>
-
-
-                <span>
-                    Người liên hệ
-                </span>
-
-
-                <h3>
-                    Võ Hoàn Khang
-                </h3>
-
-
-            </article>
-
-
-
-            <!-- PHONE -->
-
-            <article
-                class="contact-info-card reveal"
-            >
-
-
-                <div class="contact-icon">
-                    ☎
-                </div>
-
-
-                <span>
-                    Hotline
-                </span>
-
-
-                <h3>
-                    0862 609 531
-                </h3>
-
-
-                <a
-                    class="mini-action"
-                    href="tel:+84862609531"
-                >
-
-                    Gọi ngay →
-
-                </a>
-
-
-            </article>
-
-
-
-            <!-- EMAIL -->
-
-            <article
-                class="contact-info-card reveal"
-            >
-
-
-                <div class="contact-icon">
-                    ✉
-                </div>
-
-
-                <span>
-                    Email
-                </span>
-
-
-                <h3>
-                    vohoankhangg@gmail.com
-                </h3>
-
-
-                <a
-                    class="mini-action"
-                    href="mailto:vohoankhangg@gmail.com"
-                >
-
-                    Gửi Email →
-
-                </a>
-
-
-            </article>
-
-
-
-            <!-- LOCATION -->
-
-            <article
-                class="contact-info-card reveal"
-            >
-
-
-                <div class="contact-icon">
-                    ⌖
-                </div>
-
-
-                <span>
-                    Địa điểm
-                </span>
-
-
-                <h3>
-
-                    CLB Boxing Kickfit
-                    Combat Zone Gò Vấp
-
-                </h3>
-
-
-                <a
-                    class="mini-action"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/search/?api=1&query=CLB+Boxing+Kickfit+Combat+Zone+Go+Vap"
-                >
-
-                    Xem bản đồ →
-
-                </a>
-
-
-            </article>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SUPPORT CENTER
-===================================================== -->
-
-<section class="section contact-support-section">
-
-    <div class="container">
-
-
-        <div class="section-heading reveal">
-
-
-            <div>
-
-
-                <span class="eyebrow">
-                    SUPPORT CENTER
-                </span>
-
-
-                <h2>
-                    SPORTHUB CÓ THỂ
-                    HỖ TRỢ BẠN NHỮNG GÌ?
-                </h2>
-
-
-                <p>
-                    Chọn đúng nhu cầu để biểu mẫu
-                    chuẩn bị nội dung phù hợp hơn.
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="support-card-grid">
-
-
-            <article class="support-card reveal">
-
-                <div class="support-number">
-                    01
-                </div>
-
-                <h3>
-                    Tư vấn sản phẩm
-                </h3>
-
-                <p>
-                    Tham khảo sản phẩm dựa trên
-                    mục tiêu, nhu cầu sử dụng
-                    và loại hình tập luyện.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="selectContactTopic('Tư vấn sản phẩm')"
-                >
-                    TƯ VẤN NGAY →
-                </button>
-
-            </article>
-
-
-
-            <article class="support-card reveal">
-
-                <div class="support-number">
-                    02
-                </div>
-
-                <h3>
-                    Hỗ trợ đơn hàng
-                </h3>
-
-                <p>
-                    Kiểm tra hoặc hỗ trợ
-                    những vấn đề liên quan
-                    đến đơn hàng đã đặt.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="selectContactTopic('Hỗ trợ đơn hàng')"
-                >
-                    HỖ TRỢ ĐƠN HÀNG →
-                </button>
-
-            </article>
-
-
-
-            <article class="support-card reveal">
-
-                <div class="support-number">
-                    03
-                </div>
-
-                <h3>
-                    Yêu cầu báo giá
-                </h3>
-
-                <p>
-                    Gửi sản phẩm, số lượng
-                    và nhu cầu sử dụng
-                    để SPORTHUB tiếp nhận báo giá.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="selectContactTopic('Yêu cầu báo giá')"
-                >
-                    YÊU CẦU BÁO GIÁ →
-                </button>
-
-            </article>
-
-
-
-            <article class="support-card reveal">
-
-                <div class="support-number">
-                    04
-                </div>
-
-                <h3>
-                    Đặt hàng số lượng lớn
-                </h3>
-
-                <p>
-                    Dành cho phòng gym,
-                    câu lạc bộ, doanh nghiệp,
-                    trường học và đội nhóm.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="selectContactTopic('Đặt hàng số lượng lớn')"
-                >
-                    ĐẶT HÀNG →
-                </button>
-
-            </article>
-
-
-
-            <article class="support-card reveal">
-
-                <div class="support-number">
-                    05
-                </div>
-
-                <h3>
-                    Hợp tác kinh doanh
-                </h3>
-
-                <p>
-                    Tiếp nhận đề xuất phân phối,
-                    cung cấp sản phẩm và
-                    hợp tác trong lĩnh vực thể thao.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="selectContactTopic('Hợp tác kinh doanh')"
-                >
-                    GỬI ĐỀ XUẤT →
-                </button>
-
-            </article>
-
-
-
-            <article class="support-card reveal">
-
-                <div class="support-number">
-                    06
-                </div>
-
-                <h3>
-                    Góp ý & phản hồi
-                </h3>
-
-                <p>
-                    Chia sẻ góp ý về sản phẩm,
-                    website hoặc trải nghiệm
-                    sử dụng SPORTHUB.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="selectContactTopic('Góp ý và phản hồi')"
-                >
-                    GỬI PHẢN HỒI →
-                </button>
-
-            </article>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     BULK ORDER
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="bulk-order reveal">
-
-
-            <div>
-
-
-                <span class="eyebrow">
-                    BULK ORDER
-                </span>
-
-
-                <h2>
-                    ĐẶT HÀNG SẢN PHẨM THỂ THAO
-                    SỐ LƯỢNG LỚN
-                </h2>
-
-
-                <p>
-
-                    Phù hợp với phòng gym,
-                    trung tâm Fitness,
-                    câu lạc bộ thể thao,
-                    trường học, doanh nghiệp
-                    và các tổ chức cần trang bị
-                    sản phẩm thể thao.
-
-                </p>
-
-
-                <button
-                    class="btn-primary"
-                    type="button"
-                    onclick="selectContactTopic('Đặt hàng số lượng lớn')"
-                >
-
-                    YÊU CẦU BÁO GIÁ →
-
-                </button>
-
-
-            </div>
-
-
-
-            <div class="bulk-requirements">
-
-
-                <div>
-
-                    <strong>01</strong>
-                    <span>Tên sản phẩm</span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>02</strong>
-                    <span>Số lượng dự kiến</span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>03</strong>
-                    <span>Thời gian cần hàng</span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>04</strong>
-                    <span>Mục đích sử dụng</span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>05</strong>
-                    <span>Ngân sách dự kiến</span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>06</strong>
-                    <span>Yêu cầu đặc biệt</span>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTACT FORM
-===================================================== -->
-
-<section
-    id="contactFormSection"
-    class="section contact-form-section"
->
-
-    <div class="container contact-form-layout">
-
-
-        <!-- LEFT -->
-
-        <div class="contact-form-intro reveal">
-
-
-            <span class="eyebrow">
-                CONTACT FORM
-            </span>
-
-
-            <h2>
-                GỬI YÊU CẦU TƯ VẤN
-            </h2>
-
-
-            <p>
-
-                Điền thông tin cần thiết.
-                Biểu mẫu sẽ tự động mở thêm
-                các trường phù hợp với
-                chủ đề bạn lựa chọn.
-
-            </p>
-
-
-
-            <div class="contact-side-note">
-
-
-                <strong>
-                    Cần hỗ trợ nhanh?
-                </strong>
-
-
-                <a href="tel:+84862609531">
-
-                    0862 609 531
-
-                </a>
-
-
-                <a href="mailto:vohoankhangg@gmail.com">
-
-                    vohoankhangg@gmail.com
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- FORM -->
-
-        <div class="contact-form-card reveal">
-
-
-            <form
-                id="contactForm"
-                novalidate
-            >
-
-
-                <!-- HONEYPOT -->
-
-                <input
-                    type="text"
-                    name="_honey"
-                    class="form-honey"
-                    tabindex="-1"
-                    autocomplete="off"
-                >
-
-
-
-                <!-- NAME -->
-
-                <div class="float-field">
-
-
-                    <input
-                        id="contactName"
-                        name="Họ và tên"
-                        type="text"
-                        placeholder=" "
-                        autocomplete="name"
-                    >
-
-
-                    <label for="contactName">
-
-                        Họ và tên *
-
-                    </label>
-
-
-                    <small
-                        class="field-error"
-                        id="contactNameError"
-                    ></small>
-
-
-                </div>
-
-
-
-                <!-- PHONE -->
-
-                <div class="float-field">
-
-
-                    <input
-                        id="contactPhone"
-                        name="Số điện thoại"
-                        type="tel"
-                        placeholder=" "
-                        autocomplete="tel"
-                    >
-
-
-                    <label for="contactPhone">
-
-                        Số điện thoại *
-
-                    </label>
-
-
-                    <small
-                        class="field-error"
-                        id="contactPhoneError"
-                    ></small>
-
-
-                </div>
-
-
-
-                <!-- EMAIL -->
-
-                <div class="float-field">
-
-
-                    <input
-                        id="contactEmail"
-                        name="email"
-                        type="email"
-                        placeholder=" "
-                        autocomplete="email"
-                    >
-
-
-                    <label for="contactEmail">
-
-                        Email *
-
-                    </label>
-
-
-                    <small
-                        class="field-error"
-                        id="contactEmailError"
-                    ></small>
-
-
-                </div>
-
-
-
-                <!-- TOPIC -->
-
-                <div class="field contact-select-field">
-
-
-                    <label for="contactTopic">
-
-                        Chủ đề liên hệ *
-
-                    </label>
-
-
-                    <select
-                        id="contactTopic"
-                        name="Chủ đề"
-                    >
-
-
-                        <option value="">
-                            Chọn chủ đề
-                        </option>
-
-
-                        <option>
-                            Tư vấn sản phẩm
-                        </option>
-
-
-                        <option>
-                            Hỗ trợ đơn hàng
-                        </option>
-
-
-                        <option>
-                            Đặt hàng số lượng lớn
-                        </option>
-
-
-                        <option>
-                            Yêu cầu báo giá
-                        </option>
-
-
-                        <option>
-                            Hỗ trợ tài khoản
-                        </option>
-
-
-                        <option>
-                            Hỗ trợ sử dụng SPORTHUB
-                        </option>
-
-
-                        <option>
-                            Hợp tác kinh doanh
-                        </option>
-
-
-                        <option>
-                            Cung cấp / phân phối sản phẩm
-                        </option>
-
-
-                        <option>
-                            Góp ý và phản hồi
-                        </option>
-
-
-                        <option>
-                            Thắc mắc khác
-                        </option>
-
-
-                    </select>
-
-
-                    <small
-                        class="field-error"
-                        id="contactTopicError"
-                    ></small>
-
-
-                </div>
-
-
-
-                <!-- =================================================
-                     BULK FIELDS
-                ================================================== -->
-
-                <div
-                    id="bulkFields"
-                    class="dynamic-fields"
-                >
-
-
-                    <h3>
-                        Thông tin đặt hàng
-                    </h3>
-
-
-                    <div class="form-grid">
-
-
-                        <div class="float-field">
-
-
-                            <input
-                                id="bulkProduct"
-                                name="Tên sản phẩm"
-                                type="text"
-                                placeholder=" "
-                            >
-
-
-                            <label for="bulkProduct">
-
-                                Tên sản phẩm
-
-                            </label>
-
-
-                        </div>
-
-
-
-                        <div class="float-field">
-
-
-                            <input
-                                id="bulkQuantity"
-                                name="Số lượng dự kiến"
-                                type="number"
-                                min="1"
-                                placeholder=" "
-                            >
-
-
-                            <label for="bulkQuantity">
-
-                                Số lượng dự kiến
-
-                            </label>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="form-grid">
-
-
-                        <div class="float-field">
-
-
-                            <input
-                                id="bulkDate"
-                                name="Thời gian cần hàng"
-                                type="text"
-                                placeholder=" "
-                            >
-
-
-                            <label for="bulkDate">
-
-                                Thời gian cần hàng
-
-                            </label>
-
-
-                        </div>
-
-
-
-                        <div class="float-field">
-
-
-                            <input
-                                id="bulkBudget"
-                                name="Ngân sách dự kiến"
-                                type="text"
-                                placeholder=" "
-                            >
-
-
-                            <label for="bulkBudget">
-
-                                Ngân sách dự kiến
-
-                            </label>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- =================================================
-                     ORDER FIELDS
-                ================================================== -->
-
-                <div
-                    id="orderFields"
-                    class="dynamic-fields"
-                >
-
-
-                    <h3>
-                        Thông tin đơn hàng
-                    </h3>
-
-
-                    <div class="float-field">
-
-
-                        <input
-                            id="orderCode"
-                            name="Mã đơn hàng"
-                            type="text"
-                            placeholder=" "
-                        >
-
-
-                        <label for="orderCode">
-
-                            Mã đơn hàng
-
-                        </label>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- =================================================
-                     BUSINESS FIELDS
-                ================================================== -->
-
-                <div
-                    id="businessFields"
-                    class="dynamic-fields"
-                >
-
-
-                    <h3>
-                        Thông tin hợp tác
-                    </h3>
-
-
-                    <div class="float-field">
-
-
-                        <input
-                            id="businessName"
-                            name="Tên doanh nghiệp / tổ chức"
-                            type="text"
-                            placeholder=" "
-                        >
-
-
-                        <label for="businessName">
-
-                            Tên doanh nghiệp / tổ chức
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="float-field">
-
-
-                        <input
-                            id="businessIndustry"
-                            name="Lĩnh vực hoạt động"
-                            type="text"
-                            placeholder=" "
-                        >
-
-
-                        <label for="businessIndustry">
-
-                            Lĩnh vực hoạt động
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="float-field">
-
-
-                        <input
-                            id="businessWebsite"
-                            name="Website / Fanpage"
-                            type="url"
-                            placeholder=" "
-                        >
-
-
-                        <label for="businessWebsite">
-
-                            Website / Fanpage
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="float-field textarea-field">
-
-
-                        <textarea
-                            id="businessProposal"
-                            name="Nội dung đề xuất"
-                            placeholder=" "
-                            rows="5"
-                        ></textarea>
-
-
-                        <label for="businessProposal">
-
-                            Nội dung đề xuất
-
-                        </label>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- MESSAGE -->
-
-                <div class="float-field textarea-field">
-
-
-                    <textarea
-                        id="contactMessage"
-                        name="Nội dung cần tư vấn"
-                        placeholder=" "
-                        rows="6"
-                    ></textarea>
-
-
-                    <label for="contactMessage">
-
-                        Nội dung cần tư vấn *
-
-                    </label>
-
-
-                    <small
-                        class="field-error"
-                        id="contactMessageError"
-                    ></small>
-
-
-                </div>
-
-
-
-                <p class="form-privacy">
-
-                    Thông tin được sử dụng
-                    để tiếp nhận và xử lý
-                    yêu cầu liên hệ của bạn.
-
-                </p>
-
-
-
-                <button
-                    id="contactSubmit"
-                    class="btn-primary contact-submit"
-                    type="submit"
-                >
-
-
-                    <span id="contactSubmitText">
-
-                        GỬI LIÊN HỆ
-
-                    </span>
-
-
-                    <span>
-
-                        →
-
-                    </span>
-
-
-                </button>
-
-
-
-                <div
-                    id="contactFormStatus"
-                    class="form-status"
-                    aria-live="polite"
-                ></div>
-
-
-            </form>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MAP
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-heading reveal">
-
-
-            <div>
-
-
-                <span class="eyebrow">
-
-                    LOCATION
-
-                </span>
-
-
-                <h2>
-
-                    VỊ TRÍ SPORTHUB
-
-                </h2>
-
-
-                <p>
-
-                    CLB Boxing Kickfit
-                    Combat Zone Gò Vấp
-
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="map-card reveal">
-
-
-            <iframe
-                title="CLB Boxing Kickfit Combat Zone Gò Vấp"
-                src="https://www.google.com/maps?q=CLB%20Boxing%20Kickfit%20Combat%20Zone%20Go%20Vap&output=embed"
-                width="100%"
-                height="480"
-                style="border:0"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen
-            ></iframe>
-
-
-        </div>
-
-
-
-        <div class="map-action">
+        <div class="hero-actions">
 
 
             <a
-                class="btn-dark"
-                target="_blank"
-                rel="noopener"
-                href="https://www.google.com/maps/search/?api=1&query=CLB+Boxing+Kickfit+Combat+Zone+Go+Vap"
+                class="btn-primary"
+                href="shop.html"
             >
 
-                XEM ĐƯỜNG ĐI TRÊN GOOGLE MAPS →
+                KHÁM PHÁ SẢN PHẨM
+
+            </a>
+
+
+            <a
+                class="btn-secondary"
+                href="health-check.html"
+            >
+
+                FITNESS CHECK
 
             </a>
 
@@ -2399,15 +458,15 @@
 
 
 <!-- =====================================================
-     QUICK SUPPORT
+     FEATURED PRODUCTS
 ===================================================== -->
 
-<section class="section quick-support-section">
+<section class="section">
 
     <div class="container">
 
 
-        <div class="quick-support reveal">
+        <div class="section-heading">
 
 
             <div>
@@ -2415,23 +474,23 @@
 
                 <span class="eyebrow">
 
-                    QUICK SUPPORT
+                    SPORTHUB STORE
 
                 </span>
 
 
                 <h2>
 
-                    CẦN HỖ TRỢ NHANH?
+                    SẢN PHẨM NỔI BẬT
 
                 </h2>
 
 
                 <p>
 
-                    Tư vấn sản phẩm,
-                    kiểm tra đơn hàng
-                    hoặc đặt hàng số lượng lớn.
+                    Những lựa chọn nổi bật dành cho
+                    tập luyện, vận động và thể thao
+                    hằng ngày.
 
                 </p>
 
@@ -2439,52 +498,173 @@
             </div>
 
 
+            <a href="shop.html">
 
-            <div class="quick-support-actions">
+                <b>
+                    Xem tất cả →
+                </b>
 
-
-                <a href="tel:+84862609531">
-
-                    <span>
-                        Hotline
-                    </span>
-
-                    <strong>
-                        0862 609 531
-                    </strong>
-
-                </a>
+            </a>
 
 
-                <a href="mailto:vohoankhangg@gmail.com">
-
-                    <span>
-                        Email
-                    </span>
-
-                    <strong>
-                        Gửi Email
-                    </strong>
-
-                </a>
+        </div>
 
 
-                <a href="#contactFormSection">
 
-                    <span>
-                        Form
-                    </span>
+        <!--
+            home.js tự render sản phẩm
+        -->
 
-                    <strong>
-                        Gửi yêu cầu
-                    </strong>
+        <div
+            id="featuredProducts"
+            class="product-grid"
+        >
+        </div>
 
-                </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROMOTION
+     bn07-promotion.webp
+===================================================== -->
+
+<section class="home-promo">
+
+    <div class="container">
+
+
+        <span class="eyebrow">
+
+            SPORTHUB ACTIVE LIFE
+
+        </span>
+
+
+        <h2>
+
+            NÂNG CẤP HÀNH TRÌNH
+            TẬP LUYỆN CỦA BẠN
+
+        </h2>
+
+
+        <p>
+
+            Từ trang phục, dụng cụ,
+            phụ kiện thể thao đến kiến thức
+            tập luyện và Fitness Check,
+            SPORTHUB giúp bạn tiếp cận
+            nhiều giải pháp trên cùng một nền tảng.
+
+        </p>
+
+
+        <div
+            style="
+                display:flex;
+                gap:12px;
+                flex-wrap:wrap;
+            "
+        >
+
+
+            <a
+                class="btn-primary"
+                href="shop.html"
+            >
+
+                MUA SẮM NGAY
+
+            </a>
+
+
+            <a
+                class="btn-secondary"
+                href="health-check.html"
+            >
+
+                FITNESS CHECK
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BLOG
+===================================================== -->
+
+<section class="section home-blog-section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+
+            <div>
+
+
+                <span class="eyebrow">
+
+                    SPORT KNOWLEDGE
+
+                </span>
+
+
+                <h2>
+
+                    KIẾN THỨC TẬP LUYỆN
+
+                </h2>
+
+
+                <p>
+
+                    Nội dung về tập luyện,
+                    dinh dưỡng, kỹ thuật,
+                    phục hồi và xây dựng
+                    lối sống vận động.
+
+                </p>
 
 
             </div>
 
 
+            <a href="blog.html">
+
+                <b>
+                    Xem tất cả bài viết →
+                </b>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!--
+            home.js tự render blog
+        -->
+
+        <div
+            id="homeBlogs"
+            class="blog-grid"
+        >
         </div>
 
 
@@ -2502,6 +682,8 @@
 
     <div class="container footer-grid">
 
+
+        <!-- BRAND -->
 
         <div>
 
@@ -2527,6 +709,8 @@
 
 
 
+        <!-- EXPLORE -->
+
         <div>
 
 
@@ -2535,22 +719,22 @@
             </b>
 
 
-            <a href="../index.html">
+            <a href="index.html">
                 Trang chủ
             </a>
 
 
-            <a href="../shop.html">
+            <a href="shop.html">
                 Sản phẩm
             </a>
 
 
-            <a href="../blog.html">
+            <a href="blog.html">
                 Blog
             </a>
 
 
-            <a href="../gioi-thieu/">
+            <a href="gioi-thieu/">
                 Giới thiệu
             </a>
 
@@ -2558,6 +742,8 @@
         </div>
 
 
+
+        <!-- SUPPORT -->
 
         <div>
 
@@ -2567,17 +753,17 @@
             </b>
 
 
-            <a href="../health-check.html">
+            <a href="health-check.html">
                 Fitness Check
             </a>
 
 
-            <a href="../lien-he/">
+            <a href="lien-he/">
                 Liên hệ
             </a>
 
 
-            <a href="../cart.html">
+            <a href="cart.html">
                 Giỏ hàng
             </a>
 
@@ -2592,61 +778,95 @@
 
 
 <!-- =====================================================
-     FLOATING CONTACT
+     CHAT BUTTON
 ===================================================== -->
 
-<div class="floating-contact">
+<button
+    class="chat-toggle"
+    type="button"
+    onclick="toggleChat()"
+    aria-label="Mở trợ lý SPORTHUB"
+>
+
+    💬
+
+</button>
 
 
-    <button
-        class="floating-main"
-        type="button"
-        onclick="toggleSupportMenu()"
-        aria-label="Mở menu hỗ trợ"
-    >
 
-        Hỗ trợ
+<!-- =====================================================
+     CHATBOX
+===================================================== -->
 
-    </button>
+<div
+    id="chatbox"
+    class="chatbox"
+>
+
+
+    <div class="chat-head">
+
+
+        <b>
+            SPORTHUB Assistant
+        </b>
+
+
+        <button
+            type="button"
+            onclick="toggleChat()"
+            aria-label="Đóng cửa sổ hỗ trợ"
+        >
+
+            ×
+
+        </button>
+
+
+    </div>
 
 
 
     <div
-        id="floatingSupportMenu"
-        class="floating-menu"
+        id="chatMessages"
+        class="chat-messages"
     >
 
 
-        <a href="tel:+84862609531">
+        <div class="msg bot">
 
-            ☎ Gọi ngay
+            Xin chào!
+            Bạn có thể hỏi mình về sản phẩm,
+            tập luyện hoặc Fitness Check.
 
-        </a>
-
-
-        <a href="mailto:vohoankhangg@gmail.com">
-
-            ✉ Gửi Email
-
-        </a>
+        </div>
 
 
-        <a
-            target="_blank"
-            rel="noopener"
-            href="https://www.google.com/maps/search/?api=1&query=CLB+Boxing+Kickfit+Combat+Zone+Go+Vap"
+    </div>
+
+
+
+    <div class="chat-input">
+
+
+        <input
+            id="chatInput"
+            type="text"
+            placeholder="Nhập câu hỏi..."
+            autocomplete="off"
+            onkeydown="chatKey(event)"
         >
 
-            ⌖ Google Maps
 
-        </a>
+        <button
+            type="button"
+            onclick="sendChat()"
+            aria-label="Gửi câu hỏi"
+        >
 
+            ➤
 
-        <a href="#contactFormSection">
-
-            ✦ Gửi yêu cầu
-
-        </a>
+        </button>
 
 
     </div>
@@ -2660,14 +880,17 @@
      JAVASCRIPT
 ===================================================== -->
 
-<script
-    src="../js/main.js?v=6.2"
-></script>
+<script src="js/image-factory.js?v=6.3"></script>
 
+<script src="js/data.js?v=6.3"></script>
 
-<script
-    src="../js/info-pages.js?v=6.2"
-></script>
+<script src="js/catalog-data.js?v=6.3"></script>
+
+<script src="js/main.js?v=6.3"></script>
+
+<script src="js/home.js?v=6.3"></script>
+
+<script src="js/chatbot.js?v=6.3"></script>
 
 
 </body>
