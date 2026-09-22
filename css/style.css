@@ -2920,3 +2920,1454 @@ button,
     }
 
 }
+/* =========================================================
+   SPORTHUB - SHOP MARKETPLACE UI V3
+   Compact Category + Filter + Product Grid
+   Desktop / Tablet / Mobile
+========================================================= */
+
+
+/* =========================================================
+   1. SHOP PAGE
+========================================================= */
+
+.shop-page {
+    width: 100%;
+    overflow-x: hidden;
+    background: #f4f6f7;
+}
+
+
+/* =========================================================
+   2. CĂN ĐỀU CONTAINER RIÊNG CHO SHOP
+========================================================= */
+
+.shop-page > section > .container,
+.shop-page .shop-intro-inner {
+    width: min(1320px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   3. SHOP INTRO
+   Nhỏ gọn hơn hero cũ
+========================================================= */
+
+.shop-intro {
+    padding: 34px 0 30px;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(200, 255, 0, 0.12),
+            transparent 24%
+        ),
+        linear-gradient(
+            135deg,
+            #061016,
+            #10252d
+        );
+
+    color: #ffffff;
+}
+
+
+.shop-intro-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 110px;
+}
+
+
+.shop-intro-label {
+    display: inline-block;
+
+    margin-bottom: 7px;
+
+    color: var(--lime);
+
+    font-size: 11px;
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+}
+
+
+.shop-intro h1 {
+    margin: 0;
+
+    font-size: clamp(26px, 3vw, 40px);
+    line-height: 1.08;
+
+    font-weight: 950;
+
+    letter-spacing: -1.2px;
+}
+
+
+.shop-intro p {
+    max-width: 620px;
+
+    margin-top: 9px;
+
+    color: #b7c4ca;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   4. CATEGORY SECTION
+========================================================= */
+
+.shop-category-section {
+    padding: 22px 0 0;
+}
+
+
+/* =========================================================
+   5. TITLE BAR
+========================================================= */
+
+.shop-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 50px;
+
+    padding: 0 18px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--line);
+    border-bottom: 0;
+
+    border-radius: 12px 12px 0 0;
+}
+
+
+.shop-section-title h2 {
+    margin: 0;
+
+    color: #445159;
+
+    font-size: 14px;
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+}
+
+
+.shop-view-all {
+    padding: 6px 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #668600;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.shop-view-all:hover {
+    color: var(--ink);
+}
+
+
+/* =========================================================
+   6. CATEGORY GRID
+   DESKTOP = 8 CỘT × 2 HÀNG
+========================================================= */
+
+.shop-page .shop-category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            8,
+            minmax(0, 1fr)
+        );
+
+    gap: 0;
+
+    width: 100%;
+
+    background: #ffffff;
+
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+
+    border-radius: 0 0 12px 12px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   7. CATEGORY CARD
+========================================================= */
+
+.shop-page .category-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-width: 0;
+    min-height: 118px;
+
+    padding: 10px 6px;
+
+    border: 0;
+
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    border-radius: 0;
+
+    background: #ffffff;
+
+    color: var(--ink);
+
+    text-align: center;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.shop-page .category-card:hover {
+    z-index: 2;
+
+    background: #f8fbe9;
+
+    color: #668600;
+}
+
+
+.shop-page .category-card.active {
+    background: #f1f9d5;
+
+    color: #668600;
+
+    box-shadow:
+        inset 0 0 0 2px
+        rgba(151, 197, 0, 0.5);
+}
+
+
+/* =========================================================
+   8. CATEGORY IMAGE
+========================================================= */
+
+.shop-page .category-image {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+    height: 62px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: #f4f6f7;
+}
+
+
+.shop-page .category-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.shop-page .category-card:hover
+.category-image img {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   9. CATEGORY TEXT
+========================================================= */
+
+.shop-page .category-card > span {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    max-width: 100%;
+
+    color: inherit;
+
+    font-size: 11px;
+    line-height: 1.3;
+
+    font-weight: 750;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+/* =========================================================
+   10. FILTER SECTION
+========================================================= */
+
+.shop-filter-section {
+    padding: 18px 0 0;
+}
+
+
+/* =========================================================
+   11. FILTER WRAPPER
+========================================================= */
+
+.shop-filter-section .container {
+    padding: 16px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--line);
+
+    border-radius: 12px;
+}
+
+
+/* =========================================================
+   12. SEARCH + SORT
+========================================================= */
+
+.shop-filter-top {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        230px;
+
+    gap: 12px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   13. SEARCH
+========================================================= */
+
+.shop-page .shop-search-box {
+    position: relative;
+
+    width: 100%;
+}
+
+
+.shop-search-icon {
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    transform: translateY(-50%);
+
+    z-index: 2;
+
+    font-size: 15px;
+
+    pointer-events: none;
+}
+
+
+.shop-page .shop-search-box input {
+    width: 100%;
+    height: 44px;
+
+    padding:
+        0
+        15px
+        0
+        43px;
+
+    border: 1px solid #dce2e5;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: var(--ink);
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.shop-page .shop-search-box input:focus {
+    border-color: #97c500;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(151, 197, 0, 0.12);
+}
+
+
+/* =========================================================
+   14. SORT
+========================================================= */
+
+.shop-filter-top > select {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 12px;
+
+    border: 1px solid #dce2e5;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #334149;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    outline: none;
+}
+
+
+/* =========================================================
+   15. ADVANCED FILTER GRID
+========================================================= */
+
+.shop-page .shop-filter-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   16. FILTER FIELD
+========================================================= */
+
+.shop-page .shop-filter-field {
+    min-width: 0;
+}
+
+
+.shop-page .shop-filter-field label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #68767d;
+
+    font-size: 10px;
+    line-height: 1;
+
+    font-weight: 850;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+}
+
+
+.shop-page .shop-filter-field select {
+    width: 100%;
+    height: 39px;
+
+    padding: 0 10px;
+
+    border: 1px solid #dfe5e8;
+
+    border-radius: 7px;
+
+    background: #f9fafb;
+
+    color: #263238;
+
+    font-size: 11.5px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.shop-page .shop-filter-field select:focus {
+    border-color: #97c500;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   17. RESET FILTER
+========================================================= */
+
+.shop-filter-reset {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.shop-filter-reset button {
+    width: 100%;
+    height: 39px;
+
+    padding: 0 12px;
+
+    border: 1px solid #182329;
+
+    border-radius: 7px;
+
+    background: #182329;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 850;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.shop-filter-reset button:hover {
+    border-color: var(--lime);
+
+    background: var(--lime);
+
+    color: var(--ink);
+}
+
+
+/* =========================================================
+   18. PRODUCT SECTION
+========================================================= */
+
+.shop-products-section {
+    padding: 24px 0 60px;
+}
+
+
+/* =========================================================
+   19. PRODUCT HEADING
+========================================================= */
+
+.shop-product-heading {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 15px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 2px solid #e6eaec;
+}
+
+
+.shop-product-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #668600;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.9px;
+}
+
+
+.shop-product-heading h2 {
+    margin: 0;
+
+    color: var(--ink);
+
+    font-size: 23px;
+    line-height: 1.15;
+
+    font-weight: 950;
+}
+
+
+.shop-result-count {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 5px;
+
+    white-space: nowrap;
+}
+
+
+.shop-result-count strong {
+    color: #668600;
+
+    font-size: 20px;
+
+    font-weight: 950;
+}
+
+
+.shop-result-count span {
+    color: #7b878d;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   20. PRODUCT GRID
+   DESKTOP = 5 CARD / HÀNG
+========================================================= */
+
+.shop-page .shop-product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            5,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+
+    align-items: stretch;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   21. PRODUCT CARD SHOP
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-card {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #e2e7e9;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.shop-page
+.shop-product-grid
+.product-card:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(
+            151,
+            197,
+            0,
+            0.65
+        );
+
+    box-shadow:
+        0 10px 26px
+        rgba(
+            6,
+            16,
+            22,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   22. PRODUCT IMAGE
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-image {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background: #f4f6f7;
+}
+
+
+.shop-page
+.shop-product-grid
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   23. PRODUCT BADGES
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-badge {
+    top: 8px;
+    left: 8px;
+
+    padding: 5px 7px;
+
+    border-radius: 5px;
+
+    font-size: 9px;
+}
+
+
+.shop-page
+.shop-product-grid
+.product-discount {
+    top: 8px;
+    right: 8px;
+
+    min-width: 40px;
+    min-height: 23px;
+
+    padding: 4px 6px;
+
+    border-radius: 5px;
+
+    font-size: 9.5px;
+}
+
+
+/* =========================================================
+   24. PRODUCT INFO
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-info {
+    display: flex;
+
+    flex: 1;
+
+    flex-direction: column;
+
+    padding: 12px;
+}
+
+
+/* =========================================================
+   25. PRODUCT META
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-meta {
+    gap: 5px;
+
+    margin-bottom: 6px;
+}
+
+
+.shop-page
+.shop-product-grid
+.product-code {
+    padding: 4px 6px;
+
+    border-radius: 4px;
+
+    font-size: 8.5px;
+}
+
+
+.shop-page
+.shop-product-grid
+.product-sport {
+    font-size: 8.5px;
+}
+
+
+/* =========================================================
+   26. PRODUCT NAME
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-info h3 {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    min-height: 40px;
+
+    margin: 0 0 6px;
+
+    color: #162126;
+
+    font-size: 14px;
+    line-height: 1.4;
+
+    font-weight: 800;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+/* =========================================================
+   27. RATING
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.rating {
+    gap: 3px;
+
+    margin: 2px 0 7px;
+
+    font-size: 10px;
+}
+
+
+.shop-page
+.shop-product-grid
+.rating-star {
+    font-size: 12px;
+}
+
+
+.shop-page
+.shop-product-grid
+.rating strong {
+    font-size: 10px;
+}
+
+
+.shop-page
+.shop-product-grid
+.rating span:last-child {
+    font-size: 9.5px;
+}
+
+
+/* =========================================================
+   28. DESCRIPTION
+   Card nhỏ nên chỉ hiện 2 dòng
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-short-description {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    min-height: 35px;
+
+    margin-bottom: 8px;
+
+    color: #77848a;
+
+    font-size: 10.5px;
+    line-height: 1.5;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+/* =========================================================
+   29. PRICE
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.price {
+    gap: 6px;
+
+    margin-top: auto;
+    margin-bottom: 9px;
+
+    padding-top: 2px;
+}
+
+
+.shop-page
+.shop-product-grid
+.price strong {
+    color: var(--red);
+
+    font-size: 16px;
+    line-height: 1;
+
+    font-weight: 950;
+}
+
+
+.shop-page
+.shop-product-grid
+.price del {
+    font-size: 9.5px;
+}
+
+
+/* =========================================================
+   30. PRODUCT BUTTON
+========================================================= */
+
+.shop-page
+.shop-product-grid
+.product-btn {
+    min-height: 36px;
+
+    padding: 8px 10px;
+
+    border-radius: 6px;
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   31. EMPTY STATE
+========================================================= */
+
+.shop-page .shop-empty {
+    grid-column: 1 / -1;
+
+    padding: 60px 20px;
+
+    border: 1px dashed #ccd4d8;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.shop-page .shop-empty h3 {
+    margin-bottom: 8px;
+
+    font-size: 20px;
+}
+
+
+.shop-page .shop-empty p {
+    margin-bottom: 16px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   32. DESKTOP NHỎ
+   1100 - 1250px
+========================================================= */
+
+@media (max-width: 1250px) {
+
+    .shop-page
+    .shop-category-grid {
+        grid-template-columns:
+            repeat(
+                8,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .shop-page
+    .shop-product-grid {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .shop-page
+    .shop-filter-grid {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+/* =========================================================
+   33. TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .shop-page > section > .container,
+    .shop-page .shop-intro-inner {
+        width:
+            calc(
+                100% - 28px
+            );
+    }
+
+
+    .shop-intro {
+        padding: 28px 0;
+    }
+
+
+    .shop-page
+    .shop-category-grid {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .shop-page
+    .category-card {
+        min-height: 108px;
+    }
+
+
+    .shop-page
+    .category-image {
+        width: 56px;
+        height: 56px;
+    }
+
+
+    .shop-filter-top {
+        grid-template-columns:
+            minmax(0, 1fr)
+            190px;
+    }
+
+
+    .shop-page
+    .shop-filter-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .shop-page
+    .shop-product-grid {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        gap: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   34. MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .shop-page > section > .container,
+    .shop-page .shop-intro-inner {
+        width:
+            calc(
+                100% - 24px
+            );
+
+        margin-inline: auto;
+    }
+
+
+    /* ---------------------------------------------
+       INTRO
+    --------------------------------------------- */
+
+    .shop-intro {
+        padding: 22px 0;
+    }
+
+
+    .shop-intro-inner {
+        min-height: 86px;
+    }
+
+
+    .shop-intro h1 {
+        font-size: 25px;
+    }
+
+
+    .shop-intro p {
+        margin-top: 6px;
+
+        font-size: 12px;
+    }
+
+
+    /* ---------------------------------------------
+       CATEGORY
+    --------------------------------------------- */
+
+    .shop-category-section {
+        padding-top: 14px;
+    }
+
+
+    .shop-section-title {
+        min-height: 44px;
+
+        padding-inline: 12px;
+    }
+
+
+    .shop-section-title h2 {
+        font-size: 12px;
+    }
+
+
+    .shop-view-all {
+        font-size: 10.5px;
+    }
+
+
+    .shop-page
+    .shop-category-grid {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .shop-page
+    .category-card {
+        min-height: 94px;
+
+        gap: 5px;
+
+        padding: 8px 3px;
+    }
+
+
+    .shop-page
+    .category-image {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .shop-page
+    .category-card > span {
+        font-size: 9.5px;
+        line-height: 1.25;
+    }
+
+
+    /* ---------------------------------------------
+       FILTER
+    --------------------------------------------- */
+
+    .shop-filter-section {
+        padding-top: 12px;
+    }
+
+
+    .shop-filter-section
+    .container {
+        padding: 12px;
+    }
+
+
+    .shop-filter-top {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+
+    .shop-page
+    .shop-search-box input,
+    .shop-filter-top > select {
+        height: 41px;
+    }
+
+
+    .shop-page
+    .shop-filter-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 8px;
+
+        margin-top: 9px;
+    }
+
+
+    .shop-page
+    .shop-filter-field label {
+        font-size: 9px;
+    }
+
+
+    .shop-page
+    .shop-filter-field select,
+    .shop-filter-reset button {
+        height: 37px;
+
+        padding-inline: 8px;
+
+        font-size: 10px;
+    }
+
+
+    /* ---------------------------------------------
+       PRODUCT HEADING
+    --------------------------------------------- */
+
+    .shop-products-section {
+        padding-top: 18px;
+    }
+
+
+    .shop-product-heading {
+        align-items: center;
+
+        margin-bottom: 12px;
+    }
+
+
+    .shop-product-label {
+        font-size: 8.5px;
+    }
+
+
+    .shop-product-heading h2 {
+        font-size: 18px;
+    }
+
+
+    .shop-result-count strong {
+        font-size: 16px;
+    }
+
+
+    .shop-result-count span {
+        font-size: 10px;
+    }
+
+
+    /* ---------------------------------------------
+       PRODUCTS
+       MOBILE = 2 CARD / HÀNG
+    --------------------------------------------- */
+
+    .shop-page
+    .shop-product-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 9px;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .product-info {
+        padding: 9px;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .product-info h3 {
+        min-height: 36px;
+
+        font-size: 12px;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .product-short-description {
+        display: none;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .rating span:last-child {
+        display: none;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .price strong {
+        font-size: 14px;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .price del {
+        display: none;
+    }
+
+
+    .shop-page
+    .shop-product-grid
+    .product-btn {
+        min-height: 34px;
+
+        padding: 7px 5px;
+
+        font-size: 9.5px;
+    }
+
+}
+
+
+/* =========================================================
+   35. MOBILE RẤT NHỎ
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .shop-page > section > .container,
+    .shop-page .shop-intro-inner {
+        width:
+            calc(
+                100% - 20px
+            );
+    }
+
+
+    .shop-page
+    .category-card {
+        min-height: 88px;
+    }
+
+
+    .shop-page
+    .category-image {
+        width: 44px;
+        height: 44px;
+    }
+
+
+    .shop-page
+    .category-card > span {
+        font-size: 9px;
+    }
+
+
+    .shop-page
+    .shop-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .shop-filter-reset {
+        grid-column: 1 / -1;
+    }
+
+
+    .shop-page
+    .shop-product-grid {
+        gap: 7px;
+    }
+
+}

@@ -17,7 +17,7 @@
 
     <meta
         name="description"
-        content="Khám phá sản phẩm thể thao tại SPORTHUB dành cho Gym, Boxing, Muay Thai, MMA, chạy bộ, bơi lội, bóng đá, cầu lông, Tennis, Pickleball, Yoga và nhiều môn thể thao khác."
+        content="Khám phá sản phẩm thể thao tại SPORTHUB dành cho Gym, Boxing, Muay Thai, MMA, chạy bộ, bơi lội, bóng đá, bóng rổ, cầu lông, Tennis, Pickleball, Yoga, Pilates và nhiều môn thể thao khác."
     >
 
     <meta
@@ -55,7 +55,7 @@
             </a>
 
 
-            <!-- MENU -->
+            <!-- NAVIGATION -->
 
             <nav>
 
@@ -63,6 +63,9 @@
                     Trang chủ
                 </a>
 
+                <a href="gioi-thieu/">
+                    Giới thiệu
+                </a>
 
                 <a
                     class="active"
@@ -71,21 +74,13 @@
                     Sản phẩm
                 </a>
 
-
                 <a href="health-check.html">
                     Fitness Check
                 </a>
 
-
                 <a href="blog.html">
                     Blog
                 </a>
-
-
-                <a href="gioi-thieu/">
-                    Giới thiệu
-                </a>
-
 
                 <a href="lien-he/">
                     Liên hệ
@@ -94,7 +89,7 @@
             </nav>
 
 
-            <!-- GIỎ HÀNG -->
+            <!-- CART -->
 
             <a
                 class="cart-link"
@@ -118,71 +113,70 @@
 
 
     <!-- =====================================================
-         HERO
+         SHOP PAGE
     ====================================================== -->
 
-    <section class="page-hero">
-
-        <div class="container">
+    <main class="shop-page">
 
 
-            <span class="eyebrow">
-                SPORT STORE
-            </span>
+        <!-- =================================================
+             SHOP INTRO
+        ================================================== -->
+
+        <section class="shop-intro">
+
+            <div class="container shop-intro-inner">
+
+                <div>
+
+                    <span class="shop-intro-label">
+                        SPORTHUB SPORT STORE
+                    </span>
+
+                    <h1>
+                        CỬA HÀNG THỂ THAO
+                    </h1>
+
+                    <p>
+                        Khám phá sản phẩm theo môn thể thao,
+                        mục tiêu tập luyện và nhu cầu sử dụng.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-            <h1>
-                CỬA HÀNG THỂ THAO
-            </h1>
+
+        <!-- =================================================
+             CATEGORY
+        ================================================== -->
+
+        <section class="shop-category-section">
+
+            <div class="container">
 
 
-            <p>
-                Khám phá sản phẩm tập luyện theo từng môn thể thao,
-                nhu cầu và mục tiêu vận động tại SPORTHUB.
-            </p>
+                <!-- CATEGORY TITLE -->
 
+                <div class="shop-section-title">
 
-        </div>
+                    <h2>
+                        DANH MỤC
+                    </h2>
 
-    </section>
-
-
-
-    <!-- =====================================================
-         SHOP
-    ====================================================== -->
-
-    <section class="section">
-
-        <div class="container">
-
-
-            <!-- =================================================
-                 DANH MỤC THỂ THAO
-            ================================================== -->
-
-            <div class="shop-categories">
-
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            KHÁM PHÁ THEO MÔN
-                        </span>
-
-
-                        <h2>
-                            DANH MỤC SẢN PHẨM
-                        </h2>
-
-
-                        <p>
-                            Chọn môn thể thao để xem nhanh các sản phẩm phù hợp.
-                        </p>
-
-                    </div>
+                    <button
+                        class="shop-view-all"
+                        type="button"
+                        onclick="
+                            document.getElementById('cat').value='all';
+                            renderShop();
+                        "
+                    >
+                        Xem tất cả
+                    </button>
 
                 </div>
 
@@ -190,23 +184,30 @@
 
                 <!-- CATEGORY GRID -->
 
-                <div class="category-grid">
+                <div class="category-grid shop-category-grid">
 
 
-                    <!-- GYM -->
+                    <!-- 01 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="gym-fitness"
-                        onclick="document.getElementById('cat').value='gym-fitness'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='gym-fitness';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-gym-fitness.webp"
-                            alt="Danh mục sản phẩm Gym và Fitness"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-gym-fitness.webp"
+                                alt="Gym và Fitness"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Gym & Fitness
@@ -216,20 +217,27 @@
 
 
 
-                    <!-- BOXING -->
+                    <!-- 02 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="boxing"
-                        onclick="document.getElementById('cat').value='boxing'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='boxing';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-boxing.webp"
-                            alt="Danh mục sản phẩm Boxing"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-boxing.webp"
+                                alt="Boxing"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Boxing
@@ -239,20 +247,27 @@
 
 
 
-                    <!-- MUAY THAI -->
+                    <!-- 03 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="muay-thai"
-                        onclick="document.getElementById('cat').value='muay-thai'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='muay-thai';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-muay-thai.webp"
-                            alt="Danh mục sản phẩm Muay Thai"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-muay-thai.webp"
+                                alt="Muay Thai"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Muay Thai
@@ -262,20 +277,27 @@
 
 
 
-                    <!-- MMA -->
+                    <!-- 04 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="mma"
-                        onclick="document.getElementById('cat').value='mma'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='mma';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-mma.webp"
-                            alt="Danh mục sản phẩm MMA"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-mma.webp"
+                                alt="MMA"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             MMA
@@ -285,20 +307,27 @@
 
 
 
-                    <!-- RUNNING -->
+                    <!-- 05 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="running"
-                        onclick="document.getElementById('cat').value='running'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='running';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-running.webp"
-                            alt="Danh mục sản phẩm chạy bộ"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-running.webp"
+                                alt="Chạy bộ"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Chạy bộ
@@ -308,20 +337,27 @@
 
 
 
-                    <!-- SWIMMING -->
+                    <!-- 06 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="swimming"
-                        onclick="document.getElementById('cat').value='swimming'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='swimming';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-swimming.webp"
-                            alt="Danh mục sản phẩm bơi lội"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-swimming.webp"
+                                alt="Bơi lội"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Bơi lội
@@ -331,20 +367,27 @@
 
 
 
-                    <!-- FOOTBALL -->
+                    <!-- 07 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="football"
-                        onclick="document.getElementById('cat').value='football'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='football';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-football.webp"
-                            alt="Danh mục sản phẩm bóng đá"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-football.webp"
+                                alt="Bóng đá"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Bóng đá
@@ -354,20 +397,27 @@
 
 
 
-                    <!-- BASKETBALL -->
+                    <!-- 08 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="basketball"
-                        onclick="document.getElementById('cat').value='basketball'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='basketball';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-basketball.webp"
-                            alt="Danh mục sản phẩm bóng rổ"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-basketball.webp"
+                                alt="Bóng rổ"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Bóng rổ
@@ -377,20 +427,27 @@
 
 
 
-                    <!-- BADMINTON -->
+                    <!-- 09 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="badminton"
-                        onclick="document.getElementById('cat').value='badminton'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='badminton';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-badminton.webp"
-                            alt="Danh mục sản phẩm cầu lông"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-badminton.webp"
+                                alt="Cầu lông"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Cầu lông
@@ -400,20 +457,27 @@
 
 
 
-                    <!-- TENNIS -->
+                    <!-- 10 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="tennis"
-                        onclick="document.getElementById('cat').value='tennis'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='tennis';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-tennis.webp"
-                            alt="Danh mục sản phẩm Tennis"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-tennis.webp"
+                                alt="Tennis"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Tennis
@@ -423,20 +487,27 @@
 
 
 
-                    <!-- PICKLEBALL -->
+                    <!-- 11 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="pickleball"
-                        onclick="document.getElementById('cat').value='pickleball'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='pickleball';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-pickleball.webp"
-                            alt="Danh mục sản phẩm Pickleball"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-pickleball.webp"
+                                alt="Pickleball"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Pickleball
@@ -446,20 +517,27 @@
 
 
 
-                    <!-- YOGA -->
+                    <!-- 12 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="yoga"
-                        onclick="document.getElementById('cat').value='yoga'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='yoga';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-yoga.webp"
-                            alt="Danh mục sản phẩm Yoga"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-yoga.webp"
+                                alt="Yoga"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Yoga
@@ -469,20 +547,27 @@
 
 
 
-                    <!-- PILATES -->
+                    <!-- 13 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="pilates"
-                        onclick="document.getElementById('cat').value='pilates'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='pilates';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-pilates.webp"
-                            alt="Danh mục sản phẩm Pilates"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-pilates.webp"
+                                alt="Pilates"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Pilates
@@ -492,20 +577,27 @@
 
 
 
-                    <!-- CARDIO -->
+                    <!-- 14 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="cardio"
-                        onclick="document.getElementById('cat').value='cardio'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='cardio';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-cardio.webp"
-                            alt="Danh mục dụng cụ Cardio"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-cardio.webp"
+                                alt="Cardio"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Cardio
@@ -515,20 +607,27 @@
 
 
 
-                    <!-- RECOVERY -->
+                    <!-- 15 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="recovery"
-                        onclick="document.getElementById('cat').value='recovery'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='recovery';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-recovery.webp"
-                            alt="Danh mục dụng cụ phục hồi thể thao"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-recovery.webp"
+                                alt="Phục hồi"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Phục hồi
@@ -538,20 +637,27 @@
 
 
 
-                    <!-- ACCESSORIES -->
+                    <!-- 16 -->
 
                     <button
                         class="category-card"
                         type="button"
                         data-category="accessories"
-                        onclick="document.getElementById('cat').value='accessories'; renderShop();"
+                        onclick="
+                            document.getElementById('cat').value='accessories';
+                            renderShop();
+                        "
                     >
 
-                        <img
-                            src="images/categories/cat-accessories.webp"
-                            alt="Danh mục phụ kiện thể thao"
-                            loading="lazy"
-                        >
+                        <div class="category-image">
+
+                            <img
+                                src="images/categories/cat-accessories.webp"
+                                alt="Phụ kiện thể thao"
+                                loading="lazy"
+                            >
+
+                        </div>
 
                         <span>
                             Phụ kiện
@@ -564,67 +670,80 @@
 
             </div>
 
+        </section>
 
 
-            <!-- =================================================
-                 SEARCH + ADVANCED FILTER
-            ================================================== -->
 
-            <div class="shop-filter-area">
+        <!-- =================================================
+             SEARCH + FILTER
+        ================================================== -->
+
+        <section class="shop-filter-section">
+
+            <div class="container">
 
 
-                <div class="section-heading">
+                <!-- SEARCH + SORT -->
 
-                    <div>
+                <div class="shop-filter-top">
 
-                        <span class="eyebrow">
-                            TÌM SẢN PHẨM
+
+                    <div class="shop-search-box">
+
+                        <span
+                            class="shop-search-icon"
+                            aria-hidden="true"
+                        >
+                            🔎
                         </span>
 
-
-                        <h2>
-                            KHÁM PHÁ SẢN PHẨM
-                        </h2>
-
-
-                        <p>
-                            Tìm kiếm và lọc sản phẩm theo môn thể thao,
-                            loại sản phẩm, mức giá và nhu cầu tập luyện.
-                        </p>
+                        <input
+                            id="q"
+                            type="search"
+                            placeholder="Tìm tên sản phẩm, mã P43, Boxing, Pickleball..."
+                            autocomplete="off"
+                            aria-label="Tìm kiếm sản phẩm"
+                            oninput="renderShop()"
+                        >
 
                     </div>
 
-                </div>
 
 
-
-                <!-- =================================================
-                     SEARCH
-                ================================================== -->
-
-                <div class="shop-search-box">
-
-                    <label for="q">
-                        Tìm kiếm
-                    </label>
-
-
-                    <input
-                        id="q"
-                        type="search"
-                        oninput="renderShop()"
-                        placeholder="Tên sản phẩm, mã Pxx, môn thể thao, từ khóa..."
-                        autocomplete="off"
-                        aria-label="Tìm kiếm sản phẩm"
+                    <select
+                        id="sort"
+                        aria-label="Sắp xếp sản phẩm"
+                        onchange="renderShop()"
                     >
 
+                        <option value="default">
+                            Sắp xếp mặc định
+                        </option>
+
+                        <option value="low">
+                            Giá thấp → cao
+                        </option>
+
+                        <option value="high">
+                            Giá cao → thấp
+                        </option>
+
+                        <option value="rating">
+                            Đánh giá cao
+                        </option>
+
+                        <option value="discount">
+                            Giảm giá nhiều
+                        </option>
+
+                    </select>
+
+
                 </div>
 
 
 
-                <!-- =================================================
-                     FILTER GRID
-                ================================================== -->
+                <!-- FILTER GRID -->
 
                 <div class="shop-filter-grid">
 
@@ -637,15 +756,13 @@
                             Môn thể thao
                         </label>
 
-
                         <select
                             id="cat"
                             onchange="renderShop()"
-                            aria-label="Lọc theo môn thể thao"
                         >
 
                             <option value="all">
-                                Tất cả môn thể thao
+                                Tất cả môn
                             </option>
 
                             <option value="gym-fitness">
@@ -726,11 +843,9 @@
                             Loại sản phẩm
                         </label>
 
-
                         <select
                             id="productType"
                             onchange="renderShop()"
-                            aria-label="Lọc theo loại sản phẩm"
                         >
 
                             <option value="all">
@@ -767,35 +882,6 @@
 
 
 
-                    <!-- BRAND -->
-
-                    <div class="shop-filter-field">
-
-                        <label for="brand">
-                            Thương hiệu
-                        </label>
-
-
-                        <select
-                            id="brand"
-                            onchange="renderShop()"
-                            aria-label="Lọc theo thương hiệu"
-                        >
-
-                            <option value="all">
-                                Tất cả thương hiệu
-                            </option>
-
-                            <option value="SPORTHUB">
-                                SPORTHUB
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-
                     <!-- PRICE -->
 
                     <div class="shop-filter-field">
@@ -804,11 +890,9 @@
                             Khoảng giá
                         </label>
 
-
                         <select
                             id="priceRange"
                             onchange="renderShop()"
-                            aria-label="Lọc theo khoảng giá"
                         >
 
                             <option value="all">
@@ -820,19 +904,19 @@
                             </option>
 
                             <option value="300-500">
-                                300.000đ - dưới 500.000đ
+                                300.000đ - 500.000đ
                             </option>
 
                             <option value="500-1000">
-                                500.000đ - dưới 1.000.000đ
+                                500.000đ - 1 triệu
                             </option>
 
                             <option value="1000-1500">
-                                1.000.000đ - 1.500.000đ
+                                1 triệu - 1,5 triệu
                             </option>
 
                             <option value="over-1500">
-                                Trên 1.500.000đ
+                                Trên 1,5 triệu
                             </option>
 
                         </select>
@@ -849,15 +933,13 @@
                             Đối tượng
                         </label>
 
-
                         <select
                             id="audience"
                             onchange="renderShop()"
-                            aria-label="Lọc theo đối tượng"
                         >
 
                             <option value="all">
-                                Tất cả đối tượng
+                                Nam & Nữ
                             </option>
 
                             <option value="Nam">
@@ -882,11 +964,9 @@
                             Trình độ
                         </label>
 
-
                         <select
                             id="level"
                             onchange="renderShop()"
-                            aria-label="Lọc theo trình độ"
                         >
 
                             <option value="all">
@@ -919,11 +999,9 @@
                             Đánh giá
                         </label>
 
-
                         <select
                             id="ratingFilter"
                             onchange="renderShop()"
-                            aria-label="Lọc theo đánh giá"
                         >
 
                             <option value="all">
@@ -956,15 +1034,13 @@
                             Khuyến mãi
                         </label>
 
-
                         <select
                             id="promotion"
                             onchange="renderShop()"
-                            aria-label="Lọc sản phẩm khuyến mãi"
                         >
 
                             <option value="all">
-                                Tất cả sản phẩm
+                                Tất cả
                             </option>
 
                             <option value="sale">
@@ -977,42 +1053,92 @@
 
 
 
-                    <!-- SORT -->
+                    <!-- BRAND -->
 
                     <div class="shop-filter-field">
 
-                        <label for="sort">
-                            Sắp xếp
+                        <label for="brand">
+                            Thương hiệu
                         </label>
 
-
                         <select
-                            id="sort"
+                            id="brand"
                             onchange="renderShop()"
-                            aria-label="Sắp xếp sản phẩm"
                         >
 
-                            <option value="default">
-                                Sắp xếp mặc định
+                            <option value="all">
+                                Tất cả
                             </option>
 
-                            <option value="low">
-                                Giá thấp → cao
-                            </option>
-
-                            <option value="high">
-                                Giá cao → thấp
-                            </option>
-
-                            <option value="rating">
-                                Đánh giá cao
-                            </option>
-
-                            <option value="discount">
-                                Giảm giá nhiều
+                            <option value="SPORTHUB">
+                                SPORTHUB
                             </option>
 
                         </select>
+
+                    </div>
+
+
+
+                    <!-- RESET -->
+
+                    <div class="shop-filter-reset">
+
+                        <button
+                            id="resetFilters"
+                            type="button"
+                        >
+                            Xóa bộ lọc
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRODUCT RESULTS
+        ================================================== -->
+
+        <section class="shop-products-section">
+
+            <div class="container">
+
+
+                <!-- HEADING -->
+
+                <div class="shop-product-heading">
+
+
+                    <div>
+
+                        <span class="shop-product-label">
+                            GỢI Ý CHO BẠN
+                        </span>
+
+                        <h2>
+                            TẤT CẢ SẢN PHẨM
+                        </h2>
+
+                    </div>
+
+
+
+                    <div class="shop-result-count">
+
+                        <strong id="count">
+                            0
+                        </strong>
+
+                        <span>
+                            sản phẩm
+                        </span>
 
                     </div>
 
@@ -1021,63 +1147,21 @@
 
 
 
-                <!-- =================================================
-                     FILTER ACTION
-                ================================================== -->
+                <!-- PRODUCT GRID -->
 
-                <div class="shop-filter-actions">
-
-                    <button
-                        id="resetFilters"
-                        class="btn-secondary"
-                        type="button"
-                    >
-                        XÓA BỘ LỌC
-                    </button>
-
+                <div
+                    id="shopGrid"
+                    class="product-grid shop-product-grid"
+                >
                 </div>
 
 
             </div>
 
+        </section>
 
 
-            <!-- =================================================
-                 PRODUCT RESULT
-            ================================================== -->
-
-            <div class="shop-result-head">
-
-                <p>
-
-                    Hiển thị
-
-                    <strong id="count">
-                        0
-                    </strong>
-
-                    sản phẩm
-
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 PRODUCT GRID
-            ================================================== -->
-
-            <div
-                id="shopGrid"
-                class="product-grid"
-            >
-            </div>
-
-
-        </div>
-
-    </section>
+    </main>
 
 
 
@@ -1096,21 +1180,18 @@
     <script src="js/data.js"></script>
 
 
-    <!-- =====================================================
-         CATALOG DATABASE
+    <!--
+        CATALOG DATABASE
 
-         Bao gồm:
+        - Metadata P01 - P12
+        - P13 - P52
+        - 16 danh mục
+        - SEO
+        - Related data
 
-         16 Category
-         Metadata P01 - P12
-         P13 - P52
-         SEO Data
-         Search Data
-         Related Data
-
-         Sau đó ghép thành:
-         products = P01 -> P52
-    ====================================================== -->
+        Sau file này:
+        products = P01 -> P52
+    -->
 
     <script src="js/catalog-data.js"></script>
 
