@@ -778,7 +778,7 @@
 
 
 <!-- =====================================================
-     CHAT BUTTON
+     SPORTHUB AI COACH - CHAT BUTTON
 ===================================================== -->
 
 <button
@@ -795,6 +795,7 @@
 
 
 <!-- =====================================================
+     SPORTHUB AI COACH & CUSTOMER ASSISTANT
      CHATBOX
 ===================================================== -->
 
@@ -807,9 +808,22 @@
     <div class="chat-head">
 
 
-        <b>
-            SPORTHUB Assistant
-        </b>
+        <div>
+
+            <b>
+                SPORTHUB Assistant
+            </b>
+
+            <div
+                style="
+                    font-size:11px;
+                    opacity:.8;
+                "
+            >
+                AI Coach & Customer Assistant
+            </div>
+
+        </div>
 
 
         <button
@@ -835,9 +849,24 @@
 
         <div class="msg bot">
 
-            Xin chào!
-            Bạn có thể hỏi mình về sản phẩm,
-            tập luyện hoặc Fitness Check.
+            Xin chào 👋
+
+            <br><br>
+
+            Mình là
+            <b>SPORTHUB Assistant</b>.
+
+            <br><br>
+
+            Bạn cứ nói chuyện tự nhiên nhé.
+
+            <br><br>
+
+            Mình có thể hỗ trợ về sản phẩm,
+            tập luyện, dinh dưỡng,
+            Fitness Check, phục hồi,
+            sử dụng website hoặc
+            trò chuyện ngoài lề.
 
         </div>
 
@@ -852,7 +881,7 @@
         <input
             id="chatInput"
             type="text"
-            placeholder="Nhập câu hỏi..."
+            placeholder="Nhắn gì đó..."
             autocomplete="off"
             onkeydown="chatKey(event)"
         >
@@ -890,7 +919,16 @@
 
 <script src="js/home.js?v=6.3"></script>
 
-<script src="js/chatbot.js?v=6.3"></script>
+
+<!--
+    CHATBOT đặt CUỐI CÙNG để có thể truy cập:
+    - dữ liệu 52 sản phẩm
+    - utility trong main.js
+    - dữ liệu trang chủ từ home.js
+    - Fitness / Product / Memory / NLP
+-->
+
+<script src="js/chatbot.js?v=6.4"></script>
 
 
 </body>

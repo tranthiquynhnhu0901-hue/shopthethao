@@ -2,6 +2,7 @@
 <html lang="vi">
 
 <head>
+
     <meta charset="utf-8">
 
     <meta
@@ -32,6 +33,7 @@
         rel="stylesheet"
         href="../css/style.css"
     >
+
 </head>
 
 
@@ -91,7 +93,9 @@
             href="../cart.html"
         >
             🛒
-            <span class="cart-count">0</span>
+            <span class="cart-count">
+                0
+            </span>
         </a>
 
     </div>
@@ -602,7 +606,9 @@
 
         <div>
 
-            <b>Khám phá</b>
+            <b>
+                Khám phá
+            </b>
 
             <a href="../shop.html">
                 Sản phẩm
@@ -621,7 +627,9 @@
 
         <div>
 
-            <b>Hỗ trợ</b>
+            <b>
+                Hỗ trợ
+            </b>
 
             <a href="../health-check.html">
                 Fitness Check
@@ -643,7 +651,9 @@
 
 
 
-<!-- FLOAT CONTACT -->
+<!-- =====================================================
+     FLOAT CONTACT
+===================================================== -->
 
 <div class="floating-contact">
 
@@ -681,9 +691,55 @@
 
 
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<!-- IMAGE ENGINE -->
+
+<script src="../js/image-factory.js"></script>
+
+
+<!-- PRODUCT DATABASE -->
+
+<script src="../js/data.js"></script>
+
+
+<!--
+     CATALOG DATABASE
+     Metadata + catalog sản phẩm P01 - P52.
+-->
+
+<script src="../js/catalog-data.js"></script>
+
+
+<!-- MAIN / CART / UTILITY -->
+
 <script src="../js/main.js"></script>
 
+
+<!-- INFO PAGE EFFECTS -->
+
 <script src="../js/info-pages.js"></script>
+
+
+<!--
+     SPORTHUB AI COACH & CUSTOMER ASSISTANT
+
+     Lưu ý:
+     File này nằm trong thư mục gioi-thieu/
+     nên chatbot phải dùng đường dẫn ../js/chatbot.js
+
+     Đặt cuối cùng để chatbot có thể truy cập:
+     - dữ liệu sản phẩm
+     - catalog P01 - P52
+     - utility chung
+     - trạng thái giỏ hàng
+     - chức năng của trang giới thiệu
+-->
+
+<script src="../js/chatbot.js?v=6.4"></script>
 
 
 </body>

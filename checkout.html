@@ -1,7 +1,9 @@
 <!doctype html>
+
 <html lang="vi">
 
 <head>
+
     <meta charset="utf-8">
 
     <meta
@@ -9,12 +11,15 @@
         content="width=device-width, initial-scale=1"
     >
 
-    <title>Thanh toán - SportHub</title>
+    <title>
+        Thanh toán - SportHub
+    </title>
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
+
 </head>
 
 
@@ -71,6 +76,7 @@
                 href="cart.html"
             >
                 🛒
+
                 <span class="cart-count">
                     0
                 </span>
@@ -336,13 +342,49 @@
          JAVASCRIPT
     ========================================== -->
 
+
+    <!-- IMAGE ENGINE -->
+
     <script src="js/image-factory.js"></script>
+
+
+    <!-- PRODUCT DATABASE -->
 
     <script src="js/data.js"></script>
 
+
+    <!--
+         CATALOG DATABASE
+         Bổ sung metadata và catalog P01 - P52
+         để chatbot có thể đọc đầy đủ sản phẩm.
+    -->
+
+    <script src="js/catalog-data.js"></script>
+
+
+    <!-- CART / MONEY / UTILITY -->
+
     <script src="js/main.js"></script>
 
+
+    <!-- CHECKOUT ENGINE -->
+
     <script src="js/checkout.js"></script>
+
+
+    <!--
+         SPORTHUB AI COACH & CUSTOMER ASSISTANT
+
+         Đặt cuối cùng để chatbot có thể truy cập:
+         - dữ liệu sản phẩm
+         - catalog P01 - P52
+         - giỏ hàng
+         - tổng đơn
+         - checkout
+         - utility chung
+    -->
+
+    <script src="js/chatbot.js?v=6.4"></script>
 
 
 </body>
