@@ -226,35 +226,76 @@
     <script src="js/image-factory.js"></script>
 
 
-    <!-- DATABASE GỐC P01 - P12 -->
+    <!-- =====================================================
+         DATABASE GỐC
+         P01 - P12
+    ====================================================== -->
 
     <script src="js/data.js"></script>
 
 
-    <!--
-        DATABASE MỞ RỘNG
+    <!-- =====================================================
+         DATABASE MỞ RỘNG
 
-        - Category
-        - Metadata P01 - P12
-        - P13 - P52
-        - SEO
-        - Related Data
+         - Category
+         - Metadata P01 - P12
+         - Products P13 - P52
+         - SEO
+         - Related Data
 
-        Sau file này:
-        products = P01 -> P52
-    -->
+         Sau khi file này chạy:
+         products = P01 -> P52
+    ====================================================== -->
 
     <script src="js/catalog-data.js"></script>
 
 
-    <!-- LOGIC CHUNG WEBSITE -->
+    <!-- =====================================================
+         LOGIC CHUNG WEBSITE
+
+         - Giỏ hàng
+         - Format tiền
+         - Các utility dùng chung
+    ====================================================== -->
 
     <script src="js/main.js"></script>
 
 
-    <!-- PRODUCT DETAIL ENGINE -->
+    <!-- =====================================================
+         PRODUCT DETAIL ENGINE
+
+         File này đọc ?id=
+         và render đúng sản phẩm hiện tại.
+    ====================================================== -->
 
     <script src="js/product.js"></script>
+
+
+    <!-- =====================================================
+         SPORTHUB CHATBOT V2
+
+         Đặt SAU:
+         - data.js
+         - catalog-data.js
+         - main.js
+         - product.js
+
+         Để chatbot có thể truy cập:
+         - toàn bộ 52 sản phẩm
+         - dữ liệu website
+         - sản phẩm hiện tại
+         - các utility chung
+
+         Ở các bước sau chatbot sẽ hiểu:
+         "mẫu này"
+         "cái này"
+         "sản phẩm này"
+         "có size gì"
+         "giá bao nhiêu"
+         "có mẫu rẻ hơn không"
+    ====================================================== -->
+
+    <script src="js/chatbot.js"></script>
 
 
 </body>
