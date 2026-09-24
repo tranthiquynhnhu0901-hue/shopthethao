@@ -42,20 +42,192 @@
 
 
     <!-- =====================================================
-         CANONICAL
+         CANONICAL EARLY NORMALIZATION
 
-         product.js sẽ tự cập nhật thành:
+         Mục tiêu:
+         - ?id=5   -> ?id=P05
+         - ?id=P5  -> ?id=P05
+         - ?id=P05 -> giữ nguyên
 
-         product.html?id=P01
-         product.html?id=P02
-         ...
-         product.html?id=P52
+         Canonical được tạo NGAY TRONG HEAD
+         để URL hiện tại và canonical đồng bộ
+         trước khi product.js chạy.
+
+         Chỉ áp dụng cho P01 -> P52.
+         product.js tiếp tục kiểm tra sản phẩm
+         và xử lý SEO động phía sau.
     ====================================================== -->
 
-    <link
-        rel="canonical"
-        href="https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html"
-    >
+    <script>
+    (function () {
+
+        const SITE_URL =
+            "https://tranthiquynhnhu0901-hue.github.io/shopthethao/";
+
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const rawId =
+            String(
+                params.get("id") || ""
+            )
+                .trim()
+                .toUpperCase();
+
+
+        let productCode = "";
+
+
+        /*
+         * Hỗ trợ:
+         * P01
+         * P1
+         * 1
+         * 01
+         */
+
+        if (
+            /^P\d{1,2}$/.test(rawId)
+        ) {
+
+            const number =
+                Number(
+                    rawId.slice(1)
+                );
+
+
+            if (
+                Number.isInteger(number)
+                &&
+                number >= 1
+                &&
+                number <= 52
+            ) {
+
+                productCode =
+                    "P"
+                    +
+                    String(number)
+                        .padStart(2, "0");
+
+            }
+
+        }
+        else if (
+            /^\d{1,2}$/.test(rawId)
+        ) {
+
+            const number =
+                Number(rawId);
+
+
+            if (
+                Number.isInteger(number)
+                &&
+                number >= 1
+                &&
+                number <= 52
+            ) {
+
+                productCode =
+                    "P"
+                    +
+                    String(number)
+                        .padStart(2, "0");
+
+            }
+
+        }
+
+
+        /*
+         * Chỉ tạo canonical sớm
+         * khi ID nằm trong P01 -> P52.
+         *
+         * URL không hợp lệ sẽ được
+         * product.js xử lý sau.
+         */
+
+        if (!productCode) {
+
+            return;
+
+        }
+
+
+        const normalizedURL =
+            window.location.pathname
+            +
+            "?id="
+            +
+            encodeURIComponent(
+                productCode
+            );
+
+
+        /*
+         * Chuẩn hóa URL hiển thị sớm.
+         *
+         * Ví dụ:
+         * product.html?id=5
+         *
+         * thành:
+         * product.html?id=P05
+         *
+         * Không reload trang.
+         */
+
+        if (
+            window.location.pathname
+            +
+            window.location.search
+            !==
+            normalizedURL
+        ) {
+
+            window.history.replaceState(
+                null,
+                "",
+                normalizedURL
+            );
+
+        }
+
+
+        /*
+         * Tạo canonical ngay trong HEAD.
+         */
+
+        const canonical =
+            document.createElement(
+                "link"
+            );
+
+
+        canonical.rel =
+            "canonical";
+
+
+        canonical.href =
+            SITE_URL
+            +
+            "product.html?id="
+            +
+            encodeURIComponent(
+                productCode
+            );
+
+
+        document.head.appendChild(
+            canonical
+        );
+
+    })();
+    </script>
 
 
 
@@ -457,7 +629,7 @@
 
          product.html?id=5
 
-         product.js sẽ chuẩn hóa URL hiển thị về:
+         URL được chuẩn hóa sớm trong HEAD thành:
 
          product.html?id=P05
 
@@ -466,7 +638,7 @@
          sẽ sử dụng mã P01 -> P52.
 
 
-         Sau đó tự xử lý:
+         Sau đó product.js tiếp tục xử lý:
 
          - Render sản phẩm
          - Title
@@ -481,7 +653,7 @@
          - Related Products
 
 
-         Canonical được chuẩn hóa về:
+         Canonical chuẩn:
 
          product.html?id=P01
          product.html?id=P02
