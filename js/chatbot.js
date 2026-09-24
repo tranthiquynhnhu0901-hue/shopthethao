@@ -553,6 +553,78 @@
        7. PRODUCT HELPERS
     ===================================================== */
 
+    function normalizeProductLookupValue(value) {
+
+        const normalized =
+            String(value ?? "")
+                .trim()
+                .toUpperCase();
+
+
+        const match =
+            normalized.match(
+                /^P?(\d+)$/
+            );
+
+
+        if (!match) {
+
+            return NaN;
+
+        }
+
+
+        return Number(
+            match[1]
+        );
+
+    }
+
+
+    function getProductCode(product) {
+
+        if (!product) {
+
+            return "";
+
+        }
+
+
+        if (product.code) {
+
+            const code =
+                String(product.code)
+                    .trim()
+                    .toUpperCase();
+
+
+            if (code) {
+
+                return code;
+
+            }
+
+        }
+
+
+        const id =
+            normalizeProductLookupValue(
+                product.id
+            );
+
+
+        if (!Number.isFinite(id)) {
+
+            return "";
+
+        }
+
+
+        return `P${String(id).padStart(2, "0")}`;
+
+    }
+
+
     function getProductPrice(product) {
 
         if (!product) {
@@ -777,14 +849,39 @@
         }
 
 
+        const normalizedId =
+            normalizeProductLookupValue(
+                id
+            );
+
+
+        if (!Number.isFinite(normalizedId)) {
+
+            return null;
+
+        }
+
+
         const product =
             getProducts().find(
                 function (item) {
 
+                    const itemId =
+                        normalizeProductLookupValue(
+                            item.id
+                        );
+
+
+                    const itemCode =
+                        normalizeProductLookupValue(
+                            item.code
+                        );
+
+
                     return (
-                        String(item.id)
-                        ===
-                        String(id)
+                        itemId === normalizedId
+                        ||
+                        itemCode === normalizedId
                     );
 
                 }
@@ -2091,7 +2188,11 @@
                                     sportHubUrl(
                                         "product.html?id="
                                         +
-                                        product.id
+                                        encodeURIComponent(
+                                            getProductCode(
+                                                product
+                                            )
+                                        )
                                     )
                                 }"
                             >

@@ -228,7 +228,7 @@
 
             <a
                 class="logo"
-                href="index.html"
+                href="./"
                 aria-label="SPORTHUB - Trang chủ"
             >
                 SPORT<span>HUB</span>
@@ -239,7 +239,7 @@
 
             <nav>
 
-                <a href="index.html">
+                <a href="./">
                     Trang chủ
                 </a>
 
@@ -310,7 +310,7 @@
                 aria-label="Breadcrumb"
             >
 
-                <a href="index.html">
+                <a href="./">
                     Trang chủ
                 </a>
 
@@ -441,13 +441,20 @@
     <!-- =====================================================
          PRODUCT DETAIL ENGINE
 
-         File này đọc:
-
-         product.html?id=1
-
-         hoặc:
+         URL chuẩn của sản phẩm:
 
          product.html?id=P01
+         product.html?id=P02
+         ...
+         product.html?id=P52
+
+
+         product.js vẫn có thể đọc URL số cũ
+         để tương thích nếu người dùng truy cập
+         từ liên kết cũ.
+
+         Tuy nhiên toàn bộ link nội bộ mới
+         sẽ sử dụng mã P01 -> P52.
 
 
          Sau đó tự xử lý:

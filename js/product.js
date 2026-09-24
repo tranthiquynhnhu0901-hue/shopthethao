@@ -154,6 +154,61 @@ function getProductCanonicalURL(product) {
 
 
 /*
+    Chuẩn hóa URL đang mở về đúng mã sản phẩm:
+
+    product.html?id=5
+    product.html?id=p05
+    product.html?id=P05&utm_source=...
+
+    -> product.html?id=P05
+
+    Dùng history.replaceState nên:
+    - Không reload trang
+    - Không mất dữ liệu đang render
+    - Thanh địa chỉ và Canonical thống nhất
+*/
+
+function normalizeCurrentProductURL(product) {
+
+    const code =
+        getProductCode(
+            product
+        );
+
+
+    if (!code) {
+
+        return;
+
+    }
+
+
+    const normalizedPath =
+        `${window.location.pathname}?id=${encodeURIComponent(code)}`;
+
+
+    const currentPath =
+        window.location.pathname +
+        window.location.search +
+        window.location.hash;
+
+
+    if (
+        currentPath !== normalizedPath
+    ) {
+
+        window.history.replaceState(
+            window.history.state,
+            "",
+            normalizedPath
+        );
+
+    }
+
+}
+
+
+/*
     Chuyển ảnh tương đối thành URL tuyệt đối
     để dùng cho OG + Schema.
 */
@@ -233,6 +288,23 @@ const product =
 
         }
     );
+
+
+/*
+    Nếu sản phẩm hợp lệ, chuẩn hóa ngay URL đang mở.
+
+    Ví dụ:
+    ?id=5   -> ?id=P05
+    ?id=p05 -> ?id=P05
+*/
+
+if (product) {
+
+    normalizeCurrentProductURL(
+        product
+    );
+
+}
 
 
 const root =
@@ -1536,8 +1608,9 @@ function getRelatedProducts(product) {
 function relatedProductCard(product) {
 
     const code =
-        product.code ||
-        `P${String(product.id).padStart(2, "0")}`;
+        getProductCode(
+            product
+        );
 
 
     const imageAlt =
@@ -1645,6 +1718,8 @@ function relatedProductCard(product) {
     `;
 
 }
+
+
 /* =========================================================
    11. PRODUCT NOT FOUND
 ========================================================= */
@@ -1724,8 +1799,9 @@ else {
     ===================================================== */
 
     const code =
-        product.code ||
-        `P${String(product.id).padStart(2, "0")}`;
+        getProductCode(
+            product
+        );
 
 
 

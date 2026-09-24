@@ -747,7 +747,7 @@
 
         <a
             class="logo"
-            href="index.html"
+            href="./"
             aria-label="SPORTHUB - Trang chủ"
         >
 
@@ -762,7 +762,7 @@
         <nav>
 
 
-            <a href="index.html">
+            <a href="./">
                 Trang chủ
             </a>
 
@@ -1189,7 +1189,7 @@
             </b>
 
 
-            <a href="index.html">
+            <a href="./">
                 Trang chủ
             </a>
 
@@ -1265,7 +1265,7 @@
 
 <!-- CATALOG DATABASE: P01 - P52 + CATEGORY DATA -->
 <script
-    src="js/catalog-data.js?v=6.2"
+    src="js/catalog-data.js?v=6.5"
 ></script>
 
 
@@ -1277,10 +1277,14 @@
 <!--
     home.js chứa blogCard()
     nên phải load trước blog.js
+
+    home.js v=6.5:
+    - giữ nguyên Blog URL dạng số
+    - Product URL đã chuẩn hóa P01 -> P52
 -->
 
 <script
-    src="js/home.js?v=6.2"
+    src="js/home.js?v=6.5"
 ></script>
 
 
@@ -1289,9 +1293,15 @@
 ></script>
 
 
-<!-- SPORTHUB AI COACH & CUSTOMER ASSISTANT -->
+<!--
+    SPORTHUB AI COACH & CUSTOMER ASSISTANT
+
+    v=6.5:
+    - nhận diện sản phẩm qua ID số hoặc PXX
+    - link sản phẩm chatbot tạo ra dùng P01 -> P52
+-->
 <script
-    src="js/chatbot.js?v=6.4"
+    src="js/chatbot.js?v=6.5"
 ></script>
 
 

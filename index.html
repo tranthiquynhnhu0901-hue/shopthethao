@@ -436,7 +436,7 @@
 
         <a
             class="logo"
-            href="index.html"
+            href="./"
             aria-label="SPORTHUB - Trang chủ"
         >
 
@@ -453,7 +453,7 @@
 
             <a
                 class="active"
-                href="index.html"
+                href="./"
             >
                 Trang chủ
             </a>
@@ -636,7 +636,12 @@
 
 
         <!--
-            home.js tự render sản phẩm
+            home.js tự render sản phẩm.
+
+            URL sản phẩm được chuẩn hóa:
+            product.html?id=P01
+            ...
+            product.html?id=P52
         -->
 
         <div
@@ -843,7 +848,7 @@
             </b>
 
 
-            <a href="index.html">
+            <a href="./">
                 Trang chủ
             </a>
 
@@ -1037,11 +1042,11 @@
 
 <script src="js/data.js?v=6.3"></script>
 
-<script src="js/catalog-data.js?v=6.3"></script>
+<script src="js/catalog-data.js?v=6.5"></script>
 
 <script src="js/main.js?v=6.3"></script>
 
-<script src="js/home.js?v=6.3"></script>
+<script src="js/home.js?v=6.5"></script>
 
 
 <!--
@@ -1050,9 +1055,13 @@
     - utility trong main.js
     - dữ liệu trang chủ từ home.js
     - Fitness / Product / Memory / NLP
+
+    v=6.5:
+    - hỗ trợ nhận diện URL sản phẩm P01 -> P52
+    - link sản phẩm chatbot tạo ra dùng mã PXX
 -->
 
-<script src="js/chatbot.js?v=6.4"></script>
+<script src="js/chatbot.js?v=6.5"></script>
 
 
 </body>
