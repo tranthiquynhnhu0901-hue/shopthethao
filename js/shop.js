@@ -437,7 +437,9 @@ function matchesAudience(
         Array.isArray(
             product.audience
         )
+
             ? product.audience
+
             : [];
 
 
@@ -478,7 +480,9 @@ function matchesLevel(
         Array.isArray(
             product.level
         )
+
             ? product.level
+
             : [];
 
 
@@ -806,7 +810,9 @@ function updateCategoryActiveState(
 function renderEmptyState() {
 
     if (!shopGrid) {
+
         return;
+
     }
 
 
@@ -861,61 +867,81 @@ function renderShop() {
 
     const query =
         searchInput
+
             ? searchInput.value
+
             : "";
 
 
     const selectedSport =
         categoryFilter
+
             ? categoryFilter.value
+
             : "all";
 
 
     const selectedType =
         productTypeFilter
+
             ? productTypeFilter.value
+
             : "all";
 
 
     const selectedBrand =
         brandFilter
+
             ? brandFilter.value
+
             : "all";
 
 
     const selectedPrice =
         priceRangeFilter
+
             ? priceRangeFilter.value
+
             : "all";
 
 
     const selectedAudience =
         audienceFilter
+
             ? audienceFilter.value
+
             : "all";
 
 
     const selectedLevel =
         levelFilter
+
             ? levelFilter.value
+
             : "all";
 
 
     const selectedRating =
         ratingFilter
+
             ? ratingFilter.value
+
             : "all";
 
 
     const selectedPromotion =
         promotionFilter
+
             ? promotionFilter.value
+
             : "all";
 
 
     const selectedSort =
         sortFilter
+
             ? sortFilter.value
+
             : "default";
 
 
@@ -1056,6 +1082,17 @@ function renderShop() {
             .map(
                 product => {
 
+                    /*
+                        Bình thường Product Card
+                        được tạo bởi home.js.
+
+                        home.js đã chuẩn hóa URL thành:
+
+                        product.html?id=P01
+                        ...
+                        product.html?id=P52
+                    */
+
                     if (
                         typeof productCard ===
                         "function"
@@ -1071,14 +1108,38 @@ function renderShop() {
                     /*
                        Fallback nếu home.js
                        chưa load được.
+
+                       URL sản phẩm vẫn phải dùng
+                       mã chuẩn P01 -> P52.
                     */
+
+                    const fallbackCode =
+
+                        product.code ||
+
+                        `P${String(
+                            Number(
+                                product.id || 0
+                            )
+                        ).padStart(
+                            2,
+                            "0"
+                        )}`;
+
+
+                    const fallbackProductUrl =
+
+                        `product.html?id=${encodeURIComponent(
+                            fallbackCode
+                        )}`;
+
 
                     return `
 
                         <article class="product-card">
 
                             <a
-                                href="product.html?id=${product.id}"
+                                href="${fallbackProductUrl}"
                             >
 
                                 <div class="product-image">
@@ -1097,14 +1158,14 @@ function renderShop() {
                             <div class="product-info">
 
                                 <span class="product-code">
-                                    ${product.code || ""}
+                                    ${fallbackCode}
                                 </span>
 
 
                                 <h3>
 
                                     <a
-                                        href="product.html?id=${product.id}"
+                                        href="${fallbackProductUrl}"
                                     >
                                         ${product.name}
                                     </a>
@@ -1309,9 +1370,11 @@ renderShop();
 ========================================================= */
 
 console.info(
+
     `[SPORTHUB] Shop Engine V2 loaded với ${
         Array.isArray(products)
             ? products.length
             : 0
     } sản phẩm.`
+
 );

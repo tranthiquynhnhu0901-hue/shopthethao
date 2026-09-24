@@ -210,7 +210,9 @@ function handleProductImageError(
 ) {
 
     if (!imageElement) {
+
         return;
+
     }
 
 
@@ -334,7 +336,9 @@ function handleBlogImageError(
 ) {
 
     if (!imageElement) {
+
         return;
+
     }
 
 
@@ -424,6 +428,7 @@ function quickAddProduct(
 
         }
 
+
         return;
 
     }
@@ -454,6 +459,7 @@ function quickAddProduct(
             );
 
         }
+
 
         return;
 
@@ -528,6 +534,13 @@ function productCard(
 
     /* -----------------------------------------------------
        PRODUCT ID
+
+       ID số vẫn được giữ để:
+       - xử lý giỏ hàng
+       - xử lý ảnh lỗi
+       - tìm dữ liệu nội bộ
+
+       Không dùng ID số để tạo URL sản phẩm.
     ----------------------------------------------------- */
 
     const productId =
@@ -550,6 +563,9 @@ function productCard(
 
     /* -----------------------------------------------------
        PRODUCT CODE
+
+       Đây là mã URL chuẩn của sản phẩm:
+       P01 -> P52
     ----------------------------------------------------- */
 
     const code =
@@ -592,7 +608,6 @@ function productCard(
         );
 
 
-
     const imageAlt =
 
         product.imageAlt ||
@@ -624,7 +639,6 @@ function productCard(
         Number(
             product.rating || 0
         ).toFixed(1);
-
 
 
     const reviews =
@@ -699,12 +713,24 @@ function productCard(
 
     /* -----------------------------------------------------
        PRODUCT URL
+
+       CHUẨN DUY NHẤT TOÀN WEBSITE:
+
+       product.html?id=P01
+       product.html?id=P02
+       ...
+       product.html?id=P52
+
+       Không tạo:
+       product.html?id=1
+       product.html?id=2
+       ...
     ----------------------------------------------------- */
 
     const productUrl =
 
         `product.html?id=${encodeURIComponent(
-            productId
+            code
         )}`;
 
 
@@ -1074,6 +1100,12 @@ function blogCard(
         );
 
 
+    /*
+        Blog vẫn dùng ID số vì hệ thống Blog
+        hiện tại được thiết kế:
+        blog-detail.html?id=1 -> id=20
+    */
+
     const blogUrl =
 
         `blog-detail.html?id=${encodeURIComponent(
@@ -1196,6 +1228,12 @@ if (
         P18 Muay Thai
         P38 Badminton
         P43 Pickleball
+
+        Giá trị số bên dưới chỉ dùng
+        để tìm sản phẩm trong database.
+
+        URL sau khi render vẫn dùng:
+        P01, P02, P03...
     */
 
     const featuredProductIds = [
