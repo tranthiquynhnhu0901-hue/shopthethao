@@ -448,7 +448,282 @@ if (Array.isArray(window.NEW_PRODUCTS)) {
 }
 
 
+/* =========================================================
+   6.1. SEO OVERRIDE P01 - P52
+   Chuẩn hóa Title / Meta Description
+   Không thay đổi:
+   - Tên sản phẩm
+   - Giá
+   - Hình ảnh
+   - Stock
+   - Rating
+   - Nội dung sản phẩm
+   - Category
+   - Schema
+========================================================= */
 
+const SPORTHUB_PRODUCT_SEO_OVERRIDES = {
+
+    P05: {
+        seoTitle:
+            "Dây kháng lực PowerBand Set 5 mức tập luyện | SPORTHUB"
+    },
+
+    P06: {
+        seoTitle:
+            "Thảm Yoga Premium Pro chống trượt tập luyện | SPORTHUB"
+    },
+
+    P07: {
+        seoTitle:
+            "Quần Short FlexMove co giãn tập Gym Fitness | SPORTHUB"
+    },
+
+    P09: {
+        seoTitle:
+            "Bình nước SportFlow 1L cho Gym thể thao | SPORTHUB"
+    },
+
+    P11: {
+        seoTitle:
+            "Túi Gym Urban 35L nhiều ngăn đựng đồ tập | SPORTHUB"
+    },
+
+    P12: {
+        seoTitle:
+            "Dây nhảy Speed Rope RX tập Cardio Boxing | SPORTHUB"
+    },
+
+    P13: {
+        metaDescription:
+            "Găng Boxing Training Pro cho người mới, phù hợp luyện kỹ thuật, focus mitt và bao cát với nhiều mức trọng lượng."
+    },
+
+    P14: {
+        seoTitle:
+            "Băng quấn tay Boxing Wrap 4.5M tập luyện | SPORTHUB"
+    },
+
+    P16: {
+        seoTitle:
+            "Bao cát Boxing Heavy Bag Pro tập luyện tại nhà | SPORTHUB"
+    },
+
+    P19: {
+        seoTitle:
+            "Bảo vệ ống đồng Muay Thai Shield tập luyện | SPORTHUB"
+    },
+
+    P20: {
+        seoTitle:
+            "Thai Pad Kick Training luyện đòn Muay Thai | SPORTHUB"
+    },
+
+    P21: {
+        seoTitle:
+            "Quần Muay Thai Fight Short tập luyện thi đấu | SPORTHUB"
+    },
+
+    P24: {
+        seoTitle:
+            "Mouthguard Combat Protect cho Boxing Muay Thai | SPORTHUB"
+    },
+
+    P26: {
+        seoTitle:
+            "Đai chạy bộ Running Belt Flex đựng điện thoại | SPORTHUB"
+    },
+
+    P27: {
+        seoTitle:
+            "Bình nước Running Soft Flask 500ml chạy bộ | SPORTHUB"
+    },
+
+    P29: {
+        seoTitle:
+            "Kính bơi AquaVision Anti-Fog chống sương | SPORTHUB"
+    },
+
+    P30: {
+        seoTitle:
+            "Mũ bơi Silicone AquaFit co giãn ôm đầu tập bơi | SPORTHUB"
+    },
+
+    P33: {
+        seoTitle:
+            "Bóng đá Match Training Pro Size 5 tập luyện | SPORTHUB"
+    },
+
+    P34: {
+        seoTitle:
+            "Giày bóng đá Speed Control nhẹ bám sân tập luyện | SPORTHUB"
+    },
+
+    P35: {
+        seoTitle:
+            "Bảo vệ ống đồng Football Guard tập bóng đá | SPORTHUB"
+    },
+
+    P36: {
+        seoTitle:
+            "Bóng rổ Street Court Pro Size 7 tập luyện | SPORTHUB"
+    },
+
+    P37: {
+        seoTitle:
+            "Ống tay Basketball Compression co giãn thể thao | SPORTHUB"
+    },
+
+    P40: {
+        seoTitle:
+            "Quấn cán vợt Grip Control cầu lông tăng bám | SPORTHUB"
+    },
+
+    P41: {
+        metaDescription:
+            "Vợt Tennis PowerStrike cân bằng lực và kiểm soát, phù hợp người mới và người chơi phong trào tập luyện thường xuyên."
+    },
+
+    P42: {
+        seoTitle:
+            "Bóng Tennis Match Pack 3 quả cho tập luyện | SPORTHUB"
+    },
+
+    P43: {
+        metaDescription:
+            "Vợt Pickleball Carbon Control mặt carbon, cân bằng kiểm soát và lực đánh, phù hợp người mới và người chơi phong trào."
+    },
+
+    P44: {
+        seoTitle:
+            "Bóng Pickleball Outdoor Pack 3 quả ngoài trời | SPORTHUB"
+    },
+
+    P45: {
+        seoTitle:
+            "Gạch Yoga Balance Block hỗ trợ tư thế tập | SPORTHUB",
+
+        metaDescription:
+            "Gạch Yoga Balance Block nhẹ, chắc chắn, hỗ trợ điều chỉnh tư thế và tăng điểm tựa khi tập Yoga, mobility, stretching."
+    },
+
+    P46: {
+        metaDescription:
+            "Dây Yoga Stretch Strap 180cm hỗ trợ stretching, mobility và điều chỉnh tư thế cho người mới và người tập Yoga thường xuyên."
+    },
+
+    P50: {
+        seoTitle:
+            "Dây nhảy Speed Rope Pro X tập Cardio Boxing | SPORTHUB"
+    },
+
+    P51: {
+        seoTitle:
+            "Túi thể thao MultiSport 40L nhiều ngăn tập luyện | SPORTHUB",
+
+        metaDescription:
+            "Túi thể thao MultiSport 40L nhiều ngăn, có khu vực riêng cho giày, phù hợp mang đồ tập Gym và nhiều môn thể thao."
+    },
+
+    P52: {
+        seoTitle:
+            "Bình giữ nhiệt Sport Thermo 750ml cho thể thao | SPORTHUB"
+    }
+
+};
+
+
+/* =========================================================
+   ÁP DỤNG SEO OVERRIDE
+========================================================= */
+
+products.forEach(product => {
+
+    const productCode =
+        product.code ||
+        `P${String(product.id).padStart(2, "0")}`;
+
+
+    const seoOverride =
+        SPORTHUB_PRODUCT_SEO_OVERRIDES[
+            productCode
+        ];
+
+
+    if (!seoOverride) {
+        return;
+    }
+
+
+    if (seoOverride.seoTitle) {
+
+        product.seoTitle =
+            seoOverride.seoTitle;
+
+    }
+
+
+    if (seoOverride.metaDescription) {
+
+        product.metaDescription =
+            seoOverride.metaDescription;
+
+    }
+
+});
+
+
+/* =========================================================
+   KIỂM TRA ĐỘ DÀI SEO
+   Chỉ cảnh báo Console
+   Không làm ảnh hưởng website
+========================================================= */
+
+products.forEach(product => {
+
+    const code =
+        product.code ||
+        `P${String(product.id).padStart(2, "0")}`;
+
+
+    const seoTitle =
+        String(
+            product.seoTitle || ""
+        );
+
+
+    const metaDescription =
+        String(
+            product.metaDescription || ""
+        );
+
+
+    if (
+        seoTitle.length < 50 ||
+        seoTitle.length > 60
+    ) {
+
+        console.warn(
+            `[SPORTHUB SEO] ${code} Title có ${seoTitle.length} ký tự:`,
+            seoTitle
+        );
+
+    }
+
+
+    if (
+        metaDescription.length < 100 ||
+        metaDescription.length > 130
+    ) {
+
+        console.warn(
+            `[SPORTHUB SEO] ${code} Meta Description có ${metaDescription.length} ký tự:`,
+            metaDescription
+        );
+
+    }
+
+});
 /* =========================================================
    7. KIỂM TRA DATABASE CATALOG
    Chỉ cảnh báo trong Console

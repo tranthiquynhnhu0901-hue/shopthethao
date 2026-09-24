@@ -1583,6 +1583,117 @@ function relatedProductCard(product) {
 
                 <h3>
 
+                    <a href="product.html?id=${encodeURIComponent(code)}">
+                        ${product.name}
+                    </a>
+
+                </h3>
+
+
+                <div class="rating">
+
+                    <span class="rating-star">
+                        ★
+                    </span>
+
+                    <strong>
+                        ${Number(product.rating || 0).toFixed(1)}
+                    </strong>
+
+                    <span>
+                        (${product.reviews || 0})
+                    </span>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>
+                        ${money(product.price)}
+                    </strong>
+
+
+                    ${
+                        Number(product.oldPrice || 0) >
+                        Number(product.price || 0)
+
+                            ? `
+                                <del>
+                                    ${money(product.oldPrice)}
+                                </del>
+                            `
+
+                            : ""
+                    }
+
+                </div>
+
+
+                <a
+                    class="product-btn"
+                    href="product.html?id=${encodeURIComponent(code)}"
+                >
+                    Xem chi tiết
+                </a>
+
+
+            </div>
+
+        </article>
+
+    `;
+
+} {
+
+    const code =
+        product.code ||
+        `P${String(product.id).padStart(2, "0")}`;
+
+
+    const imageAlt =
+        product.imageAlt ||
+        product.name;
+
+
+    return `
+
+        <article class="product-card">
+
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${imageAlt}"
+                    loading="lazy"
+                >
+
+                <span class="product-badge">
+                    ${product.badge || "SPORTHUB"}
+                </span>
+
+            </div>
+
+
+            <div class="product-info">
+
+
+                <div class="product-meta">
+
+                    <span class="product-code">
+                        ${code}
+                    </span>
+
+                    <span class="product-sport">
+                        ${product.sportName || product.category}
+                    </span>
+
+                </div>
+
+
+                <h3>
+
                     <a href="product.html?id=${product.id}">
                         ${product.name}
                     </a>
