@@ -14,6 +14,12 @@
 
     <!-- =====================================================
          SEO
+
+         product.js sẽ tự thay đổi:
+         - Title
+         - Meta Description
+         - Robots
+         theo đúng sản phẩm đang xem.
     ====================================================== -->
 
     <title id="pageTitle">
@@ -34,7 +40,46 @@
     >
 
 
-    <!-- Open Graph -->
+
+    <!-- =====================================================
+         CANONICAL
+
+         product.js sẽ tự cập nhật thành:
+
+         product.html?id=P01
+         product.html?id=P02
+         ...
+         product.html?id=P52
+    ====================================================== -->
+
+    <link
+        rel="canonical"
+        href="https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html"
+    >
+
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta
+        property="og:type"
+        content="product"
+    >
+
+
+    <meta
+        property="og:locale"
+        content="vi_VN"
+    >
+
+
+    <meta
+        property="og:site_name"
+        content="SPORTHUB"
+    >
+
 
     <meta
         id="ogTitle"
@@ -42,22 +87,116 @@
         content="Sản phẩm SPORTHUB"
     >
 
+
     <meta
         id="ogDescription"
         property="og:description"
         content="Khám phá sản phẩm thể thao tại SPORTHUB."
     >
 
+
+    <meta
+        property="og:url"
+        content="https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html"
+    >
+
+
     <meta
         id="ogImage"
         property="og:image"
+        content="https://tranthiquynhnhu0901-hue.github.io/shopthethao/images/banners/bn02-shop-hero.webp"
+    >
+
+
+    <meta
+        property="og:image:alt"
+        content="Sản phẩm thể thao SPORTHUB"
+    >
+
+
+
+    <!-- =====================================================
+         PRODUCT OPEN GRAPH
+
+         product.js sẽ tự thay:
+         - Giá
+         - Tiền tệ
+         - Tình trạng tồn kho
+    ====================================================== -->
+
+    <meta
+        property="product:price:amount"
         content=""
     >
 
+
     <meta
-        property="og:type"
-        content="product"
+        property="product:price:currency"
+        content="VND"
     >
+
+
+    <meta
+        property="product:availability"
+        content=""
+    >
+
+
+
+    <!-- =====================================================
+         SOCIAL CARD
+    ====================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+
+    <meta
+        name="twitter:title"
+        content="Sản phẩm SPORTHUB"
+    >
+
+
+    <meta
+        name="twitter:description"
+        content="Khám phá sản phẩm thể thao tại SPORTHUB."
+    >
+
+
+    <meta
+        name="twitter:image"
+        content="https://tranthiquynhnhu0901-hue.github.io/shopthethao/images/banners/bn02-shop-hero.webp"
+    >
+
+
+    <meta
+        name="twitter:image:alt"
+        content="Sản phẩm thể thao SPORTHUB"
+    >
+
+
+
+    <!-- =====================================================
+         SCHEMA.ORG
+
+         product.js sẽ tự ghi dữ liệu động vào đây:
+
+         - Product
+         - Offer
+         - BreadcrumbList
+
+         Không tự tạo Review / AggregateRating.
+    ====================================================== -->
+
+    <script
+        id="productSchema"
+        type="application/ld+json"
+    >
+    {}
+    </script>
+
 
 
     <!-- =====================================================
@@ -90,6 +229,7 @@
             <a
                 class="logo"
                 href="index.html"
+                aria-label="SPORTHUB - Trang chủ"
             >
                 SPORT<span>HUB</span>
             </a>
@@ -210,6 +350,31 @@
         <!--
             Toàn bộ nội dung sản phẩm
             sẽ được product.js render tại đây.
+
+            Bao gồm:
+
+            - Tên sản phẩm
+            - Ảnh sản phẩm
+            - Mã sản phẩm
+            - Môn thể thao / danh mục
+            - Rating hiển thị
+            - Mô tả ngắn
+            - Giá
+            - Giá cũ
+            - Giảm giá
+            - Tồn kho
+            - Size / lựa chọn
+            - Số lượng
+            - Thêm vào giỏ hàng
+            - Mô tả chi tiết
+            - Điểm nổi bật
+            - Đối tượng phù hợp
+            - Thông số
+            - Hướng dẫn sử dụng
+            - Hướng dẫn bảo quản
+            - Bài tập liên quan
+            - Môn thể thao liên quan
+            - Sản phẩm liên quan
         -->
 
     </main>
@@ -221,21 +386,28 @@
     ====================================================== -->
 
 
-    <!-- IMAGE ENGINE -->
+    <!-- =====================================================
+         IMAGE ENGINE
+    ====================================================== -->
 
     <script src="js/image-factory.js"></script>
 
 
+
     <!-- =====================================================
          DATABASE GỐC
+
          P01 - P12
     ====================================================== -->
 
     <script src="js/data.js"></script>
 
 
+
     <!-- =====================================================
          DATABASE MỞ RỘNG
+
+         Bao gồm:
 
          - Category
          - Metadata P01 - P12
@@ -244,58 +416,103 @@
          - Related Data
 
          Sau khi file này chạy:
+
          products = P01 -> P52
     ====================================================== -->
 
     <script src="js/catalog-data.js"></script>
 
 
+
     <!-- =====================================================
          LOGIC CHUNG WEBSITE
 
+         Bao gồm:
+
          - Giỏ hàng
          - Format tiền
-         - Các utility dùng chung
+         - Utility dùng chung
     ====================================================== -->
 
     <script src="js/main.js"></script>
 
 
+
     <!-- =====================================================
          PRODUCT DETAIL ENGINE
 
-         File này đọc ?id=
-         và render đúng sản phẩm hiện tại.
+         File này đọc:
+
+         product.html?id=1
+
+         hoặc:
+
+         product.html?id=P01
+
+
+         Sau đó tự xử lý:
+
+         - Render sản phẩm
+         - Title
+         - Meta Description
+         - Robots
+         - Canonical
+         - Open Graph
+         - Twitter Card
+         - Product Schema
+         - Offer Schema
+         - Breadcrumb Schema
+         - Related Products
+
+
+         Canonical được chuẩn hóa về:
+
+         product.html?id=P01
+         product.html?id=P02
+         ...
+         product.html?id=P52
     ====================================================== -->
 
     <script src="js/product.js"></script>
 
 
-    <!-- =====================================================
-         SPORTHUB CHATBOT V2
 
-         Đặt SAU:
+    <!-- =====================================================
+         SPORTHUB AI COACH & CUSTOMER ASSISTANT
+
+         Đặt cuối cùng sau:
+
+         - image-factory.js
          - data.js
          - catalog-data.js
          - main.js
          - product.js
 
-         Để chatbot có thể truy cập:
-         - toàn bộ 52 sản phẩm
-         - dữ liệu website
-         - sản phẩm hiện tại
-         - các utility chung
 
-         Ở các bước sau chatbot sẽ hiểu:
+         Để chatbot có thể truy cập:
+
+         - toàn bộ P01 - P52
+         - dữ liệu sản phẩm
+         - sản phẩm hiện tại
+         - giá
+         - size
+         - tồn kho
+         - giỏ hàng
+         - utility chung
+
+
+         Chatbot có thể hiểu ngữ cảnh:
+
          "mẫu này"
          "cái này"
          "sản phẩm này"
-         "có size gì"
          "giá bao nhiêu"
+         "có size gì"
+         "còn hàng không"
          "có mẫu rẻ hơn không"
     ====================================================== -->
 
-    <script src="js/chatbot.js"></script>
+    <script src="js/chatbot.js?v=6.4"></script>
 
 
 </body>

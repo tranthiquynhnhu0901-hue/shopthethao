@@ -2,308 +2,316 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+
     <!-- =====================================================
          TRANG CHÍNH
     ====================================================== -->
 
     <url>
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/</loc>
-        <lastmod>2026-09-23</lastmod>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/shop.html</loc>
-        <lastmod>2026-09-23</lastmod>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/blog.html</loc>
-        <lastmod>2026-09-23</lastmod>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/health-check.html</loc>
-        <lastmod>2026-09-23</lastmod>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/gioi-thieu/</loc>
-        <lastmod>2026-09-23</lastmod>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/lien-he/</loc>
-        <lastmod>2026-09-23</lastmod>
+        <lastmod>2026-09-24</lastmod>
     </url>
+
 
 
     <!-- =====================================================
          SẢN PHẨM P01 - P52
+
+         Đồng bộ với Canonical trong product.js
     ====================================================== -->
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=1</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P01</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=2</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P02</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=3</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P03</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=4</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P04</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=5</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P05</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=6</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P06</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=7</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P07</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=8</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P08</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=9</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P09</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=10</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P10</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=11</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P11</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=12</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P12</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=13</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P13</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=14</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P14</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=15</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P15</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=16</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P16</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=17</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P17</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=18</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P18</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=19</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P19</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=20</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P20</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=21</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P21</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=22</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P22</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=23</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P23</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=24</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P24</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=25</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P25</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=26</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P26</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=27</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P27</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=28</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P28</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=29</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P29</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=30</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P30</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=31</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P31</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=32</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P32</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=33</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P33</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=34</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P34</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=35</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P35</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=36</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P36</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=37</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P37</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=38</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P38</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=39</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P39</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=40</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P40</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=41</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P41</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=42</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P42</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=43</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P43</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=44</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P44</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=45</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P45</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=46</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P46</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=47</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P47</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=48</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P48</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=49</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P49</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=50</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P50</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=51</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P51</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
 
     <url>
-        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=52</loc>
-        <lastmod>2026-09-23</lastmod>
+        <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/product.html?id=P52</loc>
+        <lastmod>2026-09-24</lastmod>
     </url>
+
 
 
     <!-- =====================================================
          BLOG B01 - B20
+
+         Tạm giữ URL hiện tại.
+         Sẽ kiểm tra blog-detail riêng trước khi thay đổi.
     ====================================================== -->
 
     <url>
@@ -405,5 +413,6 @@
         <loc>https://tranthiquynhnhu0901-hue.github.io/shopthethao/blog-detail.html?id=20</loc>
         <lastmod>2026-09-23</lastmod>
     </url>
+
 
 </urlset>

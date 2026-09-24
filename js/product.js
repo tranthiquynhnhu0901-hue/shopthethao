@@ -6,20 +6,232 @@
 
 /* =========================================================
    1. LẤY PRODUCT ID
+   Hỗ trợ:
+   - product.html?id=1
+   - product.html?id=P01
 ========================================================= */
 
+
+/*
+    URL chính thức của website.
+
+    Chỉ dùng cho:
+    - Canonical
+    - Open Graph
+    - Schema
+    - URL hình ảnh tuyệt đối
+
+    Không ảnh hưởng đường dẫn tương đối
+    khi website chạy bình thường.
+*/
+
+const SPORTHUB_SITE_URL =
+    "https://tranthiquynhnhu0901-hue.github.io/shopthethao/";
+
+
+/*
+    Chuẩn hóa ID.
+
+    Ví dụ:
+
+    1     -> 1
+    "1"   -> 1
+    "P01" -> 1
+    "p01" -> 1
+*/
+
+function normalizeProductId(value) {
+
+    const normalized =
+        String(value || "")
+            .trim()
+            .toUpperCase();
+
+
+    const match =
+        normalized.match(
+            /^P?(\d+)$/
+        );
+
+
+    if (!match) {
+
+        return NaN;
+
+    }
+
+
+    return Number(
+        match[1]
+    );
+
+}
+
+
+/*
+    Lấy mã sản phẩm chuẩn P01 - P52.
+
+    Ưu tiên product.code nếu database
+    đã có mã riêng.
+
+    Nếu chưa có thì tự tạo từ product.id.
+*/
+
+function getProductCode(product) {
+
+    if (!product) {
+
+        return "";
+
+    }
+
+
+    if (product.code) {
+
+        const code =
+            String(product.code)
+                .trim()
+                .toUpperCase();
+
+
+        if (code) {
+
+            return code;
+
+        }
+
+    }
+
+
+    const normalizedId =
+        normalizeProductId(
+            product.id
+        );
+
+
+    if (
+        !Number.isFinite(normalizedId)
+    ) {
+
+        return "";
+
+    }
+
+
+    return `P${String(normalizedId).padStart(2, "0")}`;
+
+}
+
+
+/*
+    Canonical sản phẩm luôn chuẩn hóa
+    về dạng:
+
+    product.html?id=P01
+*/
+
+function getProductCanonicalURL(product) {
+
+    const code =
+        getProductCode(
+            product
+        );
+
+
+    if (!code) {
+
+        return `${SPORTHUB_SITE_URL}product.html`;
+
+    }
+
+
+    return (
+        `${SPORTHUB_SITE_URL}product.html?id=` +
+        encodeURIComponent(code)
+    );
+
+}
+
+
+/*
+    Chuyển ảnh tương đối thành URL tuyệt đối
+    để dùng cho OG + Schema.
+*/
+
+function getAbsoluteProductURL(path) {
+
+    if (!path) {
+
+        return "";
+
+    }
+
+
+    try {
+
+        return new URL(
+            path,
+            SPORTHUB_SITE_URL
+        ).href;
+
+    }
+
+    catch (error) {
+
+        return "";
+
+    }
+
+}
+
+
+/*
+    Đọc ?id=
+*/
+
+const rawProductId =
+    new URLSearchParams(
+        window.location.search
+    ).get("id");
+
+
 const productId =
-    Number(
-        new URLSearchParams(
-            window.location.search
-        ).get("id")
+    normalizeProductId(
+        rawProductId
     );
 
 
+/*
+    Tìm sản phẩm.
+
+    Hỗ trợ database dùng:
+    - id số
+    - id chuỗi
+    - code P01
+*/
+
 const product =
     products.find(
-        item =>
-            Number(item.id) === productId
+        item => {
+
+            const itemId =
+                normalizeProductId(
+                    item.id
+                );
+
+
+            const itemCode =
+                normalizeProductId(
+                    item.code
+                );
+
+
+            return (
+                itemId === productId ||
+                itemCode === productId
+            );
+
+        }
     );
 
 
@@ -30,6 +242,7 @@ const root =
 
 
 let qty = 1;
+
 
 
 /* =========================================================
@@ -51,7 +264,9 @@ function getProductDiscount(product) {
         oldPrice <= 0 ||
         oldPrice <= price
     ) {
+
         return 0;
+
     }
 
 
@@ -62,123 +277,130 @@ function getProductDiscount(product) {
 }
 
 
+
 /* =========================================================
-   3. SEO ĐỘNG
+   3. SEO HELPER
 ========================================================= */
 
-function setProductSEO(product) {
 
-    const title =
-        product.seoTitle ||
-        `${product.name} | SPORTHUB`;
+/*
+    META theo name
+*/
 
+function setMetaByName(
+    name,
+    content
+) {
 
-    const description =
-        product.metaDescription ||
-        product.shortDescription ||
-        product.description ||
-        "Sản phẩm thể thao tại SPORTHUB.";
-
-
-    /* TITLE */
-
-    document.title = title;
-
-
-    const pageTitle =
-        document.getElementById(
-            "pageTitle"
+    let meta =
+        document.querySelector(
+            `meta[name="${name}"]`
         );
 
 
-    if (pageTitle) {
-        pageTitle.textContent = title;
-    }
+    if (!meta) {
+
+        meta =
+            document.createElement(
+                "meta"
+            );
 
 
-    /* META DESCRIPTION */
-
-    const metaDescription =
-        document.getElementById(
-            "metaDescription"
+        meta.setAttribute(
+            "name",
+            name
         );
 
 
-    if (metaDescription) {
-
-        metaDescription.setAttribute(
-            "content",
-            description
+        document.head.appendChild(
+            meta
         );
 
     }
 
 
-    /* OPEN GRAPH TITLE */
+    meta.setAttribute(
+        "content",
+        content || ""
+    );
 
-    const ogTitle =
-        document.getElementById(
-            "ogTitle"
+}
+
+
+/*
+    META theo property
+*/
+
+function setMetaByProperty(
+    property,
+    content
+) {
+
+    let meta =
+        document.querySelector(
+            `meta[property="${property}"]`
         );
 
 
-    if (ogTitle) {
+    if (!meta) {
 
-        ogTitle.setAttribute(
-            "content",
-            title
-        );
-
-    }
+        meta =
+            document.createElement(
+                "meta"
+            );
 
 
-    /* OPEN GRAPH DESCRIPTION */
-
-    const ogDescription =
-        document.getElementById(
-            "ogDescription"
+        meta.setAttribute(
+            "property",
+            property
         );
 
 
-    if (ogDescription) {
-
-        ogDescription.setAttribute(
-            "content",
-            description
-        );
-
-    }
-
-
-    /* OPEN GRAPH IMAGE */
-
-    const ogImage =
-        document.getElementById(
-            "ogImage"
-        );
-
-
-    if (
-        ogImage &&
-        product.image
-    ) {
-
-        const imageURL =
-            new URL(
-                product.image,
-                window.location.href
-            ).href;
-
-
-        ogImage.setAttribute(
-            "content",
-            imageURL
+        document.head.appendChild(
+            meta
         );
 
     }
 
 
-    /* CANONICAL */
+    meta.setAttribute(
+        "content",
+        content || ""
+    );
+
+}
+
+
+/*
+    Xóa META property khi không có dữ liệu.
+
+    Ví dụ sản phẩm không có giá.
+*/
+
+function removeMetaByProperty(
+    property
+) {
+
+    const meta =
+        document.querySelector(
+            `meta[property="${property}"]`
+        );
+
+
+    if (meta) {
+
+        meta.remove();
+
+    }
+
+}
+
+
+/*
+    Canonical
+*/
+
+function setCanonicalURL(url) {
 
     let canonical =
         document.querySelector(
@@ -207,55 +429,372 @@ function setProductSEO(product) {
     }
 
 
-    const canonicalURL =
-        new URL(
-            `product.html?id=${product.id}`,
-            window.location.href
-        ).href;
-
-
     canonical.setAttribute(
         "href",
-        canonicalURL
+        url
     );
 
+}
 
-    /* OG URL */
 
-    let ogURL =
-        document.querySelector(
-            'meta[property="og:url"]'
+/*
+    Structured Data JSON-LD
+*/
+
+function setProductStructuredData(
+    data
+) {
+
+    let schema =
+        document.getElementById(
+            "productSchema"
         );
 
 
-    if (!ogURL) {
+    if (!schema) {
 
-        ogURL =
+        schema =
             document.createElement(
-                "meta"
+                "script"
             );
 
 
-        ogURL.setAttribute(
-            "property",
-            "og:url"
-        );
+        schema.id =
+            "productSchema";
+
+
+        schema.type =
+            "application/ld+json";
 
 
         document.head.appendChild(
-            ogURL
+            schema
         );
 
     }
 
 
-    ogURL.setAttribute(
-        "content",
+    schema.textContent =
+        JSON.stringify(
+            data,
+            null,
+            2
+        );
+
+}
+
+
+
+/* =========================================================
+   4. SEO ĐỘNG
+========================================================= */
+
+function setProductSEO(product) {
+
+
+    /* -----------------------------------------------------
+       TITLE
+    ----------------------------------------------------- */
+
+    const title =
+        product.seoTitle ||
+        `${product.name} | SPORTHUB`;
+
+
+    /* -----------------------------------------------------
+       DESCRIPTION
+    ----------------------------------------------------- */
+
+    const description =
+        product.metaDescription ||
+        product.shortDescription ||
+        product.description ||
+        "Sản phẩm thể thao tại SPORTHUB.";
+
+
+    /* -----------------------------------------------------
+       PRODUCT CODE
+    ----------------------------------------------------- */
+
+    const code =
+        getProductCode(
+            product
+        );
+
+
+    /* -----------------------------------------------------
+       CANONICAL URL
+    ----------------------------------------------------- */
+
+    const canonicalURL =
+        getProductCanonicalURL(
+            product
+        );
+
+
+    /* -----------------------------------------------------
+       IMAGE
+    ----------------------------------------------------- */
+
+    const imageURL =
+        getAbsoluteProductURL(
+            product.image
+        );
+
+
+    const imageAlt =
+        product.imageAlt ||
+        product.name;
+
+
+    /* -----------------------------------------------------
+       PRICE
+    ----------------------------------------------------- */
+
+    const price =
+        Number(
+            product.price || 0
+        );
+
+
+    /* -----------------------------------------------------
+       STOCK
+    ----------------------------------------------------- */
+
+    const stock =
+        Number(
+            product.stock || 0
+        );
+
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    document.title =
+        title;
+
+
+    const pageTitle =
+        document.getElementById(
+            "pageTitle"
+        );
+
+
+    if (pageTitle) {
+
+        pageTitle.textContent =
+            title;
+
+    }
+
+
+
+    /* =====================================================
+       ROBOTS
+    ===================================================== */
+
+    setMetaByName(
+        "robots",
+        "index, follow"
+    );
+
+
+
+    /* =====================================================
+       META DESCRIPTION
+    ===================================================== */
+
+    const metaDescription =
+        document.getElementById(
+            "metaDescription"
+        );
+
+
+    if (metaDescription) {
+
+        metaDescription.setAttribute(
+            "content",
+            description
+        );
+
+    }
+
+    else {
+
+        setMetaByName(
+            "description",
+            description
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CANONICAL
+    ===================================================== */
+
+    setCanonicalURL(
         canonicalURL
     );
 
 
-    /* BREADCRUMB */
+
+    /* =====================================================
+       OPEN GRAPH BASIC
+    ===================================================== */
+
+    setMetaByProperty(
+        "og:type",
+        "product"
+    );
+
+
+    setMetaByProperty(
+        "og:locale",
+        "vi_VN"
+    );
+
+
+    setMetaByProperty(
+        "og:site_name",
+        "SPORTHUB"
+    );
+
+
+    setMetaByProperty(
+        "og:title",
+        title
+    );
+
+
+    setMetaByProperty(
+        "og:description",
+        description
+    );
+
+
+    setMetaByProperty(
+        "og:url",
+        canonicalURL
+    );
+
+
+
+    /* =====================================================
+       OPEN GRAPH IMAGE
+    ===================================================== */
+
+    if (imageURL) {
+
+        setMetaByProperty(
+            "og:image",
+            imageURL
+        );
+
+
+        setMetaByProperty(
+            "og:image:alt",
+            imageAlt
+        );
+
+    }
+
+
+
+    /* =====================================================
+       PRODUCT OPEN GRAPH
+    ===================================================== */
+
+    if (price > 0) {
+
+        setMetaByProperty(
+            "product:price:amount",
+            String(price)
+        );
+
+
+        setMetaByProperty(
+            "product:price:currency",
+            "VND"
+        );
+
+
+        setMetaByProperty(
+            "product:availability",
+            stock > 0
+                ? "in stock"
+                : "out of stock"
+        );
+
+    }
+
+    else {
+
+        removeMetaByProperty(
+            "product:price:amount"
+        );
+
+
+        removeMetaByProperty(
+            "product:price:currency"
+        );
+
+
+        removeMetaByProperty(
+            "product:availability"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       TWITTER / SOCIAL CARD
+    ===================================================== */
+
+    setMetaByName(
+        "twitter:card",
+        imageURL
+            ? "summary_large_image"
+            : "summary"
+    );
+
+
+    setMetaByName(
+        "twitter:title",
+        title
+    );
+
+
+    setMetaByName(
+        "twitter:description",
+        description
+    );
+
+
+    if (imageURL) {
+
+        setMetaByName(
+            "twitter:image",
+            imageURL
+        );
+
+
+        setMetaByName(
+            "twitter:image:alt",
+            imageAlt
+        );
+
+    }
+
+
+
+    /* =====================================================
+       BREADCRUMB HIỂN THỊ
+    ===================================================== */
 
     const breadcrumb =
         document.getElementById(
@@ -270,11 +809,387 @@ function setProductSEO(product) {
 
     }
 
+
+
+    /* =====================================================
+       SCHEMA PRODUCT
+    ===================================================== */
+
+    const productSchema = {
+
+        "@type":
+            "Product",
+
+        "@id":
+            `${canonicalURL}#product`,
+
+        "name":
+            product.name,
+
+        "description":
+            description,
+
+        "url":
+            canonicalURL
+
+    };
+
+
+    /*
+        SKU
+    */
+
+    if (code) {
+
+        productSchema.sku =
+            code;
+
+    }
+
+
+    /*
+        IMAGE
+    */
+
+    if (imageURL) {
+
+        productSchema.image =
+            [
+                imageURL
+            ];
+
+    }
+
+
+    /*
+        CATEGORY
+
+        Chỉ lấy dữ liệu thật đang có
+        trong catalog.
+    */
+
+    const category =
+        product.sportName ||
+        product.category ||
+        product.sport ||
+        "";
+
+
+    if (category) {
+
+        productSchema.category =
+            category;
+
+    }
+
+
+    /*
+        BRAND
+
+        Không tự gán SPORTHUB làm thương hiệu.
+
+        Chỉ thêm nếu database sản phẩm
+        thật sự có product.brand.
+    */
+
+    if (product.brand) {
+
+        productSchema.brand = {
+
+            "@type":
+                "Brand",
+
+            "name":
+                product.brand
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       SCHEMA OFFER
+    ===================================================== */
+
+    if (price > 0) {
+
+        productSchema.offers = {
+
+            "@type":
+                "Offer",
+
+            "url":
+                canonicalURL,
+
+            "priceCurrency":
+                "VND",
+
+            "price":
+                String(price),
+
+            "availability":
+                stock > 0
+
+                    ? "https://schema.org/InStock"
+
+                    : "https://schema.org/OutOfStock"
+
+        };
+
+    }
+
+
+
+    /* =====================================================
+       SCHEMA BREADCRUMB
+    ===================================================== */
+
+    const breadcrumbSchema = {
+
+        "@type":
+            "BreadcrumbList",
+
+        "@id":
+            `${canonicalURL}#breadcrumb`,
+
+        "itemListElement":
+            [
+
+                {
+
+                    "@type":
+                        "ListItem",
+
+                    "position":
+                        1,
+
+                    "name":
+                        "Trang chủ",
+
+                    "item":
+                        SPORTHUB_SITE_URL
+
+                },
+
+
+                {
+
+                    "@type":
+                        "ListItem",
+
+                    "position":
+                        2,
+
+                    "name":
+                        "Sản phẩm",
+
+                    "item":
+                        `${SPORTHUB_SITE_URL}shop.html`
+
+                },
+
+
+                {
+
+                    "@type":
+                        "ListItem",
+
+                    "position":
+                        3,
+
+                    "name":
+                        product.name,
+
+                    "item":
+                        canonicalURL
+
+                }
+
+            ]
+
+    };
+
+
+
+    /* =====================================================
+       JSON-LD GRAPH
+    ===================================================== */
+
+    const structuredData = {
+
+        "@context":
+            "https://schema.org",
+
+        "@graph":
+            [
+
+                productSchema,
+
+                breadcrumbSchema
+
+            ]
+
+    };
+
+
+    /*
+        Không đưa AggregateRating / Review
+        vào Schema nếu chưa có dữ liệu đánh giá
+        được xác nhận riêng.
+
+        Rating hiển thị trong giao diện
+        vẫn giữ nguyên logic cũ.
+    */
+
+    setProductStructuredData(
+        structuredData
+    );
+
 }
 
 
+
 /* =========================================================
-   4. RENDER DANH SÁCH
+   5. SEO KHI KHÔNG TÌM THẤY SẢN PHẨM
+========================================================= */
+
+function setProductNotFoundSEO() {
+
+    const title =
+        "Không tìm thấy sản phẩm | SPORTHUB";
+
+
+    const description =
+        "Sản phẩm không tồn tại hoặc đường dẫn không chính xác. Khám phá các sản phẩm thể thao khác tại SPORTHUB.";
+
+
+
+    document.title =
+        title;
+
+
+
+    const pageTitle =
+        document.getElementById(
+            "pageTitle"
+        );
+
+
+    if (pageTitle) {
+
+        pageTitle.textContent =
+            title;
+
+    }
+
+
+
+    setMetaByName(
+        "description",
+        description
+    );
+
+
+    /*
+        URL sản phẩm lỗi không nên index.
+    */
+
+    setMetaByName(
+        "robots",
+        "noindex, follow"
+    );
+
+
+
+    setMetaByProperty(
+        "og:type",
+        "website"
+    );
+
+
+    setMetaByProperty(
+        "og:title",
+        title
+    );
+
+
+    setMetaByProperty(
+        "og:description",
+        description
+    );
+
+
+    setMetaByName(
+        "twitter:title",
+        title
+    );
+
+
+    setMetaByName(
+        "twitter:description",
+        description
+    );
+
+
+
+    /*
+        URL lỗi không đặt canonical
+        về một sản phẩm khác.
+    */
+
+    const canonical =
+        document.querySelector(
+            'link[rel="canonical"]'
+        );
+
+
+    if (canonical) {
+
+        canonical.remove();
+
+    }
+
+
+
+    /*
+        Không xuất Product Schema
+        khi không có sản phẩm.
+    */
+
+    const schema =
+        document.getElementById(
+            "productSchema"
+        );
+
+
+    if (schema) {
+
+        schema.remove();
+
+    }
+
+
+
+    const breadcrumb =
+        document.getElementById(
+            "breadcrumbProduct"
+        );
+
+
+    if (breadcrumb) {
+
+        breadcrumb.textContent =
+            "Không tìm thấy sản phẩm";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   6. RENDER DANH SÁCH
 ========================================================= */
 
 function renderList(items) {
@@ -283,7 +1198,9 @@ function renderList(items) {
         !Array.isArray(items) ||
         !items.length
     ) {
+
         return "";
+
     }
 
 
@@ -306,105 +1223,152 @@ function renderList(items) {
 }
 
 
+
 /* =========================================================
-   5. FORMAT TÊN THÔNG SỐ
+   7. FORMAT TÊN THÔNG SỐ
 ========================================================= */
 
 function formatSpecName(key) {
 
     const labels = {
 
-        material: "Chất liệu",
+        material:
+            "Chất liệu",
 
-        padding: "Lớp đệm",
+        padding:
+            "Lớp đệm",
 
-        closure: "Kiểu khóa",
+        closure:
+            "Kiểu khóa",
 
-        weightOptions: "Lựa chọn trọng lượng",
+        weightOptions:
+            "Lựa chọn trọng lượng",
 
-        length: "Chiều dài",
+        length:
+            "Chiều dài",
 
-        quantity: "Số lượng",
+        quantity:
+            "Số lượng",
 
-        size: "Kích thước",
+        size:
+            "Kích thước",
 
-        sizes: "Kích thước",
+        sizes:
+            "Kích thước",
 
-        type: "Loại sản phẩm",
+        type:
+            "Loại sản phẩm",
 
-        productType: "Loại sản phẩm",
+        productType:
+            "Loại sản phẩm",
 
-        use: "Mục đích sử dụng",
+        use:
+            "Mục đích sử dụng",
 
-        capacity: "Dung tích",
+        capacity:
+            "Dung tích",
 
-        fit: "Form",
+        fit:
+            "Form",
 
-        upper: "Thân giày",
+        upper:
+            "Thân giày",
 
-        midsole: "Đế giữa",
+        midsole:
+            "Đế giữa",
 
-        outsole: "Đế ngoài",
+        outsole:
+            "Đế ngoài",
 
-        storage: "Ngăn chứa",
+        storage:
+            "Ngăn chứa",
 
-        surface: "Bề mặt",
+        surface:
+            "Bề mặt",
 
-        grip: "Cán cầm",
+        grip:
+            "Cán cầm",
 
-        balance: "Độ cân bằng",
+        balance:
+            "Độ cân bằng",
 
-        racketType: "Loại vợt",
+        racketType:
+            "Loại vợt",
 
-        faceMaterial: "Chất liệu mặt",
+        faceMaterial:
+            "Chất liệu mặt",
 
-        playStyle: "Phong cách",
+        playStyle:
+            "Phong cách",
 
-        resistance: "Mức kháng lực",
+        resistance:
+            "Mức kháng lực",
 
-        handles: "Tay cầm",
+        handles:
+            "Tay cầm",
 
-        firmness: "Độ cứng",
+        firmness:
+            "Độ cứng",
 
-        rotation: "Cơ chế xoay",
+        rotation:
+            "Cơ chế xoay",
 
-        compartments: "Ngăn chứa",
+        compartments:
+            "Ngăn chứa",
 
-        shoeCompartment: "Ngăn giày",
+        shoeCompartment:
+            "Ngăn giày",
 
-        carryOptions: "Cách mang",
+        carryOptions:
+            "Cách mang",
 
-        lid: "Nắp bình",
+        lid:
+            "Nắp bình",
 
-        construction: "Cấu trúc",
+        construction:
+            "Cấu trúc",
 
-        coverage: "Vùng bảo vệ",
+        coverage:
+            "Vùng bảo vệ",
 
-        trainingType: "Hình thức tập",
+        trainingType:
+            "Hình thức tập",
 
-        sleeve: "Tay áo",
+        sleeve:
+            "Tay áo",
 
-        strap: "Dây đeo",
+        strap:
+            "Dây đeo",
 
-        straps: "Dây cố định",
+        straps:
+            "Dây cố định",
 
-        blade: "Thiết kế lưỡi",
+        blade:
+            "Thiết kế lưỡi",
 
-        waistband: "Cạp quần",
+        waistband:
+            "Cạp quần",
 
-        courtUse: "Loại sân",
+        courtUse:
+            "Loại sân",
 
-        reinforcedZones: "Vùng gia cố",
+        reinforcedZones:
+            "Vùng gia cố",
 
-        outerLayer: "Lớp ngoài",
+        outerLayer:
+            "Lớp ngoài",
 
-        handle: "Tay cầm",
+        handle:
+            "Tay cầm",
 
-        adjustment: "Điều chỉnh",
+        adjustment:
+            "Điều chỉnh",
 
-        gripOptions: "Lựa chọn grip",
+        gripOptions:
+            "Lựa chọn grip",
 
-        headType: "Thiết kế mặt vợt"
+        headType:
+            "Thiết kế mặt vợt"
 
     };
 
@@ -432,8 +1396,9 @@ function formatSpecName(key) {
 }
 
 
+
 /* =========================================================
-   6. RENDER THÔNG SỐ
+   8. RENDER THÔNG SỐ
 ========================================================= */
 
 function renderSpecifications(specifications) {
@@ -442,7 +1407,9 @@ function renderSpecifications(specifications) {
         !specifications ||
         typeof specifications !== "object"
     ) {
+
         return "";
+
     }
 
 
@@ -453,7 +1420,9 @@ function renderSpecifications(specifications) {
 
 
     if (!entries.length) {
+
         return "";
+
     }
 
 
@@ -486,8 +1455,9 @@ function renderSpecifications(specifications) {
 }
 
 
+
 /* =========================================================
-   7. TÌM SẢN PHẨM LIÊN QUAN
+   9. TÌM SẢN PHẨM LIÊN QUAN
 ========================================================= */
 
 function getRelatedProducts(product) {
@@ -508,18 +1478,23 @@ function getRelatedProducts(product) {
             result.length < 4
         ) {
 
-            result.push(item);
+            result.push(
+                item
+            );
 
         }
 
     });
 
 
+
     /* -----------------------------------------------------
        NẾU CHƯA ĐỦ → CÙNG TYPE
     ----------------------------------------------------- */
 
-    if (result.length < 4) {
+    if (
+        result.length < 4
+    ) {
 
         products.forEach(item => {
 
@@ -537,7 +1512,9 @@ function getRelatedProducts(product) {
                 result.length < 4
             ) {
 
-                result.push(item);
+                result.push(
+                    item
+                );
 
             }
 
@@ -551,8 +1528,9 @@ function getRelatedProducts(product) {
 }
 
 
+
 /* =========================================================
-   8. RELATED PRODUCT CARD
+   10. RELATED PRODUCT CARD
 ========================================================= */
 
 function relatedProductCard(product) {
@@ -669,11 +1647,20 @@ function relatedProductCard(product) {
 }
 
 
+
 /* =========================================================
-   9. PRODUCT NOT FOUND
+   11. PRODUCT NOT FOUND
 ========================================================= */
 
 if (!product) {
+
+
+    /*
+        SEO riêng cho URL lỗi.
+    */
+
+    setProductNotFoundSEO();
+
 
     root.innerHTML = `
 
@@ -706,16 +1693,27 @@ if (!product) {
 }
 
 
+
 /* =========================================================
-   10. PRODUCT FOUND
+   12. PRODUCT FOUND
 ========================================================= */
 
 else {
+
+
+    /* =====================================================
+       SEO
+    ===================================================== */
 
     setProductSEO(
         product
     );
 
+
+
+    /* =====================================================
+       DISCOUNT
+    ===================================================== */
 
     const discount =
         getProductDiscount(
@@ -723,10 +1721,20 @@ else {
         );
 
 
+
+    /* =====================================================
+       PRODUCT CODE
+    ===================================================== */
+
     const code =
         product.code ||
         `P${String(product.id).padStart(2, "0")}`;
 
+
+
+    /* =====================================================
+       SIZE
+    ===================================================== */
 
     const sizes =
         Array.isArray(product.sizes) &&
@@ -737,16 +1745,31 @@ else {
             : ["Tiêu chuẩn"];
 
 
+
+    /* =====================================================
+       IMAGE ALT
+    ===================================================== */
+
     const imageAlt =
         product.imageAlt ||
         product.name;
 
+
+
+    /* =====================================================
+       RELATED PRODUCTS
+    ===================================================== */
 
     const relatedProducts =
         getRelatedProducts(
             product
         );
 
+
+
+    /* =====================================================
+       RENDER PRODUCT
+    ===================================================== */
 
     root.innerHTML = `
 
@@ -1277,14 +2300,17 @@ else {
 }
 
 
+
 /* =========================================================
-   11. THAY ĐỔI SỐ LƯỢNG
+   13. THAY ĐỔI SỐ LƯỢNG
 ========================================================= */
 
 function chg(value) {
 
     if (!product) {
+
         return;
+
     }
 
 
@@ -1321,21 +2347,26 @@ function chg(value) {
 }
 
 
+
 /* =========================================================
-   12. THÊM VÀO GIỎ HÀNG
+   14. THÊM VÀO GIỎ HÀNG
 ========================================================= */
 
 function addCurrent() {
 
     if (!product) {
+
         return;
+
     }
 
 
     if (
         Number(product.stock || 0) <= 0
     ) {
+
         return;
+
     }
 
 
@@ -1347,7 +2378,9 @@ function addCurrent() {
 
     const selectedSize =
         sizeElement
+
             ? sizeElement.value
+
             : "Tiêu chuẩn";
 
 
