@@ -1,25 +1,25 @@
-<!doctype html> 
- 
-<html lang="vi"> 
- 
-<head> 
- 
-    <meta charset="utf-8"> 
- 
-    <meta 
-        name="viewport" 
-        content="width=device-width, initial-scale=1" 
-    > 
- 
+<!doctype html>
+
+<html lang="vi">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
 
     <!-- =====================================================
          SEO
     ====================================================== -->
 
-    <title> 
+    <title>
         Giỏ hàng SPORTHUB – Mua sắm đồ thể thao trực tuyến
-    </title> 
- 
+    </title>
+
     <meta
         name="description"
         content="Kiểm tra sản phẩm đã chọn, cập nhật số lượng và tiếp tục mua sắm đồ thể thao tại SPORTHUB nhanh chóng, thuận tiện."
@@ -124,269 +124,284 @@
     </script>
 
 
-    <link 
-        rel="stylesheet" 
-        href="css/style.css" 
-    > 
- 
-</head> 
- 
- 
-<body> 
- 
- 
-<!-- ===================================================== 
-     HEADER 
-===================================================== --> 
- 
-<header class="header"> 
- 
-    <div class="container nav"> 
- 
- 
-        <a 
-            class="logo" 
-            href="index.html" 
-        > 
-            SPORT<span>HUB</span> 
-        </a> 
- 
- 
-        <nav> 
- 
-            <a href="index.html"> 
-                Trang chủ 
-            </a> 
- 
-            <a href="shop.html"> 
-                Sản phẩm 
-            </a> 
- 
-            <a href="health-check.html"> 
-                Fitness Check 
-            </a> 
- 
-            <a href="blog.html"> 
-                Blog 
-            </a> 
- 
-            <a href="gioi-thieu/"> 
-                Giới thiệu 
-            </a> 
- 
-            <a href="lien-he/"> 
-                Liên hệ 
-            </a> 
- 
-        </nav> 
- 
- 
-    </div> 
- 
-</header> 
- 
- 
- 
-<!-- ===================================================== 
-     PAGE HERO 
-===================================================== --> 
- 
-<section class="page-hero"> 
- 
-    <div class="container"> 
- 
-        <span class="eyebrow"> 
-            YOUR CART 
-        </span> 
- 
-        <h1> 
-            GIỎ HÀNG 
-        </h1> 
- 
-    </div> 
- 
-</section> 
- 
- 
- 
-<!-- ===================================================== 
-     CART 
-===================================================== --> 
- 
-<section class="section"> 
- 
-    <div class="container cart-layout"> 
- 
- 
-        <!-- CART PRODUCTS --> 
- 
-        <div id="cartList"> 
-        </div> 
- 
- 
- 
-        <!-- CART SUMMARY --> 
- 
-        <aside class="cart-summary"> 
- 
- 
-            <h2> 
-                Tóm tắt 
-            </h2> 
- 
- 
-            <div class="summary-row"> 
- 
-                <span> 
-                    Tạm tính 
-                </span> 
- 
-                <b id="sub"> 
-                    0đ 
-                </b> 
- 
-            </div> 
- 
- 
- 
-            <!-- COUPON --> 
- 
-            <div 
-                style=" 
-                    margin:18px 0; 
-                " 
-            > 
- 
-                <input 
-                    id="coupon" 
-                    style=" 
-                        width:65%; 
-                        padding:11px; 
-                        border:1px solid #ddd; 
-                    " 
-                    placeholder="SPORT10" 
-                > 
- 
-                <button 
-                    class="btn-dark" 
-                    type="button" 
-                    onclick="coupon()" 
-                > 
-                    Áp dụng 
-                </button> 
- 
-                <p 
-                    id="couponMsg" 
-                    style=" 
-                        font-size:12px; 
-                        margin-top:6px; 
-                    " 
-                ></p> 
- 
-            </div> 
- 
- 
- 
-            <div class="summary-row"> 
- 
-                <span> 
-                    Giảm 
-                </span> 
- 
-                <b id="dis"> 
-                    0đ 
-                </b> 
- 
-            </div> 
- 
- 
- 
-            <div class="summary-total"> 
- 
-                <span> 
-                    Tổng 
-                </span> 
- 
-                <b id="tot"> 
-                    0đ 
-                </b> 
- 
-            </div> 
- 
- 
- 
-            <button 
-                class="btn-primary" 
-                type="button" 
-                style=" 
-                    width:100%; 
-                " 
-                onclick="checkout()" 
-            > 
-                THANH TOÁN 
-            </button> 
- 
- 
-        </aside> 
- 
- 
-    </div> 
- 
-</section> 
- 
- 
- 
-<!-- ===================================================== 
-     JAVASCRIPT 
-===================================================== --> 
- 
- 
-<!-- IMAGE ENGINE --> 
- 
-<script src="js/image-factory.js"></script> 
- 
- 
-<!-- PRODUCT DATABASE --> 
- 
-<script src="js/data.js"></script> 
- 
- 
-<!-- 
-    CATALOG DATABASE 
- 
-    Bổ sung metadata sản phẩm mở rộng 
-    để chatbot có thể truy cập đầy đủ 
-    catalog P01 - P52. 
---> 
- 
-<script src="js/catalog-data.js"></script> 
- 
- 
-<!-- CART / MONEY / UTILITY --> 
- 
-<script src="js/main.js"></script> 
- 
- 
-<!-- CART ENGINE --> 
- 
-<script src="js/cart.js"></script> 
- 
- 
-<!-- 
-    SPORTHUB AI COACH & CUSTOMER ASSISTANT 
- 
-    Đặt cuối cùng để chatbot có thể truy cập: 
-    - dữ liệu sản phẩm 
-    - catalog P01 - P52 
-    - giỏ hàng 
-    - coupon 
-    - tổng tiền 
-    - utility chung 
---> 
- 
-<script src="js/chatbot.js?v=6.4"></script> 
- 
- 
-</body> 
- 
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="container nav">
+
+
+        <a
+            class="logo"
+            href="./"
+            aria-label="SPORTHUB - Trang chủ"
+        >
+            SPORT<span>HUB</span>
+        </a>
+
+
+        <nav>
+
+            <a href="./">
+                Trang chủ
+            </a>
+
+            <a href="shop.html">
+                Sản phẩm
+            </a>
+
+            <a href="health-check.html">
+                Fitness Check
+            </a>
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+            <a href="gioi-thieu/">
+                Giới thiệu
+            </a>
+
+            <a href="lien-he/">
+                Liên hệ
+            </a>
+
+        </nav>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            YOUR CART
+        </span>
+
+        <h1>
+            GIỎ HÀNG
+        </h1>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<section class="section">
+
+    <div class="container cart-layout">
+
+
+        <!-- CART PRODUCTS -->
+
+        <div id="cartList">
+        </div>
+
+
+
+        <!-- CART SUMMARY -->
+
+        <aside class="cart-summary">
+
+
+            <h2>
+                Tóm tắt
+            </h2>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Tạm tính
+                </span>
+
+                <b id="sub">
+                    0đ
+                </b>
+
+            </div>
+
+
+
+            <!-- COUPON -->
+
+            <div
+                style="
+                    margin:18px 0;
+                "
+            >
+
+                <input
+                    id="coupon"
+                    style="
+                        width:65%;
+                        padding:11px;
+                        border:1px solid #ddd;
+                    "
+                    placeholder="SPORT10"
+                >
+
+                <button
+                    class="btn-dark"
+                    type="button"
+                    onclick="coupon()"
+                >
+                    Áp dụng
+                </button>
+
+                <p
+                    id="couponMsg"
+                    style="
+                        font-size:12px;
+                        margin-top:6px;
+                    "
+                ></p>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    Giảm
+                </span>
+
+                <b id="dis">
+                    0đ
+                </b>
+
+            </div>
+
+
+
+            <div class="summary-total">
+
+                <span>
+                    Tổng
+                </span>
+
+                <b id="tot">
+                    0đ
+                </b>
+
+            </div>
+
+
+
+            <button
+                class="btn-primary"
+                type="button"
+                style="
+                    width:100%;
+                "
+                onclick="checkout()"
+            >
+                THANH TOÁN
+            </button>
+
+
+        </aside>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<!-- IMAGE ENGINE -->
+
+<script src="js/image-factory.js"></script>
+
+
+<!-- PRODUCT DATABASE -->
+
+<script src="js/data.js"></script>
+
+
+<!--
+    CATALOG DATABASE
+
+    Bổ sung metadata sản phẩm mở rộng
+    để chatbot có thể truy cập đầy đủ
+    catalog P01 - P52.
+-->
+
+<script src="js/catalog-data.js?v=6.5"></script>
+
+
+<!-- CART / MONEY / UTILITY -->
+
+<script src="js/main.js"></script>
+
+
+<!--
+    CART ENGINE
+
+    ID sản phẩm nội bộ trong giỏ hàng
+    vẫn giữ dạng số để tương thích
+    với localStorage và main.js.
+
+    Link hiển thị tới trang sản phẩm,
+    nếu có, sẽ được kiểm tra trong cart.js
+    ở bước tiếp theo.
+-->
+
+<script src="js/cart.js"></script>
+
+
+<!--
+    SPORTHUB AI COACH & CUSTOMER ASSISTANT
+
+    Đặt cuối cùng để chatbot có thể truy cập:
+    - dữ liệu sản phẩm
+    - catalog P01 - P52
+    - giỏ hàng
+    - coupon
+    - tổng tiền
+    - utility chung
+
+    v=6.5:
+    - nhận diện ID số hoặc PXX
+    - link sản phẩm chatbot tạo ra dùng P01 -> P52
+-->
+
+<script src="js/chatbot.js?v=6.5"></script>
+
+
+</body>
+
 </html>

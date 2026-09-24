@@ -310,8 +310,8 @@
     <!-- =====================================================
          BLOG B01 - B20
 
-         Tạm giữ URL hiện tại.
-         Sẽ kiểm tra blog-detail riêng trước khi thay đổi.
+         URL Blog Detail chuẩn vẫn sử dụng
+         blog-detail.html?id=1 -> id=20.
     ====================================================== -->
 
     <url>

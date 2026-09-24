@@ -453,7 +453,16 @@
          để tương thích nếu người dùng truy cập
          từ liên kết cũ.
 
-         Tuy nhiên toàn bộ link nội bộ mới
+         Nếu URL đang là dạng số, ví dụ:
+
+         product.html?id=5
+
+         product.js sẽ chuẩn hóa URL hiển thị về:
+
+         product.html?id=P05
+
+
+         Toàn bộ link nội bộ mới
          sẽ sử dụng mã P01 -> P52.
 
 
@@ -480,7 +489,7 @@
          product.html?id=P52
     ====================================================== -->
 
-    <script src="js/product.js?v=6.5"></script>
+    <script src="js/product.js?v=6.6"></script>
 
 
 
@@ -517,9 +526,16 @@
          "có size gì"
          "còn hàng không"
          "có mẫu rẻ hơn không"
+
+         Bản v6.5 hỗ trợ cả:
+         - ?id=5
+         - ?id=P05
+
+         Và link sản phẩm chatbot sinh ra
+         dùng chuẩn P01 -> P52.
     ====================================================== -->
 
-    <script src="js/chatbot.js?v=6.4"></script>
+    <script src="js/chatbot.js?v=6.5"></script>
 
 
 </body>
