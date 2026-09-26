@@ -955,4 +955,1723 @@ products.forEach(product => {
     );
 
 })();
+/* =========================================================
+   SPORTHUB - PRODUCT CONTENT P01 - P52
+   KHỐI HỢP NHẤT NỘI DUNG MÔ TẢ
 
+   CÁCH DÙNG:
+   - Dán NGUYÊN KHỐI này ở CUỐI js/catalog-data.js.
+   - Không cần xóa các sản phẩm P13 - P52 đang có.
+   - Khối này cập nhật trực tiếp đúng sản phẩm theo product.code.
+
+   NGUYÊN TẮC:
+   - Giữ nguyên giá, ảnh, stock, rating, category, slug.
+   - Giữ nguyên seoTitle và metaDescription đang tốt.
+   - Giữ nguyên highlights, suitableFor, specifications,
+     usageGuide, careGuide... đang có.
+   - Lưu lại description cũ trong originalDescription.
+   - Dùng nội dung tài liệu mô tả làm description thống nhất.
+   - Không ghi đè product.sizes đang dùng để khách chọn hàng.
+   - Bảng size chỉ được thêm ở product.sizeGuide.
+========================================================= */
+
+window.SPORTHUB_PRODUCT_SIZE_NOTICE =
+  "LƯU Ý: Size/bảng size là đề xuất để hoàn thiện website, cần đối chiếu với thông số thực tế của nhà cung cấp trước khi bán hàng. Màu sắc được ghi theo các màu/phiên bản thể hiện trong hình sản phẩm.";
+
+
+/* =========================================================
+   DATABASE NỘI DUNG P01 - P52
+========================================================= */
+
+window.SPORTHUB_PRODUCT_CONTENT = {
+
+  "P01": {
+    "sourceTitle": "Áo Gym Performance Pro",
+    "paragraphs": [
+      "Áo Gym Performance Pro là mẫu áo gym / áo tập nam phù hợp cho gym, fitness và tập luyện. Sản phẩm nổi bật với co giãn, thoáng khí, phù hợp gym và fitness.",
+      "Thiết kế áo tập dáng thể thao, không tay, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Áo Gym Performance Pro"],
+      ["Loại sản phẩm", "Áo gym / áo tập nam"],
+      ["Chất liệu", "Vải thể thao co giãn"],
+      ["Đặc điểm", "Co giãn, thoáng khí, phù hợp gym và fitness"],
+      ["Kiểu dáng", "Dáng thể thao, không tay"],
+      ["Màu sắc", "Đen"],
+      ["Size", "Chưa cung cấp"]
+    ],
+    "closing": "Áo Gym Performance Pro là lựa chọn dành cho người đang tìm kiếm áo gym / áo tập nam có co giãn, thoáng khí, phù hợp gym và fitness."
+  },
+
+  "P02": {
+    "sourceTitle": "Giày chạy bộ Energy Runner X2",
+    "paragraphs": [
+      "Giày chạy bộ Energy Runner X2 là mẫu giày chạy bộ phù hợp cho chạy bộ, đi bộ, cardio và thể thao. Sản phẩm nổi bật với nhẹ, đệm đàn hồi tốt và bám đường ổn định.",
+      "Thiết kế dáng giày thể thao, thân gọn, đế có độ bám, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Giày chạy bộ Energy Runner X2"],
+      ["Loại sản phẩm", "Giày chạy bộ"],
+      ["Chất liệu", "Vật liệu giày thể thao"],
+      ["Đặc điểm", "Nhẹ, đệm đàn hồi tốt và bám đường ổn định"],
+      ["Kiểu dáng", "Dáng thể thao, thân gọn, đế có độ bám"],
+      ["Màu sắc", "Đen, xanh lá"],
+      ["Size", "Chưa cung cấp"]
+    ],
+    "closing": "Giày chạy bộ Energy Runner X2 là lựa chọn dành cho người đang tìm kiếm giày chạy bộ có nhẹ, đệm đàn hồi tốt và bám đường ổn định."
+  },
+
+  "P03": {
+    "sourceTitle": "Găng tay Gym ProGrip",
+    "paragraphs": [
+      "Găng tay Gym ProGrip là mẫu găng tay gym phù hợp cho gym, fitness và tập tạ. Sản phẩm nổi bật với hỗ trợ chống trượt và bảo vệ lòng bàn tay.",
+      "Thiết kế găng tập gọn, hở ngón, có phần bảo vệ và đai cố định, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Găng tay Gym ProGrip"],
+      ["Loại sản phẩm", "Găng tay gym"],
+      ["Chất liệu", "Vật liệu thể thao"],
+      ["Đặc điểm", "Chống trượt, hỗ trợ bảo vệ lòng bàn tay"],
+      ["Kiểu dáng", "Thiết kế gọn, hở ngón, có đai cố định"],
+      ["Màu sắc", "Đen"],
+      ["Size", "Chưa cung cấp"]
+    ],
+    "closing": "Găng tay Gym ProGrip là lựa chọn dành cho người đang tìm kiếm găng tay gym có hỗ trợ chống trượt và bảo vệ lòng bàn tay."
+  },
+
+  "P04": {
+    "sourceTitle": "Tạ tay Rubber Dumbbell 10KG",
+    "paragraphs": [
+      "Tạ tay Rubber Dumbbell 10KG là mẫu tạ tay phù hợp cho gym, fitness và tập tại nhà. Sản phẩm nổi bật với thiết kế bọc cao su, tiện tập luyện.",
+      "Thiết kế tạ đơn gọn, đầu tạ bọc cao su, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Tạ tay Rubber Dumbbell 10KG"],
+      ["Loại sản phẩm", "Tạ tay"],
+      ["Chất liệu", "Cao su bọc ngoài"],
+      ["Đặc điểm", "Thiết kế bọc cao su, tiện tập luyện"],
+      ["Kiểu dáng", "Tạ đơn, đầu tạ dạng tròn"],
+      ["Màu sắc", "Đen"],
+      ["Size", "10KG"]
+    ],
+    "closing": "Tạ tay Rubber Dumbbell 10KG là lựa chọn dành cho người đang tìm kiếm tạ tay có thiết kế bọc cao su, tiện tập luyện."
+  },
+
+  "P05": {
+    "sourceTitle": "Dây kháng lực PowerBand Set",
+    "paragraphs": [
+      "Dây kháng lực PowerBand Set là bộ dây kháng lực phù hợp cho gym, fitness, stretching và tập luyện toàn thân. Sản phẩm nổi bật với 5 mức lực hỗ trợ tập toàn thân.",
+      "Thiết kế dạng dây vòng đàn hồi, nhiều mức lực, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Dây kháng lực PowerBand Set"],
+      ["Loại sản phẩm", "Bộ dây kháng lực"],
+      ["Chất liệu", "Vật liệu đàn hồi thể thao"],
+      ["Đặc điểm", "5 mức lực, hỗ trợ tập toàn thân"],
+      ["Kiểu dáng", "Dây vòng đàn hồi, nhiều mức lực"],
+      ["Màu sắc", "Vàng, cam, xanh lá, xanh dương, đỏ"],
+      ["Size", "5 mức lực"]
+    ],
+    "closing": "Dây kháng lực PowerBand Set là lựa chọn dành cho người đang tìm kiếm bộ dây kháng lực có 5 mức lực, hỗ trợ tập toàn thân."
+  },
+
+  "P06": {
+    "sourceTitle": "Thảm Yoga Premium Pro",
+    "paragraphs": [
+      "Thảm Yoga Premium Pro là mẫu thảm yoga phù hợp cho yoga, stretching, pilates và bodyweight. Sản phẩm nổi bật với bề mặt chống trượt, hỗ trợ giữ thăng bằng.",
+      "Thiết kế độ dày vừa phải, có quai đeo, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Thảm Yoga Premium Pro"],
+      ["Loại sản phẩm", "Thảm yoga"],
+      ["Chất liệu", "Foam/PVC thể thao"],
+      ["Đặc điểm", "Bề mặt chống trượt, hỗ trợ giữ thăng bằng"],
+      ["Kiểu dáng", "Độ dày vừa phải, có quai đeo"],
+      ["Màu sắc", "Đen, xanh dương, xanh lá, xám, cam, hồng, tím, đỏ"],
+      ["Size", "183 × 61 cm"]
+    ],
+    "closing": "Thảm Yoga Premium Pro là lựa chọn dành cho người đang tìm kiếm thảm yoga có bề mặt chống trượt, hỗ trợ giữ thăng bằng."
+  },
+
+  "P07": {
+    "sourceTitle": "Quần Short FlexMove",
+    "paragraphs": [
+      "Quần Short FlexMove là mẫu quần short thể thao nam phù hợp cho gym, chạy bộ, fitness và thể thao. Sản phẩm nổi bật với nhẹ, linh hoạt khi vận động.",
+      "Thiết kế dáng short thể thao, cạp co giãn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Quần Short FlexMove"],
+      ["Loại sản phẩm", "Quần short thể thao nam"],
+      ["Chất liệu", "Vải thể thao co giãn"],
+      ["Đặc điểm", "Nhẹ, linh hoạt khi vận động"],
+      ["Kiểu dáng", "Dáng short thể thao, cạp co giãn"],
+      ["Màu sắc", "Đen"],
+      ["Size", "S/M/L/XL/2XL"]
+    ],
+    "closing": "Quần Short FlexMove là lựa chọn dành cho người đang tìm kiếm quần short thể thao nam có nhẹ, linh hoạt khi vận động.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Vòng eo gợi ý"],
+      "rows": [
+        ["S", "68–74 cm"],
+        ["M", "74–80 cm"],
+        ["L", "80–86 cm"],
+        ["XL", "86–92 cm"],
+        ["2XL", "92–100 cm"]
+      ]
+    }
+  },
+
+  "P08": {
+    "sourceTitle": "Áo Khoác Active Wind",
+    "paragraphs": [
+      "Áo Khoác Active Wind là mẫu áo khoác thể thao phù hợp cho chạy bộ, outdoor, gym và đi lại. Sản phẩm nổi bật với hỗ trợ che gió khi vận động ngoài trời.",
+      "Thiết kế dáng thể thao, khóa kéo phía trước, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Áo Khoác Active Wind"],
+      ["Loại sản phẩm", "Áo khoác thể thao"],
+      ["Chất liệu", "Vải dệt nhẹ"],
+      ["Đặc điểm", "Hỗ trợ che gió khi vận động ngoài trời"],
+      ["Kiểu dáng", "Dáng thể thao, khóa kéo phía trước"],
+      ["Màu sắc", "Đen"],
+      ["Size", "S/M/L/XL/2XL"]
+    ],
+    "closing": "Áo Khoác Active Wind là lựa chọn dành cho người đang tìm kiếm áo khoác thể thao có hỗ trợ che gió khi vận động ngoài trời.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều cao / cân nặng gợi ý"],
+      "rows": [
+        ["S", "160–168 cm / 50–60 kg"],
+        ["M", "165–173 cm / 58–68 kg"],
+        ["L", "170–178 cm / 66–76 kg"],
+        ["XL", "175–183 cm / 74–86 kg"],
+        ["2XL", "180–188 cm / 84–96 kg"]
+      ]
+    }
+  },
+
+  "P09": {
+    "sourceTitle": "Bình Nước SportSteel 1L",
+    "paragraphs": [
+      "Bình Nước SportSteel 1L là mẫu bình thể thao phù hợp cho gym, chạy bộ, outdoor và hằng ngày. Sản phẩm nổi bật với dung tích lớn, tiện mang nước khi tập.",
+      "Thiết kế dạng bình cao, nắp kín, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bình Nước SportSteel 1L"],
+      ["Loại sản phẩm", "Bình thể thao"],
+      ["Chất liệu", "Thép không gỉ"],
+      ["Đặc điểm", "Dung tích lớn, tiện mang nước khi tập"],
+      ["Màu sắc", "Đen"],
+      ["Size", "1L"]
+    ],
+    "closing": "Bình Nước SportSteel 1L là lựa chọn dành cho người đang tìm kiếm bình thể thao có dung tích lớn, tiện mang nước khi tập."
+  },
+
+  "P10": {
+    "sourceTitle": "Foam Roller Recovery X",
+    "paragraphs": [
+      "Foam Roller Recovery X là mẫu foam roller phù hợp cho recovery, stretching, yoga và gym. Sản phẩm nổi bật với hỗ trợ massage và phục hồi cơ.",
+      "Thiết kế bề mặt có rãnh tạo áp lực khi lăn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Foam Roller Recovery X"],
+      ["Loại sản phẩm", "Foam roller"],
+      ["Chất liệu", "EVA/foam mật độ cao"],
+      ["Đặc điểm", "Hỗ trợ massage và phục hồi cơ"],
+      ["Màu sắc", "Đen"],
+      ["Size", "45 × 13 cm"]
+    ],
+    "closing": "Foam Roller Recovery X là lựa chọn dành cho người đang tìm kiếm foam roller có hỗ trợ massage và phục hồi cơ."
+  },
+
+  "P11": {
+    "sourceTitle": "Túi Gym Urban 35L",
+    "paragraphs": [
+      "Túi Gym Urban 35L là mẫu túi gym phù hợp cho gym, fitness, thể thao và du lịch ngắn ngày. Sản phẩm nổi bật với khoang chứa tiện dụng cho đồ tập.",
+      "Thiết kế dáng duffle, quai xách chắc chắn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Túi Gym Urban 35L"],
+      ["Loại sản phẩm", "Túi gym"],
+      ["Chất liệu", "Vải polyester"],
+      ["Đặc điểm", "Khoang chứa tiện dụng cho đồ tập"],
+      ["Kiểu dáng", "Dáng duffle, quai xách chắc chắn"],
+      ["Màu sắc", "Đen"],
+      ["Size", "35L"]
+    ],
+    "closing": "Túi Gym Urban 35L là lựa chọn dành cho người đang tìm kiếm túi gym có khoang chứa tiện dụng cho đồ tập."
+  },
+
+  "P12": {
+    "sourceTitle": "Dây Nhảy Speed Rope RX",
+    "paragraphs": [
+      "Dây Nhảy Speed Rope RX là mẫu speed rope phù hợp cho nhảy dây, cardio, hiit và khởi động. Sản phẩm nổi bật với hỗ trợ cardio, hiit và tăng sức bền.",
+      "Thiết kế tay cầm gọn, dây điều chỉnh, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Dây Nhảy Speed Rope RX"],
+      ["Loại sản phẩm", "Speed rope"],
+      ["Chất liệu", "Dây cáp thể thao"],
+      ["Đặc điểm", "Hỗ trợ cardio, HIIT và tăng sức bền"],
+      ["Kiểu dáng", "Tay cầm gọn, dây điều chỉnh"],
+      ["Màu sắc", "Đen"],
+      ["Size", "One Size – điều chỉnh"]
+    ],
+    "closing": "Dây Nhảy Speed Rope RX là lựa chọn dành cho người đang tìm kiếm speed rope có hỗ trợ cardio, hiit và tăng sức bền."
+  },
+
+  "P13": {
+    "sourceTitle": "Găng Boxing Training Pro",
+    "paragraphs": [
+      "Găng Boxing Training Pro là mẫu găng boxing phù hợp cho boxing, kickboxing và tập bao cát. Sản phẩm nổi bật với hỗ trợ bảo vệ tay khi tập đấm.",
+      "Thiết kế thiết kế găng boxing, đệm lòng bàn tay, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Găng Boxing Training Pro"],
+      ["Loại sản phẩm", "Găng boxing"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ tay khi tập đấm"],
+      ["Kiểu dáng", "Thiết kế găng boxing, đệm lòng bàn tay"],
+      ["Màu sắc", "Đen"],
+      ["Size", "10/12/14/16 oz"]
+    ],
+    "closing": "Găng Boxing Training Pro là lựa chọn dành cho người đang tìm kiếm găng boxing có hỗ trợ bảo vệ tay khi tập đấm.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Mức cân nặng gợi ý"],
+      "rows": [
+        ["10 oz", "50–65 kg"],
+        ["12 oz", "60–75 kg"],
+        ["14 oz", "70–85 kg"],
+        ["16 oz", "80 kg trở lên"]
+      ]
+    }
+  },
+
+  "P14": {
+    "sourceTitle": "Băng Quấn Tay Boxing Wrap 4.5m",
+    "paragraphs": [
+      "Băng Quấn Tay Boxing Wrap 4.5m là mẫu băng quấn tay phù hợp cho boxing, muay thai và kickboxing. Sản phẩm nổi bật với hỗ trợ cố định cổ tay và bảo vệ bàn tay.",
+      "Thiết kế dài 4,5 m, quấn nhiều vòng, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Băng Quấn Tay Boxing Wrap 4.5m"],
+      ["Loại sản phẩm", "Băng quấn tay"],
+      ["Chất liệu", "Vải cotton co giãn"],
+      ["Đặc điểm", "Hỗ trợ cố định cổ tay và bảo vệ bàn tay"],
+      ["Màu sắc", "Đen, xanh dương, vàng, đỏ, trắng"],
+      ["Size", "4,5 m"]
+    ],
+    "closing": "Băng Quấn Tay Boxing Wrap 4.5m là lựa chọn dành cho người đang tìm kiếm băng quấn tay có hỗ trợ cố định cổ tay và bảo vệ bàn tay."
+  },
+
+  "P15": {
+    "sourceTitle": "Mũ Bảo Hộ Boxing Headguard X",
+    "paragraphs": [
+      "Mũ Bảo Hộ Boxing Headguard X là mẫu mũ bảo hộ boxing phù hợp cho boxing, kickboxing và tập đối kháng. Sản phẩm nổi bật với hỗ trợ bảo vệ đầu khi tập đối kháng.",
+      "Thiết kế thiết kế ôm đầu, có dây điều chỉnh, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Mũ Bảo Hộ Boxing Headguard X"],
+      ["Loại sản phẩm", "Mũ bảo hộ boxing"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ đầu khi tập đối kháng"],
+      ["Kiểu dáng", "Thiết kế ôm đầu, có dây điều chỉnh"],
+      ["Màu sắc", "Đen, xanh dương, đỏ"],
+      ["Size", "S/M/L/XL"]
+    ],
+    "closing": "Mũ Bảo Hộ Boxing Headguard X là lựa chọn dành cho người đang tìm kiếm mũ bảo hộ boxing có hỗ trợ bảo vệ đầu khi tập đối kháng.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Vòng đầu gợi ý"],
+      "rows": [
+        ["S", "52–55 cm"],
+        ["M", "55–58 cm"],
+        ["L", "58–61 cm"],
+        ["XL", "61–64 cm"]
+      ]
+    }
+  },
+
+  "P16": {
+    "sourceTitle": "Bao Cát Boxing Heavy Bag Pro",
+    "paragraphs": [
+      "Bao Cát Boxing Heavy Bag Pro là mẫu bao cát boxing phù hợp cho boxing, kickboxing và tập thể lực. Sản phẩm nổi bật với hỗ trợ tập lực đấm và kickboxing.",
+      "Thiết kế dạng bao treo, kích thước lớn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bao Cát Boxing Heavy Bag Pro"],
+      ["Loại sản phẩm", "Bao cát boxing"],
+      ["Chất liệu", "Da tổng hợp + lõi đệm"],
+      ["Đặc điểm", "Hỗ trợ tập lực đấm và kickboxing"],
+      ["Màu sắc", "Đen"],
+      ["Size", "Theo trọng lượng 20/30/40 kg"]
+    ],
+    "closing": "Bao Cát Boxing Heavy Bag Pro là lựa chọn dành cho người đang tìm kiếm bao cát boxing có hỗ trợ tập lực đấm và kickboxing."
+  },
+
+  "P17": {
+    "sourceTitle": "Bích Đấm Boxing Focus Mitt",
+    "paragraphs": [
+      "Bích Đấm Boxing Focus Mitt là mẫu focus mitt phù hợp cho boxing, kickboxing và tập phản xạ. Sản phẩm nổi bật với hỗ trợ luyện đấm, phản xạ và phối hợp.",
+      "Thiết kế dạng đích đấm cong, có quai tay, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bích Đấm Boxing Focus Mitt"],
+      ["Loại sản phẩm", "Focus mitt"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ luyện đấm, phản xạ và phối hợp"],
+      ["Màu sắc", "Đen, trắng"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Bích Đấm Boxing Focus Mitt là lựa chọn dành cho người đang tìm kiếm focus mitt có hỗ trợ luyện đấm, phản xạ và phối hợp."
+  },
+
+  "P18": {
+    "sourceTitle": "Găng Muay Thai Combat Pro",
+    "paragraphs": [
+      "Găng Muay Thai Combat Pro là mẫu găng muay thai phù hợp cho muay thai, boxing và kickboxing. Sản phẩm nổi bật với hỗ trợ bảo vệ tay khi tập muay thai.",
+      "Thiết kế thiết kế đệm dày, ôm cổ tay, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Găng Muay Thai Combat Pro"],
+      ["Loại sản phẩm", "Găng Muay Thai"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ tay khi tập Muay Thai"],
+      ["Kiểu dáng", "Thiết kế đệm dày, ôm cổ tay"],
+      ["Màu sắc", "Đen"],
+      ["Size", "10/12/14/16 oz"]
+    ],
+    "closing": "Găng Muay Thai Combat Pro là lựa chọn dành cho người đang tìm kiếm găng muay thai có hỗ trợ bảo vệ tay khi tập muay thai.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Mức cân nặng gợi ý"],
+      "rows": [
+        ["10 oz", "50–65 kg"],
+        ["12 oz", "60–75 kg"],
+        ["14 oz", "70–85 kg"],
+        ["16 oz", "80 kg trở lên"]
+      ]
+    }
+  },
+
+  "P19": {
+    "sourceTitle": "Bộ Bảo Vệ Ống Đồng Muay Thai Shield",
+    "paragraphs": [
+      "Bộ Bảo Vệ Ống Đồng Muay Thai Shield là mẫu bảo vệ ống đồng phù hợp cho muay thai, kickboxing và sparring. Sản phẩm nổi bật với hỗ trợ bảo vệ ống chân và mu bàn chân.",
+      "Thiết kế thiết kế ôm chân, có dây cố định, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bộ Bảo Vệ Ống Đồng Muay Thai Shield"],
+      ["Loại sản phẩm", "Bảo vệ ống đồng"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ ống chân và mu bàn chân"],
+      ["Kiểu dáng", "Thiết kế ôm chân, có dây cố định"],
+      ["Màu sắc", "Đen, trắng"],
+      ["Size", "M/L/XL"]
+    ],
+    "closing": "Bộ Bảo Vệ Ống Đồng Muay Thai Shield là lựa chọn dành cho người đang tìm kiếm bảo vệ ống đồng có hỗ trợ bảo vệ ống chân và mu bàn chân.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều cao gợi ý"],
+      "rows": [
+        ["M", "160–170 cm"],
+        ["L", "170–180 cm"],
+        ["XL", "180–190 cm"]
+      ]
+    }
+  },
+
+  "P20": {
+    "sourceTitle": "Thai Kick Boxing Training Pad",
+    "paragraphs": [
+      "Thai Kick Boxing Training Pad là mẫu đích đá muay thai phù hợp cho muay thai, kickboxing và tập đối kháng. Sản phẩm nổi bật với hỗ trợ luyện đá, đấm và phản xạ.",
+      "Thiết kế dạng đích cầm tay, quai cố định, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Thai Kick Boxing Training Pad"],
+      ["Loại sản phẩm", "Đích đá Muay Thai"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ luyện đá, đấm và phản xạ"],
+      ["Kiểu dáng", "Dạng đích cầm tay, quai cố định"],
+      ["Màu sắc", "Đen, đỏ"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Thai Kick Boxing Training Pad là lựa chọn dành cho người đang tìm kiếm đích đá muay thai có hỗ trợ luyện đá, đấm và phản xạ."
+  },
+
+  "P21": {
+    "sourceTitle": "Quần Muay Thai Fight Short",
+    "paragraphs": [
+      "Quần Muay Thai Fight Short là mẫu quần muay thai phù hợp cho muay thai, kickboxing và tập võ. Sản phẩm nổi bật với thoải mái khi thực hiện các động tác đá và di chuyển.",
+      "Thiết kế dáng short rộng, cạp co giãn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Quần Muay Thai Fight Short"],
+      ["Loại sản phẩm", "Quần Muay Thai"],
+      ["Chất liệu", "Satin/polyester"],
+      ["Đặc điểm", "Thoải mái khi thực hiện các động tác đá và di chuyển"],
+      ["Kiểu dáng", "Dáng short rộng, cạp co giãn"],
+      ["Màu sắc", "Đen"],
+      ["Size", "S/M/L/XL/2XL"]
+    ],
+    "closing": "Quần Muay Thai Fight Short là lựa chọn dành cho người đang tìm kiếm quần muay thai có thoải mái khi thực hiện các động tác đá và di chuyển.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Vòng eo gợi ý"],
+      "rows": [
+        ["S", "68–74 cm"],
+        ["M", "74–80 cm"],
+        ["L", "80–86 cm"],
+        ["XL", "86–92 cm"],
+        ["2XL", "92–100 cm"]
+      ]
+    }
+  },
+
+  "P22": {
+    "sourceTitle": "Găng MMA Hybrid Fight",
+    "paragraphs": [
+      "Găng MMA Hybrid Fight là mẫu găng mma phù hợp cho mma, grappling, boxing và kickboxing. Sản phẩm nổi bật với hỗ trợ bảo vệ tay khi striking và grappling.",
+      "Thiết kế thiết kế hở ngón, ôm cổ tay, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Găng MMA Hybrid Fight"],
+      ["Loại sản phẩm", "Găng MMA"],
+      ["Chất liệu", "Da tổng hợp + foam"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ tay khi striking và grappling"],
+      ["Kiểu dáng", "Thiết kế hở ngón, ôm cổ tay"],
+      ["Màu sắc", "Đen"],
+      ["Size", "S/M/L/XL"]
+    ],
+    "closing": "Găng MMA Hybrid Fight là lựa chọn dành cho người đang tìm kiếm găng mma có hỗ trợ bảo vệ tay khi striking và grappling.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Vòng bàn tay gợi ý"],
+      "rows": [
+        ["S", "18–20 cm"],
+        ["M", "20–22 cm"],
+        ["L", "22–24 cm"],
+        ["XL", "24–26 cm"]
+      ]
+    }
+  },
+
+  "P23": {
+    "sourceTitle": "Áo Rashguard MMA Performance",
+    "paragraphs": [
+      "Áo Rashguard MMA Performance là mẫu áo rashguard phù hợp cho mma, grappling, gym và tập võ. Sản phẩm nổi bật với ôm cơ thể, phù hợp vận động cường độ cao.",
+      "Thiết kế dáng bó thể thao, tay ngắn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Áo Rashguard MMA Performance"],
+      ["Loại sản phẩm", "Áo rashguard"],
+      ["Chất liệu", "Polyester/spandex co giãn"],
+      ["Đặc điểm", "Ôm cơ thể, phù hợp vận động cường độ cao"],
+      ["Kiểu dáng", "Dáng bó thể thao, tay ngắn"],
+      ["Màu sắc", "Đen, đỏ, cam"],
+      ["Size", "S/M/L/XL/2XL"]
+    ],
+    "closing": "Áo Rashguard MMA Performance là lựa chọn dành cho người đang tìm kiếm áo rashguard có ôm cơ thể, phù hợp vận động cường độ cao.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều cao / cân nặng gợi ý"],
+      "rows": [
+        ["S", "160–168 cm / 50–60 kg"],
+        ["M", "165–173 cm / 58–68 kg"],
+        ["L", "170–178 cm / 66–76 kg"],
+        ["XL", "175–183 cm / 74–86 kg"],
+        ["2XL", "180–188 cm / 84–96 kg"]
+      ]
+    }
+  },
+
+  "P24": {
+    "sourceTitle": "Mouthguard Combat Protect",
+    "paragraphs": [
+      "Mouthguard Combat Protect là mẫu bảo vệ răng phù hợp cho boxing, mma, muay thai và kickboxing. Sản phẩm nổi bật với hỗ trợ bảo vệ răng khi tập đối kháng.",
+      "Thiết kế dạng ngậm hàm, nhỏ gọn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Mouthguard Combat Protect"],
+      ["Loại sản phẩm", "Bảo vệ răng"],
+      ["Chất liệu", "Silicone/EVA"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ răng khi tập đối kháng"],
+      ["Màu sắc", "Đen, trắng, đỏ"],
+      ["Size", "Adult – One Size"]
+    ],
+    "closing": "Mouthguard Combat Protect là lựa chọn dành cho người đang tìm kiếm bảo vệ răng có hỗ trợ bảo vệ răng khi tập đối kháng."
+  },
+
+  "P25": {
+    "sourceTitle": "Giày Road Runner Motion X",
+    "paragraphs": [
+      "Giày Road Runner Motion X là mẫu giày chạy bộ phù hợp cho chạy bộ, đi bộ, cardio và thể thao. Sản phẩm nổi bật với nhẹ, thoáng khí, phù hợp chạy bộ hằng ngày.",
+      "Thiết kế thân giày ôm chân, đế có độ bám, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Giày Road Runner Motion X"],
+      ["Loại sản phẩm", "Giày chạy bộ"],
+      ["Chất liệu", "Vải mesh + đế cao su/EVA"],
+      ["Đặc điểm", "Nhẹ, thoáng khí, phù hợp chạy bộ hằng ngày"],
+      ["Kiểu dáng", "Thân giày ôm chân, đế có độ bám"],
+      ["Màu sắc", "Đen, trắng"],
+      ["Size", "39–44"]
+    ],
+    "closing": "Giày Road Runner Motion X là lựa chọn dành cho người đang tìm kiếm giày chạy bộ có nhẹ, thoáng khí, phù hợp chạy bộ hằng ngày.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều dài bàn chân gợi ý"],
+      "rows": [
+        ["39", "24,5 cm"],
+        ["40", "25,0 cm"],
+        ["41", "25,5 cm"],
+        ["42", "26,0 cm"],
+        ["43", "26,5 cm"],
+        ["44", "27,0 cm"]
+      ]
+    }
+  },
+
+  "P26": {
+    "sourceTitle": "Đai Chạy Bộ Running Belt",
+    "paragraphs": [
+      "Đai Chạy Bộ Running Belt là mẫu đai chạy bộ phù hợp cho chạy bộ, đi bộ, cardio và outdoor. Sản phẩm nổi bật với đựng điện thoại, chìa khóa và vật dụng nhỏ.",
+      "Thiết kế đai gọn, ôm eo, có ngăn chứa, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Đai Chạy Bộ Running Belt"],
+      ["Loại sản phẩm", "Đai chạy bộ"],
+      ["Chất liệu", "Vải co giãn thể thao"],
+      ["Đặc điểm", "Đựng điện thoại, chìa khóa và vật dụng nhỏ"],
+      ["Kiểu dáng", "Đai gọn, ôm eo, có ngăn chứa"],
+      ["Màu sắc", "Đen, xanh lá"],
+      ["Size", "One Size – điều chỉnh"]
+    ],
+    "closing": "Đai Chạy Bộ Running Belt là lựa chọn dành cho người đang tìm kiếm đai chạy bộ có đựng điện thoại, chìa khóa và vật dụng nhỏ."
+  },
+
+  "P27": {
+    "sourceTitle": "Bình Nước Running Soft Flask",
+    "paragraphs": [
+      "Bình Nước Running Soft Flask là mẫu soft flask phù hợp cho chạy bộ, marathon, trekking và outdoor. Sản phẩm nổi bật với nhẹ, tiện bổ sung nước khi vận động.",
+      "Thiết kế dạng bình mềm, dễ bóp và cầm, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bình Nước Running Soft Flask"],
+      ["Loại sản phẩm", "Soft flask"],
+      ["Chất liệu", "Nhựa mềm thể thao"],
+      ["Đặc điểm", "Nhẹ, tiện bổ sung nước khi vận động"],
+      ["Màu sắc", "Xanh dương"],
+      ["Size", "Theo dung tích"]
+    ],
+    "closing": "Bình Nước Running Soft Flask là lựa chọn dành cho người đang tìm kiếm soft flask có nhẹ, tiện bổ sung nước khi vận động."
+  },
+
+  "P28": {
+    "sourceTitle": "Tất Chạy Bộ Performance Socks",
+    "paragraphs": [
+      "Tất Chạy Bộ Performance Socks là mẫu tất thể thao phù hợp cho chạy bộ, gym, fitness và đi bộ. Sản phẩm nổi bật với ôm chân, hỗ trợ vận động thoải mái.",
+      "Thiết kế tất cổ ngắn, gọn nhẹ, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Tất Chạy Bộ Performance Socks"],
+      ["Loại sản phẩm", "Tất thể thao"],
+      ["Chất liệu", "Vải dệt co giãn"],
+      ["Đặc điểm", "Ôm chân, hỗ trợ vận động thoải mái"],
+      ["Kiểu dáng", "Tất cổ ngắn, gọn nhẹ"],
+      ["Màu sắc", "Xanh dương, xám, cam, hồng, xanh lá"],
+      ["Size", "S/M/L/XL"]
+    ],
+    "closing": "Tất Chạy Bộ Performance Socks là lựa chọn dành cho người đang tìm kiếm tất thể thao có ôm chân, hỗ trợ vận động thoải mái.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều dài bàn chân gợi ý"],
+      "rows": [
+        ["S", "22–24 cm"],
+        ["M", "24–26 cm"],
+        ["L", "26–28 cm"],
+        ["XL", "28–30 cm"]
+      ]
+    }
+  },
+
+  "P29": {
+    "sourceTitle": "Kính Bơi Aquision Anti-Fog",
+    "paragraphs": [
+      "Kính Bơi Aquision Anti-Fog là mẫu kính bơi phù hợp cho bơi lội, luyện tập và bơi giải trí. Sản phẩm nổi bật với hỗ trợ tầm nhìn rõ khi bơi.",
+      "Thiết kế thiết kế ôm mắt, dây đeo điều chỉnh, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Kính Bơi Aquision Anti-Fog"],
+      ["Loại sản phẩm", "Kính bơi"],
+      ["Chất liệu", "Silicone + vật liệu thể thao"],
+      ["Đặc điểm", "Hỗ trợ tầm nhìn rõ khi bơi"],
+      ["Kiểu dáng", "Thiết kế ôm mắt, dây đeo điều chỉnh"],
+      ["Màu sắc", "Đen"],
+      ["Size", "One Size – điều chỉnh"]
+    ],
+    "closing": "Kính Bơi Aquision Anti-Fog là lựa chọn dành cho người đang tìm kiếm kính bơi có hỗ trợ tầm nhìn rõ khi bơi."
+  },
+
+  "P30": {
+    "sourceTitle": "Mũ Bơi Silicone AquaFit",
+    "paragraphs": [
+      "Mũ Bơi Silicone AquaFit là mẫu mũ bơi phù hợp cho bơi lội, luyện tập và bơi giải trí. Sản phẩm nổi bật với ôm gọn đầu và dễ đội.",
+      "Thiết kế mũ co giãn, ôm đầu, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Mũ Bơi Silicone AquaFit"],
+      ["Loại sản phẩm", "Mũ bơi"],
+      ["Chất liệu", "Silicone"],
+      ["Đặc điểm", "Ôm gọn đầu và dễ đội"],
+      ["Kiểu dáng", "Mũ co giãn, ôm đầu"],
+      ["Màu sắc", "Đen"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Mũ Bơi Silicone AquaFit là lựa chọn dành cho người đang tìm kiếm mũ bơi có ôm gọn đầu và dễ đội."
+  },
+
+  "P31": {
+    "sourceTitle": "Chân Vịt Swim Training Fin",
+    "paragraphs": [
+      "Chân Vịt Swim Training Fin là mẫu chân vịt bơi phù hợp cho học bơi, swimming training và rèn sức bền. Sản phẩm nổi bật với hỗ trợ luyện chân và tạo lực đẩy.",
+      "Thiết kế chân vịt gọn, ôm bàn chân, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Chân Vịt Swim Training Fin"],
+      ["Loại sản phẩm", "Chân vịt bơi"],
+      ["Chất liệu", "Vật liệu bơi chuyên dụng"],
+      ["Đặc điểm", "Hỗ trợ luyện chân và tạo lực đẩy"],
+      ["Kiểu dáng", "Chân vịt gọn, ôm bàn chân"],
+      ["Màu sắc", "Đen"],
+      ["Size", "36–40 / 40–44"]
+    ],
+    "closing": "Chân Vịt Swim Training Fin là lựa chọn dành cho người đang tìm kiếm chân vịt bơi có hỗ trợ luyện chân và tạo lực đẩy.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Cỡ chân gợi ý"],
+      "rows": [
+        ["36–40", "22,5–25,5 cm"],
+        ["40–44", "25,5–28,5 cm"]
+      ]
+    }
+  },
+
+  "P32": {
+    "sourceTitle": "Phao Tập Bơi Pull Buoy Pro",
+    "paragraphs": [
+      "Phao Tập Bơi Pull Buoy Pro là mẫu pull buoy phù hợp cho swimming training, kỹ thuật bơi và rèn sức bền. Sản phẩm nổi bật với hỗ trợ tập trung vào động tác tay.",
+      "Thiết kế thiết kế nhỏ gọn, đặt giữa hai chân, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Phao Tập Bơi Pull Buoy Pro"],
+      ["Loại sản phẩm", "Pull buoy"],
+      ["Chất liệu", "Foam EVA"],
+      ["Đặc điểm", "Hỗ trợ tập trung vào động tác tay"],
+      ["Kiểu dáng", "Thiết kế nhỏ gọn, đặt giữa hai chân"],
+      ["Màu sắc", "Hồng, xanh lá, vàng, xanh dương"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Phao Tập Bơi Pull Buoy Pro là lựa chọn dành cho người đang tìm kiếm pull buoy có hỗ trợ tập trung vào động tác tay."
+  },
+
+  "P33": {
+    "sourceTitle": "Bóng Đá Match Training Pro",
+    "paragraphs": [
+      "Bóng Đá Match Training Pro là mẫu bóng đá phù hợp cho luyện bóng đá và thi đấu phong trào. Sản phẩm nổi bật với phù hợp chuyền, sút và kiểm soát bóng.",
+      "Thiết kế bóng tập luyện kiểu thi đấu, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bóng Đá Match Training Pro"],
+      ["Loại sản phẩm", "Bóng đá"],
+      ["Chất liệu", "Vật liệu bóng thể thao"],
+      ["Đặc điểm", "Phù hợp chuyền, sút và kiểm soát bóng"],
+      ["Màu sắc", "Đen, vàng, hồng, xanh lá"],
+      ["Size", "Size 5"]
+    ],
+    "closing": "Bóng Đá Match Training Pro là lựa chọn dành cho người đang tìm kiếm bóng đá có phù hợp chuyền, sút và kiểm soát bóng."
+  },
+
+  "P34": {
+    "sourceTitle": "Giày Bóng Đá Speed Control",
+    "paragraphs": [
+      "Giày Bóng Đá Speed Control là mẫu giày bóng đá phù hợp cho đá bóng, luyện tập và thi đấu phong trào. Sản phẩm nổi bật với hỗ trợ di chuyển và kiểm soát bóng.",
+      "Thiết kế dáng ôm chân, đế bám sân, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Giày Bóng Đá Speed Control"],
+      ["Loại sản phẩm", "Giày bóng đá"],
+      ["Chất liệu", "Da tổng hợp/vải thể thao"],
+      ["Đặc điểm", "Hỗ trợ di chuyển và kiểm soát bóng"],
+      ["Kiểu dáng", "Dáng ôm chân, đế bám sân"],
+      ["Màu sắc", "Đen, xanh dương"],
+      ["Size", "39–44"]
+    ],
+    "closing": "Giày Bóng Đá Speed Control là lựa chọn dành cho người đang tìm kiếm giày bóng đá có hỗ trợ di chuyển và kiểm soát bóng.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều dài bàn chân gợi ý"],
+      "rows": [
+        ["39", "24,5 cm"],
+        ["40", "25,0 cm"],
+        ["41", "25,5 cm"],
+        ["42", "26,0 cm"],
+        ["43", "26,5 cm"],
+        ["44", "27,0 cm"]
+      ]
+    }
+  },
+
+  "P35": {
+    "sourceTitle": "Bảo Vệ Ống Đồng Football Guard",
+    "paragraphs": [
+      "Bảo Vệ Ống Đồng Football Guard là mẫu ống đồng bóng đá phù hợp cho bóng đá, luyện tập và thi đấu. Sản phẩm nổi bật với hỗ trợ bảo vệ vùng ống chân.",
+      "Thiết kế miếng bảo vệ gọn, dễ kết hợp tất, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bảo Vệ Ống Đồng Football Guard"],
+      ["Loại sản phẩm", "Ống đồng bóng đá"],
+      ["Chất liệu", "Nhựa bảo hộ + foam"],
+      ["Đặc điểm", "Hỗ trợ bảo vệ vùng ống chân"],
+      ["Kiểu dáng", "Miếng bảo vệ gọn, dễ kết hợp tất"],
+      ["Màu sắc", "Đen, trắng"],
+      ["Size", "M/L/XL"]
+    ],
+    "closing": "Bảo Vệ Ống Đồng Football Guard là lựa chọn dành cho người đang tìm kiếm ống đồng bóng đá có hỗ trợ bảo vệ vùng ống chân.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Chiều dài ống chân gợi ý"],
+      "rows": [
+        ["M", "22–27 cm"],
+        ["L", "27–32 cm"],
+        ["XL", "32–36 cm"]
+      ]
+    }
+  },
+
+  "P36": {
+    "sourceTitle": "Bóng Rổ Street Court Pro",
+    "paragraphs": [
+      "Bóng Rổ Street Court Pro là mẫu bóng rổ phù hợp cho bóng rổ trong nhà và ngoài trời. Sản phẩm nổi bật với phù hợp dẫn bóng, chuyền và ném rổ.",
+      "Thiết kế bề mặt tạo độ bám khi cầm, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bóng Rổ Street Court Pro"],
+      ["Loại sản phẩm", "Bóng rổ"],
+      ["Chất liệu", "Cao su/composite thể thao"],
+      ["Đặc điểm", "Phù hợp dẫn bóng, chuyền và ném rổ"],
+      ["Màu sắc", "Cam, đen"],
+      ["Size", "Size 7"]
+    ],
+    "closing": "Bóng Rổ Street Court Pro là lựa chọn dành cho người đang tìm kiếm bóng rổ có phù hợp dẫn bóng, chuyền và ném rổ."
+  },
+
+  "P37": {
+    "sourceTitle": "Ống Tay Basketball Compression",
+    "paragraphs": [
+      "Ống Tay Basketball Compression là mẫu ống tay thể thao phù hợp cho bóng rổ, gym và thể thao. Sản phẩm nổi bật với ôm tay, hỗ trợ vận động khi chơi thể thao.",
+      "Thiết kế thiết kế ôm sát cánh tay, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Ống Tay Basketball Compression"],
+      ["Loại sản phẩm", "Ống tay thể thao"],
+      ["Chất liệu", "Vải co giãn"],
+      ["Đặc điểm", "Ôm tay, hỗ trợ vận động khi chơi thể thao"],
+      ["Kiểu dáng", "Thiết kế ôm sát cánh tay"],
+      ["Màu sắc", "Đen"],
+      ["Size", "S/M/L/XL"]
+    ],
+    "closing": "Ống Tay Basketball Compression là lựa chọn dành cho người đang tìm kiếm ống tay thể thao có ôm tay, hỗ trợ vận động khi chơi thể thao.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size", "Vòng bắp tay gợi ý"],
+      "rows": [
+        ["S", "22–26 cm"],
+        ["M", "26–30 cm"],
+        ["L", "30–34 cm"],
+        ["XL", "34–38 cm"]
+      ]
+    }
+  },
+
+  "P38": {
+    "sourceTitle": "Vợt Cầu Lông AeroStrike",
+    "paragraphs": [
+      "Vợt Cầu Lông AeroStrike là mẫu vợt cầu lông phù hợp cho cầu lông, luyện tập và thi đấu phong trào. Sản phẩm nổi bật với hỗ trợ đánh cầu linh hoạt và kiểm soát vợt.",
+      "Thiết kế khung gọn, cán dễ cầm, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Vợt Cầu Lông AeroStrike"],
+      ["Loại sản phẩm", "Vợt cầu lông"],
+      ["Chất liệu", "Carbon/graphite"],
+      ["Đặc điểm", "Hỗ trợ đánh cầu linh hoạt và kiểm soát vợt"],
+      ["Kiểu dáng", "Khung gọn, cán dễ cầm"],
+      ["Màu sắc", "Đen, trắng, đỏ"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Vợt Cầu Lông AeroStrike là lựa chọn dành cho người đang tìm kiếm vợt cầu lông có hỗ trợ đánh cầu linh hoạt và kiểm soát vợt."
+  },
+
+  "P39": {
+    "sourceTitle": "Cầu Lông Feather Pro Pack",
+    "paragraphs": [
+      "Cầu Lông Feather Pro Pack là mẫu cầu lông phù hợp cho cầu lông, tập luyện và thi đấu. Sản phẩm nổi bật với phù hợp luyện tập và thi đấu cầu lông.",
+      "Thiết kế đóng ống tiện bảo quản và mang theo, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Cầu Lông Feather Pro Pack"],
+      ["Loại sản phẩm", "Cầu lông"],
+      ["Chất liệu", "Lông vũ + đế cầu"],
+      ["Đặc điểm", "Phù hợp luyện tập và thi đấu cầu lông"],
+      ["Màu sắc", "Trắng"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Cầu Lông Feather Pro Pack là lựa chọn dành cho người đang tìm kiếm cầu lông có phù hợp luyện tập và thi đấu cầu lông."
+  },
+
+  "P40": {
+    "sourceTitle": "Quấn Cán Vợt Grip Control",
+    "paragraphs": [
+      "Quấn Cán Vợt Grip Control là mẫu quấn cán vợt phù hợp cho cầu lông, tennis và các môn dùng vợt. Sản phẩm nổi bật với tăng độ bám và giảm trơn tay.",
+      "Thiết kế dải quấn dễ thay mới, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Quấn Cán Vợt Grip Control"],
+      ["Loại sản phẩm", "Quấn cán vợt"],
+      ["Chất liệu", "PU/foam thể thao"],
+      ["Đặc điểm", "Tăng độ bám và giảm trơn tay"],
+      ["Màu sắc", "Đen, xanh dương, xanh lá, tím"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Quấn Cán Vợt Grip Control là lựa chọn dành cho người đang tìm kiếm quấn cán vợt có tăng độ bám và giảm trơn tay."
+  },
+
+  "P41": {
+    "sourceTitle": "Vợt Tennis PowerStrike",
+    "paragraphs": [
+      "Vợt Tennis PowerStrike là mẫu vợt tennis phù hợp cho tennis, luyện tập và thi đấu phong trào. Sản phẩm nổi bật với hỗ trợ kiểm soát và thực hiện cú đánh.",
+      "Thiết kế khung cân đối, cán dễ cầm, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Vợt Tennis PowerStrike"],
+      ["Loại sản phẩm", "Vợt tennis"],
+      ["Chất liệu", "Graphite/vật liệu vợt"],
+      ["Đặc điểm", "Hỗ trợ kiểm soát và thực hiện cú đánh"],
+      ["Kiểu dáng", "Khung cân đối, cán dễ cầm"],
+      ["Màu sắc", "Trắng, vàng, xanh lá"],
+      ["Size", "G2/G3"]
+    ],
+    "closing": "Vợt Tennis PowerStrike là lựa chọn dành cho người đang tìm kiếm vợt tennis có hỗ trợ kiểm soát và thực hiện cú đánh.",
+    "sizeGuide": {
+      "title": "Bảng size đề xuất",
+      "headers": ["Size cán", "Chu vi cán gợi ý"],
+      "rows": [
+        ["G2", "4 1/4 inch"],
+        ["G3", "4 3/8 inch"]
+      ]
+    }
+  },
+
+  "P42": {
+    "sourceTitle": "Bóng Tennis Match Pack",
+    "paragraphs": [
+      "Bóng Tennis Match Pack là mẫu bóng tennis phù hợp cho tennis, luyện tập và thi đấu. Sản phẩm nổi bật với phù hợp tập luyện và thi đấu tennis.",
+      "Thiết kế bóng tiêu chuẩn, đóng gói tiện dụng, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bóng Tennis Match Pack"],
+      ["Loại sản phẩm", "Bóng tennis"],
+      ["Chất liệu", "Cao su + nỉ thể thao"],
+      ["Đặc điểm", "Phù hợp tập luyện và thi đấu tennis"],
+      ["Màu sắc", "Vàng"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Bóng Tennis Match Pack là lựa chọn dành cho người đang tìm kiếm bóng tennis có phù hợp tập luyện và thi đấu tennis."
+  },
+
+  "P43": {
+    "sourceTitle": "Vợt Pickleball Carbon Control",
+    "paragraphs": [
+      "Vợt Pickleball Carbon Control là mẫu vợt pickleball phù hợp cho pickleball, luyện tập và thi đấu. Sản phẩm nổi bật với hỗ trợ kiểm soát bóng và phản xạ.",
+      "Thiết kế mặt vợt carbon, thân gọn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Vợt Pickleball Carbon Control"],
+      ["Loại sản phẩm", "Vợt pickleball"],
+      ["Chất liệu", "Carbon"],
+      ["Đặc điểm", "Hỗ trợ kiểm soát bóng và phản xạ"],
+      ["Kiểu dáng", "Mặt vợt carbon, thân gọn"],
+      ["Màu sắc", "Đen, xanh lá"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Vợt Pickleball Carbon Control là lựa chọn dành cho người đang tìm kiếm vợt pickleball có hỗ trợ kiểm soát bóng và phản xạ."
+  },
+
+  "P44": {
+    "sourceTitle": "Bóng Pickleball Outdoor Pack",
+    "paragraphs": [
+      "Bóng Pickleball Outdoor Pack là mẫu bóng pickleball phù hợp cho pickleball ngoài trời và luyện tập. Sản phẩm nổi bật với phù hợp chơi pickleball ngoài trời.",
+      "Thiết kế thiết kế có lỗ, dễ kiểm soát quỹ đạo, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bóng Pickleball Outdoor Pack"],
+      ["Loại sản phẩm", "Bóng pickleball"],
+      ["Chất liệu", "Nhựa thể thao"],
+      ["Đặc điểm", "Phù hợp chơi pickleball ngoài trời"],
+      ["Màu sắc", "Vàng"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Bóng Pickleball Outdoor Pack là lựa chọn dành cho người đang tìm kiếm bóng pickleball có phù hợp chơi pickleball ngoài trời."
+  },
+
+  "P45": {
+    "sourceTitle": "Gạch Yoga Balance Block",
+    "paragraphs": [
+      "Gạch Yoga Balance Block là mẫu yoga block phù hợp cho yoga, stretching và mobility. Sản phẩm nổi bật với hỗ trợ giữ thăng bằng và điều chỉnh tư thế.",
+      "Thiết kế khối nhẹ, dễ đặt và mang theo, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Gạch Yoga Balance Block"],
+      ["Loại sản phẩm", "Yoga block"],
+      ["Chất liệu", "EVA foam"],
+      ["Đặc điểm", "Hỗ trợ giữ thăng bằng và điều chỉnh tư thế"],
+      ["Màu sắc", "Xanh lá, xanh dương, hồng, cam, tím"],
+      ["Size", "23 × 15 × 7,5 cm"]
+    ],
+    "closing": "Gạch Yoga Balance Block là lựa chọn dành cho người đang tìm kiếm yoga block có hỗ trợ giữ thăng bằng và điều chỉnh tư thế."
+  },
+
+  "P46": {
+    "sourceTitle": "Dây Yoga Stretch Strap",
+    "paragraphs": [
+      "Dây Yoga Stretch Strap là mẫu dây yoga / dây stretching phù hợp cho yoga, stretching, mobility và phục hồi. Sản phẩm nổi bật với hỗ trợ kéo giãn và tăng độ linh hoạt.",
+      "Thiết kế dây dài, có vòng điều chỉnh, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Dây Yoga Stretch Strap"],
+      ["Loại sản phẩm", "Dây yoga / dây stretching"],
+      ["Chất liệu", "Dây dệt thể thao"],
+      ["Đặc điểm", "Hỗ trợ kéo giãn và tăng độ linh hoạt"],
+      ["Kiểu dáng", "Dây dài, có vòng điều chỉnh"],
+      ["Màu sắc", "Xanh dương, hồng, tím"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Dây Yoga Stretch Strap là lựa chọn dành cho người đang tìm kiếm dây yoga / dây stretching có hỗ trợ kéo giãn và tăng độ linh hoạt."
+  },
+
+  "P47": {
+    "sourceTitle": "Vòng Pilates Resistance Ring",
+    "paragraphs": [
+      "Vòng Pilates Resistance Ring là mẫu vòng pilates phù hợp cho pilates, fitness, core và tập cơ. Sản phẩm nổi bật với tạo lực cản cho bài tập.",
+      "Thiết kế vòng tròn nhỏ gọn, dễ cầm, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Vòng Pilates Resistance Ring"],
+      ["Loại sản phẩm", "Vòng Pilates"],
+      ["Chất liệu", "Vật liệu đàn hồi thể thao"],
+      ["Đặc điểm", "Tạo lực cản cho bài tập"],
+      ["Kiểu dáng", "Vòng tròn nhỏ gọn, dễ cầm"],
+      ["Màu sắc", "Tím, xanh dương, hồng"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Vòng Pilates Resistance Ring là lựa chọn dành cho người đang tìm kiếm vòng pilates có tạo lực cản cho bài tập."
+  },
+
+  "P48": {
+    "sourceTitle": "Bóng Massage Recovery Ball",
+    "paragraphs": [
+      "Bóng Massage Recovery Ball là mẫu bóng massage phục hồi phù hợp cho massage, recovery và stretching. Sản phẩm nổi bật với hỗ trợ massage và thư giãn cơ.",
+      "Thiết kế bóng nhỏ gọn, dễ cầm, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bóng Massage Recovery Ball"],
+      ["Loại sản phẩm", "Bóng massage phục hồi"],
+      ["Chất liệu", "Cao su/foam thể thao"],
+      ["Đặc điểm", "Hỗ trợ massage và thư giãn cơ"],
+      ["Màu sắc", "Xanh dương, cam, hồng, xanh lá"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Bóng Massage Recovery Ball là lựa chọn dành cho người đang tìm kiếm bóng massage phục hồi có hỗ trợ massage và thư giãn cơ."
+  },
+
+  "P49": {
+    "sourceTitle": "Dây Stretching Mobility Band",
+    "paragraphs": [
+      "Dây Stretching Mobility Band là mẫu dây mobility phù hợp cho yoga, stretching, mobility và warm-up. Sản phẩm nổi bật với hỗ trợ kéo giãn và cải thiện biên độ vận động.",
+      "Thiết kế dây dài, linh hoạt, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Dây Stretching Mobility Band"],
+      ["Loại sản phẩm", "Dây mobility"],
+      ["Chất liệu", "Vải co giãn thể thao"],
+      ["Đặc điểm", "Hỗ trợ kéo giãn và cải thiện biên độ vận động"],
+      ["Kiểu dáng", "Dây dài, linh hoạt"],
+      ["Màu sắc", "Đen"],
+      ["Size", "One Size"]
+    ],
+    "closing": "Dây Stretching Mobility Band là lựa chọn dành cho người đang tìm kiếm dây mobility có hỗ trợ kéo giãn và cải thiện biên độ vận động."
+  },
+
+  "P50": {
+    "sourceTitle": "Dây Nhảy Speed Rope Pro X2",
+    "paragraphs": [
+      "Dây Nhảy Speed Rope Pro X2 là mẫu speed rope phù hợp cho nhảy dây, cardio, hiit và khởi động. Sản phẩm nổi bật với hỗ trợ cardio và rèn sức bền.",
+      "Thiết kế tay cầm gọn, dây có thể điều chỉnh, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Dây Nhảy Speed Rope Pro X2"],
+      ["Loại sản phẩm", "Speed rope"],
+      ["Chất liệu", "Dây cáp thể thao"],
+      ["Đặc điểm", "Hỗ trợ cardio và rèn sức bền"],
+      ["Kiểu dáng", "Tay cầm gọn, dây có thể điều chỉnh"],
+      ["Màu sắc", "Đen"],
+      ["Size", "One Size – điều chỉnh chiều dài"]
+    ],
+    "closing": "Dây Nhảy Speed Rope Pro X2 là lựa chọn dành cho người đang tìm kiếm speed rope có hỗ trợ cardio và rèn sức bền."
+  },
+
+  "P51": {
+    "sourceTitle": "Túi Thể Thao MultiSport 40L",
+    "paragraphs": [
+      "Túi Thể Thao MultiSport 40L là mẫu túi thể thao phù hợp cho gym, fitness, thể thao và du lịch ngắn ngày. Sản phẩm nổi bật với khoang chứa rộng, tiện mang đồ tập.",
+      "Thiết kế túi duffle dung tích lớn, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Túi Thể Thao MultiSport 40L"],
+      ["Loại sản phẩm", "Túi thể thao"],
+      ["Chất liệu", "Vải thể thao"],
+      ["Đặc điểm", "Khoang chứa rộng, tiện mang đồ tập"],
+      ["Kiểu dáng", "Túi duffle dung tích lớn"],
+      ["Màu sắc", "Xám, đen"],
+      ["Size", "40L"]
+    ],
+    "closing": "Túi Thể Thao MultiSport 40L là lựa chọn dành cho người đang tìm kiếm túi thể thao có khoang chứa rộng, tiện mang đồ tập."
+  },
+
+  "P52": {
+    "sourceTitle": "Bình Giữ Nhiệt Sport Thermo",
+    "paragraphs": [
+      "Bình Giữ Nhiệt Sport Thermo là mẫu bình thể thao phù hợp cho gym, chạy bộ, du lịch và hằng ngày. Sản phẩm nổi bật với giữ và mang đồ uống tiện lợi.",
+      "Thiết kế dạng bình cao, dễ mang theo, giúp sử dụng thuận tiện và linh hoạt trong quá trình vận động."
+    ],
+    "info": [
+      ["Tên sản phẩm", "Bình Giữ Nhiệt Sport Thermo"],
+      ["Loại sản phẩm", "Bình thể thao"],
+      ["Chất liệu", "Vật liệu giữ nhiệt"],
+      ["Đặc điểm", "Giữ và mang đồ uống tiện lợi"],
+      ["Kiểu dáng", "Dạng bình cao, dễ mang theo"],
+      ["Màu sắc", "Đen"],
+      ["Size", "Theo dung tích"]
+    ],
+    "closing": "Bình Giữ Nhiệt Sport Thermo là lựa chọn dành cho người đang tìm kiếm bình thể thao có giữ và mang đồ uống tiện lợi."
+  }
+
+};
+
+
+/* =========================================================
+   ÁP DỤNG NỘI DUNG VÀO ĐÚNG P01 - P52
+========================================================= */
+
+(function applySportHubProductContent() {
+
+  const productList =
+    (
+      typeof products !== "undefined" &&
+      Array.isArray(products)
+    )
+      ? products
+      : (
+          Array.isArray(window.products)
+            ? window.products
+            : null
+        );
+
+
+  if (!productList) {
+    console.warn(
+      "[SPORTHUB] Không tìm thấy database products."
+    );
+    return;
+  }
+
+
+  const contentDatabase =
+    window.SPORTHUB_PRODUCT_CONTENT || {};
+
+
+  const getProductCode = product =>
+    product.code ||
+    `P${String(product.id).padStart(2, "0")}`;
+
+
+  /* =======================================================
+     CHỈ THAY TÊN SẢN PHẨM KHI TÊN SOURCE KHÁC CATALOG
+
+     Nội dung source gốc vẫn được giữ nguyên trong:
+     product.sourceContent
+     product.sourceDescription
+     product.sourceProductInfo
+  ======================================================= */
+
+  const replaceProductNameOnly = (
+    text,
+    sourceTitle,
+    catalogTitle
+  ) => {
+
+    const value =
+      String(text || "");
+
+
+    if (
+      !sourceTitle ||
+      !catalogTitle ||
+      sourceTitle.toLowerCase() ===
+        catalogTitle.toLowerCase()
+    ) {
+      return value;
+    }
+
+
+    return value
+      .split(sourceTitle)
+      .join(catalogTitle);
+
+  };
+
+
+  /* =======================================================
+     COPY BẢNG SIZE
+  ======================================================= */
+
+  const cloneSizeGuide = sizeGuide => {
+
+    if (!sizeGuide) {
+      return null;
+    }
+
+
+    return {
+
+      title:
+        sizeGuide.title ||
+        "Bảng size đề xuất",
+
+      headers:
+        Array.isArray(sizeGuide.headers)
+          ? [...sizeGuide.headers]
+          : [],
+
+      rows:
+        Array.isArray(sizeGuide.rows)
+          ? sizeGuide.rows.map(
+              row => [...row]
+            )
+          : [],
+
+      note:
+        window.SPORTHUB_PRODUCT_SIZE_NOTICE
+
+    };
+
+  };
+
+
+  /* =======================================================
+     LẤY GIÁ TRỊ TRONG INFO
+  ======================================================= */
+
+  const getInfoValue = (
+    infoRows,
+    wantedLabel
+  ) => {
+
+    const row =
+      (infoRows || []).find(item =>
+
+        String(item?.[0] || "")
+          .trim()
+          .toLowerCase() ===
+
+        String(wantedLabel || "")
+          .trim()
+          .toLowerCase()
+
+      );
+
+
+    return row
+      ? row[1]
+      : "";
+
+  };
+
+
+  /* =======================================================
+     GHÉP DỮ LIỆU P01 - P52
+  ======================================================= */
+
+  productList.forEach(product => {
+
+    const code =
+      getProductCode(product);
+
+
+    const source =
+      contentDatabase[code];
+
+
+    if (!source) {
+
+      console.warn(
+        `[SPORTHUB] Không tìm thấy nội dung mô tả cho ${code}.`,
+        product
+      );
+
+      return;
+
+    }
+
+
+    /* -----------------------------------------------------
+       1. GIỮ DESCRIPTION CŨ
+
+       Những mô tả P13 - P52 đang tốt không bị xóa.
+       Chúng được lưu lại tại originalDescription.
+    ----------------------------------------------------- */
+
+    const currentDescription =
+      String(
+        product.description || ""
+      ).trim();
+
+
+    if (
+      currentDescription &&
+      !String(
+        product.originalDescription || ""
+      ).trim()
+    ) {
+
+      product.originalDescription =
+        currentDescription;
+
+    }
+
+
+    /* -----------------------------------------------------
+       2. GIỮ NGUYÊN NỘI DUNG FILE WORD
+
+       Đây là bản RAW.
+       Không chỉnh câu chữ.
+    ----------------------------------------------------- */
+
+    product.sourceContent = {
+
+      sourceTitle:
+        source.sourceTitle,
+
+      paragraphs:
+        Array.isArray(source.paragraphs)
+          ? [...source.paragraphs]
+          : [],
+
+      info:
+        Array.isArray(source.info)
+          ? source.info.map(
+              row => [...row]
+            )
+          : [],
+
+      closing:
+        source.closing || "",
+
+      sizeGuide:
+        source.sizeGuide
+          ? {
+
+              title:
+                source.sizeGuide.title,
+
+              headers:
+                [...source.sizeGuide.headers],
+
+              rows:
+                source.sizeGuide.rows.map(
+                  row => [...row]
+                )
+
+            }
+          : null
+
+    };
+
+
+    product.sourceDescription = [
+
+      ...(source.paragraphs || []),
+
+      source.closing || ""
+
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+
+
+    /* -----------------------------------------------------
+       3. DESCRIPTION HIỂN THỊ
+
+       Các trường hợp tên source khác catalog:
+       P09  SportSteel -> SportFlow
+       P17  Bích đấm -> Đích đấm
+       P19  Bộ Bảo Vệ... -> Bảo vệ...
+       P20  Thai Kick Boxing Training Pad -> Thai Pad Kick Training
+       P26  Running Belt -> Running Belt Flex
+       P29  Aquision -> AquaVision
+       P50  Speed Rope Pro X2 -> Speed Rope Pro X
+
+       CHỈ thay tên.
+       Các câu chữ khác giữ nguyên.
+    ----------------------------------------------------- */
+
+    const displayParagraphs =
+      (source.paragraphs || []).map(
+
+        paragraph =>
+          replaceProductNameOnly(
+            paragraph,
+            source.sourceTitle,
+            product.name
+          )
+
+      );
+
+
+    const displayClosing =
+      replaceProductNameOnly(
+
+        source.closing || "",
+
+        source.sourceTitle,
+
+        product.name
+
+      );
+
+
+    product.description = [
+
+      ...displayParagraphs,
+
+      displayClosing
+
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+
+
+    /* -----------------------------------------------------
+       4. SHORT DESCRIPTION
+
+       P13 - P52 đang có shortDescription tốt:
+       GIỮ NGUYÊN.
+
+       P01 - P12 nếu chưa có:
+       dùng đoạn mở đầu của tài liệu.
+    ----------------------------------------------------- */
+
+    if (
+      !String(
+        product.shortDescription || ""
+      ).trim()
+    ) {
+
+      product.shortDescription =
+        displayParagraphs[0] || "";
+
+    }
+
+
+    /* -----------------------------------------------------
+       5. THÔNG TIN SẢN PHẨM HIỂN THỊ
+    ----------------------------------------------------- */
+
+    product.productInfo =
+      (source.info || []).map(row => {
+
+        const label =
+          row[0] || "";
+
+        let value =
+          row[1] || "";
+
+
+        /*
+         * Nếu dòng là "Tên sản phẩm"
+         * thì hiển thị tên catalog hiện tại.
+         */
+        if (
+          String(label)
+            .trim()
+            .toLowerCase() ===
+          "tên sản phẩm"
+        ) {
+
+          value =
+            product.name;
+
+        }
+
+
+        return {
+          label,
+          value
+        };
+
+      });
+
+
+    /* -----------------------------------------------------
+       6. THÔNG TIN NGUYÊN VĂN SOURCE
+
+       Không thay tên.
+    ----------------------------------------------------- */
+
+    product.sourceProductInfo =
+      (source.info || []).map(row => ({
+
+        label:
+          row[0] || "",
+
+        value:
+          row[1] || ""
+
+      }));
+
+
+    /* -----------------------------------------------------
+       7. MÀU SẮC
+    ----------------------------------------------------- */
+
+    const colorText =
+      getInfoValue(
+        source.info,
+        "Màu sắc"
+      );
+
+
+    product.colorText =
+      colorText;
+
+
+    if (colorText) {
+
+      product.colors =
+        colorText
+          .split(",")
+          .map(
+            color =>
+              color.trim()
+          )
+          .filter(Boolean);
+
+    }
+
+
+    /* -----------------------------------------------------
+       8. SIZE TỪ NỘI DUNG
+
+       Đây là phần thông tin hiển thị.
+
+       KHÔNG GHI ĐÈ:
+       product.sizes
+
+       => tránh phá selector size hiện tại.
+    ----------------------------------------------------- */
+
+    const sizeText =
+      getInfoValue(
+        source.info,
+        "Size"
+      );
+
+
+    product.sizeInfo =
+      sizeText;
+
+
+    /* -----------------------------------------------------
+       9. BẢNG SIZE
+
+       Chỉ những sản phẩm có bảng trong tài liệu
+       mới được thêm product.sizeGuide.
+    ----------------------------------------------------- */
+
+    if (source.sizeGuide) {
+
+      product.sizeGuide =
+        cloneSizeGuide(
+          source.sizeGuide
+        );
+
+    }
+
+
+    product.hasSizeGuide =
+      Boolean(
+        product.sizeGuide
+      );
+
+  });
+
+
+  /* =======================================================
+     KIỂM TRA SAU KHI GHÉP
+  ======================================================= */
+
+  const expectedCodes =
+    Array.from(
+      {
+        length: 52
+      },
+      (_, index) =>
+        `P${String(index + 1).padStart(2, "0")}`
+    );
+
+
+  const missingContentCodes =
+    expectedCodes.filter(
+      code =>
+        !contentDatabase[code]
+    );
+
+
+  const productsMissingContent =
+    productList.filter(product => {
+
+      const code =
+        getProductCode(product);
+
+      return !contentDatabase[code];
+
+    });
+
+
+  const productsMissingDescription =
+    productList.filter(
+
+      product =>
+        !String(
+          product.description || ""
+        ).trim()
+
+    );
+
+
+  const productsWithSizeGuide =
+    productList.filter(
+
+      product =>
+        Boolean(
+          product.sizeGuide
+        )
+
+    );
+
+
+  /* -------------------------------------------------------
+     CẢNH BÁO NẾU THIẾU P01 - P52
+  ------------------------------------------------------- */
+
+  if (
+    missingContentCodes.length
+  ) {
+
+    console.warn(
+      "[SPORTHUB] Thiếu content code:",
+      missingContentCodes
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     CẢNH BÁO SẢN PHẨM CHƯA GHÉP CONTENT
+  ------------------------------------------------------- */
+
+  if (
+    productsMissingContent.length
+  ) {
+
+    console.warn(
+
+      "[SPORTHUB] Có sản phẩm chưa được ghép content:",
+
+      productsMissingContent.map(
+        product => ({
+
+          code:
+            getProductCode(product),
+
+          name:
+            product.name
+
+        })
+      )
+
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     CẢNH BÁO DESCRIPTION TRỐNG
+  ------------------------------------------------------- */
+
+  if (
+    productsMissingDescription.length
+  ) {
+
+    console.warn(
+
+      "[SPORTHUB] Có sản phẩm thiếu description:",
+
+      productsMissingDescription.map(
+        product => ({
+
+          code:
+            getProductCode(product),
+
+          name:
+            product.name
+
+        })
+      )
+
+    );
+
+  }
+
+
+  /* =======================================================
+     THÔNG BÁO THÀNH CÔNG
+  ======================================================= */
+
+  console.info(
+    `[SPORTHUB] Product content: ${Object.keys(contentDatabase).length}/52.`
+  );
+
+
+  console.info(
+    `[SPORTHUB] Size guide: ${productsWithSizeGuide.length} sản phẩm.`
+  );
+
+
+  console.info(
+    "[SPORTHUB] SEO title/meta, giá, ảnh, stock, rating và product.sizes được giữ nguyên."
+  );
+
+})();
