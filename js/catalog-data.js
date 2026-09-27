@@ -643,60 +643,1710 @@ products.forEach(product => {
         product.code ||
         `P${String(product.id).padStart(2, "0")}`;
 
-
     const seoOverride =
         SPORTHUB_PRODUCT_SEO_OVERRIDES[
             productCode
         ];
 
-
     if (!seoOverride) {
         return;
     }
 
-
     if (seoOverride.seoTitle) {
-
         product.seoTitle =
             seoOverride.seoTitle;
-
     }
 
-
     if (seoOverride.metaDescription) {
-
         product.metaDescription =
             seoOverride.metaDescription;
-
     }
 
 });
 
 
 /* =========================================================
+   6.2. PRODUCT DETAIL PATCHES
+
+   Mục tiêu:
+   - Bổ sung chi tiết cho các sản phẩm còn thiếu.
+   - Nhận diện bằng TÊN -> SLUG, không phụ thuộc ID/thứ tự.
+   - Nếu có nhiều record cùng tên, tất cả đều được xử lý.
+   - Không thay đổi id, code, giá, ảnh, rating, review, stock,
+     size hoặc badge.
+   - Nội dung chi tiết đang tốt sẽ được giữ lại; chỉ bổ sung
+     trường còn thiếu.
+========================================================= */
+
+window.SPORTHUB_PRODUCT_DETAIL_PATCHES = {
+
+    /* =====================================================
+       1. ÁO GYM PERFORMANCE PRO
+    ===================================================== */
+
+    "ao-gym-performance-pro": {
+
+        sport: "gym-fitness",
+        sportName: "Gym & Fitness",
+        category: "Trang phục Gym",
+        type: "clothes",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Áo tập Gym co giãn linh hoạt, thoáng khí và phù hợp cho Strength Training, Fitness, Cardio hoặc tập luyện hằng ngày.",
+
+        description:
+            "Áo Gym Performance Pro được thiết kế cho các buổi tập cần phạm vi chuyển động linh hoạt và cảm giác thoải mái trong thời gian dài. Chất liệu performance có độ co giãn tốt giúp áo thích nghi với các chuyển động như squat, press, pull, cardio và functional training mà không tạo cảm giác quá gò bó. Cấu trúc vải hướng tới khả năng thông thoáng và thoát ẩm trong quá trình vận động. Form thể thao cân bằng giữa độ ôm và không gian chuyển động, phù hợp cho Gym, Fitness, chạy bộ nhẹ hoặc sử dụng như trang phục thể thao hằng ngày.",
+
+        highlights: [
+            "Chất liệu co giãn hỗ trợ phạm vi chuyển động.",
+            "Thiết kế thông thoáng phù hợp tập luyện.",
+            "Form thể thao linh hoạt, không quá gò bó.",
+            "Phù hợp Strength Training, Fitness và Cardio.",
+            "Dễ kết hợp cùng quần short hoặc quần training.",
+            "Phù hợp nhiều trình độ tập luyện."
+        ],
+
+        suitableFor: [
+            "Gym & Fitness.",
+            "Strength Training.",
+            "Functional Training.",
+            "Cardio.",
+            "Home Workout.",
+            "Chạy bộ nhẹ."
+        ],
+
+        specifications: {
+            productType: "Performance training shirt",
+            material: "Stretch performance fabric",
+            fit: "Athletic training fit",
+            stretch: "Multi-direction stretch",
+            use: "Gym / Fitness / Cardio / Training"
+        },
+
+        usageGuide: [
+            "Chọn size tạo cảm giác thoải mái khi vận động.",
+            "Kiểm tra phạm vi chuyển động vai và thân trước khi tập.",
+            "Có thể sử dụng cho cả strength training và cardio.",
+            "Thay áo sau buổi tập nếu áo thấm nhiều mồ hôi."
+        ],
+
+        careGuide: [
+            "Giặt sau các buổi tập ra nhiều mồ hôi.",
+            "Ưu tiên giặt với nước mát hoặc nhiệt độ vừa phải.",
+            "Không để áo ẩm lâu trong túi tập.",
+            "Phơi ở nơi thông thoáng.",
+            "Hạn chế nhiệt độ sấy quá cao."
+        ],
+
+        relatedExercises: [
+            "Strength Training",
+            "Upper Body Workout",
+            "Functional Training",
+            "Cardio Workout",
+            "Home Workout"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness",
+            "Running",
+            "Cardio"
+        ],
+
+        tags: [
+            "áo gym",
+            "áo tập gym",
+            "fitness",
+            "training shirt",
+            "performance shirt",
+            "activewear"
+        ],
+
+        seoTitle:
+            "Áo Gym Performance Pro co giãn thoáng khí | SPORTHUB",
+
+        metaDescription:
+            "Áo Gym Performance Pro co giãn linh hoạt, thoáng khí và thoải mái, phù hợp Gym, Fitness, Cardio, Strength Training và tập luyện hằng ngày."
+    },
+
+
+    /* =====================================================
+       2. GIÀY CHẠY BỘ ENERGY RUNNER X2
+    ===================================================== */
+
+    "giay-chay-bo-energy-runner-x2": {
+
+        sport: "running",
+        sportName: "Chạy bộ",
+        category: "Giày chạy bộ",
+        type: "shoes",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate"
+        ],
+
+        shortDescription:
+            "Giày chạy bộ nhẹ với đệm đàn hồi và đế hỗ trợ độ bám, phù hợp chạy hằng ngày, đi bộ nhanh và cardio ngoài trời.",
+
+        description:
+            "Giày chạy bộ Energy Runner X2 được phát triển theo hướng daily trainer dễ sử dụng cho người mới và người chạy phong trào. Cấu trúc thân giày ưu tiên độ thoáng khí và cảm giác nhẹ khi di chuyển, trong khi phần đệm giữa hỗ trợ hấp thụ lực khi bàn chân tiếp đất. Đế ngoài tạo độ bám ổn định trên các bề mặt chạy phổ biến, giúp người dùng tự tin hơn trong easy run, chạy nền hoặc đi bộ nhanh. Energy Runner X2 hướng đến sự cân bằng giữa độ êm, linh hoạt và tính thực dụng cho lịch chạy hằng tuần.",
+
+        highlights: [
+            "Thiết kế nhẹ cho chạy bộ hằng ngày.",
+            "Đệm giữa hỗ trợ hấp thụ lực tiếp đất.",
+            "Upper hướng tới khả năng thông thoáng.",
+            "Đế ngoài hỗ trợ độ bám khi di chuyển.",
+            "Phù hợp easy run và chạy nền.",
+            "Có thể sử dụng cho đi bộ và cardio nhẹ."
+        ],
+
+        suitableFor: [
+            "Người mới chạy bộ.",
+            "Người chạy phong trào.",
+            "Easy Run.",
+            "Base Running.",
+            "Đi bộ nhanh.",
+            "Cardio ngoài trời."
+        ],
+
+        specifications: {
+            productType: "Daily running shoe",
+            upper: "Breathable training upper",
+            midsole: "Responsive cushioned foam",
+            outsole: "Traction running outsole",
+            use: "Running / Walking / Daily Training"
+        },
+
+        usageGuide: [
+            "Chọn size có khoảng trống hợp lý ở đầu ngón chân.",
+            "Mang cùng tất chạy bộ phù hợp.",
+            "Buộc dây chắc nhưng không siết quá mạnh.",
+            "Người mới nên tăng quãng đường từ từ.",
+            "Dừng sử dụng nếu đế hoặc thân giày hư hỏng nghiêm trọng."
+        ],
+
+        careGuide: [
+            "Làm sạch bụi và đất sau khi sử dụng.",
+            "Để giày khô tự nhiên ở nơi thông thoáng.",
+            "Không dùng nhiệt độ quá cao để làm khô.",
+            "Không cất giày còn ẩm trong túi kín.",
+            "Kiểm tra độ mòn của outsole định kỳ."
+        ],
+
+        relatedExercises: [
+            "Easy Run",
+            "Base Running",
+            "Brisk Walking",
+            "Outdoor Cardio",
+            "Running Drills"
+        ],
+
+        relatedSports: [
+            "Running",
+            "Gym & Fitness",
+            "Cardio"
+        ],
+
+        tags: [
+            "giày chạy bộ",
+            "running",
+            "running shoes",
+            "daily trainer",
+            "road running",
+            "easy run"
+        ],
+
+        seoTitle:
+            "Giày chạy bộ Energy Runner X2 đệm đàn hồi | SPORTHUB",
+
+        metaDescription:
+            "Giày chạy bộ Energy Runner X2 thiết kế nhẹ, đệm đàn hồi và đế bám ổn định, phù hợp easy run, chạy nền và luyện tập hằng ngày."
+    },
+
+
+    /* =====================================================
+       3. GĂNG TAY GYM PROGRIP
+    ===================================================== */
+
+    "gang-tay-gym-progrip": {
+
+        sport: "gym-fitness",
+        sportName: "Gym & Fitness",
+        category: "Phụ kiện Gym",
+        type: "accessories",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Găng tay Gym hỗ trợ tăng độ bám, giảm ma sát trực tiếp lên lòng bàn tay và tạo cảm giác chắc chắn hơn khi tập tạ.",
+
+        description:
+            "Găng tay Gym ProGrip được thiết kế cho các buổi tập tạ và Fitness cần khả năng cầm nắm ổn định. Bề mặt lòng bàn tay hỗ trợ tăng độ bám khi sử dụng dumbbell, barbell, máy kéo hoặc các tay cầm trong phòng Gym. Găng tạo thêm một lớp ngăn cách giữa bàn tay và dụng cụ, giúp hạn chế ma sát trực tiếp trong các bài có số lần lặp cao. Thiết kế hở ngón duy trì sự linh hoạt của bàn tay và phù hợp cho cả người mới lẫn người tập thường xuyên.",
+
+        highlights: [
+            "Hỗ trợ tăng độ bám khi cầm dụng cụ.",
+            "Giảm ma sát trực tiếp lên lòng bàn tay.",
+            "Thiết kế hở ngón tạo sự linh hoạt.",
+            "Phù hợp dumbbell, barbell và máy tập.",
+            "Dễ tháo và mang trong buổi tập."
+        ],
+
+        suitableFor: [
+            "Gym & Fitness.",
+            "Weight Training.",
+            "Dumbbell Training.",
+            "Machine Training.",
+            "Pull Exercises.",
+            "Home Gym."
+        ],
+
+        specifications: {
+            productType: "Gym training gloves",
+            material: "Performance training material",
+            grip: "Enhanced palm grip",
+            design: "Open-finger training design",
+            use: "Gym / Weight Training / Fitness"
+        },
+
+        usageGuide: [
+            "Chọn size ôm tay nhưng không gây khó chịu.",
+            "Cố định găng trước khi bắt đầu bài tập.",
+            "Giữ thanh tạ hoặc tay cầm đúng kỹ thuật.",
+            "Không phụ thuộc hoàn toàn vào găng khi nâng mức tạ quá khả năng.",
+            "Tháo găng và làm khô sau buổi tập."
+        ],
+
+        careGuide: [
+            "Lau hoặc giặt nhẹ sau các buổi tập nhiều mồ hôi.",
+            "Để găng khô hoàn toàn ở nơi thông thoáng.",
+            "Không để găng ẩm lâu trong túi Gym.",
+            "Kiểm tra phần lòng bàn tay và đường may định kỳ."
+        ],
+
+        relatedExercises: [
+            "Dumbbell Training",
+            "Lat Pulldown",
+            "Seated Row",
+            "Deadlift Practice",
+            "Strength Training"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness"
+        ],
+
+        tags: [
+            "găng tay gym",
+            "găng tập gym",
+            "progrip",
+            "gym gloves",
+            "weight training",
+            "fitness gloves"
+        ],
+
+        seoTitle:
+            "Găng tay Gym ProGrip tăng độ bám tập tạ | SPORTHUB",
+
+        metaDescription:
+            "Găng tay Gym ProGrip hỗ trợ tăng độ bám, giảm ma sát lòng bàn tay và tạo cảm giác chắc chắn khi tập Dumbbell, Barbell và máy Gym."
+    },
+
+
+    /* =====================================================
+       4. TẠ TAY RUBBER DUMBBELL 10KG
+    ===================================================== */
+
+    "ta-tay-rubber-dumbbell-10kg": {
+
+        sport: "gym-fitness",
+        sportName: "Gym & Fitness",
+        category: "Tạ tay",
+        type: "equipment",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Tạ tay 10KG bọc cao su với tay cầm chắc chắn, phù hợp Strength Training, Hypertrophy, Functional Training và Home Gym.",
+
+        description:
+            "Tạ tay Rubber Dumbbell 10KG là dụng cụ tập sức mạnh đa dụng dành cho phòng Gym và không gian tập tại nhà. Trọng lượng 10KG phù hợp với nhiều bài cho thân trên, thân dưới và toàn thân như dumbbell press, row, goblet squat, Romanian deadlift hoặc walking lunge tùy theo trình độ người tập. Phần đầu tạ bọc cao su giúp hạn chế tiếp xúc trực tiếp của kim loại với bề mặt sàn, trong khi khu vực tay cầm tạo cảm giác chắc chắn trong quá trình thực hiện bài tập.",
+
+        highlights: [
+            "Trọng lượng 10KG.",
+            "Đầu tạ có lớp bọc cao su.",
+            "Tay cầm tạo độ chắc chắn khi tập.",
+            "Sử dụng được cho nhiều nhóm cơ.",
+            "Phù hợp phòng Gym và Home Gym.",
+            "Dùng được cho Strength và Functional Training."
+        ],
+
+        suitableFor: [
+            "Strength Training.",
+            "Hypertrophy Training.",
+            "Home Gym.",
+            "Functional Training.",
+            "Circuit Training.",
+            "Full Body Workout."
+        ],
+
+        specifications: {
+            productType: "Rubber dumbbell",
+            weight: "10 KG",
+            material: "Rubber-coated weight head",
+            handle: "Textured training handle",
+            use: "Strength / Fitness / Home Gym"
+        },
+
+        usageGuide: [
+            "Chọn mức tạ phù hợp với khả năng hiện tại.",
+            "Khởi động trước khi thực hiện bài tập sức mạnh.",
+            "Giữ cổ tay ổn định khi nâng và hạ tạ.",
+            "Kiểm soát cả chiều nâng và chiều hạ.",
+            "Không thả tạ từ độ cao không cần thiết."
+        ],
+
+        careGuide: [
+            "Lau sạch tay cầm sau khi sử dụng.",
+            "Giữ tạ ở nơi khô ráo.",
+            "Không để tạ tiếp xúc lâu với nước.",
+            "Không ném hoặc thả mạnh tạ xuống sàn.",
+            "Kiểm tra lớp cao su và tay cầm định kỳ."
+        ],
+
+        relatedExercises: [
+            "Dumbbell Press",
+            "One Arm Row",
+            "Goblet Squat",
+            "Romanian Deadlift",
+            "Walking Lunge",
+            "Shoulder Press"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness"
+        ],
+
+        tags: [
+            "tạ tay",
+            "dumbbell",
+            "tạ 10kg",
+            "rubber dumbbell",
+            "gym",
+            "home gym",
+            "strength training"
+        ],
+
+        seoTitle:
+            "Tạ tay Rubber Dumbbell 10KG tập Gym tại nhà | SPORTHUB",
+
+        metaDescription:
+            "Tạ tay Rubber Dumbbell 10KG bọc cao su, tay cầm chắc chắn và đa dụng cho Strength Training, Gym, Functional Training và tập tại nhà."
+    },
+
+
+    /* =====================================================
+       5. DÂY KHÁNG LỰC POWERBAND SET
+    ===================================================== */
+
+    "day-khang-luc-powerband-set": {
+
+        sport: "gym-fitness",
+        sportName: "Gym & Fitness",
+        category: "Dây kháng lực",
+        type: "equipment",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Bộ dây kháng lực nhiều mức lực dành cho Activation, Strength Training, Mobility, Warm-up và tập toàn thân tại nhà.",
+
+        description:
+            "Dây kháng lực PowerBand Set là bộ dây tập đa năng với nhiều mức kháng lực, cho phép người dùng lựa chọn độ khó phù hợp với từng bài tập và trình độ. Dây có thể được sử dụng cho activation trước buổi tập, strength training, mobility hoặc các chương trình home workout không cần nhiều thiết bị. Người tập có thể tăng dần mức kháng lực khi kỹ thuật và sức mạnh cải thiện. PowerBand Set phù hợp cho các bài mông, chân, vai, lưng, tay và nhiều chuyển động toàn thân.",
+
+        highlights: [
+            "Bộ nhiều mức kháng lực.",
+            "Có thể điều chỉnh độ khó theo trình độ.",
+            "Phù hợp Activation và Warm-up.",
+            "Dùng được cho thân trên và thân dưới.",
+            "Nhỏ gọn, phù hợp tập tại nhà.",
+            "Hỗ trợ Mobility và Strength Training."
+        ],
+
+        suitableFor: [
+            "Gym & Fitness.",
+            "Home Workout.",
+            "Glute Activation.",
+            "Warm-up.",
+            "Mobility.",
+            "Strength Training.",
+            "Functional Training."
+        ],
+
+        specifications: {
+            productType: "Resistance band set",
+            resistance: "Multiple resistance levels",
+            material: "Elastic resistance material",
+            use: "Strength / Activation / Mobility / Home Workout"
+        },
+
+        usageGuide: [
+            "Kiểm tra bề mặt dây trước mỗi buổi tập.",
+            "Bắt đầu với mức kháng lực thấp nếu chưa quen.",
+            "Tăng lực kháng từng bước khi kỹ thuật ổn định.",
+            "Kiểm soát cả chiều kéo và chiều dây trở về.",
+            "Dừng sử dụng nếu dây có dấu hiệu nứt hoặc rách."
+        ],
+
+        careGuide: [
+            "Lau sạch sau khi sử dụng.",
+            "Bảo quản ở nơi khô và mát.",
+            "Tránh ánh nắng trực tiếp kéo dài.",
+            "Không để dây tiếp xúc với vật sắc.",
+            "Thay dây nếu xuất hiện nứt hoặc xuống cấp đáng kể."
+        ],
+
+        relatedExercises: [
+            "Glute Activation",
+            "Band Squat",
+            "Lateral Walk",
+            "Shoulder Warm-up",
+            "Resistance Row",
+            "Mobility Flow"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness",
+            "Running",
+            "Yoga",
+            "Cardio"
+        ],
+
+        tags: [
+            "dây kháng lực",
+            "resistance band",
+            "powerband",
+            "home workout",
+            "glute activation",
+            "mobility",
+            "warm up"
+        ],
+
+        seoTitle:
+            "Dây kháng lực PowerBand Set 5 mức tập luyện | SPORTHUB",
+
+        metaDescription:
+            "Dây kháng lực PowerBand Set nhiều mức lực, phù hợp Strength Training, Activation, Mobility, Warm-up và tập luyện toàn thân tại nhà."
+    },
+
+
+    /* =====================================================
+       6. DÂY YOGA STRETCH STRAP
+    ===================================================== */
+
+    "day-yoga-stretch-strap": {
+
+        sport: "yoga",
+        sportName: "Yoga",
+        category: "Dụng cụ Yoga",
+        type: "accessories",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Dây Yoga dài 180cm hỗ trợ stretching, mobility và điều chỉnh tư thế khi người tập chưa đạt đủ phạm vi chuyển động.",
+
+        description:
+            "Dây Yoga Stretch Strap là phụ kiện hỗ trợ các bài kéo giãn, mobility và Yoga khi người tập chưa thể tiếp cận bàn chân hoặc duy trì tư thế bằng tay một cách thoải mái. Chiều dài 180cm tạo phạm vi sử dụng linh hoạt cho nhiều nhóm cơ như hamstring, vai, lưng và hông. Dây có thể được sử dụng để kéo dài phạm vi tiếp cận của tay trong một số tư thế, giúp người tập tập trung vào kỹ thuật và vị trí cơ thể thay vì cố gắng đạt biên độ vượt quá khả năng hiện tại.",
+
+        highlights: [
+            "Chiều dài 180cm.",
+            "Hỗ trợ tăng phạm vi tiếp cận trong tư thế.",
+            "Phù hợp Stretching và Mobility.",
+            "Có thể sử dụng cho nhiều nhóm cơ.",
+            "Nhẹ và dễ mang theo.",
+            "Hỗ trợ người mới tiếp cận tư thế dễ dàng hơn."
+        ],
+
+        suitableFor: [
+            "Yoga.",
+            "Stretching.",
+            "Mobility Training.",
+            "Recovery sau tập.",
+            "Người mới tập Yoga.",
+            "Người có độ linh hoạt còn hạn chế."
+        ],
+
+        specifications: {
+            productType: "Yoga stretch strap",
+            length: "180 cm",
+            material: "Durable woven fabric",
+            adjustment: "Adjustable loop support",
+            use: "Yoga / Stretching / Mobility"
+        },
+
+        usageGuide: [
+            "Quấn dây quanh bàn chân hoặc vị trí phù hợp với bài tập.",
+            "Giữ lực kéo vừa phải, không giật mạnh.",
+            "Duy trì nhịp thở đều khi stretching.",
+            "Tăng biên độ từ từ thay vì cố ép cơ thể.",
+            "Không sử dụng dây để tạo lực kéo gây đau."
+        ],
+
+        careGuide: [
+            "Giặt nhẹ khi dây bám nhiều mồ hôi.",
+            "Để khô hoàn toàn trước khi cất.",
+            "Không để dây tiếp xúc với vật sắc.",
+            "Kiểm tra đường may và phần khóa định kỳ."
+        ],
+
+        relatedExercises: [
+            "Hamstring Stretch",
+            "Shoulder Mobility",
+            "Hip Mobility",
+            "Seated Stretch",
+            "Yoga Mobility Flow"
+        ],
+
+        relatedSports: [
+            "Yoga",
+            "Pilates",
+            "Gym & Fitness"
+        ],
+
+        tags: [
+            "yoga",
+            "dây yoga",
+            "yoga strap",
+            "stretch strap",
+            "stretching",
+            "mobility",
+            "recovery"
+        ],
+
+        seoTitle:
+            "Dây Yoga Stretch Strap 180cm kéo giãn | SPORTHUB",
+
+        metaDescription:
+            "Dây Yoga Stretch Strap dài 180cm hỗ trợ Stretching, Mobility và điều chỉnh tư thế, phù hợp người mới và người tập Yoga thường xuyên."
+    },
+
+
+    /* =====================================================
+       7. THẢM YOGA PREMIUM PRO
+    ===================================================== */
+
+    "tham-yoga-premium-pro": {
+
+        sport: "yoga",
+        sportName: "Yoga",
+        category: "Thảm Yoga",
+        type: "equipment",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Thảm Yoga có bề mặt hỗ trợ chống trượt và độ đàn hồi phù hợp cho Yoga, Pilates, Stretching, Mobility và Bodyweight Training.",
+
+        description:
+            "Thảm Yoga Premium Pro được thiết kế để tạo bề mặt tập ổn định và thoải mái hơn trong các buổi Yoga, Pilates, stretching hoặc bodyweight training. Bề mặt thảm hỗ trợ tăng độ bám giữa tay, chân và khu vực tập, giúp người dùng duy trì tư thế tốt hơn trong các động tác cần điểm tựa. Cấu trúc đàn hồi tạo lớp đệm giữa cơ thể và sàn, phù hợp với các tư thế ngồi, quỳ, chống tay hoặc nằm. Premium Pro có thể sử dụng tại nhà, studio hoặc khu vực tập luyện cá nhân.",
+
+        highlights: [
+            "Bề mặt hỗ trợ tăng độ bám.",
+            "Có độ đàn hồi phù hợp tập luyện.",
+            "Tạo lớp đệm giữa cơ thể và mặt sàn.",
+            "Phù hợp Yoga và Pilates.",
+            "Dùng được cho Stretching và Mobility.",
+            "Phù hợp tập tại nhà hoặc studio."
+        ],
+
+        suitableFor: [
+            "Yoga.",
+            "Pilates.",
+            "Stretching.",
+            "Mobility.",
+            "Bodyweight Training.",
+            "Home Workout."
+        ],
+
+        specifications: {
+            productType: "Yoga training mat",
+            surface: "Anti-slip training surface",
+            cushioning: "Supportive cushioning",
+            flexibility: "Flexible rollable design",
+            use: "Yoga / Pilates / Stretching / Bodyweight"
+        },
+
+        usageGuide: [
+            "Trải thảm trên bề mặt phẳng và sạch.",
+            "Đảm bảo thảm không bị cuộn mép trước khi tập.",
+            "Giữ bề mặt thảm khô để duy trì độ bám.",
+            "Sau khi tập nên để thảm thoáng trước khi cuộn."
+        ],
+
+        careGuide: [
+            "Lau bề mặt thảm sau khi sử dụng.",
+            "Để thảm khô hoàn toàn trước khi cuộn.",
+            "Không cất thảm khi còn ẩm.",
+            "Tránh nguồn nhiệt mạnh trong thời gian dài.",
+            "Không dùng vật sắc trên bề mặt thảm."
+        ],
+
+        relatedExercises: [
+            "Yoga Flow",
+            "Pilates Workout",
+            "Mobility Flow",
+            "Stretching Routine",
+            "Bodyweight Workout"
+        ],
+
+        relatedSports: [
+            "Yoga",
+            "Pilates",
+            "Gym & Fitness"
+        ],
+
+        tags: [
+            "thảm yoga",
+            "yoga mat",
+            "yoga",
+            "pilates",
+            "stretching",
+            "mobility",
+            "bodyweight training"
+        ],
+
+        seoTitle:
+            "Thảm Yoga Premium Pro chống trượt tập luyện | SPORTHUB",
+
+        metaDescription:
+            "Thảm Yoga Premium Pro có bề mặt hỗ trợ chống trượt và độ đàn hồi phù hợp Yoga, Pilates, Stretching, Mobility và tập tại nhà."
+    },
+
+
+    /* =====================================================
+       8. BÌNH NƯỚC SPORTSTEEL 1L
+    ===================================================== */
+
+    "binh-nuoc-sportsteel-1l": {
+
+        sport: "accessories",
+        sportName: "Phụ kiện",
+        category: "Bình nước thể thao",
+        type: "accessories",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Bình nước thể thao dung tích 1L với thân bình chắc chắn, phù hợp mang nước khi tập Gym, chơi thể thao hoặc sử dụng hằng ngày.",
+
+        description:
+            "Bình Nước SportSteel 1L được thiết kế cho người cần mang lượng nước tương đối lớn trong các buổi tập hoặc hoạt động kéo dài. Dung tích 1 lít phù hợp cho Gym, Fitness, thể thao ngoài trời, làm việc và di chuyển hằng ngày. Cấu trúc thân bình chắc chắn giúp sản phẩm phù hợp với môi trường tập luyện thường xuyên, trong khi thiết kế nắp đóng giúp thuận tiện mang theo trong túi thể thao. SportSteel 1L là phụ kiện hữu ích cho người muốn chủ động chuẩn bị nước trước khi tập và duy trì thói quen bổ sung nước trong ngày.",
+
+        highlights: [
+            "Dung tích 1L.",
+            "Thiết kế dành cho tập luyện và thể thao.",
+            "Thân bình chắc chắn.",
+            "Dễ mang đến phòng Gym hoặc sân tập.",
+            "Phù hợp sử dụng hằng ngày.",
+            "Dung tích phù hợp cho các buổi tập kéo dài."
+        ],
+
+        suitableFor: [
+            "Gym & Fitness.",
+            "Running.",
+            "Football.",
+            "Basketball.",
+            "Badminton.",
+            "Tennis.",
+            "Pickleball.",
+            "Hoạt động ngoài trời."
+        ],
+
+        specifications: {
+            productType: "Sports water bottle",
+            capacity: "1 L",
+            construction: "SportSteel bottle body",
+            lid: "Secure closure",
+            use: "Training / Sport / Daily Use"
+        },
+
+        usageGuide: [
+            "Rửa sạch bình trước lần sử dụng đầu tiên.",
+            "Đổ lượng nước phù hợp trước khi tập.",
+            "Đóng nắp chắc chắn trước khi cho vào túi.",
+            "Kiểm tra nắp trước khi di chuyển.",
+            "Vệ sinh bình thường xuyên nếu sử dụng hằng ngày."
+        ],
+
+        careGuide: [
+            "Rửa sạch sau mỗi ngày sử dụng.",
+            "Vệ sinh kỹ khu vực nắp và miệng bình.",
+            "Để bình khô hoàn toàn trước khi đóng nắp và cất.",
+            "Không dùng vật sắc làm trầy bề mặt bên trong.",
+            "Kiểm tra nắp và phần gioăng định kỳ."
+        ],
+
+        relatedExercises: [
+            "Gym Workout",
+            "Running",
+            "Cardio Training",
+            "Football Training",
+            "Outdoor Workout"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness",
+            "Running",
+            "Football",
+            "Basketball",
+            "Badminton",
+            "Tennis",
+            "Pickleball"
+        ],
+
+        tags: [
+            "bình nước",
+            "sportsteel",
+            "bình nước 1l",
+            "bình nước thể thao",
+            "sport bottle",
+            "hydration"
+        ],
+
+        seoTitle:
+            "Bình Nước SportSteel 1L dành cho thể thao | SPORTHUB",
+
+        metaDescription:
+            "Bình Nước SportSteel 1L có dung tích lớn và thiết kế chắc chắn, phù hợp mang nước khi tập Gym, thể thao, hoạt động ngoài trời và hằng ngày."
+    },
+
+
+    /* =====================================================
+       9. FOAM ROLLER RECOVERY X
+    ===================================================== */
+
+    "foam-roller-recovery-x": {
+
+        sport: "recovery",
+        sportName: "Phục hồi",
+        category: "Dụng cụ phục hồi",
+        type: "equipment",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Foam Roller hỗ trợ self-massage, mobility và thư giãn các nhóm cơ sau những buổi Gym, chạy bộ hoặc luyện tập thể thao.",
+
+        description:
+            "Foam Roller Recovery X là dụng cụ hỗ trợ self-massage và mobility dành cho người tập thể thao hoặc người muốn bổ sung các bài thư giãn cơ vào routine hằng ngày. Người dùng có thể sử dụng trọng lượng cơ thể để điều chỉnh mức áp lực khi lăn trên các nhóm cơ lớn như đùi trước, đùi sau, bắp chân, glute và lưng trên. Recovery X phù hợp sử dụng sau buổi tập, trong các phiên mobility hoặc trước vận động với cường độ phù hợp. Khi sử dụng nên di chuyển chậm, tập trung vào vùng cơ và tránh lăn trực tiếp lên khớp hoặc vùng xương.",
+
+        highlights: [
+            "Hỗ trợ self-massage sau tập.",
+            "Phù hợp nhiều nhóm cơ lớn.",
+            "Có thể sử dụng cho Mobility.",
+            "Điều chỉnh áp lực bằng trọng lượng cơ thể.",
+            "Phù hợp Gym, Running và nhiều môn thể thao.",
+            "Dễ bổ sung vào Recovery routine."
+        ],
+
+        suitableFor: [
+            "Người tập Gym.",
+            "Người chạy bộ.",
+            "Người chơi thể thao.",
+            "Mobility Training.",
+            "Recovery sau tập.",
+            "Warm-up nhẹ."
+        ],
+
+        specifications: {
+            productType: "Foam recovery roller",
+            material: "High-density recovery foam",
+            firmness: "Medium-firm",
+            use: "Self-massage / Recovery / Mobility"
+        },
+
+        usageGuide: [
+            "Đặt foam roller dưới nhóm cơ cần tác động.",
+            "Dùng tay và chân để điều chỉnh trọng lượng cơ thể.",
+            "Lăn chậm thay vì di chuyển quá nhanh.",
+            "Không lăn trực tiếp lên khớp hoặc vùng xương.",
+            "Dừng sử dụng nếu xuất hiện đau sắc, tê hoặc cảm giác bất thường."
+        ],
+
+        careGuide: [
+            "Lau sạch bề mặt sau khi sử dụng.",
+            "Để roller khô trước khi cất.",
+            "Không để gần nguồn nhiệt cao.",
+            "Không để vật sắc làm hỏng bề mặt.",
+            "Không sử dụng nếu roller bị nứt hoặc biến dạng nghiêm trọng."
+        ],
+
+        relatedExercises: [
+            "Quad Release",
+            "Hamstring Recovery",
+            "Calf Release",
+            "Glute Recovery",
+            "Mobility Flow"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness",
+            "Running",
+            "Football",
+            "Basketball",
+            "Recovery"
+        ],
+
+        tags: [
+            "foam roller",
+            "recovery",
+            "con lăn massage",
+            "self massage",
+            "mobility",
+            "phục hồi cơ"
+        ],
+
+        seoTitle:
+            "Foam Roller Recovery X hỗ trợ phục hồi cơ | SPORTHUB",
+
+        metaDescription:
+            "Foam Roller Recovery X hỗ trợ Self-Massage, Mobility và thư giãn các nhóm cơ sau Gym, chạy bộ hoặc nhiều hình thức luyện tập thể thao."
+    },
+
+
+    /* =====================================================
+       10. TÚI GYM URBAN 35L
+    ===================================================== */
+
+    "tui-gym-urban-35l": {
+
+        sport: "accessories",
+        sportName: "Phụ kiện",
+        category: "Túi thể thao",
+        type: "accessories",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Túi Gym dung tích 35L với nhiều ngăn và khu vực riêng cho giày, phù hợp mang quần áo, phụ kiện và đồ dùng đến phòng tập.",
+
+        description:
+            "Túi Gym Urban 35L được thiết kế cho người cần mang theo quần áo, giày, khăn, bình nước và các phụ kiện tập luyện trong một chiếc túi gọn gàng. Dung tích 35L cung cấp không gian phù hợp cho nhu cầu đi Gym hoặc các buổi tập thể thao hằng ngày mà không quá cồng kềnh. Hệ thống nhiều ngăn giúp phân loại vật dụng, trong khi khu vực riêng dành cho giày hỗ trợ tách giày tập khỏi quần áo và các đồ dùng sạch. Urban 35L phù hợp cho Gym, Fitness, Boxing, Muay Thai hoặc những chuyến đi ngắn.",
+
+        highlights: [
+            "Dung tích 35L.",
+            "Nhiều ngăn giúp phân loại đồ dùng.",
+            "Có khu vực riêng dành cho giày.",
+            "Phù hợp mang quần áo và phụ kiện tập.",
+            "Thiết kế phù hợp sử dụng hằng ngày.",
+            "Có thể dùng cho các chuyến đi ngắn."
+        ],
+
+        suitableFor: [
+            "Gym & Fitness.",
+            "Boxing.",
+            "Muay Thai.",
+            "MMA.",
+            "Swimming.",
+            "Người thường xuyên đến phòng tập."
+        ],
+
+        specifications: {
+            productType: "Gym duffle bag",
+            capacity: "35 L",
+            compartments: "Multiple storage compartments",
+            shoeCompartment: "Có",
+            carryOptions: "Hand carry / Shoulder carry",
+            use: "Gym / Sport / Daily Training"
+        },
+
+        usageGuide: [
+            "Phân chia quần áo, giày và phụ kiện vào các ngăn phù hợp.",
+            "Đặt giày vào khu vực riêng nếu có.",
+            "Không nhồi túi vượt quá dung tích hợp lý.",
+            "Đóng khóa kéo trước khi di chuyển.",
+            "Lấy quần áo và khăn ướt ra khỏi túi sau buổi tập."
+        ],
+
+        careGuide: [
+            "Lấy toàn bộ đồ ẩm ra sau khi tập.",
+            "Lau sạch bên trong và bên ngoài khi cần.",
+            "Để túi thông thoáng trước khi cất.",
+            "Kiểm tra khóa kéo và dây đeo định kỳ.",
+            "Không để vật sắc nhọn trực tiếp trong túi."
+        ],
+
+        relatedExercises: [
+            "Gym Workout",
+            "Boxing Training",
+            "Muay Thai Training",
+            "Swimming",
+            "Fitness Training"
+        ],
+
+        relatedSports: [
+            "Gym & Fitness",
+            "Boxing",
+            "Muay Thai",
+            "MMA",
+            "Running",
+            "Swimming"
+        ],
+
+        tags: [
+            "túi gym",
+            "gym bag",
+            "túi thể thao",
+            "urban 35l",
+            "sport bag",
+            "duffle bag",
+            "túi có ngăn giày"
+        ],
+
+        seoTitle:
+            "Túi Gym Urban 35L nhiều ngăn đựng đồ tập | SPORTHUB",
+
+        metaDescription:
+            "Túi Gym Urban 35L có nhiều ngăn và khu vực riêng cho giày, phù hợp mang quần áo, phụ kiện Gym, Boxing, Fitness và đồ tập hằng ngày."
+    },
+
+
+    /* =====================================================
+       11. DÂY NHẢY SPEED ROPE RX
+    ===================================================== */
+
+    "day-nhay-speed-rope-rx": {
+
+        sport: "cardio",
+        sportName: "Cardio",
+        category: "Dụng cụ Cardio",
+        type: "equipment",
+        brand: "SPORTHUB",
+
+        audience: [
+            "Nam",
+            "Nữ"
+        ],
+
+        level: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+        ],
+
+        shortDescription:
+            "Dây nhảy tốc độ có chiều dài điều chỉnh và cơ chế xoay mượt, phù hợp Cardio, Conditioning, Warm-up và tập võ.",
+
+        description:
+            "Dây Nhảy Speed Rope RX được thiết kế cho các buổi cardio và conditioning cần chuyển động liên tục với nhịp độ linh hoạt. Chiều dài dây có thể điều chỉnh để phù hợp với nhiều chiều cao người dùng, giúp người tập thiết lập dây theo tư thế và kỹ thuật cá nhân. Cơ chế xoay tại tay cầm hỗ trợ dây chuyển động ổn định hơn khi thực hiện basic jump, alternate step hoặc các bài nhảy tốc độ. Speed Rope RX phù hợp cho người mới học nhảy dây, người tập Gym cũng như người luyện Boxing hoặc Muay Thai muốn bổ sung cardio và footwork.",
+
+        highlights: [
+            "Chiều dài dây có thể điều chỉnh.",
+            "Cơ chế xoay hỗ trợ chuyển động mượt.",
+            "Phù hợp Cardio và Conditioning.",
+            "Có thể dùng cho Warm-up.",
+            "Thiết kế nhỏ gọn và dễ mang theo.",
+            "Phù hợp nhiều trình độ."
+        ],
+
+        suitableFor: [
+            "Cardio.",
+            "Conditioning.",
+            "Warm-up.",
+            "Boxing Training.",
+            "Muay Thai Training.",
+            "Gym.",
+            "Home Workout."
+        ],
+
+        specifications: {
+            productType: "Speed jump rope",
+            length: "Adjustable",
+            handle: "Lightweight handles",
+            rotation: "Smooth rotation mechanism",
+            use: "Cardio / Conditioning / Warm-up"
+        },
+
+        usageGuide: [
+            "Điều chỉnh chiều dài dây theo chiều cao.",
+            "Giữ khuỷu tay gần thân người.",
+            "Xoay dây chủ yếu bằng cổ tay.",
+            "Tiếp đất nhẹ bằng phần trước hoặc giữa bàn chân.",
+            "Người mới nên bắt đầu bằng các hiệp ngắn.",
+            "Tăng tốc độ và thời lượng từ từ khi kỹ thuật ổn định."
+        ],
+
+        careGuide: [
+            "Cuộn dây nhẹ nhàng sau khi sử dụng.",
+            "Không gập dây quá mạnh.",
+            "Tránh sử dụng lâu trên bề mặt quá thô.",
+            "Lau tay cầm khi bám nhiều mồ hôi.",
+            "Kiểm tra dây và cơ chế xoay định kỳ."
+        ],
+
+        relatedExercises: [
+            "Jump Rope",
+            "Boxing Conditioning",
+            "Cardio Intervals",
+            "Footwork Training",
+            "Dynamic Warm-up"
+        ],
+
+        relatedSports: [
+            "Cardio",
+            "Gym & Fitness",
+            "Boxing",
+            "Muay Thai"
+        ],
+
+        tags: [
+            "dây nhảy",
+            "speed rope",
+            "speed rope rx",
+            "jump rope",
+            "cardio",
+            "conditioning",
+            "boxing cardio"
+        ],
+
+        seoTitle:
+            "Dây Nhảy Speed Rope RX tập Cardio tốc độ | SPORTHUB",
+
+        metaDescription:
+            "Dây Nhảy Speed Rope RX có chiều dài điều chỉnh và cơ chế xoay mượt, phù hợp Cardio, Conditioning, Warm-up, Boxing và Muay Thai."
+    }
+
+};
+
+
+/* =========================================================
+   6.2.1. ÁP DỤNG PRODUCT DETAIL PATCH
+========================================================= */
+
+(function applySportHubProductDetailPatches() {
+
+    if (
+        !Array.isArray(products) ||
+        !window.SPORTHUB_PRODUCT_DETAIL_PATCHES
+    ) {
+        return;
+    }
+
+
+    /*
+       Tạo key chuẩn từ tên sản phẩm.
+       Ví dụ:
+
+       "Thảm Yoga Premium Pro"
+       ->
+       "tham-yoga-premium-pro"
+    */
+
+    const createProductKey = function (name = "") {
+
+        if (
+            typeof window.sportHubSlug === "function"
+        ) {
+            return window.sportHubSlug(name);
+        }
+
+
+        /*
+           Fallback phòng trường hợp sportHubSlug
+           chưa được khai báo.
+        */
+
+        return String(name)
+
+            .normalize("NFD")
+
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            )
+
+            .replace(
+                /đ/g,
+                "d"
+            )
+
+            .replace(
+                /Đ/g,
+                "d"
+            )
+
+            .toLowerCase()
+
+            .trim()
+
+            .replace(
+                /[^a-z0-9]+/g,
+                "-"
+            )
+
+            .replace(
+                /^-+|-+$/g,
+                ""
+            );
+
+    };
+
+
+    /*
+       Kiểm tra một field hiện đang rỗng hay không.
+    */
+
+    const isEmptyValue = function (value) {
+
+        if (
+            value === undefined ||
+            value === null ||
+            value === ""
+        ) {
+            return true;
+        }
+
+
+        if (Array.isArray(value)) {
+            return value.length === 0;
+        }
+
+
+        if (
+            typeof value === "object" &&
+            value !== null
+        ) {
+            return (
+                Object.keys(value).length === 0
+            );
+        }
+
+
+        return false;
+
+    };
+
+
+    /*
+       Clone dữ liệu để các sản phẩm trùng tên
+       không dùng chung tham chiếu array/object.
+    */
+
+    const cloneValue = function (value) {
+
+        if (Array.isArray(value)) {
+
+            return [
+                ...value
+            ];
+
+        }
+
+
+        if (
+            value &&
+            typeof value === "object"
+        ) {
+
+            return {
+                ...value
+            };
+
+        }
+
+
+        return value;
+
+    };
+
+
+    /*
+       Các field này được xem là dữ liệu chuẩn
+       theo chính TÊN sản phẩm.
+
+       Nếu metadata cũ từng được gán sai do ID,
+       các field dưới đây sẽ được sửa lại.
+    */
+
+    const canonicalFields =
+        new Set([
+
+            "sport",
+
+            "sportName",
+
+            "category",
+
+            "type",
+
+            "brand",
+
+            "audience",
+
+            "level",
+
+            "tags",
+
+            "seoTitle",
+
+            "metaDescription"
+
+        ]);
+
+
+    products.forEach(product => {
+
+        if (!product) {
+            return;
+        }
+
+
+        const productKey =
+            createProductKey(
+                product.name || ""
+            );
+
+
+        const patch =
+            window
+                .SPORTHUB_PRODUCT_DETAIL_PATCHES[
+                    productKey
+                ];
+
+
+        /*
+           Không nằm trong danh sách cần vá
+           -> giữ nguyên sản phẩm.
+        */
+
+        if (!patch) {
+            return;
+        }
+
+
+        Object.entries(
+            patch
+        ).forEach(
+            ([field, value]) => {
+
+                /*
+                   PHÂN LOẠI / SEO:
+                   Luôn đồng bộ theo tên sản phẩm.
+
+                   NỘI DUNG CHI TIẾT:
+                   Chỉ thêm nếu field đang thiếu.
+
+                   Nhờ vậy:
+                   - sửa metadata cũ bị lệch ID
+                   - không phá content tốt đã tồn tại
+                */
+
+                if (
+                    canonicalFields.has(field) ||
+                    isEmptyValue(
+                        product[field]
+                    )
+                ) {
+
+                    product[field] =
+                        cloneValue(
+                            value
+                        );
+
+                }
+
+            }
+        );
+
+
+        /*
+           Không ép thay slug đang hoạt động.
+
+           Nếu chưa có slug thì mới tạo.
+        */
+
+        if (!product.slug) {
+
+            product.slug =
+                productKey;
+
+        }
+
+    });
+
+})();
+
+
+
+/* =========================================================
+   6.2.2. KIỂM TRA PRODUCT DETAIL PATCH
+
+   Chỉ báo Console.
+   Không throw Error.
+   Không làm dừng website.
+========================================================= */
+
+(function validateSportHubProductDetails() {
+
+    if (
+        !Array.isArray(products)
+    ) {
+        return;
+    }
+
+
+    const patches =
+        window
+            .SPORTHUB_PRODUCT_DETAIL_PATCHES ||
+        {};
+
+
+    const targetProducts =
+        new Set(
+            Object.keys(
+                patches
+            )
+        );
+
+
+    /*
+       Các field bắt buộc để giao diện
+       chi tiết sản phẩm có đủ nội dung.
+    */
+
+    const requiredFields = [
+
+        "shortDescription",
+
+        "description",
+
+        "highlights",
+
+        "suitableFor",
+
+        "specifications",
+
+        "usageGuide",
+
+        "careGuide",
+
+        "relatedExercises"
+
+    ];
+
+
+    /*
+       Dùng để phát hiện:
+       - sản phẩm không tồn tại
+       - sản phẩm trùng tên
+    */
+
+    const foundProducts =
+        new Map();
+
+
+    products.forEach(product => {
+
+        const key =
+
+            typeof window.sportHubSlug ===
+                "function"
+
+                ? window.sportHubSlug(
+                    product.name || ""
+                )
+
+                : "";
+
+
+        if (
+            !targetProducts.has(
+                key
+            )
+        ) {
+            return;
+        }
+
+
+        foundProducts.set(
+
+            key,
+
+            (
+                foundProducts.get(
+                    key
+                ) ||
+                0
+            ) + 1
+
+        );
+
+
+        const missingFields =
+            requiredFields.filter(
+                field => {
+
+                    const value =
+                        product[field];
+
+
+                    if (
+                        value === undefined ||
+                        value === null ||
+                        value === ""
+                    ) {
+                        return true;
+                    }
+
+
+                    if (
+                        Array.isArray(value) &&
+                        value.length === 0
+                    ) {
+                        return true;
+                    }
+
+
+                    if (
+                        typeof value === "object" &&
+                        value !== null &&
+                        !Array.isArray(value) &&
+                        Object.keys(value)
+                            .length === 0
+                    ) {
+                        return true;
+                    }
+
+
+                    return false;
+
+                }
+            );
+
+
+        /*
+           Có field thiếu.
+        */
+
+        if (
+            missingFields.length > 0
+        ) {
+
+            console.warn(
+
+                `[SPORTHUB DETAIL] ${product.name} thiếu dữ liệu:`,
+
+                missingFields,
+
+                product
+
+            );
+
+        }
+
+
+        /*
+           Đã đủ dữ liệu.
+        */
+
+        else {
+
+            console.info(
+
+                `[SPORTHUB DETAIL] OK: ${product.name}`
+
+            );
+
+        }
+
+    });
+
+
+    /*
+       Kiểm tra sản phẩm trong PATCH
+       nhưng không tìm thấy trong database.
+    */
+
+    targetProducts.forEach(key => {
+
+        const count =
+            foundProducts.get(key) ||
+            0;
+
+
+        if (
+            count === 0
+        ) {
+
+            console.warn(
+
+                `[SPORTHUB DETAIL] Không tìm thấy sản phẩm trong products: ${key}`
+
+            );
+
+        }
+
+
+        /*
+           Trùng tên không phải lỗi.
+
+           Tất cả record cùng tên đều
+           đã được cập nhật ở trên.
+        */
+
+        if (
+            count > 1
+        ) {
+
+            console.info(
+
+                `[SPORTHUB DETAIL] Có ${count} record cùng tên "${key}". Tất cả đã được xử lý.`
+
+            );
+
+        }
+
+    });
+
+})();
+
+
+
+/* =========================================================
    KIỂM TRA ĐỘ DÀI SEO
-   Chỉ cảnh báo Console
-   Không làm ảnh hưởng website
+
+   Chỉ cảnh báo Console.
+   Không làm ảnh hưởng website.
 ========================================================= */
 
 products.forEach(product => {
 
     const code =
         product.code ||
-        `P${String(product.id).padStart(2, "0")}`;
+        `P${String(
+            product.id
+        ).padStart(
+            2,
+            "0"
+        )}`;
 
 
     const seoTitle =
         String(
-            product.seoTitle || ""
+            product.seoTitle ||
+            ""
         );
 
 
     const metaDescription =
         String(
-            product.metaDescription || ""
+            product.metaDescription ||
+            ""
         );
 
+
+    /*
+       SEO Title khuyến nghị:
+       khoảng 50 - 60 ký tự.
+    */
 
     if (
         seoTitle.length < 50 ||
@@ -704,12 +2354,21 @@ products.forEach(product => {
     ) {
 
         console.warn(
+
             `[SPORTHUB SEO] ${code} Title có ${seoTitle.length} ký tự:`,
+
             seoTitle
+
         );
 
     }
 
+
+    /*
+       Meta Description:
+       project hiện kiểm soát khoảng
+       100 - 130 ký tự.
+    */
 
     if (
         metaDescription.length < 100 ||
@@ -717,13 +2376,21 @@ products.forEach(product => {
     ) {
 
         console.warn(
+
             `[SPORTHUB SEO] ${code} Meta Description có ${metaDescription.length} ký tự:`,
+
             metaDescription
+
         );
 
     }
 
 });
+
+
+/* =========================================================
+   KẾT THÚC PHẦN PRODUCT DETAIL PATCH
+========================================================= */
 /* =========================================================
    7. KIỂM TRA DATABASE CATALOG
    Chỉ cảnh báo trong Console
