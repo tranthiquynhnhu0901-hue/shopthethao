@@ -1,6 +1,6 @@
 /* =========================================================
    SPORTHUB WORKOUT PLAN PAGE
-   Version 1.1
+   Version 1.2
 
    Dùng cho:
    - ke-hoach-tap-luyen.html
@@ -359,17 +359,78 @@ window.SportHubWorkoutPlanPage = (() => {
     }
 
 
-    /* =====================================================
-       12. STORAGE GETTERS
-    ====================================================== */
+/* =====================================================
+   12. STORAGE GETTERS
 
-    function getProfile() {
+   Ưu tiên dùng SportHubPersonalPlan.
+   Nếu personal-plan.js chưa load được
+   thì fallback về localStorage cũ.
+====================================================== */
 
-        return readStorage(
-            STORAGE.profile
-        );
+function getProfile() {
+
+    if (
+        window
+            .SportHubPersonalPlan
+            ?.getProfile
+    ) {
+
+        return window
+            .SportHubPersonalPlan
+            .getProfile();
 
     }
+
+
+    return readStorage(
+        STORAGE.profile
+    );
+
+}
+
+
+function getHealth() {
+
+    if (
+        window
+            .SportHubPersonalPlan
+            ?.getHealth
+    ) {
+
+        return window
+            .SportHubPersonalPlan
+            .getHealth();
+
+    }
+
+
+    return readStorage(
+        STORAGE.health
+    );
+
+}
+
+
+function getWorkout() {
+
+    if (
+        window
+            .SportHubPersonalPlan
+            ?.getWorkout
+    ) {
+
+        return window
+            .SportHubPersonalPlan
+            .getWorkout();
+
+    }
+
+
+    return readStorage(
+        STORAGE.workout
+    );
+
+}
 
 
     function getHealth() {
