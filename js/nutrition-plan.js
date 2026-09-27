@@ -1,6 +1,6 @@
 /* =========================================================
    SPORTHUB NUTRITION PLAN PAGE
-   Version 1.0
+   Version 1.1
 
    Dùng cho:
    ke-hoach-dinh-duong.html
@@ -287,35 +287,78 @@ window.SportHubNutritionPlanPage = (() => {
     }
 
 
-    /* =====================================================
-       6. DATA GETTERS
-    ====================================================== */
+/* =====================================================
+   6. DATA GETTERS
 
-    function getProfile() {
+   Ưu tiên dùng SportHubPersonalPlan.
+   Nếu personal-plan.js chưa load được
+   thì fallback về localStorage cũ.
+====================================================== */
 
-        return readStorage(
-            STORAGE.profile
-        );
+function getProfile() {
+
+    if (
+        window
+            .SportHubPersonalPlan
+            ?.getProfile
+    ) {
+
+        return window
+            .SportHubPersonalPlan
+            .getProfile();
+
+    }
+
+
+    return readStorage(
+        STORAGE.profile
+    );
+
+}
+
+
+function getHealth() {
+
+    if (
+        window
+            .SportHubPersonalPlan
+            ?.getHealth
+    ) {
+
+        return window
+            .SportHubPersonalPlan
+            .getHealth();
 
     }
 
 
-    function getHealth() {
+    return readStorage(
+        STORAGE.health
+    );
 
-        return readStorage(
-            STORAGE.health
-        );
+}
+
+
+function getNutrition() {
+
+    if (
+        window
+            .SportHubPersonalPlan
+            ?.getNutrition
+    ) {
+
+        return window
+            .SportHubPersonalPlan
+            .getNutrition();
 
     }
 
 
-    function getNutrition() {
+    return readStorage(
+        STORAGE.nutrition
+    );
 
-        return readStorage(
-            STORAGE.nutrition
-        );
-
-    }
+}
 
 
     /* =====================================================
