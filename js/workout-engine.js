@@ -1486,85 +1486,86 @@ window.SportHubWorkoutEngine = (() => {
         },
 
 
-        jumpRope: {
+jumpRope: {
 
-            exerciseId:
-                "jump-rope",
+    exerciseId:
+        "jump-rope",
 
-            name:
-                "Jump Rope",
+    name:
+        "Jump Rope",
 
-            category:
-                "Cardio",
+    category:
+        "Cardio",
 
-            target:
-                "Phát triển sức bền tim mạch, nhịp điệu và phối hợp.",
+    target:
+        "Phát triển sức bền tim mạch, nhịp điệu và phối hợp.",
 
-            sets:
-                3,
+    sets:
+        3,
 
-            reps:
-                "30–60 giây",
+    reps:
+        "30–60 giây",
 
-            durationSeconds:
-                45,
+    durationSeconds:
+        45,
 
-            rest:
-                "45–60 giây",
+    rest:
+        "45–60 giây",
 
-            restSeconds:
-                45,
+    restSeconds:
+        45,
 
-            rpe:
-                "RPE 5–7",
+    rpe:
+        "RPE 5–7",
 
-            rir:
-                "Giữ nhịp độ còn kiểm soát được kỹ thuật.",
+    rir:
+        "Giữ nhịp độ còn kiểm soát được kỹ thuật.",
 
-            technique: [
+    technique: [
 
-                "Nhảy thấp vừa đủ để dây đi qua.",
+        "Nhảy thấp vừa đủ để dây đi qua.",
 
-                "Tiếp đất nhẹ bằng phần trước bàn chân.",
+        "Tiếp đất nhẹ bằng phần trước bàn chân.",
 
-                "Xoay dây chủ yếu từ cổ tay.",
+        "Xoay dây chủ yếu từ cổ tay.",
 
-                "Giữ vai thư giãn."
+        "Giữ vai thư giãn."
 
-            ],
+    ],
 
-            mistakes: [
+    mistakes: [
 
-                "Nhảy quá cao.",
+        "Nhảy quá cao.",
 
-                "Dùng cả cánh tay để quay dây.",
+        "Dùng cả cánh tay để quay dây.",
 
-                "Tiếp đất quá mạnh."
+        "Tiếp đất quá mạnh."
 
-            ],
+    ],
 
-            regression:
-                "Nhảy mô phỏng không dây hoặc Step Jack.",
+    regression:
+        "Nhảy mô phỏng không dây hoặc Step Jack.",
 
-            progression:
-                "Tăng thời gian trước khi tăng tốc độ.",
+    progression:
+        "Tăng thời gian trước khi tăng tốc độ.",
 
-            stopCondition:
-                "Dừng nếu đau cổ chân, gối, chóng mặt hoặc khó thở bất thường.",
+    stopCondition:
+        "Dừng nếu đau cổ chân, gối, chóng mặt hoặc khó thở bất thường.",
 
-            equipmentRequired:
-                [],
+    equipmentRequired: [
+        "jump-rope"
+    ],
 
-            impact:
-                "medium",
+    impact:
+        "medium",
 
-            timingMode:
-                "time",
+    timingMode:
+        "time",
 
-            videoAvailable:
-                true
+    videoAvailable:
+        true
 
-        },
+},
 
 
         burpee: {
@@ -2388,9 +2389,168 @@ window.SportHubWorkoutEngine = (() => {
        7. CHỌN CARDIO
     ====================================================== */
 
-    function chooseCardioExercises(
-        profile
+function chooseCardioExercises(
+    profile
+) {
+
+    /*
+        Có injury flag:
+        không tự động đưa bài bật nhảy / impact cao.
+    */
+
+    if (
+        hasInjuryFlag(
+            profile
+        )
     ) {
+
+        return uniqueExercises([
+
+            exercise(
+                "fullBodyMobility"
+            ),
+
+            exercise(
+                "catCow"
+            ),
+
+            exercise(
+                "birdDog"
+            )
+
+        ]);
+
+    }
+
+
+    /*
+        Beginner:
+        giảm timer xuống 20 giây.
+
+        Chưa tự thêm Jump Rope cho beginner
+        để giữ kế hoạch đơn giản và dễ kiểm soát.
+    */
+
+    if (
+        isBeginner(
+            profile
+        )
+    ) {
+
+        return uniqueExercises([
+
+            exercise(
+                "jumpingJack",
+                {
+                    durationSeconds:
+                        20,
+
+                    reps:
+                        "20 giây"
+                }
+            ),
+
+            exercise(
+                "mountainClimber",
+                {
+                    durationSeconds:
+                        20,
+
+                    reps:
+                        "20 giây"
+                }
+            ),
+
+            exercise(
+                "highKnees",
+                {
+                    durationSeconds:
+                        20,
+
+                    reps:
+                        "20 giây"
+                }
+            ),
+
+            exercise(
+                "deadBug"
+            )
+
+        ]);
+
+    }
+
+
+    const items = [
+
+        exercise(
+            "jumpingJack"
+        ),
+
+        exercise(
+            "mountainClimber"
+        ),
+
+        exercise(
+            "highKnees"
+        )
+
+    ];
+
+
+    /*
+        Chỉ thêm Jump Rope khi người dùng
+        thật sự khai báo có dây nhảy.
+    */
+
+    if (
+        hasEquipment(
+            profile,
+            "jump-rope"
+        )
+    ) {
+
+        items.push(
+
+            exercise(
+                "jumpRope"
+            )
+
+        );
+
+    }
+
+
+    /*
+        Burpee chỉ tự thêm cho advanced.
+    */
+
+    if (
+        profile
+            ?.training
+            ?.experience
+
+        ===
+
+        "advanced"
+    ) {
+
+        items.push(
+
+            exercise(
+                "burpee"
+            )
+
+        );
+
+    }
+
+
+    return uniqueExercises(
+        items
+    );
+
+}
 
         /*
             Có injury flag:
