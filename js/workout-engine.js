@@ -2386,8 +2386,9 @@ jumpRope: {
 
 
     /* =====================================================
-       7. CHỌN CARDIO
-    ====================================================== */
+/* =====================================================
+   7. CHỌN CARDIO
+====================================================== */
 
 function chooseCardioExercises(
     profile
@@ -2551,145 +2552,6 @@ function chooseCardioExercises(
     );
 
 }
-
-        /*
-            Có injury flag:
-            không tự động đưa bài bật nhảy / impact cao.
-        */
-
-        if (
-            hasInjuryFlag(
-                profile
-            )
-        ) {
-
-            return uniqueExercises([
-
-                exercise(
-                    "fullBodyMobility"
-                ),
-
-                exercise(
-                    "catCow"
-                ),
-
-                exercise(
-                    "birdDog"
-                )
-
-            ]);
-
-        }
-
-
-        /*
-            Beginner:
-            giảm timer xuống 20 giây.
-        */
-
-        if (
-            isBeginner(
-                profile
-            )
-        ) {
-
-            return uniqueExercises([
-
-                exercise(
-                    "jumpingJack",
-                    {
-                        durationSeconds:
-                            20,
-
-                        reps:
-                            "20 giây"
-                    }
-                ),
-
-                exercise(
-                    "mountainClimber",
-                    {
-                        durationSeconds:
-                            20,
-
-                        reps:
-                            "20 giây"
-                    }
-                ),
-
-                exercise(
-                    "highKnees",
-                    {
-                        durationSeconds:
-                            20,
-
-                        reps:
-                            "20 giây"
-                    }
-                ),
-
-                exercise(
-                    "deadBug"
-                )
-
-            ]);
-
-        }
-
-
-        const items = [
-
-            exercise(
-                "jumpingJack"
-            ),
-
-            exercise(
-                "mountainClimber"
-            ),
-
-            exercise(
-                "highKnees"
-            ),
-
-            exercise(
-                "jumpRope"
-            )
-
-        ];
-
-
-        /*
-            Burpee chỉ tự thêm cho advanced.
-        */
-
-        if (
-            profile
-                ?.training
-                ?.experience
-
-            ===
-
-            "advanced"
-        ) {
-
-            items.push(
-
-                exercise(
-                    "burpee"
-                )
-
-            );
-
-        }
-
-
-        return uniqueExercises(
-            items
-        );
-
-    }
-
-
 
     /* =====================================================
        8. FULL BODY
