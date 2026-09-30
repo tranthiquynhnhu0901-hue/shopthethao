@@ -72,6 +72,33 @@
     }
 
 
+    function sportHubFitnessUrl(path) {
+
+        const cleanPath =
+            String(path || "")
+                .replace(/^\/+/, "");
+
+
+        try {
+
+            return new URL(
+                "/shop-the-thao-v2/" + cleanPath,
+                window.location.origin
+            ).href;
+
+        } catch (error) {
+
+            return (
+                "https://tranthiquynhnhu0901-hue.github.io/shop-the-thao-v2/"
+                +
+                cleanPath
+            );
+
+        }
+
+    }
+
+
 
     /* =====================================================
        2. HTML SAFETY
@@ -870,8 +897,6 @@
                         normalizeProductLookupValue(
                             item.id
                         );
-
-
                     const itemCode =
                         normalizeProductLookupValue(
                             item.code
@@ -1771,7 +1796,6 @@
                     "moi phau thuat",
 
                     "phau thuat gan day",
-
                     "dang mang thai",
 
                     "mang thai",
@@ -3500,7 +3524,7 @@
                             Nếu muốn cá nhân hóa hơn,
                             bạn có thể làm
                             <a href="${
-                                sportHubUrl(
+                                sportHubFitnessUrl(
                                     "health-check.html"
                                 )
                             }">
@@ -3571,7 +3595,6 @@
 
 
         /* STRENGTH */
-
         if (
             goal === "strength"
         ) {
@@ -3749,7 +3772,7 @@
                 hoặc làm
 
                 <a href="${
-                    sportHubUrl(
+                    sportHubFitnessUrl(
                         "health-check.html"
                     )
                 }">
@@ -4319,6 +4342,52 @@
 
         if (
             message.includes(
+                "ke hoach ca nhan"
+            )
+            &&
+            includesAny(
+                message,
+                [
+                    "o dau",
+                    "mo",
+                    "vao",
+                    "tim",
+                    "xem"
+                ]
+            )
+        ) {
+
+            return `
+
+                Bạn mở:
+
+                <br><br>
+
+                <a href="${
+                    sportHubFitnessUrl(
+                        ""
+                    )
+                }">
+                    <b>
+                        Kế hoạch cá nhân →
+                    </b>
+                </a>
+
+                <br><br>
+
+                Tại đây bạn có thể xem
+                ba phần kế hoạch gồm
+                sức khỏe, tập luyện
+                và dinh dưỡng được tạo
+                từ Fitness Check.
+
+            `;
+
+        }
+
+
+        if (
+            message.includes(
                 "fitness check"
             )
             &&
@@ -4340,7 +4409,7 @@
                 <br><br>
 
                 <a href="${
-                    sportHubUrl(
+                    sportHubFitnessUrl(
                         "health-check.html"
                     )
                 }">
@@ -4425,7 +4494,6 @@
                 </a>
 
             `;
-
         }
 
 
@@ -4497,6 +4565,9 @@
 
                 <br>
                 • Fitness Check
+
+                <br>
+                • Kế hoạch cá nhân
 
                 <br>
                 • Blog
@@ -5321,9 +5392,6 @@
             return result;
 
         }
-
-
-
         /* ================================================
            7. COMMERCE
         ================================================ */
@@ -5667,6 +5735,9 @@
 
                     <br>
                     • Fitness Check
+
+                    <br>
+                    • kế hoạch cá nhân
 
                     <br>
                     • phục hồi
