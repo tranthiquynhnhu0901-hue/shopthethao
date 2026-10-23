@@ -96,6 +96,19 @@ document
 function placeOrder(event) {
 
     event.preventDefault();
+    
+const sportHubAuth = window.SportHubAuth;
+
+if (!sportHubAuth) {
+    alert("Hệ thống tài khoản đang tải. Vui lòng thử lại.");
+    return;
+}
+
+if (!sportHubAuth.getUser()) {
+    sportHubAuth.openLogin();
+    return;
+}
+  
 
 
     const phone =
